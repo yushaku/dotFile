@@ -1,3 +1,5 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval "$(oh-my-posh init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.poshthemes/yushaku.omp.json)"
 
@@ -10,11 +12,14 @@ alias e="exit"
 alias v="node -v"
 alias cl="clear"
 alias nvim="vi"
-alias zshconfig="code ~/.zshrc"
 alias sid="sudo dpkg -i"
 alias si="sudo apt install"
 alias srm="sudo apt remove"
 alias bat"batcat"
+
+alias zshconfig="code ~/.zshrc"
+alias tmuxconfig="code ~/.tmux.conf"
+alias viconfig="nvim ~/.config/nvim/init.vim"
 
 ## alias for coding
 alias y="yarn"
@@ -112,15 +117,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

@@ -9,3 +9,4 @@
 - cp tmux/tmux.conf ~/.tmux.conf
 - cp zsh/zshrc ~/.zshrc
 - cp zsh/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
+- cp -R nvim ~/.config/
