@@ -12,13 +12,16 @@ elif [ $1 == "zsh" ]
 
 elif [ $1 == "nvim" ]
   then
-    cp -R nvim ~/.config/
+    cp nvim/init.vim ~/.config/nvim/init.vim
+    cp -R ./nvim/vim-plug ~/.config/nvim
     echo "copy folder nvim done"
 
 elif [ $1 == "all" ]
   then
     cp tmux/tmux.conf ~/.tmux.conf
     cp zsh/zshrc ~/.zshrc
-    cp -R nvim ~/.config/
+    cp nvim/init.vim ~/.config/nvim/init.vim
+    cp -R ./nvim/vim-plug ~/.config/nvim
+
     echo "copy folder nvim done"
 fi
