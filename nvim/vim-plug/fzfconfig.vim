@@ -1,4 +1,5 @@
 " This is the default extra key bindings
+
 let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-x': 'split',
@@ -27,15 +28,14 @@ let g:fzf_colors = {
     \ 'pointer': ['fg', 'fzf_pointer'],
     \ 'spinner': ['fg', 'fzf_spinner'] }
 
-" :Files
 command! -bang -nargs=? -complete=dir Files
-   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'batcat --color=always --theme=TwoDark --style=header,numbers,snip --line-range :300 {}']}, <bang>0)
-map <C-f> :Files<CR> 
+  \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'batcat --color=always --theme=TwoDark --style=header,numbers,snip --line-range :300 {}']}, <bang>0)
 
-" :Rg
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --color=always --smart-case -- '.shellescape(<q-args>), 1, {'options': ['--exact', '--layout=reverse']}, <bang>0)
 
-map <C-M-f> :Rg<CR>
 
+map <C-p> :Files<CR> 
+map <C-M-p> :History:<CR>
+map <C-M-g> :GFiles?<CR> 

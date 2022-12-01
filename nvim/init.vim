@@ -10,13 +10,9 @@ set foldnestmax=1
 set foldlevelstart=0        "  
 set number                  " Show line number
 set ignorecase              " Enable case-sensitive 
-
-" Disable backup
 set nobackup
 set nowb
 set noswapfile
-
-" Optimize 
 set synmaxcol=200
 set lazyredraw
 au! BufNewFile,BufRead *.json set foldmethod=indent
@@ -25,18 +21,18 @@ au! BufNewFile,BufRead *.json set foldmethod=indent
 for setting_file in split(glob(stdpath('config').'/vim-plug/*.vim'))
   execute 'source' setting_file
 endfor
-
 colorscheme moonlight
-" ===========================
+" ====================================================
 
-" Enable copying from vim to clipboard --------------------------
+" ====== Enable copying from vim to clipboard =========
 if has('win32')
   set clipboard=unnamed  
 else
   set clipboard=unnamedplus
 endif
+" ====================================================
 
-" Auto reload content changed outside
+" ===== Auto reload content changed outside  =========
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
@@ -47,3 +43,4 @@ autocmd FileChangedShellPost *
     \ echohl WarningMsg 
     \ | echo "File changed on disk. Buffer reloaded."
     \ | echohl None
+" ====================================================
