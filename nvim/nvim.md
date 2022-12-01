@@ -9,14 +9,11 @@
 
 # PLugin in vim - how to use
 
-## plug-in manager
+## packer manager
 
-- `:PlugStatus`: check plug-in status
-- `:PlugInstall`: install all plugins
-- `:PlugUpdate`: update all plugins
-- `:PlugDiff`: check diff after update
-- `:PlugClean`: delete plug-in
-- `:PlugUpgrade`: upgrade vim-plug manager
+- `:PackerInstall`: install all plugins
+- `:PackerDiff`: check diff after update
+- `:PackerClean`: delete Packer-in
 
 ## NERD_TREE: key-mapping
 

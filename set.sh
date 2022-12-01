@@ -9,15 +9,15 @@ elif [ $1 == "zsh" ]; then
   echo "copy file .zshrc done"
 
 elif [ $1 == "nvim" ]; then
-  cp nvim/init.vim ~/.config/nvim/init.vim
-  cp -R ./nvim/vim-plug ~/.config/nvim
+  cp nvim/init.lua ~/.config/nvim/init.lua
+  cp -R ./nvim/lua ~/.config/nvim
   echo "copy folder nvim done"
 
 elif [ $1 == "all" ]; then
   cp tmux/tmux.conf ~/.tmux.conf
   cp zsh/zshrc ~/.zshrc
-  cp nvim/init.vim ~/.config/nvim/init.vim
-  cp -R ./nvim/vim-plug ~/.config/nvim
+  cp nvim/init.lua ~/.config/nvim/init.lua
+  cp -R ./nvim/lua ~/.config/nvim
 
   echo "copy folder nvim done"
 fi
