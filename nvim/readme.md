@@ -7,6 +7,16 @@
 - `:bd`: file buffer delete
 - `:?`: search key
 
+## navigation
+
+- `Shift + l`: next tab in buffer
+- `Shift + h`: prev tab in buffer
+
+- `Ctrl + up`: window navigate up
+- `Ctrl + down`: window navigate down
+- `Ctrl + left`: window navigate left
+- `Ctrl + right`: window navigate right
+
 ## custom key-map
 
 - `ctrl + ->` :resize + 2
@@ -15,10 +25,6 @@
 - `ctrl + arrow-down` :resize - 2
 
 # PLugin in vim - how to use
-
-## packer manager
-
-- `:PackerInstall`: install all plugins
 
 ## NERD_TREE: key-mapping
 
@@ -40,5 +46,7 @@
 ## FZF - fuzzy finder
 
 - `Ctrl + p`: open search file in parent folder
-- `Ctrl + Alt + p`: search commands history
-- `Ctrl + Alt + g`: open git status
+- `;h`: :help at the speed of light
+- `;b`: :Fuzzy find active buffers
+- `;r`: :Search for string
+- `;g`: :Fuzzy find changed files in git

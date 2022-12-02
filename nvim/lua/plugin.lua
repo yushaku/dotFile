@@ -92,7 +92,7 @@ return packer.startup(function(use)
     -- })
 
     ---------------------------------
-    -- Navigation and Fuzzy Search --
+    -- Folder structure and Fuzzy Search --
     ---------------------------------
 
     use({
@@ -121,29 +121,13 @@ return packer.startup(function(use)
         after = 'telescope.nvim'
     }})
 
-    use({
-        'numToStr/Navigator.nvim',
-        event = 'CursorHold',
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2',
         config = function()
-            require('plugins.navigator')
+            require('plugins.hop')
         end
-    })
-
-    -- use({
-    --     'phaazon/hop.nvim',
-    --     event = 'BufRead',
-    --     config = function()
-    --         require('plugins.hop')
-    --     end,
-    -- })
-
-    -- use({
-    --     'karb94/neoscroll.nvim',
-    --     event = 'WinScrolled',
-    --     config = function()
-    --         require('neoscroll').setup({ hide_cursor = false })
-    --     end,
-    -- })
+    }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
