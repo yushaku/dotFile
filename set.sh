@@ -9,8 +9,9 @@ elif [ $1 == "zsh" ]; then
   echo "copy file .zshrc done"
 
 elif [ $1 == "nvim" ]; then
+  rm -rf ~/.config/nvim/lua
   cp nvim/init.lua ~/.config/nvim/init.lua
-  cp -R ./nvim/lua ~/.config/nvim
+  cp -R ./nvim/lua ~/.config/nvim/lua
   echo "copy folder nvim done"
 
 elif [ $1 == "all" ]; then

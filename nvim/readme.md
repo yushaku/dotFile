@@ -7,22 +7,35 @@
 - `:bd`: file buffer delete
 - `:?`: search key
 
+## custom key-map
+
+- `ctrl + ->` :resize + 2
+- `ctrl + <-` :resize - 2
+- `ctrl + arrow-up` :resize - 2
+- `ctrl + arrow-down` :resize - 2
+
 # PLugin in vim - how to use
 
 ## packer manager
 
 - `:PackerInstall`: install all plugins
-- `:PackerDiff`: check diff after update
-- `:PackerClean`: delete Packer-in
 
 ## NERD_TREE: key-mapping
 
 - `Ctrl + b`: toggle nerdTree
-- `Ctrl + \`: switch between nerd tree and file
-- `Shift + c`: down a dir
-- `m` :add, remove, update and rename file
-- `i`: split vertical and open file in that panel
+- `a` :add file
+- `A` :add Dir
+- `d` :delete
+- `r` :rename
+- `c` :copy
+- `m` :move
+- `y` :copy_to_clipboard
+- `x` :cut_to_clipboard
+- `p` :paste_from_clipboard
+- `S`: split vertical and open file in that panel
 - `s`: split horizontal and open file in that panel
+- `<`: "prev_source",
+- `>`: "next_source"
 
 ## FZF - fuzzy finder
 
