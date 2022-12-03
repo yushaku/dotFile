@@ -10,3 +10,11 @@
 - cp zsh/zshrc ~/.zshrc
 - cp zsh/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
 - cp -R nvim ~/.config/
+
+## or more easier use command
+
+option: `zsh` | `tmux` | `theme` | `nvim` | `all`
+
+```bash
+ ./set.sh <option>
+```

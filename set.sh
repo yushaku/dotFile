@@ -2,17 +2,21 @@
 
 if [ $1 == "tmux" ]; then
   cp tmux/tmux.conf ~/.tmux.conf
-  echo "copy file .tmux.conf done"
+  echo "copy file to .tmux.conf done"
 
 elif [ $1 == "zsh" ]; then
   cp zsh/zshrc ~/.zshrc
-  echo "copy file .zshrc done"
+  echo "copy file to .zshrc done"
+
+elif [ $1 == "theme" ]; then
+  cp zsh/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
+  echo "theme done"
 
 elif [ $1 == "nvim" ]; then
   rm -rf ~/.config/nvim/lua
   cp nvim/init.lua ~/.config/nvim/init.lua
   cp -R ./nvim/lua ~/.config/nvim/lua
-  echo "copy folder nvim done"
+  echo "copy to folder .config/nvim done"
 
 elif [ $1 == "all" ]; then
   cp tmux/tmux.conf ~/.tmux.conf
@@ -20,5 +24,5 @@ elif [ $1 == "all" ]; then
   cp nvim/init.lua ~/.config/nvim/init.lua
   cp -R ./nvim/lua ~/.config/nvim
 
-  echo "copy folder nvim done"
+  echo "set all config to system successfully"
 fi

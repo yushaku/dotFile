@@ -9,6 +9,8 @@
 
 ## tmux key binding
 
+- prefix tmux: `Ctrl + b` or `Ctrl + space`
+
 - detach tmux: `<prefix> + d`
 - snap pane next: `<prefix> + >`
 - snap pane previous: `<prefix> + <`
