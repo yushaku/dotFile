@@ -103,25 +103,7 @@ return packer.startup(function(use)
         config = function()
             require('plugins.treesitter')
         end
-    } -- {
-    --     'nvim-treesitter/playground',
-    --     after = 'nvim-treesitter'
-    -- },
-    -- {
-    --     'nvim-treesitter/nvim-treesitter-textobjects',
-    --     after = 'nvim-treesitter'
-    -- }, {
-    --     'nvim-treesitter/nvim-treesitter-refactor',
-    --     after = 'nvim-treesitter'
-    -- }, {
-    --     'windwp/nvim-ts-autotag', -- auto tags
-    --     after = 'nvim-treesitter'
-    -- }
-    -- , {
-    --     'JoosepAlviste/nvim-ts-context-commentstring', -- auto comment
-    --     after = 'nvim-treesitter'
-    -- }
-    })
+    }})
 
     ---------------------------------
     -- Folder structure and Fuzzy Search --
@@ -153,22 +135,24 @@ return packer.startup(function(use)
         after = 'telescope.nvim'
     }})
 
-    -- use {
-    --     'phaazon/hop.nvim',
-    --     branch = 'v2',
-    --     config = function()
-    --         require('plugins.hop')
-    --     end
-    -- }
-
     ---------------------------------
     -- LANGUAGE SERVER  --
     ---------------------------------
 
-    use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/mason.nvim" -- simple to use language server installer
-    use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-    use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+    -- use "neovim/nvim-lspconfig" -- enable LSP
+    -- use "williamboman/mason.nvim" -- simple to use language server installer
+    -- use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
+    -- use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+
+    ---------------------------------
+    --     AUTO COMPLITION         --
+    ---------------------------------
+
+    -- use "hrsh7th/nvim-cmp" -- The completion plugin
+    -- use "hrsh7th/cmp-buffer" -- buffer completions
+    -- use "hrsh7th/cmp-path" -- path completions
+    -- use "hrsh7th/cmp-cmdline" -- cmdline completions
+    -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

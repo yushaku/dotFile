@@ -1,5 +1,5 @@
-require "options"
-require "plugin"
-require "theme"
-require "keymaps"
-require "lsp"
+require "plugins-setup"
+require "core.options"
+require "core.theme"
+require "core.keymaps"
+
