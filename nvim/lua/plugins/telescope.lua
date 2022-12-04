@@ -50,7 +50,7 @@ vim.keymap.set('n', '<C-p>', function()
         Telescope.find_files()
     end
 end)
-vim.g.mapleader = ';'
+vim.g.mapleader = 'f'
 vim.keymap.set('n', '<leader>h', Telescope.help_tags)
 vim.keymap.set('n', "<leader>b", Telescope.buffers)
 vim.keymap.set('n', "<leader>r", Telescope.live_grep)

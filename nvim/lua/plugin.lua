@@ -11,10 +11,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
-  augroup packer_user_config
+    augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+    augroup end
 ]]
 
 -- Use a protected call so we don't error out on first use
@@ -42,6 +42,14 @@ return packer.startup(function(use)
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
     use 'MunifTanjim/nui.nvim'
+    use {
+        "glepnir/dashboard-nvim",
+        event = "VimEnter",
+        cond = firenvim_not_active,
+        config = function()
+            require('plugins.dashboard')
+        end
+    }
 
     -------------------------------------------
     ---- Theme, Icons, Statusbar, Bufferbar ---
@@ -72,24 +80,42 @@ return packer.startup(function(use)
         end
     }
 
+    use {
+        'akinsho/bufferline.nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require("bufferline").setup {}
+            vim.opt.termguicolors = true
+        end
+
+    }
+
     -----------------------------------
     -- Treesitter: Better Highlights --
     -----------------------------------
-    -- use({
-    --   {
+    -- use({{
     --     'nvim-treesitter/nvim-treesitter',
     --     event = 'CursorHold',
     --     run = ':TSUpdate',
     --     config = function()
     --         require('plugins.treesitter')
-    --     end,
-    --   },
-    --   { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
-    --   { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-    --   { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
-    --   { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
-    --   { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
-    -- })
+    --     end
+    -- }, {
+    --     'nvim-treesitter/playground',
+    --     after = 'nvim-treesitter'
+    -- }, {
+    --     'nvim-treesitter/nvim-treesitter-textobjects',
+    --     after = 'nvim-treesitter'
+    -- }, {
+    --     'nvim-treesitter/nvim-treesitter-refactor',
+    --     after = 'nvim-treesitter'
+    -- }, {
+    --     'windwp/nvim-ts-autotag',
+    --     after = 'nvim-treesitter'
+    -- }, {
+    --     'JoosepAlviste/nvim-ts-context-commentstring',
+    --     after = 'nvim-treesitter'
+    -- }})
 
     ---------------------------------
     -- Folder structure and Fuzzy Search --
@@ -121,13 +147,13 @@ return packer.startup(function(use)
         after = 'telescope.nvim'
     }})
 
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2',
-        config = function()
-            require('plugins.hop')
-        end
-    }
+    -- use {
+    --     'phaazon/hop.nvim',
+    --     branch = 'v2',
+    --     config = function()
+    --         require('plugins.hop')
+    --     end
+    -- }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

@@ -7,6 +7,20 @@
 - `:bd`: file buffer delete
 - `:?`: search key
 
+## NORMAL MODE
+
+- `esc`: -> NORMAL
+- `jk`: INSERT -> NORMAL
+- `o`: add new line under cursor line -> INSERT
+- `s`: remove -> INSERT
+- `u`: undo
+- `shift-u`: Undo undo
+- `cc`: cut all current line -> INSERT
+- `x`: cut current character
+- `p`: paste
+- `gg`: cursor to top
+- `h-j-k-l`: left-down-up-right
+
 ## navigation
 
 - `Shift + l`: next tab in buffer
@@ -46,7 +60,8 @@
 ## FZF - fuzzy finder
 
 - `Ctrl + p`: open search file in parent folder
-- `;h`: :help at the speed of light
-- `;b`: :Fuzzy find active buffers
-- `;r`: :Search for string
-- `;g`: :Fuzzy find changed files in git
+- `f`: leader key
+- `fh`: :help at the speed of light
+- `fb`: :Fuzzy find active buffers
+- `fr`: :Search for string
+- `fg`: :Fuzzy find changed files in git

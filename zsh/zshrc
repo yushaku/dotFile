@@ -104,6 +104,7 @@ plugins=(
   docker-compose
   git
   nvm
+  z
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -25,4 +25,9 @@ elif [ $1 == "all" ]; then
   cp -R ./nvim/lua ~/.config/nvim
 
   echo "set all config to system successfully"
+
+else
+  echo "do not know that option"
+  echo "please pick one of those option:"
+  echo "zsh | tmux | theme | nvim | all"
 fi
