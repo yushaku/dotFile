@@ -105,6 +105,13 @@ return packer.startup(function(use)
         end
     }})
 
+    use({
+        "numToStr/Comment.nvim",
+        config = function()
+            require('plugins.comment')
+        end
+    })
+
     ---------------------------------
     -- Folder structure and Fuzzy Search --
     ---------------------------------
