@@ -3,6 +3,6 @@ if not status_ok then
     return
 end
 
-require "lsp.mason"
+-- require "lsp.mason"
 require "lsp.null-ls"
 require("lsp.handlers").setup()

@@ -42,6 +42,11 @@ return packer.startup(function(use)
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
     use 'MunifTanjim/nui.nvim'
+
+    ------------------------------------------
+    ----       nvim dashboard         --------
+    ------------------------------------------
+
     use {
         "glepnir/dashboard-nvim",
         event = "VimEnter",
@@ -87,35 +92,36 @@ return packer.startup(function(use)
             require("bufferline").setup {}
             vim.opt.termguicolors = true
         end
-
     }
 
     -----------------------------------
     -- Treesitter: Better Highlights --
     -----------------------------------
-    -- use({{
-    --     'nvim-treesitter/nvim-treesitter',
-    --     event = 'CursorHold',
-    --     run = ':TSUpdate',
-    --     config = function()
-    --         require('plugins.treesitter')
-    --     end
-    -- }, {
+    use({{
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('plugins.treesitter')
+        end
+    } -- {
     --     'nvim-treesitter/playground',
     --     after = 'nvim-treesitter'
-    -- }, {
+    -- },
+    -- {
     --     'nvim-treesitter/nvim-treesitter-textobjects',
     --     after = 'nvim-treesitter'
     -- }, {
     --     'nvim-treesitter/nvim-treesitter-refactor',
     --     after = 'nvim-treesitter'
     -- }, {
-    --     'windwp/nvim-ts-autotag',
+    --     'windwp/nvim-ts-autotag', -- auto tags
     --     after = 'nvim-treesitter'
-    -- }, {
-    --     'JoosepAlviste/nvim-ts-context-commentstring',
+    -- }
+    -- , {
+    --     'JoosepAlviste/nvim-ts-context-commentstring', -- auto comment
     --     after = 'nvim-treesitter'
-    -- }})
+    -- }
+    })
 
     ---------------------------------
     -- Folder structure and Fuzzy Search --
