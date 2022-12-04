@@ -11,13 +11,26 @@
 
 - prefix tmux: `Ctrl + b` or `Ctrl + space`
 
-- detach tmux: `<prefix> + d`
+- detach tmux: `<prefix> + d` = `tmux detach`
+- create new tmux window: `<prefix> + c`
 - snap pane next: `<prefix> + >`
 - snap pane previous: `<prefix> + <`
+- list section: `<prefix> + s`
+- rename section: `<prefix> + .`
+
+- list all tmux window: `<prefix> + w`
+- navigate window tmux: `<prefix> + [number]`
 
 - list buffer: `<prefix> + b`
 - list paste: `<prefix> + p`
 - list buffer: `<prefix> + shift + p`
+
+- resize pane left + 5: `<prefix> + h`
+- resize pane down + 5: `<prefix> + j`
+- resize pane up + 5: `<prefix> + k`
+- resize pane right + 5: `<prefix> + l`
+
+- toggle maximal pane: `<prefix> + m`
 
 ## tmux shot-cut
 
