@@ -2,100 +2,64 @@
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
-################################################################
-##>>                      SET THEME                         <<##
-################################################################
-
-eval "$(oh-my-posh init zsh)"
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/yushaku.omp.json)"
-
-################################################################
-#>>                                ALIAS                    <<##
-################################################################
-alias e="exit"
-alias cl="clear"
-alias nvim="vi"
-alias sid="sudo dpkg -i"
-alias si="sudo apt install"
-alias srm="sudo apt remove"
-alias bat"batcat"
-
-# list command alias =======================================
-
-alias ll="exa -l --icons"
-alias lt="exa --tree -I='node_modules|dist|deploy' -L"
-alias fd="fdfind"
-
-alias zshconfig="code ~/.zshrc"
-alias tmuxconfig="code ~/.tmux.conf"
-alias viconfig="nvim ~/.config/nvim/init.vim"
-
-# npm start -------------------
-alias n="npm"
-
-alias y="yarn"
-alias yrm="yarn remove"
-alias ya="yarn add"
-alias yad="yarn add -D"
-alias yb="yarn build"
-# npm end ---------------------
-
-# pnpm start --------------------------
-alias p="pnpm"
-alias pi="pnpm install"
-alias pa="pnpm add"
-alias pad="pnpm add -D"
-alias prm="pnpm remove"
-alias pb="pnpm build"
-
-export PNPM_HOME="/home/yushaku/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end -----------------------------------
-
-## git shotcut
-alias g="git"
-alias ga="git add"
-alias gaa="git add ."
-alias gcm="git commit -m"
-alias gcmn="git commit --amend --no-edit"
-
-## 1.1.1.1 cloudflare
-alias wcc="warp-cli connect"
-alias wcd="warp-cli disconnect"
-alias wci="sudo systemctl start warp-svc.service"
-
-alias next="yarn create next-app"
+source ~/.zsh/theme.zsh
+source ~/.zsh/aliases.zsh
+source ~/.zsh/functions.zsh
 
 ################################################################
 #>>                      PLugins                           <<##
 ################################################################
 
-plugins=(
-  docker-compose
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  git
-  fzf
-  nvm
-  z
-)
-source $ZSH/oh-my-zsh.sh
+# plugins=(
+#   docker-compose
+#   autosuggestions
+#   zsh-syntax-highlighting
+#   git
+#   fzf
+#   nvm
+#   z
+# )
+# source $ZSH/oh-my-zsh.sh
 
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
+# Zap
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh" ||
+  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh)
 
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+if [[ $(which plug) ]]; then
+  plug "zap-zsh/vim"
+  plug "agkozak/zsh-z"
+  plug "hlissner/zsh-autopair"
+  plug "zdharma-continuum/fast-syntax-highlighting"
 
-# FZF start ------------------------------------------
-export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_DEFAULT_COMMAND="fdfind --type file --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
+  plug "zsh-users/zsh-autosuggestions"
+  bindkey -M vicmd '^[a' autosuggest-accept
+  bindkey -M viins '^[a' autosuggest-execute
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#FZF end ----------------------------
+  zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
+  zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath'
 
-if [ -f .nvmrc ]; then
-  nvm use
+  function check_terminal_size() {
+    if [[ "$LINES $COLUMNS" != "$previous_lines $previous_columns" ]]; then
+      set_default_opts
+    fi
+    previous_lines=$LINES
+    previous_columns=$COLUMNS
+  }
+
+  function set_default_opts() {
+    HEIGHTVAR=$(($LINES / 2))
+    WIDTHVAR=$(($COLUMNS / 2))
+    zstyle ':fzf-tab:*' fzf-pad $HEIGHTVAR
+    export FZF_DEFAULT_OPTS="--color=fg:#707a8c,bg:-1,hl:#3e9831,fg+:#cbccc6,bg+:#434c5e,hl+:#af87ff \
+      --color=dark \
+      --color=info:#ea9d34,prompt:#af87ff,pointer:#cb6283,marker:#cb6283,spinner:#ff87d7 \
+      --sort \
+      --preview-window=right:$WIDTHVAR \
+      --bind '?:toggle-preview' \
+      --border rounded"
+  }
+
+  set_default_opts && trap 'check_terminal_size' WINCH
+  plug "Aloxaf/fzf-tab"
 fi
