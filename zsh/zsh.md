@@ -1,3 +1,16 @@
+## package use with
+
+- better searching
+
+  - `sudo apt install fd-find`
+  - can ignore file base on .gitignore
+  - support fzf search do not search fucking file
+
+- better ls command
+
+  - `sudo apt install exa`
+  - with colors, icons, tree show and more
+
 ## use with fzf
 
 - `CTRL-R`: search on recent history based on $HISTFILE,
