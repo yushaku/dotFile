@@ -1,16 +1,9 @@
 #! /bin/bash
 
 function copy_zsh() {
-  if [ ! -d ~/.zsh ]; then
-    echo 'create new folder .zsh'
-    mkdir -p ~/.zsh
-  fi
-
-  cp zsh/zshrc ~/.zshrc
-  cp zsh/aliases.zsh ~/.zsh/aliases.zsh
-  cp zsh/theme.zsh ~/.zsh/theme.zsh
-  cp zsh/functions.zsh ~/.zsh/functions.zsh
-  cp zsh/fzf.zsh ~/.zsh/fzf.zsh
+  rm -rf ~/.zsh
+  cp shell/zshrc ~/.zshrc
+  cp -R shell/config ~/.zsh
   echo "👉 copy zsh done"
 }
 
@@ -19,7 +12,7 @@ function copy_theme() {
     echo 'create new folder .poshthemes'
     mkdir -p ~/.poshthemes/
   fi
-  cp zsh/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
+  cp ./shell/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
   echo "👉 copy theme done"
 }
 
@@ -35,9 +28,13 @@ function copy_nvim() {
   echo "👉 copy nvim done"
 }
 
-if [ $1 == "tmux" ]; then
+function copy_tmux() {
   cp tmux/tmux.conf ~/.tmux.conf
   echo "👉 copy file to .tmux.conf done"
+}
+
+if [ $1 == "tmux" ]; then
+  copy_tmux
 
 elif [ $1 == "zsh" ]; then
   copy_zsh
@@ -53,7 +50,7 @@ then
   copy_zsh
   copy_nvim
   copy_theme
-  cp tmux/tmux.conf ~/.tmux.conf
+  copy_tmux
 
   echo "⭐ set all config to system successfully"
 
