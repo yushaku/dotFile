@@ -7,6 +7,8 @@ alias gaa="git add --all"
 alias gcm="git commit -m"
 alias gcmn="git commit --amend --no-edit"
 
+alias gp="git push"
+
 alias gcl='git clone --recurse-submodules'
 
 alias grb='git rebase'

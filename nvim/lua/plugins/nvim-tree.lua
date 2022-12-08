@@ -32,9 +32,16 @@ require('neo-tree').setup({
             expander_highlight = "NeoTreeExpander"
         },
         icon = {
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "ﰊ",
+            folder = {
+                arrow_open = "",
+                arrow_closed = "",
+                default = "",
+                open = "",
+                empty = "",
+                empty_open = "",
+                symlink = "",
+                symlink_open = ""
+            },
             default = "*",
             highlight = "NeoTreeFileIcon"
         },

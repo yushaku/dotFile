@@ -89,8 +89,7 @@ return packer.startup(function(use)
         'akinsho/bufferline.nvim',
         requires = 'nvim-tree/nvim-web-devicons',
         config = function()
-            require("bufferline").setup {}
-            vim.opt.termguicolors = true
+            require("plugins.bufferline")
         end
     }
 

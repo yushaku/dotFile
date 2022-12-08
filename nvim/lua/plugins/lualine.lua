@@ -1,9 +1,15 @@
-require('lualine').setup({
+-- import lualine plugin safely
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+    return
+end
+
+lualine.setup {
     options = {
         theme = 'moonlight',
         component_separators = {
-            left = '',
-            right = ''
+            left = '',
+            right = ''
         },
         section_separators = {
             left = '',
@@ -19,15 +25,59 @@ require('lualine').setup({
                 gui = 'bold'
             }
         }},
-        lualine_b = {{'branch'}, {
+        lualine_b = {{
+            'branch',
+            icon = ""
+        }, {
             'diff',
-            colored = false
+            colored = true,
+            diff_color = {
+                added = {
+                    fg = "#28A745"
+                },
+                modified = {
+                    fg = "#DBAB09"
+                },
+                removed = {
+                    fg = "#D73A49"
+                }
+            },
+            symbols = {
+                added = " ",
+                modified = " ",
+                removed = " "
+            }
         }},
         lualine_c = {{
             'filename',
-            file_status = true
+            'fileformat',
+            file_status = false
         }, {'diagnostics'}},
-        lualine_x = {'filetype', 'encoding', 'fileformat'},
+        lualine_x = {{
+            "diagnostics",
+            sources = {"nvim_lsp"},
+            sections = {"error", "warn", "info", "hint"},
+            diagnostics_color = {
+                error = {
+                    fg = "#AF0000"
+                },
+                warn = {
+                    fg = "#D75F00"
+                },
+                info = {
+                    fg = "#0087AF"
+                },
+                hint = {
+                    fg = "#008700"
+                }
+            },
+            symbols = {
+                error = " ",
+                warn = " ",
+                info = " ",
+                hint = " "
+            }
+        }},
         lualine_y = {'progress'},
         lualine_z = {{
             'location',
@@ -51,32 +101,4 @@ require('lualine').setup({
         }}
     },
     extensions = {'quickfix', 'nvim-tree'}
-})
-
--- local colors = {
---   blue   = '#80a0ff',
---   cyan   = '#79dac8',
---   black  = '#080808',
---   white  = '#c6c6c6',
---   red    = '#ff5189',
---   violet = '#d183e8',
---   grey   = '#303030',
--- }
-
--- local bubbles_theme = {
---   normal = {
---     a = { fg = colors.black, bg = colors.violet },
---     b = { fg = colors.white, bg = colors.grey },
---     c = { fg = colors.black, bg = colors.black },
---   },
-
---   insert = { a = { fg = colors.black, bg = colors.blue } },
---   visual = { a = { fg = colors.black, bg = colors.cyan } },
---   replace = { a = { fg = colors.black, bg = colors.red } },
-
---   inactive = {
---     a = { fg = colors.white, bg = colors.black },
---     b = { fg = colors.white, bg = colors.black },
---     c = { fg = colors.black, bg = colors.black },
---   },
--- }
+}
