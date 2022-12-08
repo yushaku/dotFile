@@ -60,3 +60,7 @@ cnwifi() {
 
 ##>> shot-cut create projects ----------------------
 alias next="yarn create next-app"
+
+##>> docker && docker compose --------------------
+alias d="docker"
+alias dco="docker-compose"
