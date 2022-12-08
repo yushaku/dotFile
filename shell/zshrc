@@ -72,3 +72,7 @@ if [[ $(which plug) ]]; then
   set_default_opts && trap 'check_terminal_size' WINCH
   plug "Aloxaf/fzf-tab"
 fi
+
+if [ -f .nvmrc ]; then
+  nvm use
+fi
