@@ -33,16 +33,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
   zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh)
 
 if [[ $(which plug) ]]; then
-  plug "zap-zsh/vim"
   plug "agkozak/zsh-z"
   plug "hlissner/zsh-autopair"
   plug "zdharma-continuum/fast-syntax-highlighting"
+  plug "zsh-users/zsh-autosuggestions"
+  # plug "zap-zsh/vim"
   # plug "jonas/tig"
   # plug "denisidoro/navi"
-
-  plug "zsh-users/zsh-autosuggestions"
-  bindkey -M vicmd '^[a' autosuggest-accept
-  bindkey -M viins '^[a' autosuggest-execute
 
   zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
   zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath'

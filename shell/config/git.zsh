@@ -1,6 +1,5 @@
 ##>> git shotcut -------------------------
 alias g="git"
-
 alias ga="git add"
 alias gaa="git add --all"
 
@@ -41,3 +40,15 @@ function _git_log_prettily() {
   fi
 }
 compdef _git _git_log_prettily=git-log
+
+function lazygit() {
+  if ( $# -eq 0 ); then
+    git add --all
+    git commit --ament --no-edit
+    git push -f
+  else 
+    git add --all
+    git commit -m "$1"
+    git push
+  fi
+}

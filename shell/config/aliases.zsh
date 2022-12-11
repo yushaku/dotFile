@@ -12,9 +12,9 @@ alias ...='cd ../..'
 alias e="exit"
 alias cl="clear"
 alias nvim="vi"
-alias bat="batcat"
+alias cat="batcat"
 alias fd="fdfind"
-alias ll="exa -lah --time-style=long-iso --icons --colour-scale --group-directories-first"
+alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
 alias lt="exa --tree -s -I='node_modules|dist|deploy' -L"
 alias ss="source ~/.zshrc"
 
@@ -64,3 +64,10 @@ alias next="yarn create next-app"
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
+
+##>> tmux shotcut --------------------
+alias t="tmux"
+alias tls="tmux ls"
+alias ta="tmux attach -t"
+alias tkill="tmux kill-server"
+alias trm="tmux kill-session -t"
