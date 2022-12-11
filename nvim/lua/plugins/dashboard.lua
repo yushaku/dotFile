@@ -28,12 +28,12 @@ dashboard.custom_center = {{
     shortcut = "<Leader> f r"
 }, {
     icon = "  ",
-    desc = "Project grep                            ",
+    desc = "Project grep",
     action = "Leaderf rg --popup",
     shortcut = "<Leader> f g"
 }, {
     icon = "  ",
-    desc = "Open Nvim config                        ",
+    desc = "Open Nvim config",
     action = "tabnew $MYVIMRC | tcd %:p:h",
     shortcut = "<Leader> e v"
 }, {

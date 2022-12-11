@@ -1,7 +1,7 @@
 ##>> shot-cut open config file -------------------------
 alias zshconfig="code ~/.zshrc"
 alias tmuxconfig="code ~/.tmux.conf"
-alias viconfig="cd .config/nvim && nvim ~/.config/nvim/init.lua"
+alias viconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 
 ##>> File system tree ------------------
 alias .='pwd'

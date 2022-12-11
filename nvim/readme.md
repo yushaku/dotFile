@@ -23,13 +23,11 @@
 
 ## navigation
 
-- `Shift + l`: next tab in buffer
-- `Shift + h`: prev tab in buffer
+- `Alt + j`: move next buffer
+- `Alt + k`: move prev buffer
 
-- `Ctrl + up`: window navigate up
-- `Ctrl + down`: window navigate down
-- `Ctrl + left`: window navigate left
-- `Ctrl + right`: window navigate right
+- `Alt + l`: move next panel
+- `Alt + h`: move prev panel
 
 ## custom key-map
 

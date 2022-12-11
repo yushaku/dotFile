@@ -23,10 +23,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap.set("n", "<C-h>", "<C-w>h", opts)
-keymap.set("n", "<C-j>", "<C-w>j", opts)
-keymap.set("n", "<C-k>", "<C-w>k", opts)
-keymap.set("n", "<C-l>", "<C-w>l", opts)
+keymap.set("n", "<M-h>", "<C-w>h", opts)
+keymap.set("n", "<M-j>", "<C-w>j", opts)
+keymap.set("n", "<M-k>", "<C-w>k", opts)
+keymap.set("n", "<M-l>", "<C-w>l", opts)
 
 -- Resize with arrows
 keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -46,8 +46,8 @@ keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
 -- Navigate buffers
-keymap.set("n", "<S-l>", ":bnext<CR>", opts)
-keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
+keymap.set("n", "<M-j>", ":bnext<CR>", opts)
+keymap.set("n", "<M-k>", ":bprevious<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -70,7 +70,11 @@ keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- open terminal
+keymap.set("n", "<leader>t", ":vsplit term://bash", opts)
+keymap.set("n", "<leader>T", ":hsplit term://zsh", opts)
