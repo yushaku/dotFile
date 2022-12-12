@@ -1,6 +1,6 @@
 ##>> shot-cut open config file -------------------------
-alias zshconfig="code ~/.zshrc"
-alias tmuxconfig="code ~/.tmux.conf"
+alias zshconfig="nvim ~/.zshrc"
+alias tmuxconfig="nvim ~/.tmux.conf"
 alias viconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
 
 ##>> File system tree ------------------
@@ -64,10 +64,3 @@ alias next="yarn create next-app"
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
-
-##>> tmux shotcut --------------------
-alias t="tmux"
-alias tls="tmux ls"
-alias ta="tmux attach -t"
-alias tkill="tmux kill-server"
-alias trm="tmux kill-session -t"

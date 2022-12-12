@@ -1,10 +1,10 @@
-alias ta='tmux attach -t'
+##>> tmux shotcut --------------------
+alias t="tmux"
+alias tls="tmux ls"
+alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
-alias ts='tmux new-session -s'
-alias tl='tmux list-sessions'
-alias tksv='tmux kill-server'
-alias tkss='tmux kill-session -t'
-alias tmuxconf='$EDITOR $ZSH_TMUX_CONFIG'
+alias tksv="tmux kill-server"
+alias trm="tmux kill-session -t"
 
 function _zsh_tmux_plugin_run() {
   if [[ -n "$@" ]]; then

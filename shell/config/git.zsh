@@ -7,6 +7,8 @@ alias gcm="git commit -m"
 alias gcmn="git commit --amend --no-edit"
 
 alias gp="git push"
+alias gpf="git push -f"
+alias gpo="git push --set-upstream origin"
 
 alias gcl='git clone --recurse-submodules'
 
