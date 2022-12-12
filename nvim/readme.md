@@ -6,6 +6,7 @@
 - `:wq`: write and quit
 - `:bd`: file buffer delete
 - `:?`: search key
+- `.`: repect prev action
 
 ## NORMAL MODE
 
@@ -14,12 +15,34 @@
 - `o`: add new line under cursor line -> INSERT
 - `s`: remove -> INSERT
 - `u`: undo
-- `shift-u`: Undo undo
-- `cc`: cut all current line -> INSERT
+- `ctrl+r`: Undo undo
+
+- `cc`: cut all current line -> save to buffer -> INSERT
 - `x`: cut current character
+- `y`: copy
 - `p`: paste
+
+- `d`: delete 
+- `dd`: delete current line
+- `di + { or [ or ( or " or '`: delete in side of nearest braces
+- `c`: same as `d` but it gonna go to INSERT mode
+
 - `gg`: cursor to top
+- `shift-g`: cursor to bottom  
+- `0`: go to start of the line 
+- `$`: go to end of the line
+- `shift-a`: go to end of line -> INSERT mode
 - `h-j-k-l`: left-down-up-right
+- `w`: move to begin of next word
+- `e`: move to end of next word
+- `b`: move to begin of prev word
+
+- `*`: search word under cursor
+- `/<string>`: search <string>
+  - `n`: next search match
+  - `shift-n`: prev search match
+
+- `:%s/<pattern_string>/<replate_string>`: search and replate word
 
 ## navigation
 

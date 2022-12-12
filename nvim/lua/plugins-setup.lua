@@ -207,6 +207,16 @@ return packer.startup(function(use)
     use("saadparwaiz1/cmp_luasnip") -- for autocompletion
     use("rafamadriz/friendly-snippets") -- useful snippets
 
+    ---------------------------------
+    --    TOGGLE TERMIANL          --
+    ---------------------------------
+    use({
+        "akinsho/toggleterm.nvim",
+        config = function()
+            require("plugins.toggleTerm")
+        end
+    })
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end

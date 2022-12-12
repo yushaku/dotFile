@@ -46,8 +46,8 @@ keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
 -- Navigate buffers
-keymap.set("n", "<M-j>", ":bnext<CR>", opts)
-keymap.set("n", "<M-k>", ":bprevious<CR>", opts)
+keymap.set("n", "<M-k>", ":bnext<CR>", opts)
+keymap.set("n", "<M-j>", ":bprevious<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
