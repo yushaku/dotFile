@@ -1,7 +1,5 @@
-local colorscheme = "moonlight"
-
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-  vim.notify("colorscheme " .. colorscheme .. " not found!")
-  return
+local status, _ = pcall(vim.cmd, "colorscheme nightfly")
+if not status then
+    print("Colorscheme not found!") -- print error if colorscheme not installed
+    return
 end

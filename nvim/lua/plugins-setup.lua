@@ -59,12 +59,7 @@ return packer.startup(function(use)
     -------------------------------------------
     ---- Theme, Icons, Statusbar, Bufferbar ---
     -------------------------------------------
-    use({
-        'shaunsingh/moonlight.nvim',
-        config = function()
-            require('plugins.moonlight')
-        end
-    })
+    use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 
     use({
         'nvim-tree/nvim-web-devicons',
