@@ -1,5 +1,5 @@
 ##>> tmux shotcut --------------------
-alias t="tmux"
+alias t="TERM=screen-256color-bce tmux"
 alias tls="tmux ls"
 alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
