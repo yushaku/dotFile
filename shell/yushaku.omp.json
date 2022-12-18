@@ -52,7 +52,7 @@
           "powerline_symbol": "\ue0b0",
           "properties": {
             "branch_icon": "\ue725 ",
-            "fetch_status": true,
+            "fetch_status": false,
             "fetch_upstream_icon": true
           },
           "style": "powerline",
