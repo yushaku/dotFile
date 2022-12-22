@@ -1,11 +1,11 @@
 local opts = {
-    noremap = true,
-    silent = true
+	noremap = true,
+	silent = true,
 }
 local term_opts = {
-    silent = true
+	silent = true,
 }
-keymap = vim.keymap
+local keymap = vim.keymap
 
 -- Remap space as leader key
 keymap.set("", "<Space>", "<Nop>", opts)

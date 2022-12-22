@@ -1,5 +1,5 @@
 -- :help options
-vimOption = vim.o
+local vimOption = vim.o
 
 vimOption.mouse = "a" -- allow the mouse to be used in neovim
 vimOption.fileencoding = "utf-8" -- the encoding written to a file
@@ -35,6 +35,6 @@ vimOption.scrolloff = 8 -- is one of my fav
 vimOption.sidescrolloff = 8
 vimOption.guifont = "monospace:h17" -- the font used in graphical neovim applications
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd([[set iskeyword+=-]])
+vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work

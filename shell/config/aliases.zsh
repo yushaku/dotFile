@@ -2,6 +2,7 @@
 alias zshconfig="nvim ~/.zshrc"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias viconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
+alias dotfile="z dotfile && nvim ."
 
 ##>> File system tree ------------------
 alias .='pwd'
@@ -11,7 +12,7 @@ alias ...='cd ../..'
 ##>> replate old command of linux ----------
 alias e="exit"
 alias cl="clear"
-alias nvim="vi"
+alias vi="nvim"
 alias cat="batcat"
 alias fd="fdfind"
 alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
@@ -20,8 +21,8 @@ alias ss="source ~/.zshrc"
 
 ##>> apt manager --------------
 alias sid="sudo dpkg -i"
-alias si="sudo apt install"
-alias srm="sudo apt remove"
+alias si="sudo apt install -y"
+alias srm="sudo apt remove -y"
 alias scl="sudo apt autoremove -y && sudo apt clean -y"
 alias supdate="sudo apt update -y && sudo apt upgrade -y"
 
