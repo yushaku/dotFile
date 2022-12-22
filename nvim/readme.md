@@ -1,5 +1,9 @@
 # vim - how to use
 
+## required:
+
+- nvim -v 0.8
+
 ## basic command
 
 - `:q`: quit
@@ -22,14 +26,14 @@
 - `y`: copy
 - `p`: paste
 
-- `d`: delete 
+- `d`: delete
 - `dd`: delete current line
 - `di + { or [ or ( or " or '`: delete in side of nearest braces
 - `c`: same as `d` but it gonna go to INSERT mode
 
 - `gg`: cursor to top
-- `shift-g`: cursor to bottom  
-- `0`: go to start of the line 
+- `shift-g`: cursor to bottom
+- `0`: go to start of the line
 - `$`: go to end of the line
 - `shift-a`: go to end of line -> INSERT mode
 - `h-j-k-l`: left-down-up-right
@@ -39,6 +43,7 @@
 
 - `*`: search word under cursor
 - `/<string>`: search <string>
+
   - `n`: next search match
   - `shift-n`: prev search match
 
