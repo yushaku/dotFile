@@ -53,13 +53,13 @@ return packer.startup(function(use)
 	----       nvim dashboard         --------
 	------------------------------------------
 
-use {
-    'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.nightfly'.config)
-    end
-}
+	-- use {
+	--     'goolord/alpha-nvim',
+	--     requires = { 'nvim-tree/nvim-web-devicons' },
+	--     config = function ()
+	--         require'alpha'.setup(require'alpha.themes.nightfly'.config)
+	--     end
+	-- }
 
 	-------------------------------------------
 	---- Theme, Icons, Statusbar, Bufferbar ---

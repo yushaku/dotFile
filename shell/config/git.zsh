@@ -24,18 +24,18 @@ alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 
 alias groh='git reset origin/$(git_current_branch) --hard'
+alias grs="git reset"
 
 alias gst='git stash'
 alias gsta='git stash -u'
 alias gstp='git stash pop'
+alias gstd="git stash drop"
 
 alias gu="git pull -a"
 alias gur="git pull --rebase -v"
 
 alias gf="git fetch"
 alias gfa="git fetch --all"
-
-
 
 ##>> git custome function ---------------
 function git_current_branch () {
@@ -61,13 +61,13 @@ function _git_log_prettily() {
 }
 compdef _git _git_log_prettily=git-log
 
-function lazygit() {
-  if ( $# -eq 0 ); then
+function glz() {
+  if [[ -z $1 ]]; then
     git add . 
     git commit --ament --no-edit
     git push -f
   else 
-    git add --all
+    git add .
     git commit -m "$1"
     git push $(git_current_branch)
   fi

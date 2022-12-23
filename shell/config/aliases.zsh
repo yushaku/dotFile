@@ -2,7 +2,7 @@
 alias zshconfig="nvim ~/.zshrc"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias viconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
-alias dotfile="z dotfile && nvim ."
+alias dotfile="z dotfile && nvim"
 
 ##>> File system tree ------------------
 alias .='pwd'
