@@ -26,7 +26,7 @@
             "windows": "\ue70f"
           },
           "style": "diamond",
-          "template": "{{ .Icon }} {{ .UserName }} ",
+          "template": "{{ .Icon }} zsh ",
           "type": "os"
         },
         {
