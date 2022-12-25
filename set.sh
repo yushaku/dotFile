@@ -43,6 +43,9 @@ elif [ $1 == "theme" ]; then
   copy_theme
 elif [ $1 == "nvim" ]; then
   copy_nvim
+elif [ $1 == "nvim-plugs" ]; then
+  rm -rf ~/.config/nvim/plugin/packer_compiled.lua
+  cp -R ./nvim/plugin/packer_compiled.lua ~/.config/nvim/plugin/packer_compiled.lua
 elif
 
   [ $1 == "all" ]
