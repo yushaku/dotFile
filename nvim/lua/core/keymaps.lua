@@ -36,16 +36,22 @@ keymap.set("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+keymap.set("n", "<C-M-Right>", "<C-w>v") -- split window vertically
 
+keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+keymap.set("n", "<C-M-Down>", "<C-w>s") -- split window horizontally
+
+keymap.set("n", "<leader>sx", ":bw<CR>") -- close current split window
+
+keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<C-w>", ":tabclose<CR>") -- close tab
 keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
 -- Navigate buffers
+keymap.set("n", "<C-Tab>", ":bnext<CR>", opts)
 keymap.set("n", "<M-k>", ":bnext<CR>", opts)
 keymap.set("n", "<M-j>", ":bprevious<CR>", opts)
 
@@ -76,5 +82,5 @@ keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- open terminal
-keymap.set("n", "<leader>t", ":vsplit term://bash", opts)
-keymap.set("n", "<leader>T", ":hsplit term://zsh", opts)
+keymap.set("n", "<leader>t", ":vsplit term://bash<CR>", opts)
+keymap.set("n", "<leader>T", ":split term://bash<CR>", opts)
