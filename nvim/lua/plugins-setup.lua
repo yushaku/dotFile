@@ -164,14 +164,20 @@ return packer.startup(function(use)
 	---------------------------------
 	--            GIT              --
 	---------------------------------
-	-- use({
-	-- 	"sindrets/diffview.nvim",
-	-- 	requires = "nvim-lua/plenary.nvim",
-	-- 	require("plugins.git"),
-	-- })
-	-- use({
-	-- 	"mhinz/vim-signify",
-	-- })
+	use({
+		"sindrets/diffview.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("plugins.gitdiff")
+		end,
+	})
+
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("plugins.gitsign")
+		end,
+	})
 
 	---------------------------------
 	-- LANGUAGE SERVER  --
