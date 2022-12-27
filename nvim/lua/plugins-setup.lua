@@ -53,13 +53,13 @@ return packer.startup(function(use)
 	----       nvim dashboard         --------
 	------------------------------------------
 
-	-- use {
-	--     'goolord/alpha-nvim',
-	--     requires = { 'nvim-tree/nvim-web-devicons' },
-	--     config = function ()
-	--         require'alpha'.setup(require'alpha.themes.nightfly'.config)
-	--     end
-	-- }
+	-- use({
+	-- 	"goolord/alpha-nvim",
+	-- 	requires = { "nvim-tree/nvim-web-devicons" },
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.nightfly").config)
+	-- 	end,
+	-- })
 
 	-------------------------------------------
 	---- Theme, Icons, Statusbar, Bufferbar ---
@@ -159,6 +159,24 @@ return packer.startup(function(use)
 			"nvim-telescope/telescope-symbols.nvim",
 			after = "telescope.nvim",
 		},
+	})
+
+	---------------------------------
+	--            GIT              --
+	---------------------------------
+	use({
+		"sindrets/diffview.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("plugins.gitdiff")
+		end,
+	})
+
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("plugins.gitsign")
+		end,
 	})
 
 	---------------------------------

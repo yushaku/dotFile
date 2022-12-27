@@ -65,3 +65,13 @@ alias next="yarn create next-app"
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
+
+##>> tmux shotcut --------------------
+alias t="TERM=screen-256color-bce tmux"
+alias tls="tmux ls"
+alias ta="tmux attach -t"
+alias tad='tmux attach -d -t'
+alias tksv="tmux kill-server"
+alias trm="tmux kill-session -t"
+
+

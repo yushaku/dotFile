@@ -50,8 +50,12 @@ vim.keymap.set('n', '<C-p>', function()
         Telescope.find_files()
     end
 end)
-vim.g.mapleader = 'f'
 
+vim.g.mapleader = 'f'
+vim.keymap.set('n', '<leader>h', Telescope.help_tags)
+vim.keymap.set('n', "<leader>b", Telescope.buffers)
+vim.keymap.set('n', "<leader>r", Telescope.live_grep)
+vim.keymap.set('n', "<leader>g", Telescope.git_status)
 vim.keymap.set('n', '<leader>f', function()
     local ok = pcall(Telescope.git_files, {
         show_untracked = true
@@ -60,8 +64,3 @@ vim.keymap.set('n', '<leader>f', function()
         Telescope.find_files()
     end
 end)
-
-vim.keymap.set('n', '<leader>h', Telescope.help_tags)
-vim.keymap.set('n', "<leader>b", Telescope.buffers)
-vim.keymap.set('n', "<leader>r", Telescope.live_grep)
-vim.keymap.set('n', "<leader>g", Telescope.git_status)
