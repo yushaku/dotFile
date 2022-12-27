@@ -1,4 +1,9 @@
 #! /bin/bash
+if [[ -z "$1" ]]; then
+  echo "please pick one of those option:"
+  echo "zsh | tmux | theme | nvim | all"
+  exit 0 
+fi
 
 function copy_zsh() {
   rm -rf ~/.zsh
