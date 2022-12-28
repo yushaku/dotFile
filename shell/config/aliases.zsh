@@ -2,7 +2,7 @@
 alias zshconfig="nvim ~/.zshrc"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias viconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua"
-alias dotfile="z dotfile && nvim"
+alias dotfile="z dotfile && nvim set.sh"
 
 ##>> File system tree ------------------
 alias .='pwd'
@@ -73,5 +73,3 @@ alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
 alias tksv="tmux kill-server"
 alias trm="tmux kill-session -t"
-
-

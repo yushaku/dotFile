@@ -7,8 +7,8 @@ fi
 
 function copy_zsh() {
   rm -rf ~/.zsh
-  cp shell/zshrc ~/.zshrc
-  cp -R shell/config ~/.zsh
+  cp ./shell/zshrc ~/.zshrc
+  cp -R ./shell/config ~/.zsh
   echo "👉 copy zsh done"
 }
 
@@ -34,26 +34,26 @@ function copy_nvim() {
 }
 
 function copy_tmux() {
-  cp tmux/tmux.conf ~/.tmux.conf
+  cp -R ./tmux ~/.config/
   echo "👉 copy file to .tmux.conf done"
 }
 
-if [ $1 == "tmux" ]; then
+if [ "$1" == "tmux" ]; then
   copy_tmux
 
-elif [ $1 == "zsh" ]; then
+elif [ "$1" == "zsh" ]; then
   copy_zsh
 
-elif [ $1 == "theme" ]; then
+elif [ "$1" == "theme" ]; then
   copy_theme
-elif [ $1 == "nvim" ]; then
+elif [ "$1" == "nvim" ]; then
   copy_nvim
-elif [ $1 == "nvim-plugs" ]; then
+elif [ "$1" == "nvim-plugs" ]; then
   rm -rf ~/.config/nvim/plugin/packer_compiled.lua
   cp -R ./nvim/plugin/packer_compiled.lua ~/.config/nvim/plugin/packer_compiled.lua
 elif
 
-  [ $1 == "all" ]
+  [ "$1" == "all" ]
 then
   copy_zsh
   copy_nvim
