@@ -62,6 +62,8 @@ require("neo-tree").setup({
 				renamed = "",
 				untracked = "",
 				conflict = "",
+				ignored = "",
+				unstaged = "",
 			},
 		},
 	},

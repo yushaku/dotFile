@@ -82,5 +82,5 @@ keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- open terminal
-keymap.set("n", "<leader>t", ":vsplit term://bash<CR>", opts)
-keymap.set("n", "<leader>T", ":split term://bash<CR>", opts)
+keymap.set("n", "<leader>t", ":vsplit term://zsh<CR>", opts)
+keymap.set("n", "<leader>T", ":split term://zsh<CR>", opts)
