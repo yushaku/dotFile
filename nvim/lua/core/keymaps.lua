@@ -53,6 +53,9 @@ keymap.set("n", "dw", 'vb"_d')
 keymap.set("n", "ww", "$")
 keymap.set("n", "qq", "0")
 
+-- fold function
+
+keymap.set("", "F4", "<CR>zfa")
 -- window management
 keymap.set("n", "ss", "<C-w>v") -- split window vertically
 keymap.set("n", "sh", "<C-w>s") -- split window horizontally

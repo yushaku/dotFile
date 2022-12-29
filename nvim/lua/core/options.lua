@@ -46,6 +46,11 @@ vimOption.scrolloff = 8 -- is one of my fav
 vimOption.sidescrolloff = 8
 vimOption.guifont = "monospace:h17" -- the font used in graphical neovim applications
 
+vimOption.foldmethod = "indent"
+vimOption.nofoldenable = "normal"
+vimOption.foldlevel = 1
+vimOption.foldnestmax = 5
+
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[

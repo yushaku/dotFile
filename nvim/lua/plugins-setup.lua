@@ -240,6 +240,13 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("plugins.zen-mode")
+		end,
+	})
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
