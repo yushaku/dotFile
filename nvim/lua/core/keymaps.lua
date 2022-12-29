@@ -23,41 +23,52 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap.set("n", "<M-h>", "<C-w>h", opts)
-keymap.set("n", "<M-j>", "<C-w>j", opts)
-keymap.set("n", "<M-k>", "<C-w>k", opts)
-keymap.set("n", "<M-l>", "<C-w>l", opts)
+keymap.set("", "<M-h>", "<C-w>h", opts)
+keymap.set("", "<M-j>", "<C-w>j", opts)
+keymap.set("", "<M-k>", "<C-w>k", opts)
+keymap.set("", "<M-l>", "<C-w>l", opts)
 
--- Resize with arrows
-keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap.set("n", "<C-Left>", ":vertical resize +2<CR>", opts)
-keymap.set("n", "<C-Right>", ":vertical resize -2<CR>", opts)
-
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<C-M-Right>", "<C-w>v") -- split window vertically
-
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<C-M-Down>", "<C-w>s") -- split window horizontally
-
-keymap.set("n", "<leader>sx", ":bw<CR>") -- close current split window
-
-keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<C-w>", ":tabclose<CR>") -- close tab
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+keymap.set("", "<M-left>", "<C-w>h", opts)
+keymap.set("", "<M-down>", "<C-w>j", opts)
+keymap.set("", "<M-up>", "<C-w>k", opts)
+keymap.set("", "<M-right>", "<C-w>l", opts)
 
 -- Navigate buffers
-keymap.set("n", "<C-Tab>", ":bnext<CR>", opts)
-keymap.set("n", "<M-k>", ":bnext<CR>", opts)
-keymap.set("n", "<M-j>", ":bprevious<CR>", opts)
+keymap.set("", "<C-right>", ":bnext<CR>", opts)
+keymap.set("", "<C-left>", ":bprevious<CR>", opts)
+
+-- Resize with arrows
+keymap.set("", "<C-S-Up>", ":resize -2<CR>", opts)
+keymap.set("", "<C-S-Down>", ":resize +2<CR>", opts)
+keymap.set("", "<C-S-Left>", ":vertical resize +2<CR>", opts)
+keymap.set("", "<C-S-Right>", ":vertical resize -2<CR>", opts)
+
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- delete word backwords
+keymap.set("n", "dw", 'vb"_d')
+
+-- go to end of line
+keymap.set("n", "ww", "$")
+keymap.set("n", "qq", "0")
+
+-- window management
+keymap.set("n", "ss", "<C-w>v") -- split window vertically
+keymap.set("n", "sh", "<C-w>s") -- split window horizontally
+keymap.set("n", "sx", ":bw<CR>") -- close current split window
+
+keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
+keymap.set("n", "to", ":tabnew<CR>") -- open new tab
+keymap.set("n", "tx", ":tabclose<CR>") -- close current tab
+keymap.set("n", "tn", ":tabn<CR>") --  go to next tab
+keymap.set("n", "tp", ":tabp<CR>") --  go to previous tab
 
 -- Insert --
 -- Press jk fast to enter
 keymap.set("i", "jk", "<ESC>", opts)
+keymap.set("v", "jk", "<ESC>", opts)
+keymap.set("v", "i", "<ESC>i", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -65,21 +76,13 @@ keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap.set("v", "p", '"_dP', opts)
-
--- Visual Block --
--- Move text up and down
 keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
-keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- Move text up and down
+keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap.set("v", "p", '"_dP', opts)
 
 -- open terminal
 keymap.set("n", "<leader>t", ":vsplit term://zsh<CR>", opts)

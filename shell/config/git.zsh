@@ -6,7 +6,7 @@ alias gaa="git add --all"
 # alias gcm="git commit -m"
 # alias gcmn="git commit --amend --no-edit"
 
-alias gp="git push"
+alias gpp="git push"
 alias gpf="git push -f"
 alias gpo="git push --set-upstream origin"
 
@@ -31,11 +31,14 @@ alias gsta='git stash -u'
 alias gstp='git stash pop'
 alias gstd="git stash drop"
 
+alias gss="git status"
+
 alias gpu="git pull -a"
-alias gur="git pull --rebase -v"
+alias gpur="git pull --rebase -v"
 
 alias gft="git fetch"
 alias gfa="git fetch --all"
+alias gmr="git merge"
 
 alias glg="git log --graph --oneline --decorate --all"
 
