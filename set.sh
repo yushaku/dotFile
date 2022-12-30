@@ -29,6 +29,7 @@ function copy_nvim() {
 
   rm -rf ~/.config/nvim/lua
   cp nvim/init.lua ~/.config/nvim/init.lua
+  cp nvim/.vimrc ~/.config/nvim/.vimrc
   cp -R ./nvim/lua ~/.config/nvim/lua
   echo "👉 copy nvim done"
 }
