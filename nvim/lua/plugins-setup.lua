@@ -57,7 +57,7 @@ return packer.startup(function(use)
 	-- 	"goolord/alpha-nvim",
 	-- 	requires = { "nvim-tree/nvim-web-devicons" },
 	-- 	config = function()
-	-- 		require("alpha").setup(require("alpha.themes.nightfly").config)
+	-- 		require("plugins.dashboard")
 	-- 	end,
 	-- })
 
@@ -161,6 +161,14 @@ return packer.startup(function(use)
 		},
 	})
 
+	use({
+		"phaazon/hop.nvim",
+		event = "BufRead",
+		config = function()
+			require("plugins.hop")
+		end,
+	})
+
 	---------------------------------
 	--            GIT              --
 	---------------------------------
@@ -241,7 +249,7 @@ return packer.startup(function(use)
 	})
 
 	use({
-		"folke/zen-mode.nvim",
+		"folke/zen-mode.nvim", -- for focus in one tab better
 		config = function()
 			require("plugins.zen-mode")
 		end,

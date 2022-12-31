@@ -3,6 +3,13 @@
 ## required:
 
 - nvim -v 0.8
+- git: `sudo apt install git`
+- make
+- cargo
+- npm + node
+- python + pip
+-
+- wl-clipboard: `sudo apt install wl-clipboard`
 
 ## basic command
 

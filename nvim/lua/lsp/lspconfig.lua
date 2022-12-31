@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-	
+
 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
@@ -82,24 +82,24 @@ typescript.setup({
 	},
 })
 
--- -- configure css server
--- lspconfig["cssls"].setup({
---     capabilities = capabilities,
---     on_attach = on_attach
--- })
+-- configure css server
+lspconfig["cssls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
--- -- configure tailwindcss server
--- lspconfig["tailwindcss"].setup({
---     capabilities = capabilities,
---     on_attach = on_attach
--- })
+-- configure tailwindcss server
+lspconfig["tailwindcss"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
--- -- configure emmet language server
--- lspconfig["emmet_ls"].setup({
---     capabilities = capabilities,
---     on_attach = on_attach,
---     filetypes = {"html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte"}
--- })
+-- configure emmet language server
+lspconfig["emmet_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+})
 
 -- configure lua server (with special settings)
 lspconfig["sumneko_lua"].setup({

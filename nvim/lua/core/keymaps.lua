@@ -46,8 +46,16 @@ keymap.set("", "<C-S-Right>", ":vertical resize -2<CR>", opts)
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
+-- copy to system clipboard
+keymap.set("v", "<y>", '"+y', term_opts)
+keymap.set("n", "<yy>", '"+yy', term_opts)
+keymap.set("n", "<x>", '"+x', term_opts)
+
 -- save like my old habit
-keymap.set("n", "<C-s>", ":w<CR>")
+keymap.set("", "<C-s>", ":w<CR>")
+
+-- remove highlight
+keymap.set("", "<C-h>", ":noh<CR>")
 
 -- delete word backwords
 keymap.set("n", "dw", 'vb"_d')
@@ -84,10 +92,6 @@ keymap.set("v", ">", ">gv", opts)
 -- Move text up and down
 keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Move text up and down
-keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap.set("v", "p", '"_dP', opts)
 
 -- open terminal

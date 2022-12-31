@@ -111,13 +111,13 @@ require("neo-tree").setup({
 	},
 	filesystem = {
 		filtered_items = {
-			visible = false,
-			hide_dotfiles = false,
-			hide_gitignored = true,
+			visible = true,
+			hide_dotfiles = true,
+			hide_gitignored = false,
 			hide_hidden = true,
 			hide_by_name = { "node_modules, .git" },
 			hide_by_pattern = { "*.meta", "*/src/*/tsconfig.json" },
-			always_show = { ".gitignored" },
+			always_show = { ".gitignored, .env, .env.example" },
 		},
 		follow_current_file = true,
 		group_empty_dirs = false,
