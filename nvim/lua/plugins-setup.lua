@@ -140,6 +140,16 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"nvim-pack/nvim-spectre",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("plugins.spectre")
+		end,
+	})
+
+	use({
 		{
 			"nvim-telescope/telescope.nvim",
 			event = "CursorHold",
