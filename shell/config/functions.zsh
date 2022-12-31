@@ -13,3 +13,8 @@ function killport() {
     echo "no port $1 is running!!!"
   fi
 }
+
+function ide (){
+  tmux split-window -v -p  30
+  tmux split-window -h
+}
