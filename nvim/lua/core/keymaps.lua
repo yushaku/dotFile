@@ -51,6 +51,8 @@ keymap.set("v", "<y>", '"+y', term_opts)
 keymap.set("n", "<yy>", '"+yy', term_opts)
 keymap.set("n", "<x>", '"+x', term_opts)
 
+keymap.set("n", "<C-S-o>", ":%bd|e#|bd#")
+
 -- save like my old habit
 keymap.set("", "<C-s>", ":w<CR>")
 

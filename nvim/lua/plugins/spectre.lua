@@ -6,13 +6,13 @@ end
 vim.g.mapleader = "s"
 
 -- search in current file
-vim.keymap.set("n", "<leader>s", ":lua require('spectre').open_file_search({select_word=true})<CR>")
+vim.keymap.set("v", "<C-f>", ":lua require('spectre').open_file_search({select_word=true})<CR>")
 
 -- search in current file
-vim.keymap.set("n", "<leader>s", ":lua require('spectre').open_file_search()<CR>")
+vim.keymap.set("n", "<C-f>", ":lua require('spectre').open_file_search({select_word=true})<CR>")
 
 -- search current word
-vim.keymap.set("n", "<leader>s", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>")
+vim.keymap.set("n", "<C-S-f>", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>")
 
 spectre.setup({
 	color_devicons = true,
@@ -38,32 +38,32 @@ spectre.setup({
 			desc = "goto current file",
 		},
 		["send_to_qf"] = {
-			map = "<leader>q",
+			map = "<C-q",
 			cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
 			desc = "send all item to quickfix",
 		},
 		["replace_cmd"] = {
-			map = "<leader>c",
+			map = "<C-c",
 			cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
 			desc = "input replace vim command",
 		},
 		["show_option_menu"] = {
-			map = "<leader>o",
+			map = "<C-o",
 			cmd = "<cmd>lua require('spectre').show_options()<CR>",
 			desc = "show option",
 		},
 		["run_current_replace"] = {
-			map = "<leader>rc",
+			map = "<C-rc",
 			cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
 			desc = "replace current line",
 		},
 		["run_replace"] = {
-			map = "<leader>R",
+			map = "<C-R",
 			cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
 			desc = "replace all",
 		},
 		["change_view_mode"] = {
-			map = "<leader>v",
+			map = "<C-v",
 			cmd = "<cmd>lua require('spectre').change_view()<CR>",
 			desc = "change result view mode",
 		},
@@ -93,7 +93,7 @@ spectre.setup({
 			desc = "toggle search hidden",
 		},
 		["resume_last_search"] = {
-			map = "<leader>l",
+			map = "<C-l",
 			cmd = "<cmd>lua require('spectre').resume_last_search()<CR>",
 			desc = "resume last search before close",
 		},

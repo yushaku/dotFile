@@ -8,72 +8,59 @@
 - cargo
 - npm + node
 - python + pip
--
 - wl-clipboard: `sudo apt install wl-clipboard`
 
-## basic command
+## **NORMAL MODE**
 
-- `:q`: quit
-- `:wq`: write and quit
-- `:bd`: file buffer delete
-- `:?`: search key
-- `.`: repect prev action
+### navigate buffer
 
-## NORMAL MODE
+- `Ctrl + right`: move next buffer
+- `Ctrl + left`: move prev buffer
+- `Ctrl + shift + o`: close all buffer but this one
 
-- `esc`: -> NORMAL
-- `jk`: INSERT -> NORMAL
-- `o`: add new line under cursor line -> INSERT
-- `s`: remove -> INSERT
-- `u`: undo
-- `ctrl+r`: Undo undo
+### navigate panel
 
-- `cc`: cut all current line -> save to buffer -> INSERT
-- `x`: cut current character
-- `y`: copy
-- `p`: paste
+- `Alt + left` or `Alt + h`: move left panel
+- `Alt + right` or `Alt + l`: move right panel
+- `Alt + down` or `Alt + j`: move down panel
+- `Alt + top` or `Alt + k`: move top panel
 
-- `d`: delete
-- `dd`: delete current line
-- `di + { or [ or ( or " or '`: delete in side of nearest braces
-- `c`: same as `d` but it gonna go to INSERT mode
+### resize panel
 
-- `gg`: cursor to top
-- `shift-g`: cursor to bottom
-- `0`: go to start of the line
-- `$`: go to end of the line
-- `shift-a`: go to end of line -> INSERT mode
-- `h-j-k-l`: left-down-up-right
-- `w`: move to begin of next word
-- `e`: move to end of next word
-- `b`: move to begin of prev word
+- `ctrol + shift + right` :resize + 2
+- `ctrol + shift + left` :resize - 2
+- `ctrol + shift + up` :resize - 2
+- `ctrol + shift + down` :resize - 2
 
-- `*`: search word under cursor
-- `/<string>`: search <string>
+### old habits key
 
-  - `n`: next search match
-  - `shift-n`: prev search match
+- `Ctrl + a`: select all
+- `Ctrl + s`: save
+- `Ctrl + h`: remove highlight
 
-- `:%s/<pattern_string>/<replate_string>`: search and replate word
+### split winddow **_s_**
 
-## navigation
+- `ss`: split vertically
+- `sh`: split horizontally
+- `sx`: close current window
 
-- `Alt + j`: move next buffer
-- `Alt + k`: move prev buffer
+### replate old key of vim
 
-- `Alt + l`: move next panel
-- `Alt + h`: move prev panel
+- `ww` or `$`: end of line
+- `qq` or `0`: start of line
 
-## custom key-map
+## **IN VISUAL MODE**
 
-- `ctrl + ->` :resize + 2
-- `ctrl + <-` :resize - 2
-- `ctrl + arrow-up` :resize - 2
-- `ctrl + arrow-down` :resize - 2
+### move line
 
-# PLugin in vim - how to use
+- `alt + k`: move line up
+- `alt + j`: move line down
+- '>': move line to right one tab
+- '<': move line to left one tab
 
-## NERD_TREE: key-mapping
+## **PLUG-IN IN VIM - KEYMAP**
+
+### NVIM_TREE: key-mapping
 
 - `Ctrl + b`: toggle nerdTree
 - `a` :add file
@@ -90,11 +77,39 @@
 - `<`: "prev_source",
 - `>`: "next_source"
 
-## FZF - fuzzy finder
+### FZF - fuzzy finder - **_f_**
 
 - `Ctrl + p`: open search file in parent folder
-- `f`: leader key
+- `ff`:open search file in parent folder
 - `fh`: :help at the speed of light
 - `fb`: :Fuzzy find active buffers
 - `fr`: :Search for string
 - `fg`: :Fuzzy find changed files in git
+
+### CMP - a completion engine plugin
+
+When pop-up completion show option list
+
+- `ctrl + k`: pre-view item
+- `ctrl + j`: next-view item
+- `ctrl + b`: scroll doc down
+- `ctrl + f`: scroll doc up
+- `ctrl + e`: close suggestion
+- `ctrl + space`: show completion suggestion
+- `Enter`: confirm suggestion
+
+### git - **_g_**
+
+- `gg`: show git diff in current file
+- `gh`: show file diff history
+- `gt`: show tree diff history
+- `gx`: close git diff history
+- `gr`: refeash git diff
+
+### hop - hype jump - **_t_**
+
+- `tt`: show jump map down current line
+- `tk`: show jump map up current line
+- `tw`: show jump map base on 2 charaters
+- `tp`: show jump map base on pattenr
+- `tl`: show jump map base on line

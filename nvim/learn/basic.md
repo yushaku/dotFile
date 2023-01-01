@@ -9,6 +9,9 @@
 - `:wqa`: save and quit all
 - `:x`: save if necessary and quit
 
+- `:bd`: file buffer delete
+- `.`: repect prev action
+
 ## NORMAL MODE
 
 ### replace command in vim
@@ -26,3 +29,40 @@
 ### Substitute command in VIM
 
 - `[count]s`: Substitute is like `c` but instead of use motion, `s` use number of word would change and start insert mode
+
+### basic
+
+- `esc`: -> NORMAL
+- `jk`: INSERT -> NORMAL
+- `o`: add new line under cursor line -> INSERT
+- `s`: remove -> INSERT
+- `u`: undo
+- `ctrl+r`: Undo undo
+
+- `cc`: cut all current line -> save to buffer -> INSERT
+- `x`: cut current character
+- `y`: copy
+- `p`: paste
+
+- `d`: delete
+- `dd`: delete current line
+- `di + { or [ or ( or " or '`: delete in side of nearest braces
+- `c`: same as `d` but it gonna go to INSERT mode
+
+- `gg`: cursor to top
+- `shift-g`: cursor to bottom
+- `0`: go to start of the line
+- `$`: go to end of the line
+- `shift-a`: go to end of line -> INSERT mode
+- `h-j-k-l`: left-down-up-right
+- `w`: move to begin of next word
+- `e`: move to end of next word
+- `b`: move to begin of prev word
+
+- `*`: search word under cursor
+- `/<string>`: search <string>
+
+  - `n`: next search match
+  - `shift-n`: prev search match
+
+- `:%s/<pattern_string>/<replate_string>`: search and replate word
