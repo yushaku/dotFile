@@ -12,7 +12,7 @@
           "style": "diamond",
           "leading_diamond": "╭─",
           "trailing_diamond": "\uE0B4",
-          "foreground": "#011627",
+          "foreground": "#e6e6e6",
           "background": "#0077c2",
           "properties": {
             "style": "full",
@@ -23,7 +23,7 @@
           "type": "git",
           "style": "powerline",
           "powerline_symbol": "\uE0B4",
-          "foreground": "#011627",
+          "foreground": "#e6e6e6",
           "background": "#444444",
           "background_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#444444{{ end }}",
@@ -33,9 +33,7 @@
             "{{ if gt .Ahead 0 }}#3b3b3b{{ end }}",
             "{{ if gt .Behind 0 }}#3b3b3b{{ end }}"
           ],
-          "foreground_templates": [
-            "{{ if gt .Ahead 0 }}#1fff0a{{ end }}"
-          ],
+          "foreground_templates": ["{{ if gt .Ahead 0 }}#1fff0a{{ end }}"],
           "properties": {
             "branch_icon": "\ue725 ",
             "fetch_status": true,

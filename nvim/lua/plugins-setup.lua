@@ -126,6 +126,12 @@ return packer.startup(function(use)
 		"windwp/nvim-ts-autotag",
 		after = "nvim-treesitter",
 	})
+	use({
+		"uga-rosa/ccc.nvim",
+		config = function()
+			require("plugins.colorpicker")
+		end,
+	})
 
 	---------------------------------
 	-- Folder structure and Fuzzy Search --

@@ -113,3 +113,14 @@ When pop-up completion show option list
 - `tw`: show jump map base on 2 charaters
 - `tp`: show jump map base on pattenr
 - `tl`: show jump map base on line
+
+### color picker - cmd:ccc
+
+- `<leader>cc`: open color picker
+
+  - `o`: choose other type color
+  - `h` - `l`: for decrease 1 and increase 1
+  - `s` - `d`: for decrease 5 and increase 5
+  - `m` - `,`: for decrease 10 and increase 10
+
+- `<leader>ct`: toggle color highlight
