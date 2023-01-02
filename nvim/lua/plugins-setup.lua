@@ -257,12 +257,12 @@ return packer.startup(function(use)
 	---------------------------------
 	--    TOGGLE TERMIANL          --
 	---------------------------------
-	use({
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("plugins.toggleTerm")
-		end,
-	})
+	-- use({
+	-- 	"akinsho/toggleterm.nvim",
+	-- 	config = function()
+	-- 		require("plugins.toggleTerm")
+	-- 	end,
+	-- })
 
 	use({
 		"folke/zen-mode.nvim", -- for focus in one tab better
@@ -270,6 +270,9 @@ return packer.startup(function(use)
 			require("plugins.zen-mode")
 		end,
 	})
+
+	use("christoomey/vim-tmux-navigator")
+	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

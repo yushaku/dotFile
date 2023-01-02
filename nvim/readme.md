@@ -116,7 +116,7 @@ When pop-up completion show option list
 
 ### color picker - cmd:ccc
 
-- `<leader>cc`: open color picker
+- `<leader>cp`: open color picker
 
   - `o`: choose other type color
   - `h` - `l`: for decrease 1 and increase 1
@@ -124,3 +124,8 @@ When pop-up completion show option list
   - `m` - `,`: for decrease 10 and increase 10
 
 - `<leader>ct`: toggle color highlight
+
+### surounder { [ ( " ' ' " ) ] }
+
+- `cs<old_pair><new_pair>`: replate surounder
+- `ds<old_pair>`: delete surounder

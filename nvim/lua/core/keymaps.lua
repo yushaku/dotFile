@@ -23,15 +23,15 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap.set("", "<M-h>", "<C-w>h", opts)
-keymap.set("", "<M-j>", "<C-w>j", opts)
-keymap.set("", "<M-k>", "<C-w>k", opts)
-keymap.set("", "<M-l>", "<C-w>l", opts)
+keymap.set("n", "<M-h>", "<cmd>TmuxNavigateLeft<cr>")
+keymap.set("n", "<M-j>", "<cmd>TmuxNavigateDown<cr>")
+keymap.set("n", "<M-k>", "<cmd>TmuxNavigateUp<cr>")
+keymap.set("n", "<M-l>", "<cmd>TmuxNavigateRight<cr>")
 
-keymap.set("", "<M-left>", "<C-w>h", opts)
-keymap.set("", "<M-down>", "<C-w>j", opts)
-keymap.set("", "<M-up>", "<C-w>k", opts)
-keymap.set("", "<M-right>", "<C-w>l", opts)
+keymap.set("n", "<M-left>", "<cmd>TmuxNavigateLeft<cr>")
+keymap.set("n", "<M-down>", "<cmd>TmuxNavigateDown<cr>")
+keymap.set("n", "<M-up>", "<cmd>TmuxNavigateUp<cr>")
+keymap.set("n", "<M-right>", "<cmd>TmuxNavigateRight<cr>")
 
 -- Navigate buffers
 keymap.set("", "<C-right>", ":bnext<CR>", opts)
@@ -72,7 +72,8 @@ keymap.set("", "F4", "<CR>zfa")
 -- window management
 keymap.set("n", "ss", "<C-w>v") -- split window vertically
 keymap.set("n", "sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "sx", ":bw<CR>") -- close current split window
+keymap.set("n", "se", "<C-w>=") -- make split windows equal width & height
+keymap.set("n", "sx", ":close<CR>") -- close current split window
 
 keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
 keymap.set("n", "to", ":tabnew<CR>") -- open new tab
