@@ -1,5 +1,7 @@
 ## tmux command
 
+`tmux plugin manager`: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 - new tmux session: `tmux`
 - create new session with name: `tmux new -s <session_name>`
 - show all session: `tmux ls`
