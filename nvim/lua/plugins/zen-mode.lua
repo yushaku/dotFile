@@ -18,7 +18,7 @@ zenMode.setup({
 	},
 	plugins = {
 		tmux = {
-			enabled = true,
+			enabled = false,
 		},
 		gitsigns = { enabled = true },
 	},

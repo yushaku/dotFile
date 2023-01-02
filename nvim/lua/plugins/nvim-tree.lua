@@ -111,21 +111,17 @@ require("neo-tree").setup({
 	},
 	filesystem = {
 		filtered_items = {
-			visible = true,
-			hide_dotfiles = true,
+			visible = false,
+			hide_dotfiles = false,
 			hide_gitignored = false,
 			hide_hidden = true,
 			hide_by_name = { "node_modules, .git" },
-			hide_by_pattern = { "*.meta", "*/src/*/tsconfig.json" },
+			hide_by_pattern = { "*.meta", ".git", "node_modules" },
 			always_show = { ".gitignored, .env, .env.example" },
 		},
 		follow_current_file = true,
 		group_empty_dirs = false,
-		hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-		-- in whatever position is specified in window.position
-		-- "open_current",  -- netrw disabled, opening a directory opens within the
-		-- window like netrw would, regardless of window.position
-		-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+		hijack_netrw_behavior = "open_current",
 		use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
 		-- instead of relying on nvim autocmd events.
 		window = {
