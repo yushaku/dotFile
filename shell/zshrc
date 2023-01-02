@@ -3,7 +3,7 @@ export LANG=en_US.UTF-8
 
 ##>> theme ---------------------------
 eval "$(oh-my-posh init zsh)"
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/yushaku.omp.json)"
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/takuya.omp.json)"
 
 ##>> import file config --------------
 for file in ~/.zsh/*.zsh; do

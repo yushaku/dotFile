@@ -2,7 +2,7 @@
 if [[ -z "$1" ]]; then
   echo "please pick one of those option:"
   echo "zsh | tmux | theme | nvim | all"
-  exit 0 
+  exit 0
 fi
 
 function copy_zsh() {
@@ -13,11 +13,10 @@ function copy_zsh() {
 }
 
 function copy_theme() {
-  if [ ! -d ~/.poshthemes/ ]; then
-    echo 'create new folder .poshthemes'
-    mkdir -p ~/.poshthemes/
-  fi
-  cp ./shell/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
+  rm -rf ~/.poshthemes
+  mkdir ~/.poshthemes
+  cp -R ./shell/themes/takuya.omp.json ~/.poshthemes
+  cp -R ./shell/themes/yushaku.omp.json ~/.poshthemes
   echo "👉 copy theme done"
 }
 
