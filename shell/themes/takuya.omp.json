@@ -34,8 +34,7 @@
             "{{ if gt .Behind 0 }}#3b3b3b{{ end }}"
           ],
           "foreground_templates": [
-            "{{ if gt .Ahead 0 }}#1fff0a{{ end }}",
-            "{{ if gt .Behind 0 }}#fbff04{{ end }}"
+            "{{ if gt .Ahead 0 }}#1fff0a{{ end }}"
           ],
           "properties": {
             "branch_icon": "\ue725 ",
@@ -51,32 +50,27 @@
       "alignment": "right",
       "segments": [
         {
-          "type": "node",
-          "style": "diamond",
-          "leading_diamond": " \uE0B6",
-          "trailing_diamond": "\uE0B4",
-          "foreground": "#3C873A",
-          "background": "#303030",
-          "properties": {
-            "prefix": "\uE718 ",
-            "postfix": "",
-            "display_package_manager": false,
-            "yarn_icon": " <#348cba></>",
-            "npm_icon": " <#cc3a3a></> "
-          }
-        },
-        {
           "type": "executiontime",
           "style": "diamond",
           "template": " {{ .FormattedMs }}s ",
-          "trailing_diamond": "\ue0b0",
+          "leading_diamond": " \uE0B6",
+          "trailing_diamond": "\uE0B4",
           "background": "#49404f",
           "foreground": "#ffffff",
-          "leading_diamond": "<transparent,#49404f>\ue0b0</>",
           "properties": {
             "style": "dallas",
             "threshold": 0
           }
+        },
+        {
+          "type": "exit",
+          "background": "#e42222",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\uE0B4",
+          "leading_diamond": " \uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "style": "diamond",
+          "template": "<transparent> \uE0B6</> {{ .Meaning }} "
         }
       ]
     },
