@@ -33,18 +33,42 @@
             "{{ if gt .Ahead 0 }}#3b3b3b{{ end }}",
             "{{ if gt .Behind 0 }}#3b3b3b{{ end }}"
           ],
-          "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#fbff04{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#0077c2{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#29F1F1{ end }}",
-            "{{ if gt .Ahead 0 }}#1fff0a{{ end }}"
-          ],
+          "foreground_templates": ["{{ if gt .Ahead 0 }}#1fff0a{{ end }}"],
           "properties": {
             "branch_icon": "\ue725 ",
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "template": "{{ .HEAD }} {{ if .Working.Changed }}{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uF046 {{ .Staging.String }}</>{{ end }}"
           }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "template": " {{ .FormattedMs }}s ",
+          "leading_diamond": " \uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "background": "#49404f",
+          "foreground": "#ffffff",
+          "properties": {
+            "style": "dallas",
+            "threshold": 0
+          }
+        },
+        {
+          "type": "exit",
+          "background": "#e42222",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\uE0B4",
+          "leading_diamond": " \uE0B6",
+          "trailing_diamond": "\uE0B4",
+          "style": "diamond",
+          "template": "<transparent> \uE0B6</> {{ .Meaning }} "
         }
       ]
     },

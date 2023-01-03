@@ -37,6 +37,10 @@ keymap.set("n", "<M-right>", "<cmd>TmuxNavigateRight<cr>")
 keymap.set("", "<C-right>", ":bnext<CR>", opts)
 keymap.set("", "<C-left>", ":bprevious<CR>", opts)
 
+-- Increment/decrement
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
+
 -- Resize with arrows
 keymap.set("", "<C-S-Up>", ":resize -2<CR>", opts)
 keymap.set("", "<C-S-Down>", ":resize +2<CR>", opts)
@@ -66,9 +70,6 @@ keymap.set("n", "dw", 'vb"_d')
 keymap.set("n", "ww", "$")
 keymap.set("n", "qq", "0")
 
--- fold function
-keymap.set("", "F4", "<CR>zfa")
-
 -- window management
 keymap.set("n", "ss", "<C-w>v") -- split window vertically
 keymap.set("n", "sh", "<C-w>s") -- split window horizontally
@@ -85,7 +86,6 @@ keymap.set("n", "tp", ":tabp<CR>") --  go to previous tab
 -- Press jk fast to enter
 keymap.set("i", "jk", "<ESC>", opts)
 keymap.set("v", "jk", "<ESC>", opts)
-keymap.set("v", "i", "<ESC>i", opts)
 
 -- Visual --
 -- Stay in indent mode

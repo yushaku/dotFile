@@ -1,5 +1,6 @@
 local opts = { noremap = true, silent = true }
 
+vim.g.mapleader = " "
 vim.keymap.set("", "<leader>cp", "<cmd>CccPick<cr>", opts)
 vim.keymap.set("n", "<leader>ct", "<cmd>CccHighlighterToggle<cr>", opts)
 
