@@ -7,8 +7,9 @@ alias gaa="git add --all"
 # alias gcmn="git commit --amend --no-edit"
 
 alias gpp="git push"
-alias gpf="git push -f"
-alias gpo="git push --set-upstream origin"
+alias gpf="git push --set-upstream -f"
+alias gpo='git push --set-upstream origin $(git_current_branch)'
+alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 
 alias gcl='git clone --recurse-submodules'
 

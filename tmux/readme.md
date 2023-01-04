@@ -45,3 +45,9 @@
 - move down session: `Alt + arrow-down`
 - move left session: `Alt + <-`
 - move right session: `Alt + ->`
+
+## How to convert 2 horizontal panes
+
+- `<prefix> + alt + number`
+  - number = 1: even-horizontal
+  - number = 2: even-vertical
