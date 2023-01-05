@@ -60,9 +60,6 @@ keymap.set("n", "<C-S-o>", ":%bd|e#|bd#")
 -- save like my old habit
 keymap.set("", "<C-s>", ":w<CR>")
 
--- remove highlight
-keymap.set("", "<C-h>", ":noh<CR>")
-
 -- delete word backwords
 keymap.set("n", "dw", 'vb"_d')
 
@@ -100,3 +97,14 @@ keymap.set("v", "p", '"_dP', opts)
 -- open terminal
 keymap.set("n", "<leader>t", ":vsplit term://zsh<CR>", opts)
 keymap.set("n", "<leader>T", ":split term://zsh<CR>", opts)
+
+-- ccc picker
+keymap.set("", "<leader>cp", "<cmd>CccPick<cr>", opts)
+keymap.set("n", "<leader>ct", "<cmd>CccHighlighterToggle<cr>", opts)
+
+-- hop -- speed jump
+keymap.set("n", "tt", "<CMD>HopWordAC<CR>")
+keymap.set("n", "tr", "<CMD>HopWordBC<CR>")
+keymap.set("n", "tw", "<CMD>HopChar2<CR>")
+keymap.set("n", "tp", "<CMD>HopPattern<CR>")
+keymap.set("n", "tl", "<CMD>HopLineStart<CR>")

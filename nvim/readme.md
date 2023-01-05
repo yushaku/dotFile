@@ -9,8 +9,13 @@
 - npm + node
 - python + pip
 - wl-clipboard: `sudo apt install wl-clipboard`
+- fzf and ripgrep: to search string, file and folder
 
 ## **NORMAL MODE**
+
+### lsp - better code
+
+- `lf`: show definition of current function or references of it
 
 ### navigate buffer
 
@@ -43,6 +48,7 @@
 - `ss`: split vertically
 - `sh`: split horizontally
 - `sx`: close current window
+- `se`: make panes got same size
 
 ### replate old key of vim
 
@@ -127,5 +133,17 @@ When pop-up completion show option list
 
 ### surounder { [ ( " ' ' " ) ] }
 
+> NORMAL_MODE:
+
+- `ys + <pair>`: new pair
+  - `ysiw + <pair>`: create new pair **in word**
+  - `ys2aw + <pair>`: create new pair **in 2 word**
+  - `yss + <pair>`: create new pair **in entire line**
 - `cs<old_pair><new_pair>`: replate surounder
+  - `cst`: change tags in html
 - `ds<old_pair>`: delete surounder
+  - `dst`"delete surounder tags"
+
+> VISUAL_MODE
+
+- `<block_visual_select> + S + <pair>`: wrap slected word in pair

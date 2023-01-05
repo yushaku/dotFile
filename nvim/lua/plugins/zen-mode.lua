@@ -3,7 +3,7 @@ if not status then
 	return
 end
 
-vim.keymap.set("n", "zz", "<cmd>ZenMode<CR><CR>", { silent = true })
+vim.keymap.set("n", "zz", "<cmd>ZenMode<CR>", { silent = true })
 
 zenMode.setup({
 	window = {

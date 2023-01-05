@@ -18,6 +18,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory 
 ################################################################
 #>>                  PLugins and plugin manager            <<##
 ################################################################

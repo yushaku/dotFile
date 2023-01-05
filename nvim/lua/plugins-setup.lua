@@ -126,12 +126,6 @@ return packer.startup(function(use)
 		"windwp/nvim-ts-autotag",
 		after = "nvim-treesitter",
 	})
-	use({
-		"uga-rosa/ccc.nvim",
-		config = function()
-			require("plugins.colorpicker")
-		end,
-	})
 
 	---------------------------------
 	-- Folder structure and Fuzzy Search --
@@ -181,7 +175,7 @@ return packer.startup(function(use)
 		"phaazon/hop.nvim",
 		event = "BufRead",
 		config = function()
-			require("plugins.hop")
+			require("hop").setup()
 		end,
 	})
 
@@ -226,14 +220,6 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
-	-- use {
-	--     "folke/trouble.nvim",
-	--     requires = "nvim-tree/nvim-web-devicons",
-	--     config = function()
-	--         require("plugins.trouble")
-	--     end
-	-- }
-
 	---------------------------------
 	--     AUTO COMPLITION         --
 	---------------------------------
@@ -255,14 +241,8 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	---------------------------------
-	--    TOGGLE TERMIANL          --
+	--   BETTER FOR CODE          --
 	---------------------------------
-	-- use({
-	-- 	"akinsho/toggleterm.nvim",
-	-- 	config = function()
-	-- 		require("plugins.toggleTerm")
-	-- 	end,
-	-- })
 
 	use({
 		"folke/zen-mode.nvim", -- for focus in one tab better
@@ -273,6 +253,8 @@ return packer.startup(function(use)
 
 	use("christoomey/vim-tmux-navigator")
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+	use("tpope/vim-repeat")
+	use("uga-rosa/ccc.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
