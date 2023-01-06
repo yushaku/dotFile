@@ -15,7 +15,20 @@
 
 ### lsp - better code
 
-- `lf`: show definition of current function or references of it
+- `<leader>f`: show definition of current function or references of it
+- `<leader>e`: see definition and make edits in window
+- `<leader>i`: go to implementation
+- `<leader>d`: go to declaration
+- `<leader>k`: show document for what under curor
+- `<leader>o`: toggle outline
+- `<leader>rn`: smart rename
+- `<leader>cs`: open code action
+
+> TypeScript lsp
+
+- `<leader>rf`: rename file's name
+- `<leader>oi`: organize imports
+- `<leader>ru`: remove unused things
 
 ### navigate buffer
 

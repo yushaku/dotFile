@@ -28,6 +28,7 @@
   - `fh`: open history search
   - `fr`: open live grep search word
   - `fg`: open git status
+  - `f<pair>`: jump to that pair
 
 - `g`: git
 - `h`: move left

@@ -66,3 +66,9 @@
   - `shift-n`: prev search match
 
 - `:%s/<pattern_string>/<replate_string>`: search and replate word
+
+## VISUAL MODE
+
+- `v%`: select all things include pair
+- `va<pair>`: select all things include pair
+- `vi<pair>`: select all things in pair
