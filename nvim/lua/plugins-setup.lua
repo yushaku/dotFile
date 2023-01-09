@@ -209,6 +209,23 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use("glepnir/lspsaga.nvim")
+	use({
+		{
+			"SmiteshP/nvim-navic",
+		},
+		{
+			"utilyre/barbecue.nvim",
+			requires = {
+				"neovim/nvim-lspconfig",
+				"SmiteshP/nvim-navic",
+				"nvim-tree/nvim-web-devicons", -- optional dependency
+			},
+			after = "nvim-web-devicons", -- keep this if you're using NvChad
+			config = function()
+				require("plugins.barbecue")
+			end,
+		},
+	})
 
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
@@ -252,6 +269,7 @@ return packer.startup(function(use)
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("tpope/vim-repeat")
 	use("uga-rosa/ccc.nvim")
+	use("petertriho/nvim-scrollbar")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

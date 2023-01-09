@@ -72,6 +72,7 @@ keymap.set("n", "ss", "<C-w>v") -- split window vertically
 keymap.set("n", "sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "sx", ":close<CR>") -- close current split window
+keymap.set("n", "sd", ":bdelete!<CR>") -- close current buffer window
 
 keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
 keymap.set("n", "to", ":tabnew<CR>") -- open new tab
@@ -108,3 +109,6 @@ keymap.set("n", "tr", "<CMD>HopWordBC<CR>")
 keymap.set("n", "tw", "<CMD>HopChar2<CR>")
 keymap.set("n", "tp", "<CMD>HopPattern<CR>")
 keymap.set("n", "tl", "<CMD>HopLineStart<CR>")
+
+-- winbar/statusline -- barbecue
+keymap.set("n", "<leader>w", "<CMD>Barbecue toggle<CR>")
