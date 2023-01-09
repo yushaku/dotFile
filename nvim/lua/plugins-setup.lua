@@ -194,6 +194,7 @@ return packer.startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.gitsign")
+			require("scrollbar.handlers.gitsigns").setup()
 		end,
 	})
 
@@ -269,7 +270,12 @@ return packer.startup(function(use)
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("tpope/vim-repeat")
 	use("uga-rosa/ccc.nvim")
-	use("petertriho/nvim-scrollbar")
+	use({
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("plugins.scrollBar")
+		end,
+	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
