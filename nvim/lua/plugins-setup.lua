@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	------------------------------------------
 	----       nvim dashboard         --------
 	------------------------------------------
-
+	-- TODO: add dashboard
 	-- use({
 	-- 	"goolord/alpha-nvim",
 	-- 	requires = { "nvim-tree/nvim-web-devicons" },
@@ -111,27 +111,28 @@ return packer.startup(function(use)
 
 	-- comment in nvim
 	use({
+		{ "JoosepAlviste/nvim-ts-context-commentstring" },
+		{ "numToStr/Comment.nvim" },
 		{
-			"numToStr/Comment.nvim",
+			"folke/todo-comments.nvim",
 			config = function()
-				require("Comment").setup()
+				require("plugins.comment")
 			end,
-		},
-		{
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			event = "BufRead",
 		},
 	})
 
+	-- autopair [{("' '")}] and <div></div>
 	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("plugins.autopair")
-		end,
-	})
-	use({
-		"windwp/nvim-ts-autotag",
-		after = "nvim-treesitter",
+		{
+			"windwp/nvim-autopairs",
+			config = function()
+				require("plugins.autopair")
+			end,
+		},
+		{
+			"windwp/nvim-ts-autotag",
+			after = "nvim-treesitter",
+		},
 	})
 
 	---------------------------------
@@ -215,7 +216,7 @@ return packer.startup(function(use)
 		{ "neovim/nvim-lspconfig" }, -- easily configure language servers
 		{ "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
 
-		-- Highlights lsp diagnostics -- [x] optional
+		-- OPTION: -- Highlights lsp diagnostics
 		{ "folke/lsp-colors.nvim" }, -- Automatically creates missing LSP diagnostics highlight groups for color schemes
 		{
 			"folke/trouble.nvim",

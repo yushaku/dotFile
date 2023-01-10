@@ -50,6 +50,9 @@ keymap.set("", "<C-S-Right>", ":vertical resize -2<CR>", opts)
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
+-- turn off highlight
+keymap.set("n", "<C-n>", ":noh<CR>") -- open new tab
+
 -- copy to system clipboard
 keymap.set("v", "<y>", '"+y', term_opts)
 keymap.set("n", "<yy>", '"+yy', term_opts)
@@ -74,7 +77,6 @@ keymap.set("n", "se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "sx", ":close<CR>") -- close current split window
 keymap.set("n", "sd", ":bdelete!<CR>") -- close current buffer window
 
-keymap.set("n", "<C-n>", ":tabnew<CR>") -- open new tab
 keymap.set("n", "to", ":tabnew<CR>") -- open new tab
 keymap.set("n", "tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "tn", ":tabn<CR>") --  go to next tab
