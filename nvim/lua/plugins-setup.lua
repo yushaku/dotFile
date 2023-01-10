@@ -109,11 +109,18 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- comment in nvim
 	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
+		{
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		},
+		{
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			event = "BufRead",
+		},
 	})
 
 	use({
@@ -201,27 +208,29 @@ return packer.startup(function(use)
 	---------------------------------
 	-- LANGUAGE SERVER  --
 	---------------------------------
-
-	-- managing & installing lsp servers, linters & formatters
-	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
-
-	-- configuring lsp servers
-	use("neovim/nvim-lspconfig") -- easily configure language servers
-	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use("glepnir/lspsaga.nvim")
 	use({
+		{ "williamboman/mason.nvim" }, -- in charge of managing lsp servers, linters & formatters
+		{ "williamboman/mason-lspconfig.nvim" }, -- bridges gap b/w mason & lspconfig
+		{ "glepnir/lspsaga.nvim" }, -- a highly performant UI for Manager language server
+		{ "neovim/nvim-lspconfig" }, -- easily configure language servers
+		{ "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
+
+		-- Highlights lsp diagnostics -- [x] optional
+		{ "folke/lsp-colors.nvim" }, -- Automatically creates missing LSP diagnostics highlight groups for color schemes
 		{
-			"SmiteshP/nvim-navic",
+			"folke/trouble.nvim",
+			config = function()
+				require("plugins.trouble")
+			end,
 		},
+	})
+
+	-- winbar/status line -- [x] optional
+	use({
+		{ "SmiteshP/nvim-navic" },
 		{
 			"utilyre/barbecue.nvim",
-			requires = {
-				"neovim/nvim-lspconfig",
-				"SmiteshP/nvim-navic",
-				"nvim-tree/nvim-web-devicons", -- optional dependency
-			},
-			after = "nvim-web-devicons", -- keep this if you're using NvChad
+			after = "nvim-web-devicons",
 			config = function()
 				require("plugins.barbecue")
 			end,
@@ -247,11 +256,9 @@ return packer.startup(function(use)
 	})
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
-	-- use "hrsh7th/cmp-cmdline" -- cmdline completions
-	-- use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
+	use("L3MON4D3/LuaSnip") --luasnip completion source for nvim-cmp
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
@@ -280,8 +287,4 @@ return packer.startup(function(use)
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
-
-	config = {
-		autoremove = true, -- Remove disabled or unused plugins without prompting the user
-	}
 end)

@@ -1,6 +1,7 @@
 local actions = require("telescope.actions")
 local lactions = require("telescope.actions.layout")
 local finders = require("telescope.builtin")
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
 	defaults = {
@@ -13,6 +14,7 @@ require("telescope").setup({
 		mappings = {
 			i = {
 				["<ESC>"] = actions.close,
+				["<c-t>"] = trouble.open_with_trouble,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-x>"] = actions.select_horizontal,
@@ -21,6 +23,9 @@ require("telescope").setup({
 				["<C-s>"] = actions.send_selected_to_qflist,
 				["<C-q>"] = actions.send_to_qflist,
 				["<C-h>"] = lactions.toggle_preview,
+			},
+			n = {
+				["<c-t>"] = trouble.open_with_trouble,
 			},
 		},
 	},
