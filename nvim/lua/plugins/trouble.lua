@@ -6,13 +6,16 @@ end
 -- find trouble - error - warrning - info
 local keymap = vim.keymap
 
-keymap.set("n", "mm", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-keymap.set("n", "mf", "<cmd>TroubleToggle quickfix<cr>")
-keymap.set("n", "mr", "<cmd>TroubleToggle lsp_references<cr>")
-keymap.set("n", "mn", function()
+vim.g.mapleader = "m"
+
+keymap.set("n", "<leader>m", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+keymap.set("n", "<leader>f", "<cmd>TroubleToggle quickfix<cr>")
+keymap.set("n", "<leader>r", "<cmd>TroubleToggle lsp_references<cr>")
+
+keymap.set("n", "<leader>n", function()
 	trouble.next({ skip_groups = true, jump = true })
 end)
-keymap.set("n", "mb", function()
+keymap.set("n", "<leader>b", function()
 	trouble.previous({ skip_groups = true, jump = true })
 end)
 
@@ -33,9 +36,9 @@ trouble.setup({
 		cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
 		refresh = "r", -- manually refresh
 		jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
-		open_split = { "<c-x>" }, -- open buffer in new split
-		open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-		open_tab = { "<c-t>" }, -- open buffer in new tab
+		open_split = { "s" }, -- open buffer in new split
+		open_vsplit = { "S" }, -- open buffer in new vsplit
+		open_tab = { "t" }, -- open buffer in new tab
 		jump_close = { "o" }, -- jump to the diagnostic and close the list
 		toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
 		toggle_preview = "P", -- toggle auto_preview

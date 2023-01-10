@@ -37,6 +37,17 @@
 - `k`: move up
 - `l`: move right
 - `m`:
+
+  - `mm`: open trouble in workspace
+  - `mf`: quick fix trouble
+  - `mr`: open reference of this trouble
+  - `mn`: open next trouble
+  - `mb`: open back trouble
+
+  - `mt`: open todo list in project
+  - `mT`: open todo list in trouble
+  - `ms`: open todo by fzf
+
 - `n`:
 
 - `o`: create new line under current line and go to INSERT_MODE
