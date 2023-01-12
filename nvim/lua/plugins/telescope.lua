@@ -58,11 +58,23 @@ vim.keymap.set("n", "<C-p>", function()
 	end
 end)
 
+vim.keymap.set({ "n", "v", "i" }, "<C-f>", function()
+	Telescope.current_buffer_fuzzy_find()
+end)
+
 vim.g.mapleader = "f"
 vim.keymap.set("n", "<leader>h", Telescope.help_tags)
 vim.keymap.set("n", "<leader>b", Telescope.buffers)
 vim.keymap.set("n", "<leader>r", Telescope.live_grep)
 vim.keymap.set("n", "<leader>g", Telescope.git_status)
+
+vim.keymap.set("n", "<leader>k", finders.keymaps)
+vim.keymap.set("n", "<leader>gb", finders.git_branches)
+vim.keymap.set("n", "<leader>st", finders.git_stash)
+vim.keymap.set("n", "<leader>cm", finders.command_history)
+vim.keymap.set("n", "<leader>w", finders.spell_suggest)
+vim.keymap.set("n", "<leader>s", finders.symbols)
+
 vim.keymap.set("n", "<leader>f", function()
 	local ok = pcall(Telescope.git_files, {
 		show_untracked = true,

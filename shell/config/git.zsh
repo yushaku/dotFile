@@ -13,7 +13,8 @@ alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 
 alias gcl='git clone --recurse-submodules'
 
-alias gcb='git checkout -b'
+alias gcb='git checkout'
+alias gccb='git checkout -b'
 
 alias grb='git rebase'
 alias grba='git rebase --abort'
@@ -42,6 +43,7 @@ alias gfa="git fetch --all"
 alias gmr="git merge"
 
 alias glg="git log --graph --oneline --decorate --all"
+alias glga="git reflog --pretty=short"
 
 ##>> git custome function ---------------
 function git_current_branch() {

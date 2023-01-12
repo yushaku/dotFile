@@ -49,17 +49,19 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("MunifTanjim/nui.nvim")
 
+	-- make nvim load lua module faster by cache
+	use("lewis6991/impatient.nvim")
+
 	------------------------------------------
 	----       nvim dashboard         --------
 	------------------------------------------
-	-- TODO: add dashboard
-	-- use({
-	-- 	"goolord/alpha-nvim",
-	-- 	requires = { "nvim-tree/nvim-web-devicons" },
-	-- 	config = function()
-	-- 		require("plugins.dashboard")
-	-- 	end,
-	-- })
+	-- OPTION: add dashboard
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("plugins.alpha")
+		end,
+	})
 
 	-------------------------------------------
 	---- Theme, Icons, Statusbar, Bufferbar ---
@@ -216,6 +218,14 @@ return packer.startup(function(use)
 		{ "neovim/nvim-lspconfig" }, -- easily configure language servers
 		{ "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
 
+		-- LSP - formatting and linting
+		{ "jose-elias-alvarez/null-ls.nvim" }, -- configure formatters & linters
+		{ "jayp0521/mason-null-ls.nvim" }, -- bridges gap b/w mason & null-ls
+
+		-- LSP - typescript
+		{ "jose-elias-alvarez/typescript.nvim" }, -- additional functionality for typescript server
+		{ "onsails/lspkind.nvim" }, -- vs-code like icons for autocompletion
+
 		-- OPTION: -- Highlights lsp diagnostics
 		{ "folke/lsp-colors.nvim" }, -- Automatically creates missing LSP diagnostics highlight groups for color schemes
 		{
@@ -224,10 +234,8 @@ return packer.startup(function(use)
 				require("plugins.trouble")
 			end,
 		},
-	})
 
-	-- winbar/status line -- [x] optional
-	use({
+		-- OPTION: winbar/status line
 		{ "SmiteshP/nvim-navic" },
 		{
 			"utilyre/barbecue.nvim",
@@ -237,13 +245,6 @@ return packer.startup(function(use)
 			end,
 		},
 	})
-
-	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server
-	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-
-	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	---------------------------------
 	--     AUTO COMPLITION         --
