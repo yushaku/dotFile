@@ -125,6 +125,20 @@ When pop-up completion show option list
 - `gx`: close git diff history
 - `gr`: refeash git diff
 
+- `gpv`: git preview diff
+- `ghb`: git view all commit in current line
+- `gtd`: git toggle deleted huck
+
+- `gnh`: git go to next hunk
+- `gbh`: git go to previous hunk
+
+- `gaa`: git add current file to staging
+- `gah`: git add current hunk to staging
+
+- `grs`: git remove current file out of staging
+- `grh`: git remove current hunk out of staging
+- `gRS`: git reset all changed in current file
+
 ### hop - hype jump - **_t_**
 
 - `tt`: show jump map down current line

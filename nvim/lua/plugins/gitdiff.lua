@@ -16,7 +16,6 @@ vim.keymap.set("n", "<leader>t", ":DiffviewFileHistory<CR>", opts)
 vim.keymap.set("n", "<leader>g", ":DiffviewOpen<CR>", opts)
 vim.keymap.set("n", "<leader>x", ":DiffviewClose<CR>", opts)
 vim.keymap.set("n", "<leader>b", ":DiffviewToggleFiles<CR>", opts)
-vim.keymap.set("n", "<leader>r", ":DiffviewRefresh<CR>", opts)
 
 diffview.setup({
 	diff_binaries = false, -- Show diffs for binaries
