@@ -55,7 +55,7 @@ return packer.startup(function(use)
 	------------------------------------------
 	----       nvim dashboard         --------
 	------------------------------------------
-	-- OPTION: add dashboard
+	-- OPTION: add dashboard on start up page
 	use({
 		"goolord/alpha-nvim",
 		config = function()
@@ -283,6 +283,7 @@ return packer.startup(function(use)
 		{ "tpope/vim-repeat" },
 		{ "uga-rosa/ccc.nvim" }, -- color picker
 		{ "tpope/vim-surround" }, -- add, delete, change surroundings (it's awesome)
+		{ "xiyaowong/nvim-transparent" }, -- set transparent background
 	})
 
 	use("christoomey/vim-tmux-navigator") -- naviagter with nvim and tmux better
