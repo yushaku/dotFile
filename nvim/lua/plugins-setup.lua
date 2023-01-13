@@ -49,7 +49,7 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("MunifTanjim/nui.nvim")
 
-	-- make nvim load lua module faster by cache
+	-- OPTION: make nvim load lua module faster by cache
 	use("lewis6991/impatient.nvim")
 
 	------------------------------------------
@@ -111,7 +111,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- comment in nvim
+	-- OPTION: normal comment, tsx commend, and todo commend in nvim
 	use({
 		{ "JoosepAlviste/nvim-ts-context-commentstring" },
 		{ "numToStr/Comment.nvim" },
@@ -123,7 +123,7 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- autopair [{("' '")}] and <div></div>
+	-- OPTION: autopair [{("' '")}] and <div></div>
 	use({
 		{
 			"windwp/nvim-autopairs",
@@ -149,6 +149,7 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- OPTION: --find and replate in file or project
 	-- use({
 	-- 	"nvim-pack/nvim-spectre",
 	-- 	requires = {
@@ -181,6 +182,7 @@ return packer.startup(function(use)
 		},
 	})
 
+	-- OPTION: better movement in file
 	use({
 		"phaazon/hop.nvim",
 		event = "BufRead",
@@ -216,7 +218,6 @@ return packer.startup(function(use)
 		{ "williamboman/mason-lspconfig.nvim" }, -- bridges gap b/w mason & lspconfig
 		{ "glepnir/lspsaga.nvim" }, -- a highly performant UI for Manager language server
 		{ "neovim/nvim-lspconfig" }, -- easily configure language servers
-		{ "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
 
 		-- LSP - formatting and linting
 		{ "jose-elias-alvarez/null-ls.nvim" }, -- configure formatters & linters
@@ -236,14 +237,14 @@ return packer.startup(function(use)
 		},
 
 		-- OPTION: winbar/status line
-		{ "SmiteshP/nvim-navic" },
-		{
-			"utilyre/barbecue.nvim",
-			after = "nvim-web-devicons",
-			config = function()
-				require("plugins.barbecue")
-			end,
-		},
+		--[[ { "SmiteshP/nvim-navic" }, ]]
+		--[[ { ]]
+		--[[ 	"utilyre/barbecue.nvim", ]]
+		--[[ 	after = "nvim-web-devicons", ]]
+		--[[ 	config = function() ]]
+		--[[ 		require("plugins.barbecue") ]]
+		--[[ 	end, ]]
+		--[[ }, ]]
 	})
 
 	---------------------------------
@@ -251,34 +252,40 @@ return packer.startup(function(use)
 	---------------------------------
 
 	use({
-		"hrsh7th/nvim-cmp",
-		config = function()
-			require("plugins.cmp")
-		end,
-	})
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
+		{
+			"hrsh7th/nvim-cmp",
+			config = function()
+				require("plugins.cmp")
+			end,
+		},
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
 
-	-- snippets
-	use("L3MON4D3/LuaSnip") --luasnip completion source for nvim-cmp
-	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
+		-- SNIPPETS
+		{ "L3MON4D3/LuaSnip" },
+		{ "saadparwaiz1/cmp_luasnip" },
+		{ "rafamadriz/friendly-snippets" },
+	})
 
 	---------------------------------
 	--   BETTER FOR CODE          --
 	---------------------------------
 
+	-- OPTION: -- better for experient
 	use({
-		"folke/zen-mode.nvim", -- for focus in one tab better
-		config = function()
-			require("plugins.zen-mode")
-		end,
+		{
+			"folke/zen-mode.nvim", -- for focus in one tab better
+			config = function()
+				require("plugins.zen-mode")
+			end,
+		},
+		{ "tpope/vim-repeat" },
+		{ "uga-rosa/ccc.nvim" }, -- color picker
+		{ "tpope/vim-surround" }, -- add, delete, change surroundings (it's awesome)
 	})
 
-	use("christoomey/vim-tmux-navigator")
-	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
-	use("tpope/vim-repeat")
-	use("uga-rosa/ccc.nvim")
+	use("christoomey/vim-tmux-navigator") -- naviagter with nvim and tmux better
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()

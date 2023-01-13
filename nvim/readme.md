@@ -141,11 +141,11 @@ When pop-up completion show option list
 
 ### hop - hype jump - **_t_**
 
-- `tt`: show jump map down current line
-- `tk`: show jump map up current line
-- `tw`: show jump map base on 2 charaters
-- `tp`: show jump map base on pattenr
-- `tl`: show jump map base on line
+- `mm`: show jump map down current line
+- `mn`: show jump map up current line
+- `mw`: show jump map base on 2 charaters
+- `mp`: show jump map base on pattenr
+- `ml`: show jump map base on line
 
 ### color picker - cmd:ccc
 
@@ -174,3 +174,16 @@ When pop-up completion show option list
 > VISUAL_MODE
 
 - `<block_visual_select> + S + <pair>`: wrap slected word in pair
+
+### TODO and trouble
+
+- `tt`: open todo list
+- `ts`: open todo list by telescope
+- `tgn`: open go to next todo
+- `tgp`: open go to previous todo
+
+- `tm`: open trouble in workspace
+- `tf`: quick fix trouble
+- `tr`: find references of this trouble
+- `tn`: go to next trouble
+- `tp`: go to previous trouble

@@ -6,7 +6,7 @@ end
 -- find trouble - error - warrning - info
 local keymap = vim.keymap
 
-vim.g.mapleader = "m"
+vim.g.mapleader = "t"
 
 keymap.set("n", "<leader>m", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 keymap.set("n", "<leader>f", "<cmd>TroubleToggle quickfix<cr>")

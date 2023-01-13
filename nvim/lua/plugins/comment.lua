@@ -31,16 +31,16 @@ comment.setup({
 -- find TODO and BUG OR WARNING OR REVIEW
 local keymap = vim.keymap
 
-vim.g.mapleader = "m"
+vim.g.mapleader = "t"
 
 keymap.set("n", "<leader>t", "<cmd>TodoLocList<cr>")
 keymap.set("n", "<leader>T", "<cmd>TodoTrouble<cr>")
 keymap.set("n", "<leader>s", "<cmd>TodoTelescope<cr>")
 
-keymap.set("n", "<leader>n", function()
+keymap.set("n", "<leader>gn", function()
 	todocomments.jump_next()
 end)
-keymap.set("n", "<leader>p", function()
+keymap.set("n", "<leader>gp", function()
 	todocomments.jump_prev()
 end)
 

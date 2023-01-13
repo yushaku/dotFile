@@ -106,11 +106,11 @@ keymap.set("", "<leader>cp", "<cmd>CccPick<cr>", opts)
 keymap.set("n", "<leader>ct", "<cmd>CccHighlighterToggle<cr>", opts)
 
 -- hop -- speed jump
-keymap.set("n", "tt", "<CMD>HopWordAC<CR>")
-keymap.set("n", "tr", "<CMD>HopWordBC<CR>")
-keymap.set("n", "tw", "<CMD>HopChar2<CR>")
-keymap.set("n", "tp", "<CMD>HopPattern<CR>")
-keymap.set("n", "tl", "<CMD>HopLineStart<CR>")
+keymap.set("n", "mm", "<CMD>HopWordAC<CR>")
+keymap.set("n", "mn", "<CMD>HopWordBC<CR>")
+keymap.set("n", "mw", "<CMD>HopChar2<CR>")
+keymap.set("n", "mp", "<CMD>HopPattern<CR>")
+keymap.set("n", "ml", "<CMD>HopLineStart<CR>")
 
 -- winbar/statusline -- barbecue
 keymap.set("n", "<leader>w", "<CMD>Barbecue toggle<CR>")
