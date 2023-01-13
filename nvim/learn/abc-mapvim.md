@@ -38,15 +38,11 @@
 - `l`: move right
 - `m`:
 
-  - `mm`: open trouble in workspace
-  - `mf`: quick fix trouble
-  - `mr`: open reference of this trouble
-  - `mn`: open next trouble
-  - `mb`: open back trouble
-
-  - `mt`: open todo list in project
-  - `mT`: open todo list in trouble
-  - `ms`: open todo by fzf
+  - `mm`: open jumb map under current line
+  - `mn`: open jumb map upper current line
+  - `mp`: open jumb map by pattern
+  - `ml`: open jumb map by line
+  - `mw`: open jumb map by 2 character
 
 - `n`:
 
@@ -70,11 +66,15 @@
 
 - `t`: speed jumb
 
-  - `tt`: open jumb map under current line
-  - `tk`: open jumb map upper current line
-  - `tp`: open jumb map by pattern
-  - `tl`: open jumb map by line
-  - `tw`: open jumb map by 2 character
+  - `tt`: open trouble in workspace
+  - `tf`: quick fix trouble
+  - `tr`: open reference of this trouble
+  - `tn`: open next trouble
+  - `tb`: open back trouble
+
+  - `tt`: open todo list in project
+  - `tT`: open todo list in trouble
+  - `ts`: open todo by fzf
 
 - `u`: undo
 - `v`: go to VISUAL_MODE
@@ -87,3 +87,4 @@
 - `y`: yank - copy
 - `z`:
   - `zz`: go to zen mode
+  - `zt`: toggle transparent bg

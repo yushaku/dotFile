@@ -281,12 +281,14 @@ return packer.startup(function(use)
 			end,
 		},
 		{ "tpope/vim-repeat" },
+		{ "declancm/cinnamon.nvim" }, -- Smooth scrolling
 		{ "uga-rosa/ccc.nvim" }, -- color picker
 		{ "tpope/vim-surround" }, -- add, delete, change surroundings (it's awesome)
 		{ "xiyaowong/nvim-transparent" }, -- set transparent background
+		{ "christoomey/vim-tmux-navigator" }, -- naviagter with nvim and tmux better
 	})
 
-	use("christoomey/vim-tmux-navigator") -- naviagter with nvim and tmux better
+	-- OPTION: nvim scrollBar
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()
