@@ -24,5 +24,5 @@
 - search and preview:
 
   ```bash
-  fzf --preview='batcat --color="always" --style="numbers" {}' --bind shift-up:preview-page-up shift-down:preview-page-down
+  fzf --preview='batcat --color="always" --style="numbers" {}' --bind shift-up:preview-up,shift-down:preview-down
   ```

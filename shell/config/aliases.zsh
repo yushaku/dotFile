@@ -11,12 +11,20 @@ alias ...='cd ../..'
 
 ##>> replate old command of linux ----------
 alias e="exit"
+alias j="z"
 alias cl="clear"
 alias vi="nvim"
 alias cat="batcat"
 alias fd="fdfind"
 alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
-alias lt="exa --tree -s -I='node_modules|dist|deploy' -L"
+function lk () {
+  if [[ -z $1 ]]; then
+    num=2 
+  else
+    num=$1 
+  fi
+  exa --tree --long --header -n --no-time --icons -s="name" -I='node_modules|dist|deploy' -L $num
+}
 alias ss="source ~/.zshrc"
 
 ##>> apt manager --------------
@@ -65,6 +73,11 @@ alias next="yarn create next-app"
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
+alias dcou="docker-compose up"
+alias dcod="docker-compose down"
+alias dps="docker ps"
+alias dim="docker images"
+alias dcn="docker container ls"
 
 ##>> tmux shotcut --------------------
 alias t="TERM=screen-256color-bce tmux"
@@ -73,3 +86,9 @@ alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
 alias tksv="tmux kill-server"
 alias trm="tmux kill-session -t"
+
+##>> system shotcut turn off
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'

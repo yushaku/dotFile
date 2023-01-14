@@ -49,13 +49,13 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("MunifTanjim/nui.nvim")
 
-	-- OPTION: make nvim load lua module faster by cache
+	-- OPTION: -- make nvim load lua module faster by cache
 	use("lewis6991/impatient.nvim")
 
 	------------------------------------------
 	----       nvim dashboard         --------
 	------------------------------------------
-	-- OPTION: add dashboard on start up page
+	-- OPTION: -- add dashboard on start up page
 	use({
 		"goolord/alpha-nvim",
 		config = function()
@@ -66,8 +66,9 @@ return packer.startup(function(use)
 	-------------------------------------------
 	---- Theme, Icons, Statusbar, Bufferbar ---
 	-------------------------------------------
+	-- OPTION: THEMES
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-
+	use("morhetz/gruvbox")
 	use({
 		"nvim-tree/nvim-web-devicons",
 		config = function()
@@ -111,7 +112,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- OPTION: normal comment, tsx commend, and todo commend in nvim
+	-- OPTION: -- normal comment, and todo commend in nvim
 	use({
 		{ "JoosepAlviste/nvim-ts-context-commentstring" },
 		{ "numToStr/Comment.nvim" },
@@ -123,7 +124,7 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- OPTION: autopair [{("' '")}] and <div></div>
+	-- OPTION: -- autopair [{("' '")}] and <div></div>
 	use({
 		{
 			"windwp/nvim-autopairs",
@@ -182,7 +183,7 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- OPTION: better movement in file
+	-- OPTION: -- better movement in file
 	use({
 		"phaazon/hop.nvim",
 		event = "BufRead",
@@ -236,7 +237,7 @@ return packer.startup(function(use)
 			end,
 		},
 
-		-- OPTION: winbar/status line
+		-- OPTION: -- winbar/status line
 		--[[ { "SmiteshP/nvim-navic" }, ]]
 		--[[ { ]]
 		--[[ 	"utilyre/barbecue.nvim", ]]
@@ -286,9 +287,15 @@ return packer.startup(function(use)
 		{ "tpope/vim-surround" }, -- add, delete, change surroundings (it's awesome)
 		{ "xiyaowong/nvim-transparent" }, -- set transparent background
 		{ "christoomey/vim-tmux-navigator" }, -- naviagter with nvim and tmux better
+		{
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("plugins.indent")
+			end,
+		}, --This plugin adds indentation guides to all lines
 	})
 
-	-- OPTION: nvim scrollBar
+	-- OPTION:-- nvim scrollBar
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()

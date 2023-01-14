@@ -61,7 +61,7 @@ keymap.set("n", "<x>", '"+x', term_opts)
 keymap.set("n", "<C-S-o>", ":%bd|e#|bd#")
 
 -- save like my old habit
-keymap.set("", "<C-s>", ":w<CR>")
+keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>")
 
 -- delete word backwords
 keymap.set("n", "dw", 'vb"_d')
