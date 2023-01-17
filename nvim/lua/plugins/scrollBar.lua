@@ -3,6 +3,8 @@ if not status then
 	return
 end
 
+require("scrollbar.handlers.gitsigns").setup()
+
 scrollbar.setup({
 	show = true,
 	show_in_active_only = false,

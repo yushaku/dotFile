@@ -19,3 +19,23 @@ function ide (){
   tmux split-window -h
   tmux select-pane -t 1
 }
+
+function dev () {
+  if [[ -z $1 ]]; then
+    echo "Please enter your project name"
+    return 
+  fi
+
+  if [[ -z $2 ]]; then
+    editer=nvim
+  elif [[ $2 == "-v" ]]; then
+    editer="nvim"
+  elif [[ $2 == "-c" ]]; then
+     editer="code" 
+  fi
+
+  z $1
+  if [[ $! == 0 ]]; then
+    $editer .
+  fi
+ }

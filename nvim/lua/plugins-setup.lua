@@ -207,7 +207,6 @@ return packer.startup(function(use)
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.gitsign")
-			require("scrollbar.handlers.gitsigns").setup()
 		end,
 	})
 
@@ -229,7 +228,7 @@ return packer.startup(function(use)
 		{ "onsails/lspkind.nvim" }, -- vs-code like icons for autocompletion
 
 		-- OPTION: -- Highlights lsp diagnostics
-		{ "folke/lsp-colors.nvim" }, -- Automatically creates missing LSP diagnostics highlight groups for color schemes
+		--[[ { "folke/lsp-colors.nvim" }, -- Automatically creates missing LSP diagnostics highlight groups for color schemes ]]
 		{
 			"folke/trouble.nvim",
 			config = function()
@@ -285,14 +284,18 @@ return packer.startup(function(use)
 		{ "declancm/cinnamon.nvim" }, -- Smooth scrolling
 		{ "uga-rosa/ccc.nvim" }, -- color picker
 		{ "tpope/vim-surround" }, -- add, delete, change surroundings (it's awesome)
-		{ "xiyaowong/nvim-transparent" }, -- set transparent background
 		{ "christoomey/vim-tmux-navigator" }, -- naviagter with nvim and tmux better
-		{
-			"lukas-reineke/indent-blankline.nvim",
-			config = function()
-				require("plugins.indent")
-			end,
-		}, --This plugin adds indentation guides to all lines
+
+		-- OPTION: -- set background transparent
+		{ "xiyaowong/nvim-transparent" }, -- set transparent background
+
+		-- OPTION: -- add indent blankline highlight
+		--[[ { ]]
+		--[[ 	"lukas-reineke/indent-blankline.nvim", ]]
+		--[[ 	config = function() ]]
+		--[[ 		require("plugins.indent") ]]
+		--[[ 	end, ]]
+		--[[ }, ]]
 	})
 
 	-- OPTION:-- nvim scrollBar
