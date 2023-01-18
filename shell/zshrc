@@ -41,8 +41,8 @@ if [[ $(which plug) ]]; then
   plug "Aloxaf/fzf-tab"
 fi
 
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
-zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
+zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
+zstyle ':fzf-tab:complete:cp:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath'
 
 function check_terminal_size() {

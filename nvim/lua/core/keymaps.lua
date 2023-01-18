@@ -98,8 +98,7 @@ keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap.set("v", "p", '"_dP', opts)
 
 -- open terminal
-keymap.set("n", "<leader>t", ":vsplit term://zsh<CR>", opts)
-keymap.set("n", "<leader>T", ":split term://zsh<CR>", opts)
+keymap.set("n", "<leader>tv", ":vsplit term://zsh<CR>", opts)
 
 -- ccc picker
 keymap.set("", "<leader>cp", "<cmd>CccPick<cr>", opts)
