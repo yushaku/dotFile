@@ -58,8 +58,6 @@ keymap.set("v", "<y>", '"+y', term_opts)
 keymap.set("n", "<yy>", '"+yy', term_opts)
 keymap.set("n", "<x>", '"+x', term_opts)
 
-keymap.set("n", "<C-S-o>", ":%bd|e#|bd#")
-
 -- save like my old habit
 keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>")
 
@@ -85,6 +83,7 @@ keymap.set("n", "tp", ":tabp<CR>") --  go to previous tab
 -- Insert --
 -- Press jk fast to enter
 keymap.set("i", "jk", "<ESC>", opts)
+keymap.set("i", "JK", "<ESC>", opts)
 keymap.set("v", "jk", "<ESC>", opts)
 
 -- Visual --

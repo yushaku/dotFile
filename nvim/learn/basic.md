@@ -43,13 +43,21 @@
 
 - `cc`: cut all current line -> save to buffer -> INSERT
 - `x`: cut current character
+
 - `y`: copy
+  - `yip`: copy all block code
+  - `yap`: copy all block code and next new line
+-
+
 - `p`: paste
 
 - `d`: delete
-- `dd`: delete current line
-- `di + { or [ or ( or " or '`: delete in side of nearest braces
-- `dt + <character>`: delete to that <character>
+  - `dd`: delete current line
+  - `di + { or [ or ( or " or '`: delete in side of nearest braces
+  - `dt + <character>`: delete to that <character>
+  - `dip`: delete all block
+  - `dap`: delete all block and next line
+-
 
 - `c`: same as `d` but it gonna go to INSERT mode
 
@@ -81,10 +89,15 @@
   - `n`: next search match
   - `shift-n`: prev search match
 
-- `:%s/<pattern_string>/<replate_string>`: search and replate word
+  - `:%s/<pattern_string>/<replate_string>`: search and replate word
+
+- `=ap`: align an entire paragraph
 
 ## VISUAL MODE
 
 - `v%`: select all things include pair
 - `va<pair>`: select all things include pair
 - `vi<pair>`: select all things in pair
+- `viw`: select under cursor word
+- `viW`: select under cursor line words wrap between space
+  - `o`: jump to top or bottom in select mode

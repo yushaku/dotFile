@@ -9,6 +9,7 @@ vim.keymap.set("n", "zt", "<cmd>TransparentToggle<CR>", { silent = true })
 zenMode.setup({
 	window = {
 		backdrop = 0.8,
+		width = 120, -- width of the Zen window
 		options = {
 			number = true,
 			signcolumn = "no",
@@ -21,7 +22,7 @@ zenMode.setup({
 		tmux = {
 			enabled = false,
 		},
-		gitsigns = { enabled = true },
+		gitsigns = { enabled = false },
 	},
 })
 

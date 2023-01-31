@@ -78,6 +78,9 @@ alias dcod="docker-compose down"
 alias dps="docker ps"
 alias dim="docker images"
 alias dcn="docker container ls"
+function dex (){
+  docker exec -it $1 bash
+} 
 
 ##>> tmux shotcut --------------------
 alias t="TERM=screen-256color-bce tmux"

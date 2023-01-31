@@ -18,25 +18,25 @@ Hover to <search_word> and press #
 
 `*` is like `#` but it search backward
 
-# how to search and replate in vim
+# how to search and replace in vim
 
-## replate in first line
+## replace in first line
 
-- replate first match in first line `:s/search_word/replate_word`
-- replate all in first line `:s/search_word/replate_word/g`
+- replace first match in first line `:s/search_word/replace_word`
+- replace all in first line `:s/search_word/replace_word/g`
 
-## replate in total file
+## replace in total file
 
-- replate first match each line in total file `:%s/search_word/replate_word`
-- replate all `:%s/search_word/replate_word/g`
+- replace first match each line in total file `:%s/search_word/replace_word`
+- replace all `:%s/search_word/replace_word/g`
 
-## replate in from line to other line
+## replace in from line to other line
 
-- replate first match from line 2 to line 14 `:2,14s/search_word/replate_word`
-- replate with case-insensitive: `:4,7s/search_word/substitue_word/i`
+- replace first match from line 2 to line 14 `:2,14s/search_word/replace_word`
+- replace with case-insensitive: `:4,7s/search_word/substitue_word/i`
 - replae with case-sensitive: `:4,7s/search_word/substitue_word/I`
 
-## replate with your confirm
+## replace with your confirm
 
 - with `i` is case-insensitive
 - with `g` is global
@@ -50,3 +50,8 @@ Hover to <search_word> and press #
   - l: make is is last and quit
   - Ctrl + shift + e: mode down the screem
   - Ctrl + shift + y: mode up the screem
+
+## replace in SELECT MODE
+
+- `v`: select things
+- `:s/<old_words> or <regrex>/<new_word>`

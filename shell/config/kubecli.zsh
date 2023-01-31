@@ -1,4 +1,5 @@
 alias k='kubectl'
+export KUBECONFIG=~/.kube/lumyri-zinza
 
 # k get pod | grep counter
 
@@ -41,6 +42,14 @@ k-image() {
 }
 
 # k get svc
+function kgs(){
+  if [[ -z $1 ]]; then
+    kubectl get svc
+  else
+    kubectl get svc | grep $1
+  fi 
+}
+
 k-port() {
   k port-forward --address='0.0.0.0' $@
 }
@@ -92,7 +101,6 @@ alias kgpl='kgp -l'
 alias kgpn='kgp -n'
 
 # Service management.
-alias kgs='kubectl get svc'
 alias kgsa='kubectl get svc --all-namespaces'
 alias kgsw='kgs --watch'
 alias kgswide='kgs -o wide'
