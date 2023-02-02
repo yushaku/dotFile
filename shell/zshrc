@@ -34,10 +34,6 @@ if [[ $(which plug) ]]; then
   plug "hlissner/zsh-autopair"
   plug "zdharma-continuum/fast-syntax-highlighting"
   plug "zsh-users/zsh-autosuggestions"
-  # plug "zap-zsh/vim"
-  # plug "jonas/tig"
-  # plug "denisidoro/navi"
-
   plug "Aloxaf/fzf-tab"
 fi
 
