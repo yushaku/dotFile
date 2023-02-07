@@ -37,10 +37,10 @@ keymap.set("n", "<leader>t", "<cmd>TodoLocList<cr>")
 keymap.set("n", "<leader>T", "<cmd>TodoTrouble<cr>")
 keymap.set("n", "<leader>s", "<cmd>TodoTelescope<cr>")
 
-keymap.set("n", "<leader>gn", function()
+keymap.set("n", "<leader>]", function()
 	todocomments.jump_next()
 end)
-keymap.set("n", "<leader>gp", function()
+keymap.set("n", "<leader>[", function()
 	todocomments.jump_prev()
 end)
 

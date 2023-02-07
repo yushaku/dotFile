@@ -179,8 +179,8 @@ When pop-up completion show option list
 
 - `tt`: open todo list
 - `ts`: open todo list by telescope
-- `tgn`: open go to next todo
-- `tgp`: open go to previous todo
+- `t]`: open go to next todo
+- `t[`: open go to previous todo
 
 - `tm`: open trouble in workspace
 - `tf`: quick fix trouble
