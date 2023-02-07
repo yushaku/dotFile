@@ -42,13 +42,7 @@ alias gft="git fetch"
 alias gfa="git fetch --all"
 alias gmr="git merge"
 
-function glg(){
-  if [[ -z $1 ]]; then
-   git log --graph --oneline --decorate --all 
- else
-   git log --graph --oneline --decorate --all -n $1 
-  fi
-}
+alias glg="git log --graph --oneline --decorate --all -n 10"
 alias glga="git reflog --pretty=short"
 
 ##>> git custome function ---------------

@@ -18,12 +18,7 @@ alias cat="batcat"
 alias fd="fdfind"
 alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
 function lk () {
-  if [[ -z $1 ]]; then
-    num=2 
-  else
-    num=$1 
-  fi
-  exa --tree --long --header -n --no-time --icons -s="name" -I='node_modules|dist|deploy' -L $num
+  exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L ${1:-2}
 }
 alias ss="source ~/.zshrc"
 

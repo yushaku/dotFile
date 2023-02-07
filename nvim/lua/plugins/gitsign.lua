@@ -13,10 +13,10 @@ vim.keymap.set("n", "<leader>ah", gs.stage_hunk)
 
 vim.keymap.set("n", "<leader>rs", gs.undo_stage_hunk)
 vim.keymap.set("n", "<leader>rh", gs.reset_hunk)
-vim.keymap.set("n", "<leader>RS", gs.reset_buffer) -- reset all changed
+vim.keymap.set("n", "<leader>rsf", gs.reset_buffer) -- reset all changed
 
-vim.keymap.set("n", "<leader>nh", gs.next_hunk)
-vim.keymap.set("n", "<leader>bh", gs.prev_hunk)
+vim.keymap.set("n", "<leader>]", gs.next_hunk)
+vim.keymap.set("n", "<leader>[", gs.prev_hunk)
 
 vim.keymap.set("n", "<leader>pv", gs.preview_hunk)
 vim.keymap.set("n", "<leader>hb", function()
