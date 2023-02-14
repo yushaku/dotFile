@@ -32,11 +32,11 @@ local on_attach = function(client, bufnr)
 
 	-- go to declaration && implementation
 	keymap.set("n", "<leader>e", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition can edirt
-	keymap.set("n", "<leader>d", "<Cmd>Lspsaga goto_definition<CR>", opts) -- goto definition
+	keymap.set("n", "<leader>gd", "<Cmd>Lspsaga goto_definition<CR>", opts) -- goto definition
 	keymap.set("n", "<leader>i", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 
 	-- show documentation for what is under cursor
-	keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<CR>", opts)
+	keymap.set("n", "<leader>do", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 	-- see outline on right hand side
 	keymap.set("n", "<leader>oo", "<cmd>Lspsaga outline<CR>", opts)

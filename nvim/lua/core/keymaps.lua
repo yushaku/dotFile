@@ -64,9 +64,17 @@ keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>")
 -- delete word backwords
 keymap.set("n", "dw", 'vb"_d')
 
--- go to end of line
-keymap.set("n", "ww", "$")
-keymap.set("n", "qq", "0")
+-- remap movement in file
+keymap.set("n", "L", "$")
+keymap.set("n", "H", "^")
+keymap.set("n", "K", "O<ESC>")
+keymap.set("n", "J", "o<ESC>")
+keymap.set("n", "k", "gk")
+keymap.set("n", "j", "gj")
+
+-- select and copy faster
+keymap.set("n", "vw", "viw")
+keymap.set("n", "yw", "yiw")
 
 -- window management
 keymap.set("n", "ss", "<C-w>v") -- split window vertically
@@ -104,6 +112,11 @@ keymap.set("", "<leader>cp", "<cmd>CccPick<cr>", opts)
 keymap.set("n", "<leader>ct", "<cmd>CccHighlighterToggle<cr>", opts)
 
 -- hop -- speed jump
+
+keymap.set("n", "<leader>j", "<CMD>HopLineStartAC<CR>")
+keymap.set("n", "<leader>k", "<CMD>HopLineStartBC<CR>")
+keymap.set("n", "<leader>l", "<CWD>HopAnyWhereCurrentLineAC")
+keymap.set("n", "<leader>h", "<CWD>HopAnyWhereCurrentLineBC")
 keymap.set("n", "mm", "<CMD>HopWordAC<CR>")
 keymap.set("n", "mn", "<CMD>HopWordBC<CR>")
 keymap.set("n", "mw", "<CMD>HopChar2<CR>")
