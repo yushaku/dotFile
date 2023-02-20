@@ -69,7 +69,6 @@ return packer.startup(function(use)
 	-- OPTION: THEMES
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
 	use("joshdick/onedark.vim")
-	use("folke/tokyonight.nvim")
 	use({
 		"nvim-tree/nvim-web-devicons",
 		config = function()

@@ -45,10 +45,6 @@ require("neo-tree").setup({
 			default = "*",
 			highlight = "NeoTreeFileIcon",
 		},
-		modified = {
-			symbol = "[+]",
-			highlight = "NeoTreeModified",
-		},
 		name = {
 			trailing_slash = false,
 			use_git_status_colors = true,
