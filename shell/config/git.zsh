@@ -3,9 +3,6 @@ alias g="git"
 alias ga="git add"
 alias gaa="git add --all"
 
-# alias gcm="git commit -m"
-# alias gcmn="git commit --amend --no-edit"
-
 alias gpp="git push"
 alias gpf="git push --set-upstream -f"
 alias gpo='git push --set-upstream origin $(git_current_branch)'
@@ -35,7 +32,7 @@ alias gstd="git stash drop"
 
 alias gss="git status"
 
-alias gpu="git pull -a"
+alias gpull="git pull -a"
 alias gpur="git pull --rebase -v"
 
 alias gft="git fetch"
@@ -44,6 +41,9 @@ alias gmr="git merge"
 
 alias glg="git log --graph --oneline --decorate --all -n 10"
 alias glga="git reflog --pretty=short"
+function gshow(){
+  git show --name-only $1
+}
 
 ##>> git custome function ---------------
 function git_current_branch() {
@@ -84,6 +84,6 @@ function glz() {
   else
     git add .
     git commit --amend --no-edit
-    git push -f
+    git push -f $(git_current_branch)
   fi
 }
