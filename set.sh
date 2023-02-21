@@ -33,6 +33,13 @@ function copy_nvim() {
   echo "👉 copy nvim done"
 }
 
+
+copy_lazyvim() {
+  rm -rf ~/.config/nvim
+  cp -rR ./lazyVim ~/.config/nvim
+  echo "👉 copy lazyVim done"
+}
+
 function copy_tmux() {
   cp -R ./tmux ~/.config/
   echo "👉 copy file to .tmux.conf done"

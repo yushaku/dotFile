@@ -65,8 +65,8 @@ keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>")
 keymap.set("n", "dw", 'vb"_d')
 
 -- remap movement in file
-keymap.set("n", "L", "$")
-keymap.set("n", "H", "^")
+keymap.set("n", "L", "g$")
+keymap.set("n", "H", "g^")
 keymap.set("n", "K", "O<ESC>")
 keymap.set("n", "J", "o<ESC>")
 keymap.set("n", "k", "gk")

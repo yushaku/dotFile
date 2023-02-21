@@ -299,12 +299,12 @@ return packer.startup(function(use)
 	})
 
 	-- OPTION:-- nvim scrollBar
-	use({
-		"petertriho/nvim-scrollbar",
-		config = function()
-			require("plugins.scrollBar")
-		end,
-	})
+	--[[ use({ ]]
+	--[[ 	"petertriho/nvim-scrollbar", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("plugins.scrollBar") ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
