@@ -24,10 +24,10 @@ map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
 -- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
+map("n", "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
+map("n", "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
+map("n", "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -144,3 +144,6 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- zen mode
+map("n", "<leader>z", "<CMD>ZenMode<CR>", {desc = "toggle zen mode"})

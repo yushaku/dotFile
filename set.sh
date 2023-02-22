@@ -33,7 +33,6 @@ function copy_nvim() {
   echo "👉 copy nvim done"
 }
 
-
 copy_lazyvim() {
   rm -rf ~/.config/nvim
   cp -rR ./lazyVim ~/.config/nvim
@@ -53,15 +52,11 @@ elif [ "$1" == "zsh" ]; then
 
 elif [ "$1" == "theme" ]; then
   copy_theme
-elif [ "$1" == "nvim" ]; then
-  copy_nvim
-elif [ "$1" == "nvim-plugs" ]; then
-  rm -rf ~/.config/nvim/plugin/packer_compiled.lua
-  cp -R ./nvim/plugin/packer_compiled.lua ~/.config/nvim/plugin/packer_compiled.lua
-elif [ "$1" == "lazyvim" ]; then
-  copy_lazyvim	
-elif
 
+elif [ "$1" == "lazyVim" ]; then
+  copy_lazyvim	
+
+elif
   [ "$1" == "all" ]
 then
   copy_zsh
