@@ -16,6 +16,10 @@ Hover to <search_word> and press #
 - press n to go backward
 - press N to go next
 
+:qa
+:Qa
+:qa
+
 `*` is like `#` but it search backward
 
 # how to search and replace in vim

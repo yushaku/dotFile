@@ -58,6 +58,8 @@ elif [ "$1" == "nvim" ]; then
 elif [ "$1" == "nvim-plugs" ]; then
   rm -rf ~/.config/nvim/plugin/packer_compiled.lua
   cp -R ./nvim/plugin/packer_compiled.lua ~/.config/nvim/plugin/packer_compiled.lua
+elif [ "$1" == "lazyvim" ]; then
+  copy_lazyvim	
 elif
 
   [ "$1" == "all" ]
