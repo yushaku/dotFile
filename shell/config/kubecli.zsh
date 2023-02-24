@@ -41,7 +41,7 @@ k-image() {
   k get deploy -o wide | grep $1 | awk '{print $7}'
 }
 
-# k get svc
+# k get svc -> logs all Service
 function kgs(){
   if [[ -z $1 ]]; then
     kubectl get svc
