@@ -25,16 +25,20 @@ k-restart() {
 
 # k get deploy
 
+k-cron(){
+  if [[ -z "$1" ]]; then
+    kubectl get cronjob
+  else
+    kubectl get cronjob | grep "$1"
+  fi
+}
+
 k-logs() {
   if [[ -z "$2" ]]; then
     k logs -f deployment/$1 | pino-pretty
   else
     k logs -f deployment/$1 | grep -v $2 | pino-pretty
   fi
-}
-
-k-logs-chat() {
-  k logs -f deployment/$1 ${@:2} | grep -v '"url":"/chat"' | pino-pretty
 }
 
 k-image() {

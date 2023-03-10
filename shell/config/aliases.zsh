@@ -73,7 +73,9 @@ alias dcod="docker-compose down"
 alias dps="docker ps"
 alias dim="docker images"
 alias dcn="docker container ls"
-function dex (){
+alias drmia="docker image prune -a"
+alias drmi="docker image prune"
+function d-exec (){
   docker exec -it $1 bash
 } 
 
