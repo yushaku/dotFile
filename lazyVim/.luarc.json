@@ -4,6 +4,7 @@
         "undefined-field"
     ],
     "Lua.diagnostics.globals": [
-        "vim"
+        "vim",
+        "require"
     ]
 }

@@ -2,12 +2,15 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
-      transparent = false,
+      transparent = true,
+      terminal_colors = true,
       style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
       styles = {
         floats = "transparent",
         sidebars = "transparent",
-        -- terminal_colors = true,
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = { bold = true },
       },
     },
   },

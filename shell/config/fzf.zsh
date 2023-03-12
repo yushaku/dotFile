@@ -24,11 +24,4 @@ export FZF_ALT_C_OPTS="--preview 'exa --tree -L 2 --icons {}'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if ! command -v rg &> /dev/null
-then
-    echo "rg could not be found"
-    sudo apt install ripgrep
-    echo 1
-    exit
-fi
 

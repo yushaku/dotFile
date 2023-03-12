@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.animate",
+    enable = false,
     event = "VeryLazy",
     opts = function()
       local animate = require("mini.animate")
