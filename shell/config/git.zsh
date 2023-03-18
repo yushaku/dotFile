@@ -38,6 +38,7 @@ alias gpur="git pull --rebase -v"
 alias gft="git fetch"
 alias gfa="git fetch --all"
 alias gmr="git merge"
+alias grm="git rm"
 
 alias glg="git log --graph --oneline --decorate --all -n 10"
 alias glga="git reflog --pretty=short"
