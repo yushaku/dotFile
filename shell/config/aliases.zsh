@@ -86,6 +86,8 @@ alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
 alias tksv="tmux kill-server"
 alias trm="tmux kill-session -t"
+alias ts-on="tmux set-option status on"
+alias ts-off="tmux set-option status off"
 
 ##>> system shotcut turn off
 alias reboot='sudo /sbin/reboot'
