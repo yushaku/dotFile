@@ -23,6 +23,11 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
+map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
 map("n", "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
@@ -41,6 +46,8 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 if Util.has("bufferline.nvim") then
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "<S-Left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "<S-Right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
   map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 else

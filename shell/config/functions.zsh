@@ -39,3 +39,11 @@ function dev () {
     $editer .
   fi
  }
+
+function open-port() {
+  sudo netstat -tulpn | grep LISTEN $@
+}
+
+function ip-addr() {
+  ip addr | grep noprefixroute | grep -v inet6
+}
