@@ -8,7 +8,7 @@ return {
   { "folke/noice.nvim", enabled = false },
   { "SmiteshP/nvim-navic", enabled = false },
 
-  { "echasnovski/mini.indentscope", enabled = false },
+  { "echasnovski/mini.indentscope", enabled = true },
   -- better focus remove all unused out of my side
   {
     "folke/zen-mode.nvim",
