@@ -23,6 +23,11 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
+map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
 map("n", "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
