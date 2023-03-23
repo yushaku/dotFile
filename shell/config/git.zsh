@@ -40,7 +40,9 @@ alias gfa="git fetch --all"
 alias gmr="git merge"
 alias grm="git rm"
 
-alias glg="git log --graph --oneline --decorate --all -n 10"
+function glg(){
+  git log --graph --oneline --decorate --all -n ${1:-10}
+}
 alias glga="git reflog --pretty=short"
 function gshow(){
   git show --name-only $1
