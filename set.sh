@@ -1,7 +1,7 @@
 #! /bin/bash
 if [[ -z "$1" ]]; then
 	echo "please pick one of those option:"
-	echo "zsh | tmux | theme | nvim | all"
+	echo "zsh | tmux | theme | lazyVim | all"
 	exit 0
 fi
 
@@ -20,19 +20,6 @@ function copy_theme() {
 	echo "👉 copy theme done"
 }
 
-function copy_nvim() {
-	if [ ! -d ~/.config/nvim ]; then
-		echo 'create new folder nvim'
-		mkdir -p ~/.config/nvim/
-	fi
-
-	rm -rf ~/.config/nvim/lua
-	cp nvim/init.lua ~/.config/nvim/init.lua
-	cp nvim/.vimrc ~/.config/nvim/.vimrc
-	cp -R ./nvim/lua ~/.config/nvim/lua
-	echo "👉 copy nvim done"
-}
-
 copy_lazyvim() {
 	rm -rf ~/.config/nvim
 	cp -rR ./lazyVim ~/.config/nvim
@@ -47,7 +34,7 @@ function copy_tmux() {
 if [ "$1" == "tmux" ]; then
 	copy_tmux
 
-elif [ "$1" == "zsh" ]; then
+elif [ "$1" == "shell" ]; then
 	copy_zsh
 
 elif [ "$1" == "theme" ]; then
@@ -60,14 +47,14 @@ elif
 	[ "$1" == "all" ]
 then
 	copy_zsh
-	copy_nvim
 	copy_theme
 	copy_tmux
+	copy_lazyvim
 
 	echo "⭐ set all config to system successfully"
 
 else
 	echo "do not know that option"
 	echo "please pick one of those option:"
-	echo "zsh | tmux | theme | nvim | all"
+	echo "zsh | tmux | theme | lazyVim | all"
 fi

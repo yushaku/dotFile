@@ -23,16 +23,16 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
-map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
 map("n", "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
 map("n", "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
 map("n", "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
+
+-- Resize window using <ctrl + shift> arrow keys
+map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -99,12 +99,8 @@ map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- lazy
-map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
-
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
@@ -139,9 +135,7 @@ map("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter Normal Mode"})
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+map("n", "<leader>_", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
 -- tabs
