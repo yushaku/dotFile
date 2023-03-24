@@ -1,11 +1,13 @@
 return {
   -- naviagter with nvim and tmux better
   { "christoomey/vim-tmux-navigator", enabled = true },
+  { "uga-rosa/ccc.nvim", enabled = true },
 
   -- pop up an block to display message
   { "rcarriga/nvim-notify", enabled = false },
   { "folke/noice.nvim", enabled = false },
   { "SmiteshP/nvim-navic", enabled = false },
+  { "xiyaowong/transparent.nvim", enabled = true },
 
   -- motion in vim
   { "ggandor/flit.nvim", enabled = false },
@@ -32,16 +34,6 @@ return {
       plugins = {
         gitsigns = { enabled = false },
         tmux = { enabled = true },
-      },
-    },
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    enabled = true,
-    lazy = true,
-    opts = {
-      user_default_options = {
-        tailwind = true,
       },
     },
   },
