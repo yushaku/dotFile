@@ -147,7 +147,7 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- zen mode
-map("n", "<leader>zz", "<CMD>ZenMode<CR>", {desc = "toggle zen mode"})
-map("n", "<leader>zt", "<CMD>TransparentToggle<CR>", {desc = "toggle Transparent bg mode"})
-map("n", "<leader>cc", "<CMD>CccHighlighterToggle<CR>", {desc = "toggle colo css"})
-map("n", "<leader>cp", "<CMD>CccPick<CR>", {desc = "pick color css"})
+map("n", "<leader>z", "<CMD>ZenMode<CR>", {desc = "toggle zen mode"})
+map("n", "<leader>ut", "<CMD>TransparentToggle<CR>", {desc = "toggle Transparent bg mode"})
+map("n", "<leader>cc", "<CMD>CccHighlighterToggle<CR>", {desc = "toggle display color preview css"})
+map("n", "<leader>cp", "<CMD>CccPick<CR>", {desc = "color picker css"})

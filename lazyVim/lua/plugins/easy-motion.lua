@@ -17,6 +17,6 @@ return {
     { "f", "<CMD>:HopChar1AC<CR>", desc = "jump to char forward every where" },
     { "F", "<CMD>:HopChar1BC<CR>", desc = "jump to char backword every where" },
 
-    { "s", "<CMD>:HopChar2<CR>", desc = "jump to 2 char every where" },
+    { "ss", "<CMD>:HopChar2<CR>", desc = "jump to 2 char every where" },
   },
 }

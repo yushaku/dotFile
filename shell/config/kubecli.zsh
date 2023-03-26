@@ -1,5 +1,5 @@
 alias k='kubectl'
-export KUBECONFIG=~/.kube/lumyri-zinza
+export KUBECONFIG=~/.kube/yushaku
 
 # k get pod | grep counter
 
