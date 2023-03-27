@@ -1,8 +1,6 @@
 alias k='kubectl'
 export KUBECONFIG=~/.kube/yushaku
 
-# k get pod | grep counter
-
 k-namespace() {
   k config set-context --current --namespace=$1
 }
@@ -58,22 +56,11 @@ k-port() {
   k port-forward --address='0.0.0.0' $@
 }
 
-# If the completion file doesn't exist yet, we need to autoload it and
-# bind it to `kubectl`. Otherwise, compinit will have already done that.
-if [[ ! -f "$ZSH_CACHE_DIR/completions/_kubectl" ]]; then
-  typeset -g -A _comps
-  autoload -Uz _kubectl
-  _comps[kubectl]=_kubectl
-fi
-
 # Execute a kubectl command against all namespaces
 alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
 
 # Apply a YML file
 alias kaf='kubectl apply -f'
-
-# Drop into an interactive terminal on a container
-alias keti='kubectl exec -t -i'
 
 # Manage configuration quickly to switch contexts between local, dev ad staging.
 alias kcuc='kubectl config use-context'
@@ -149,10 +136,6 @@ alias kdd='kubectl describe deployment'
 alias kdeld='kubectl delete deployment'
 alias ksd='kubectl scale deployment'
 alias krsd='kubectl rollout status deployment'
-
-function kres() {
-  kubectl set env $@ REFRESHED_AT=$(date +%Y%m%d%H%M%S)
-}
 
 # Rollout management.
 alias kgrs='kubectl get replicaset'

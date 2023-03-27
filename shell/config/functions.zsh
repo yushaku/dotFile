@@ -15,9 +15,14 @@ function killport() {
 }
 
 function ide (){
-  tmux split-window -v -p  30
-  tmux split-window -h
-  tmux select-pane -t 1
+  if [[ $1 == 3 ]]; then
+    tmux split-window -v -p  30
+    tmux split-window -h
+    tmux select-pane -t 1
+  else
+    tmux split-window -h -p 30
+    tmux select-pane -t 1
+  fi
 }
 
 function open-port() {
