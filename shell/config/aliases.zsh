@@ -80,7 +80,13 @@ function d-exec (){
 } 
 
 ##>> tmux shotcut --------------------
-alias t="TERM=screen-256color-bce tmux"
+function t(){
+  if [[ -z $1 ]]; then
+     TERM=screen-256color-bce tmux
+  else
+     TERM=screen-256color-bce tmux new-session -A -s "$1"
+  fi
+}
 alias tls="tmux ls"
 alias ta="tmux attach -t"
 alias tad='tmux attach -d -t'
