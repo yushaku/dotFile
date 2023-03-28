@@ -1,5 +1,4 @@
 alias k='kubectl'
-export KUBECONFIG=~/.kube/yushaku
 
 k-namespace() {
   k config set-context --current --namespace=$1
@@ -23,7 +22,7 @@ k-restart() {
 
 # k get deploy
 
-k-cron(){
+k-cron() {
   if [[ -z "$1" ]]; then
     kubectl get cronjob
   else
@@ -44,12 +43,12 @@ k-image() {
 }
 
 # k get svc -> logs all Service
-function kgs(){
+function kgs() {
   if [[ -z $1 ]]; then
     kubectl get svc
   else
     kubectl get svc | grep $1
-  fi 
+  fi
 }
 
 k-port() {
@@ -211,4 +210,3 @@ alias kgj='kubectl get job'
 alias kej='kubectl edit job'
 alias kdj='kubectl describe job'
 alias kdelj='kubectl delete job'
-

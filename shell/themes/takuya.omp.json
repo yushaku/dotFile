@@ -26,11 +26,11 @@
           "foreground": "#e6e6e6",
           "background": "#444444",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#353A52{{ end }}",
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#444444{{ end }}",
             "{{ if gt .Ahead 0 }}#444444{{ end }}"
           ],
           "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#7AA2F7{{ end }}",
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#dcaa00{{ end }}",
             "{{ if gt .Ahead 0 }}#1fff0a{{ end }}"
           ],
           "properties": {
