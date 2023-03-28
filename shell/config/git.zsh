@@ -39,6 +39,7 @@ alias gft="git fetch"
 alias gfa="git fetch --all"
 alias gmr="git merge"
 alias grm="git rm"
+alias grmc="git rm -r --cached"
 
 function glg(){
   git log --graph --oneline --decorate --all -n ${1:-10}
