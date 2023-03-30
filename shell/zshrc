@@ -58,10 +58,10 @@ function set_default_opts() {
     --color=info:#ea9d34,prompt:#af87ff,pointer:#cb6283,marker:#cb6283,spinner:#ff87d7 \
     --sort \
     --preview-window=right:$WIDTHVAR \
-    --bind '?:toggle-preview' \
+    --bind 'ctrl-/:change-preview-window(down|hidden|)' \
     --border rounded"
 }
-set_default_opts && trap 'check_terminal_size' WINCH
+set_default_opts && trap check_terminal_size WINCH
 
 if [ -f .nvmrc ]; then
   nvm use

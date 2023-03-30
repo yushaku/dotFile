@@ -11,7 +11,6 @@ alias ...='cd ../..'
 
 ##>> replate old command of linux ----------
 alias e="exit"
-alias j="z"
 alias cl="clear"
 alias vi="nvim"
 alias cat="batcat"

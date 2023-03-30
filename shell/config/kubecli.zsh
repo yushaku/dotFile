@@ -1,5 +1,9 @@
 alias k='kubectl'
 
+command -v fzf >/dev/null 2>&1 && {
+	source <(kubectl completion zsh | sed 's#${requestComp} 2>/dev/null#${requestComp} 2>/dev/null | head -n -1 | fzf  --multi=0 #g')
+}
+
 k-namespace() {
   k config set-context --current --namespace=$1
 }
