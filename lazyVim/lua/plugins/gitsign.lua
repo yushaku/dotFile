@@ -9,7 +9,7 @@ return {
         delete = { text = "契" },
         topdelete = { text = "契" },
         changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+        untracked = { text = "┆" },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
       numhl = true, -- Toggle with `:Gitsigns toggle_numhl`

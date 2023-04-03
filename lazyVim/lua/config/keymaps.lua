@@ -67,15 +67,6 @@ map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "kj", "<esc>", { desc = "easy goto Normal mode" })
 
--- Clear search, diff update and redraw
--- taken from runtime/lua/_editor.lua
-map(
-  "n",
-  "<leader>ur",
-  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-  { desc = "Redraw / clear hlsearch / diff update" }
-)
-
 map("n", "gw", "*N")
 map("x", "gw", "*N")
 
@@ -104,33 +95,44 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
--- stylua: ignore start
-
 -- toggle options
 map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>us", function()
+  Util.toggle("spell")
+end, { desc = "Toggle Spelling" })
+map("n", "<leader>uw", function()
+  Util.toggle("wrap")
+end, { desc = "Toggle Word Wrap" })
+map("n", "<leader>ul", function()
+  Util.toggle("relativenumber", true)
+  Util.toggle("number")
+end, { desc = "Toggle Line Numbers" })
 map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+map("n", "<leader>uc", function()
+  Util.toggle("conceallevel", false, { 0, conceallevel })
+end, { desc = "Toggle Conceal" })
 
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", function()
+  Util.float_term({ "lazygit" }, { cwd = Util.get_root() })
+end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", function()
+  Util.float_term({ "lazygit" })
+end, { desc = "Lazygit (cwd)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- highlights under cursor
-if vim.fn.has("nvim-0.9.0") == 1 then
-  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-end
+map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 
 -- floating terminal
-map("n", "<leader>ft", function() Util.float_term(nil, { cwd = Util.get_root() }) end, { desc = "Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter Normal Mode"})
+map("n", "<leader>tt", function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end, { desc = "Terminal (root dir)" })
+map("n", "<leader>tT", function()
+  Util.float_term()
+end, { desc = "Terminal (cwd)" })
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
@@ -146,9 +148,16 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
--- zen mode
-map("n", "<leader>z", "<CMD>ZenMode<CR>", {desc = "toggle zen mode"})
-map("n", "<leader>ut", "<CMD>TransparentToggle<CR>", {desc = "toggle Transparent bg mode"})
-map("n", "<leader>cc", "<CMD>CccHighlighterToggle<CR>", {desc = "toggle display color preview css"})
-map("n", "<leader>cp", "<CMD>CccPick<CR>", {desc = "color picker css"})
 map("n", "<leader>uo", "<CMD>SymbolsOutline<CR>", {desc = "toggle outlne"})
+
+-- delete existed keymap
+vim.keymap.del("n", "<leader><space>")
+vim.keymap.del("n", "<leader>sh")
+vim.keymap.del("n", "<leader>sH")
+vim.keymap.del("n", "<leader>sk")
+vim.keymap.del("n", "<leader>sa")
+vim.keymap.del("n", "<leader>sC")
+vim.keymap.del("n", "<leader>fe")
+vim.keymap.del("n", "<leader>fE")
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<leader>fT")
