@@ -104,3 +104,5 @@ alias shutdown='sudo /sbin/shutdown'
 video2mp4() {
     ffmpeg -y -i "${1}" -vf "fps=${2:-12},pad=ceil(iw/2)*2:ceil(ih/2)*2" "${1}.mp4"
 }
+alias jpg='jpegoptim --strip-all'
+alias png='optipng'

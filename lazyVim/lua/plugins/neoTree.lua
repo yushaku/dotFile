@@ -3,21 +3,21 @@ return {
   cmd = "Neotree",
   keys = {
     {
-      "<leader>fe",
+      "<leader>e",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
       end,
       desc = "Explorer NeoTree (root dir)",
     },
     {
-      "<leader>fE",
+      "<leader>E",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
       end,
       desc = "Explorer NeoTree (cwd)",
     },
-    { "<C-b>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-    { "<C-S-b>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+    { "<C-b>", "<leader>e", desc = "Explorer NeoTree (root dir)", remap = true },
+    { "<C-S-b>", "<leader>E", desc = "Explorer NeoTree (cwd)", remap = true },
   },
   deactivate = function()
     vim.cmd([[Neotree close]])
@@ -32,13 +32,14 @@ return {
     end
   end,
   opts = {
+    close_if_last_window = true,
     filesystem = {
       filtered_items = {
         visible = false,
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_hidden = true,
-        hide_by_name = { ".git" },
+        hide_by_name = { ".git", "node_modules", ".docker" },
         hide_by_pattern = { "*.meta", ".git" },
         always_show = { ".gitignored, .env, .env.example" },
       },
@@ -51,8 +52,21 @@ return {
       },
     },
     default_component_configs = {
+      symbols = {
+        -- Change type
+        added = "✚",
+        deleted = "✖",
+        modified = "",
+        renamed = "",
+        -- Status type
+        untracked = "[+]",
+        ignored = "",
+        unstaged = "",
+        staged = "",
+        conflict = "",
+      },
       indent = {
-        with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+        with_expanders = true,
         expander_collapsed = "",
         expander_expanded = "",
         expander_highlight = "NeoTreeExpander",
