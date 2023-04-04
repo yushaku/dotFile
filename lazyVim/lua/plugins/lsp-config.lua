@@ -12,6 +12,7 @@ return {
         return require("lazyvim.util").has("nvim-cmp")
       end,
     },
+    { "b0o/SchemaStore.nvim" },
   },
   ---@class PluginLspOpts
   opts = {
@@ -33,7 +34,32 @@ return {
     },
     -- LSP Server Settings
     servers = {
-      jsonls = {},
+      tsserver = {
+        settings = {
+          completions = {
+            completeFunctionCalls = true,
+          },
+        },
+      },
+      jsonls = {
+        -- lazy-load schemastore when needed
+        on_new_config = function(new_config)
+          new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+        end,
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = { enable = true },
+          },
+        },
+      },
+      eslint = {
+        settings = {
+          workingDirectory = { mode = "auto" },
+        },
+      },
       lua_ls = {
         -- mason = false, -- set to false if you don't want this server to be installed with mason
         settings = {
@@ -51,13 +77,35 @@ return {
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig
     setup = {
-      -- example to setup with typescript.nvim
-      -- tsserver = function(_, opts)
-      --   require("typescript").setup({ server = opts })
-      --   return true
-      -- end,
-      -- Specify * to use this function as a fallback for any server
-      -- ["*"] = function(server, opts) end,
+      tsserver = function(_, opts)
+        require("lazyvim.util").on_attach(function(client, buffer)
+          if client.name == "tsserver" then
+            vim.keymap.set(
+              "n",
+              "<leader>co",
+              "<cmd>TypescriptOrganizeImports<CR>",
+              { buffer = buffer, desc = "Organize Imports" }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>cR",
+              "<cmd>TypescriptRenameFile<CR>",
+              { desc = "Rename File", buffer = buffer }
+            )
+          end
+        end)
+        require("typescript").setup({ server = opts })
+        return true
+      end,
+      eslint = function()
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          callback = function(event)
+            if require("lspconfig.util").get_active_client_by_name(event.buf, "eslint") then
+              vim.cmd("EslintFixAll")
+            end
+          end,
+        })
+      end,
     },
   },
   ---@param opts PluginLspOpts
