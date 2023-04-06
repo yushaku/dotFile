@@ -10,8 +10,8 @@ alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 
 alias gcl='git clone --recurse-submodules'
 
-alias gcb='git checkout'
 alias gccb='git checkout -b'
+alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='' | xargs git checkout"
 
 alias grb='git rebase'
 alias grba='git rebase --abort'
