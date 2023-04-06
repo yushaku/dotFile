@@ -25,24 +25,14 @@ return {
     },
     -- Automatically format on save
     autoformat = true,
+
     -- options for vim.lsp.buf.format
-    -- `bufnr` and `filter` is handled by the LazyVim formatter,
-    -- but can be also overridden when specified
     format = {
       formatting_options = nil,
       timeout_ms = nil,
     },
-    -- LSP Server Settings
     servers = {
-      tsserver = {
-        settings = {
-          completions = {
-            completeFunctionCalls = true,
-          },
-        },
-      },
       jsonls = {
-        -- lazy-load schemastore when needed
         on_new_config = function(new_config)
           new_config.settings.json.schemas = new_config.settings.json.schemas or {}
         end,
@@ -61,7 +51,7 @@ return {
         },
       },
       lua_ls = {
-        -- mason = false, -- set to false if you don't want this server to be installed with mason
+        mason = false, -- set to false if you don't want this server to be installed with mason
         settings = {
           Lua = {
             workspace = {
@@ -97,6 +87,7 @@ return {
         require("typescript").setup({ server = opts })
         return true
       end,
+
       eslint = function()
         vim.api.nvim_create_autocmd("BufWritePre", {
           callback = function(event)
@@ -108,6 +99,7 @@ return {
       end,
     },
   },
+
   ---@param opts PluginLspOpts
   config = function(_, opts)
     -- setup autoformat
