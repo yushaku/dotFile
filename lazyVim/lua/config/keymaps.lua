@@ -18,15 +18,15 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
-map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
-map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
-map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
+map({ "n", "t" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
+map({ "n", "t" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
+map({ "n", "t" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
+map({ "n", "t" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
-map("n", "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
-map("n", "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
-map("n", "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
-map("n", "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
+map({ "n", "t" }, "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
+map({ "n", "t" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
+map({ "n", "t" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
+map({ "n", "t" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
 -- Resize window using <ctrl + shift> arrow keys
 map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -63,6 +63,8 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- go to normal mode
+map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
+map("t", "<esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "kj", "<esc>", { desc = "easy goto Normal mode" })
@@ -126,13 +128,11 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 
 -- floating terminal
-map("n", "<leader>tt", function()
+map("n", "<leader>tk", function()
   Util.float_term(nil, { cwd = Util.get_root() })
 end, { desc = "Terminal (root dir)" })
-map("n", "<leader>tT", function()
-  Util.float_term()
-end, { desc = "Terminal (cwd)" })
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
+map("n", "<leader>tj", "<cmd>hsplit term://zsh<cr>", { desc = "open terminal at bottom" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
@@ -148,7 +148,7 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>uo", "<CMD>SymbolsOutline<CR>", {desc = "toggle outlne"})
+map("n", "<leader>uo", "<CMD>SymbolsOutline<CR>", { desc = "toggle outlne" })
 
 -- delete existed keymap
 vim.keymap.del("n", "<leader><space>")
