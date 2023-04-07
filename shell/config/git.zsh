@@ -11,7 +11,7 @@ alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 alias gcl='git clone --recurse-submodules'
 
 alias gccb='git checkout -b'
-alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='' | xargs git checkout"
+alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} | delta' --pointer='' | xargs git checkout"
 
 alias grb='git rebase'
 alias grba='git rebase --abort'
@@ -48,6 +48,14 @@ alias glga="git reflog --pretty=short"
 function gshow(){
   git show --name-only $1
 }
+
+function gdiff() {
+  git diff $@ --name-only |\
+  fzf --preview-window 'down' \
+  --preview 'git diff $@ -- {-1} | delta' \
+  --bind 'ctrl-/:change-preview-window(right|hidden|)'
+}
+
 
 ##>> git custome function ---------------
 function git_current_branch() {

@@ -18,15 +18,15 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to window using the <ctrl> hjkl keys
-map({ "n", "t" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
-map({ "n", "t" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
-map({ "n", "t" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
-map({ "n", "t" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
+map({ "n", "t", "i" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
+map({ "n", "t", "i" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
+map({ "n", "t", "i" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
+map({ "n", "t", "i" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
 
-map({ "n", "t" }, "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
-map({ "n", "t" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
-map({ "n", "t" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
-map({ "n", "t" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
+map({ "n", "t", "i" }, "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
+map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
+map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
+map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
 -- Resize window using <ctrl + shift> arrow keys
 map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })

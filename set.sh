@@ -20,7 +20,7 @@ function copy_theme() {
 	echo "👉 copy theme done"
 }
 
-copy_lazyvim() {
+function copy_lazyvim() {
 	rm -rf ~/.config/nvim
 	cp -rR ./lazyVim ~/.config/nvim
 	echo "👉 copy lazyVim done"
