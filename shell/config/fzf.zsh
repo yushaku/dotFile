@@ -17,7 +17,6 @@ export FZF_CTRL_R_OPTS="
 
 export FZF_ALT_C_OPTS="--preview 'exa --tree -L 2 --icons {}'"
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 

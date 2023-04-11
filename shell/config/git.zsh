@@ -10,8 +10,8 @@ alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 
 alias gcl='git clone --recurse-submodules'
 
-alias gccb='git checkout -b'
-alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} | delta' --pointer='' | xargs git checkout"
+alias gcbb='git checkout -b'
+alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --pointer='' | xargs git checkout"
 
 alias grb='git rebase'
 alias grba='git rebase --abort'
@@ -41,13 +41,9 @@ alias gmr="git merge"
 alias grm="git rm"
 alias grmc="git rm -r --cached"
 
-function glg(){
-  git log --graph --oneline --decorate --all -n ${1:-10}
-}
 alias glga="git reflog --pretty=short"
-function gshow(){
-  git show --name-only $1
-}
+
+#>> git custome function ---------------
 
 function gdiff() {
   git diff $@ --name-only |\
@@ -57,7 +53,20 @@ function gdiff() {
 }
 
 
-##>> git custome function ---------------
+function g-reset(){
+  selected_files=$(git status --porcelain |\
+    fzf -m --preview-window 'down' --preview 'git diff --color=always $@ -- {-1}' |\
+    awk '{print $2}')
+
+  if [ -n "$selected_files" ]; then
+    echo "$selected_files" | xargs git checkout --
+  fi
+}
+
+function g-log(){
+  git log --graph --oneline --decorate --all -n ${1:-10}
+}
+
 function git_current_branch() {
   currentBranch=$(git rev-parse --abbrev-ref HEAD)
   echo $currentBranch
@@ -71,31 +80,11 @@ function ggp() {
     git push origin "${b:=$1}"
   fi
 }
-compdef _git ggp=git-checkout
 
 function gcm (){
   if [[ -z "$1" ]]; then
     git commit --amend --no-edit
   else
     git commit -m "$1" 
-  fi
-}
-# Pretty log messages
-function _git_log_prettily() {
-  if ! [ -z $1 ]; then
-    git log --pretty=$1
-  fi
-}
-compdef _git _git_log_prettily=git-log
-
-function glz() {
-  if [[ ! -z "$1" ]]; then
-    git add .
-    git commit -m "$1"
-    git push $(git_current_branch)
-  else
-    git add .
-    git commit --amend --no-edit
-    git push -f $(git_current_branch)
   fi
 }
