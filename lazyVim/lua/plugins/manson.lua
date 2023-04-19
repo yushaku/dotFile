@@ -4,7 +4,6 @@ return {
   keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   opts = {
     ensure_installed = {
-      "write-good",
       "eslint-lsp",
       "shfmt",
       "prettier",

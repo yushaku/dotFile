@@ -73,17 +73,8 @@ map("n", "gw", "*N")
 map("x", "gw", "*N")
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-
--- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
+map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
@@ -92,36 +83,13 @@ map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+map({ "v", "n" }, "<C-u>", "{")
+map({ "v", "n" }, "<C-d>", "}")
+
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-
--- toggle options
-map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>us", function()
-  Util.toggle("spell")
-end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function()
-  Util.toggle("wrap")
-end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", function()
-  Util.toggle("relativenumber", true)
-  Util.toggle("number")
-end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function()
-  Util.toggle("conceallevel", false, { 0, conceallevel })
-end, { desc = "Toggle Conceal" })
-
--- lazygit
-map("n", "<leader>gg", function()
-  Util.float_term({ "lazygit" }, { cwd = Util.get_root() })
-end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function()
-  Util.float_term({ "lazygit" })
-end, { desc = "Lazygit (cwd)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })

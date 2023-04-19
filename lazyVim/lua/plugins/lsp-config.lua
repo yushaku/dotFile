@@ -14,6 +14,7 @@ return {
     },
     { "b0o/SchemaStore.nvim" },
   },
+
   ---@class PluginLspOpts
   opts = {
     -- options for vim.diagnostic.config()
@@ -45,11 +46,7 @@ return {
           },
         },
       },
-      eslint = {
-        settings = {
-          workingDirectory = { mode = "auto" },
-        },
-      },
+      eslint = { settings = { workingDirectory = { mode = "auto" } } },
       lua_ls = {
         mason = false, -- set to false if you don't want this server to be installed with mason
         settings = {

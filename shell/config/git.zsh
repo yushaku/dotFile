@@ -63,7 +63,7 @@ function g-reset(){
   fi
 }
 
-function g-log(){
+function glg(){
   git log --graph --oneline --decorate --all -n ${1:-10}
 }
 
