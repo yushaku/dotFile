@@ -6,7 +6,7 @@ eval "$(oh-my-posh init zsh)"
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/takuya.omp.json)"
 
 ##>> import file config --------------
-for file in ~/.zsh/*.zsh; do
+for file in ~/.zsh/*.sh; do
   source "$file"
 done
 

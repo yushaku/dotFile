@@ -41,15 +41,18 @@ alias gmr="git merge"
 alias grm="git rm"
 alias grmc="git rm -r --cached"
 
-alias glga="git reflog --pretty=short"
+alias glga="git reflog --pretty=short | batcat"
 
 #>> git custome function ---------------
 
 function gdiff() {
   git diff $@ --name-only |\
-  fzf --preview-window 'down' \
-  --preview 'git diff $@ -- {-1} | delta' \
-  --bind 'ctrl-/:change-preview-window(right|hidden|)'
+  fzf --preview "git diff --color=always $@ -- {-1}" \
+  --preview-window 'right:60%' \
+  --bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
+  --bind 'ctrl-d:preview-page-down' \
+  --bind 'ctrl-u:preview-page-up' \
+  --height 60%
 }
 
 

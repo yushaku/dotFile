@@ -14,6 +14,7 @@ alias e="exit"
 alias cl="clear"
 alias vi="nvim"
 alias cat="batcat"
+alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias fd="fdfind"
 alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
 function lk () {

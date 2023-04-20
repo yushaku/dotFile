@@ -5,23 +5,23 @@ command -v fzf >/dev/null 2>&1 && {
 }
 
 k-namespace() {
-  k config set-context --current --namespace=$1
+  kubectl config set-context --current --namespace=$1
 }
 
 k-bash() {
-  k exec -it $1 -- sh -c "(bash || sh)"
+  kubectl exec -it $1 -- sh -c "(bash || sh)"
 }
 
 k-scale() {
-  k scale --replicas=$2 deployment $1
+  kubectl scale --replicas=$2 deployment $1
 }
 
 k-env() {
-  k exec -it $1 -- env | egrep -v "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)"
+  kubectl exec -it $1 -- env | egrep -v "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)" | batcat -l DotENV --theme TwoDark
 }
 
 k-restart() {
-  k rollout restart deployment/$1
+  kubectl rollout restart deployment/$1
 }
 
 # k get deploy
@@ -36,14 +36,14 @@ k-cron() {
 
 k-logs() {
   if [[ -z "$2" ]]; then
-    k logs -f deployment/$1 | pino-pretty
+    kubectl logs -f deployment/$1 | pino-pretty
   else
-    k logs -f deployment/$1 | grep -v $2 | pino-pretty
+    kubectl logs -f deployment/$1 | grep -v $2 | pino-pretty
   fi
 }
 
 k-image() {
-  k get deploy -o wide | grep $1 | awk '{print $7}'
+  kubectl get deploy -o wide | grep $1 | awk '{print $7}'
 }
 
 # k get svc -> logs all Service
@@ -56,7 +56,7 @@ function kgs() {
 }
 
 k-port() {
-  k port-forward --address='0.0.0.0' $@
+  kubectl port-forward --address='0.0.0.0' $@
 }
 
 # Execute a kubectl command against all namespaces
@@ -79,10 +79,16 @@ alias kdel='kubectl delete'
 alias kdelf='kubectl delete -f'
 
 # Pod management.
-alias kgp='kubectl get pods'
+function kgp(){
+  if [[ -z $1 ]]; then
+    kubectl get pods
+  else
+    kubectl get pods | grep $1
+  fi
+}
 alias kgpa='kubectl get pods --all-namespaces'
-alias kgpw='kgp --watch'
-alias kgpwide='kgp -o wide'
+alias kgpw='kubectl get pods --watch'
+alias kgpwide='kubectl get pods -o wide'
 alias kep='kubectl edit pods'
 alias kdp='kubectl describe pods'
 alias kdelp='kubectl delete pods'
