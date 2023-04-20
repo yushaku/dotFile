@@ -5,58 +5,42 @@ command -v fzf >/dev/null 2>&1 && {
 }
 
 k-namespace() {
-  kubectl config set-context --current --namespace=$1
+	kubectl config set-context --current --namespace=$1
 }
 
 k-bash() {
-  kubectl exec -it $1 -- sh -c "(bash || sh)"
+	kubectl exec -it $1 -- sh -c "(bash || sh)"
 }
 
 k-scale() {
-  kubectl scale --replicas=$2 deployment $1
+	kubectl scale --replicas=$2 deployment $1
 }
 
 k-env() {
-  kubectl exec -it $1 -- env | egrep -v "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)" | batcat -l DotENV --theme TwoDark
+	kubectl exec -it $1 -- env | egrep -v "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)" | batcat -l DotENV --theme TwoDark
 }
 
 k-restart() {
-  kubectl rollout restart deployment/$1
-}
-
-# k get deploy
-
-k-cron() {
-  if [[ -z "$1" ]]; then
-    kubectl get cronjob
-  else
-    kubectl get cronjob | grep "$1"
-  fi
-}
-
-k-logs() {
-  if [[ -z "$2" ]]; then
-    kubectl logs -f deployment/$1 | pino-pretty
-  else
-    kubectl logs -f deployment/$1 | grep -v $2 | pino-pretty
-  fi
+	kubectl rollout restart deployment/$1
 }
 
 k-image() {
-  kubectl get deploy -o wide | grep $1 | awk '{print $7}'
+	kubectl get deploy -o wide | grep $1 | awk '{print $7}'
 }
 
-# k get svc -> logs all Service
-function kgs() {
-  if [[ -z $1 ]]; then
-    kubectl get svc
-  else
-    kubectl get svc | grep $1
-  fi
-}
-
-k-port() {
-  kubectl port-forward --address='0.0.0.0' $@
+# Port forwarding
+function kpf() {
+	if [[ -z $1 ]]; then
+		echo "you forgot enter service name"
+		return 1
+	elif [[ -z $2 ]]; then
+		echo "you forgot enter service port"
+		return 1
+	elif [[ -z $3 ]]; then
+		kubectl port-forward svc/$1 $2:$2
+	else
+		kubectl port-forward svc/$1 $3:$2
+	fi
 }
 
 # Execute a kubectl command against all namespaces
@@ -79,12 +63,12 @@ alias kdel='kubectl delete'
 alias kdelf='kubectl delete -f'
 
 # Pod management.
-function kgp(){
-  if [[ -z $1 ]]; then
-    kubectl get pods
-  else
-    kubectl get pods | grep $1
-  fi
+function kgp() {
+	if [[ -z $1 ]]; then
+		kubectl get pods
+	else
+		kubectl get pods | grep $1
+	fi
 }
 alias kgpa='kubectl get pods --all-namespaces'
 alias kgpw='kubectl get pods --watch'
@@ -101,6 +85,14 @@ alias kgpl='kgp -l'
 alias kgpn='kgp -n'
 
 # Service management.
+function kgs() {
+	if [[ -z $1 ]]; then
+		kubectl get svc
+	else
+		kubectl get svc | grep $1
+	fi
+}
+
 alias kgsa='kubectl get svc --all-namespaces'
 alias kgsw='kgs --watch'
 alias kgswide='kgs -o wide'
@@ -164,14 +156,18 @@ alias kdelss='kubectl delete statefulset'
 alias ksss='kubectl scale statefulset'
 alias krsss='kubectl rollout status statefulset'
 
-# Port forwarding
-alias kpf="kubectl port-forward"
-
 # Tools for accessing all information
 alias kga='kubectl get all'
 alias kgaa='kubectl get all --all-namespaces'
 
 # Logs
+function k-logs() {
+	if [[ -z "$2" ]]; then
+		kubectl logs -f deployment/$1 | pino-pretty
+	else
+		kubectl logs -f deployment/$1 | grep -v $2 | pino-pretty
+	fi
+}
 alias kl='kubectl logs'
 alias kl1h='kubectl logs --since 1h'
 alias kl1m='kubectl logs --since 1m'
@@ -210,7 +206,13 @@ alias kdds='kubectl describe daemonset'
 alias kdelds='kubectl delete daemonset'
 
 # CronJob management.
-alias kgcj='kubectl get cronjob'
+k-cron() {
+	if [[ -z "$1" ]]; then
+		kubectl get cronjob
+	else
+		kubectl get cronjob | grep "$1"
+	fi
+}
 alias kecj='kubectl edit cronjob'
 alias kdcj='kubectl describe cronjob'
 alias kdelcj='kubectl delete cronjob'
