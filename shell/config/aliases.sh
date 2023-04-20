@@ -17,8 +17,8 @@ alias cat="batcat"
 alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias fd="fdfind"
 alias ll="exa -lh --time-style=long-iso --icons --colour-scale --group-directories-first"
-function lk () {
-  exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L ${1:-2}
+function lk() {
+	exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
 }
 alias ss="source ~/.zshrc"
 
@@ -54,13 +54,6 @@ alias wcd="warp-cli disconnect"
 alias wci="sudo systemctl start warp-svc.service"
 
 ##>> Connect wifi  -------------------------
-alias wifion="nmcli nm wifi on"
-alias wifioff="nmcli nm wifi off"
-alias wifishow="nmcli device wifi list"
-alias rescanwifi="nmcli device wifi rescan"
-cnwifi() {
-  nmcli device wifi connect $1 password $2
-}
 
 ##>> shot-cut create projects ----------------------
 alias next="yarn create next-app"
@@ -75,17 +68,17 @@ alias dim="docker images"
 alias dcn="docker container ls"
 alias drmia="docker image prune -a"
 alias drmi="docker image prune"
-function d-exec (){
-  docker exec -it $1 bash
-} 
+function d-exec() {
+	docker exec -it "$1" bash
+}
 
 ##>> tmux shotcut --------------------
-function t(){
-  if [[ -z $1 ]]; then
-     TERM=screen-256color-bce tmux
-  else
-     TERM=screen-256color-bce tmux new-session -A -s "$1"
-  fi
+function t() {
+	if [[ -z $1 ]]; then
+		TERM=screen-256color-bce tmux
+	else
+		TERM=screen-256color-bce tmux new-session -A -s "$1"
+	fi
 }
 alias tls="tmux ls"
 alias ta="tmux attach -t"
@@ -103,7 +96,7 @@ alias shutdown='sudo /sbin/shutdown'
 
 ##>> convert video to mp4
 video2mp4() {
-    ffmpeg -y -i "${1}" -vf "fps=${2:-12},pad=ceil(iw/2)*2:ceil(ih/2)*2" "${1}.mp4"
+	ffmpeg -y -i "${1}" -vf "fps=${2:-12},pad=ceil(iw/2)*2:ceil(ih/2)*2" "${1}.mp4"
 }
 alias jpg='jpegoptim --strip-all'
 alias png='optipng'

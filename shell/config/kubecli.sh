@@ -5,27 +5,27 @@ command -v fzf >/dev/null 2>&1 && {
 }
 
 k-namespace() {
-	kubectl config set-context --current --namespace=$1
+	kubectl config set-context --current --namespace="$1"
 }
 
 k-bash() {
-	kubectl exec -it $1 -- sh -c "(bash || sh)"
+	kubectl exec -it "$1" -- sh -c "(bash || sh)"
 }
 
 k-scale() {
-	kubectl scale --replicas=$2 deployment $1
+	kubectl scale --replicas="$2" deployment "$1"
 }
 
 k-env() {
-	kubectl exec -it $1 -- env | egrep -v "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)" | batcat -l DotENV --theme TwoDark
+	kubectl exec -it "$1" -- env | grep -ev "(TCP|tcp|HTTP|SERVICE_HOST|SERVICE_PORT)" | batcat -l DotENV --theme TwoDark
 }
 
 k-restart() {
-	kubectl rollout restart deployment/$1
+	kubectl rollout restart deployment/"$1"
 }
 
 k-image() {
-	kubectl get deploy -o wide | grep $1 | awk '{print $7}'
+	kubectl get deploy -o wide | grep "$1" | awk '{print $7}'
 }
 
 # Port forwarding
@@ -37,14 +37,11 @@ function kpf() {
 		echo "you forgot enter service port"
 		return 1
 	elif [[ -z $3 ]]; then
-		kubectl port-forward svc/$1 $2:$2
+		kubectl port-forward svc/"$1" "$2":"$2"
 	else
-		kubectl port-forward svc/$1 $3:$2
+		kubectl port-forward svc/"$1" "$3":"$2"
 	fi
 }
-
-# Execute a kubectl command against all namespaces
-alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
 
 # Apply a YML file
 alias kaf='kubectl apply -f'
@@ -67,7 +64,7 @@ function kgp() {
 	if [[ -z $1 ]]; then
 		kubectl get pods
 	else
-		kubectl get pods | grep $1
+		kubectl get pods | grep "$1"
 	fi
 }
 alias kgpa='kubectl get pods --all-namespaces'
@@ -89,7 +86,7 @@ function kgs() {
 	if [[ -z $1 ]]; then
 		kubectl get svc
 	else
-		kubectl get svc | grep $1
+		kubectl get svc | grep "$1"
 	fi
 }
 
@@ -163,9 +160,9 @@ alias kgaa='kubectl get all --all-namespaces'
 # Logs
 function k-logs() {
 	if [[ -z "$2" ]]; then
-		kubectl logs -f deployment/$1 | pino-pretty
+		kubectl logs -f deployment/"$1" | pino-pretty
 	else
-		kubectl logs -f deployment/$1 | grep -v $2 | pino-pretty
+		kubectl logs -f deployment/"$1" | grep -v "$2" | pino-pretty
 	fi
 }
 alias kl='kubectl logs'

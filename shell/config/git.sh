@@ -46,48 +46,47 @@ alias glga="git reflog --pretty=short | batcat"
 #>> git custome function ---------------
 
 function gdiff() {
-  git diff $@ --name-only |\
-  fzf --preview "git diff --color=always $@ -- {-1}" \
-  --preview-window 'right:60%' \
-  --bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
-  --bind 'ctrl-d:preview-page-down' \
-  --bind 'ctrl-u:preview-page-up' \
-  --height 60%
+	git diff "$@" --name-only |
+		fzf --preview "git diff --color=always '$*' -- {-1}" \
+			--preview-window 'right:60%' \
+			--bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
+			--bind 'ctrl-d:preview-page-down' \
+			--bind 'ctrl-u:preview-page-up' \
+			--height 60%
 }
 
+function g-reset() {
+	selected_files=$(git status --porcelain |
+		fzf -m --preview-window 'down' --preview 'git diff --color=always $@ -- {-1}' |
+		awk '{print $2}')
 
-function g-reset(){
-  selected_files=$(git status --porcelain |\
-    fzf -m --preview-window 'down' --preview 'git diff --color=always $@ -- {-1}' |\
-    awk '{print $2}')
-
-  if [ -n "$selected_files" ]; then
-    echo "$selected_files" | xargs git checkout --
-  fi
+	if [ -n "$selected_files" ]; then
+		echo "$selected_files" | xargs git checkout --
+	fi
 }
 
-function glg(){
-  git log --graph --oneline --decorate --all -n ${1:-10}
+function glg() {
+	git log --graph --oneline --decorate --all -n "${1:-10}"
 }
 
 function git_current_branch() {
-  currentBranch=$(git rev-parse --abbrev-ref HEAD)
-  echo $currentBranch
+	currentBranch=$(git rev-parse --abbrev-ref HEAD)
+	echo "$currentBranch"
 }
 
 function ggp() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git push origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git push origin "${b:=$1}"
-  fi
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git push origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git push origin "${b:=$1}"
+	fi
 }
 
-function gcm (){
-  if [[ -z "$1" ]]; then
-    git commit --amend --no-edit
-  else
-    git commit -m "$1" 
-  fi
+function gcm() {
+	if [[ -z "$1" ]]; then
+		git commit --amend --no-edit
+	else
+		git commit -m "$1"
+	fi
 }
