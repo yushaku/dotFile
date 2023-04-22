@@ -1,31 +1,27 @@
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
-##>> theme ---------------------------
+##>> THEME ---------------------------
 eval "$(oh-my-posh init zsh)"
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/takuya.omp.json)"
 
-##>> import file config --------------
-for file in ~/.zsh/*.sh; do
-  source "$file"
-done
-
-##>> config zsh basic ---------------
+##>> CONFIG ZSH BASIC -----------------------------
 HIST_STAMPS="YYYY/MM/DD"
 HYPHEN_INSENSITIVE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-# ENABLE_CORRECTION="true"
-# CASE_SENSITIVE="true"
-# DISABLE_AUTO_TITLE="true"
 
+##>> HISTORY CONFIG -----------------------------
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory 
-################################################################
-#>>                  PLugins and plugin manager            <<##
-################################################################
 
+##>> USE CONFIGED NODE VERSION --------------------
+if [ -f .nvmrc ]; then
+  nvm use
+fi
+
+#>> PLUGINS AND PLUGIN MANAGER ------------------------
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh" ||
   zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh)
 
@@ -37,33 +33,7 @@ if [[ $(which plug) ]]; then
   plug "Aloxaf/fzf-tab"
 fi
 
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
-zstyle ':fzf-tab:complete:cp:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath'
-
-function check_terminal_size() {
-  if [[ "$LINES $COLUMNS" != "$previous_lines $previous_columns" ]]; then
-    set_default_opts
-  fi
-  previous_lines=$LINES
-  previous_columns=$COLUMNS
-}
-
-function set_default_opts() {
-  HEIGHTVAR=$(($LINES / 2))
-  WIDTHVAR=$(($COLUMNS / 2))
-  zstyle ':fzf-tab:*' fzf-pad $HEIGHTVAR
-  export FZF_DEFAULT_OPTS="--color=fg:#707a8c,bg:-1,hl:#3e9831,fg+:#cbccc6,bg+:#434c5e,hl+:#af87ff \
-    --color=dark \
-    --color=info:#ea9d34,prompt:#af87ff,pointer:#cb6283,marker:#cb6283,spinner:#ff87d7 \
-    --sort \
-    --preview-window=right:$WIDTHVAR \
-    --bind 'ctrl-/:change-preview-window(down|hidden|)' \
-    --border rounded"
-}
-set_default_opts && trap check_terminal_size WINCH
-
-if [ -f .nvmrc ]; then
-  nvm use
-fi
-
+##>> IMPORT MY OWN FILE CONFIGURATION ------------------
+for file in ~/.config/zsh/*.sh; do
+  source "$file"
+done

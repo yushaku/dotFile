@@ -6,9 +6,9 @@ if [[ -z "$1" ]]; then
 fi
 
 function copy_zsh() {
-	rm -rf ~/.zsh
+	rm -rf ~/.config/zsh
+	cp -R ./shell/config ~/.config/zsh
 	cp ./shell/zshrc ~/.zshrc
-	cp -R ./shell/config ~/.zsh
 	echo "👉 copy zsh done"
 }
 
