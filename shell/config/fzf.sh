@@ -2,11 +2,10 @@ export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_COMPLETION_TRIGGER='?'
 
-export FZF_DEFAULT_OPTS="
-  --preview-window 'right:55%'
-  --bind 'ctrl-/:change-preview-window(down|right|hidden|)'
-  --bind 'ctrl-u:preview-page-down'
-  --bind 'ctrl-d:preview-page-up'
+export FZF_DEFAULT_OPTS=" --preview-window 'right:55%' \
+  --bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
+  --bind 'ctrl-u:preview-page-up' \
+  --bind 'ctrl-d:preview-page-down' \
   --height 60%"
 
 export FZF_CTRL_T_OPTS=" --preview 'batcat --color=always --style=header,grid --line-range :300 {}'"
@@ -30,7 +29,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --gr
 # 	previous_lines=$LINES
 # 	previous_columns=$COLUMNS
 # }
-#
+#https://www.google.com/webhp?hl=vi&ictx=2&sa=X&ved=0ahUKEwj6796kpL3-AhUHmlYBHRgQCO8QPQgJ
 # function set_default_opts() {
 # 	HEIGHTVAR=$(($LINES / 2))
 # 	WIDTHVAR=$(($COLUMNS / 2))
