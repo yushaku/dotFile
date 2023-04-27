@@ -61,6 +61,7 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+map("n", "<C-a>", "gg<S-v>G", { desc = "select all current file" })
 
 -- go to normal mode
 map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
