@@ -57,7 +57,6 @@ else
   map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -79,6 +78,7 @@ map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Save file" })
 
 -- better indenting
 map("v", "<", "<gv")
@@ -89,8 +89,6 @@ map({ "v", "n" }, "<C-d>", "}")
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
@@ -101,7 +99,7 @@ map("n", "<leader>tk", function()
   Util.float_term(nil, { cwd = Util.get_root() })
 end, { desc = "Terminal (root dir)" })
 map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
-map("n", "<leader>tj", "<cmd>hsplit term://zsh<cr>", { desc = "open terminal at bottom" })
+map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at bottom" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
@@ -124,12 +122,12 @@ map(
   "n",
   "<leader>ss",
   "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
-  { desc = "Search current word" }
+  { desc = "Search current word (spectre)" }
 )
-map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })
+map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word (spectre)" })
 map(
   "n",
   "<leader>sf",
   "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-  { desc = "Search on current file" }
+  { desc = "Search on current file (spectre)" }
 )

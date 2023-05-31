@@ -10,10 +10,27 @@ return {
       { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
     },
   },
+
+  -- transparent background
   {
     "xiyaowong/transparent.nvim",
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {
+      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
+    },
+    keys = {
+      { "<leader>xl", false },
+      { "<leader>xL", false },
+      { "<leader>xq", false },
+      { "<leader>xQ", false },
+      { "<leader>xX", false },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "List trouble in current file" },
+      { "<leader>xw", "<cmd>TroubleToggleworkspace_diagnostics<cr>", desc = "List trouble in workspace" },
+    },
   },
   {
     "echasnovski/mini.animate",

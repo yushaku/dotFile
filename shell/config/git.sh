@@ -1,5 +1,6 @@
 ##>> git shotcut -------------------------
 alias g="git"
+alias gl="lazygit"
 alias ga="git add"
 alias gaa="git add --all"
 
