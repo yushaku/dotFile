@@ -1,19 +1,6 @@
-# copy file to this folder
+# copy file configuration
 
-- cp ~/.tmux.conf ./tmux/tmux.conf
-- cp ~/.zshrc ./zsh/zshrc
-- cp ~/.poshthemes/yushaku.omp.json ./zsh/yushaku.omp.json
-
-## use config
-
-- cp tmux/tmux.conf ~/.tmux.conf
-- cp zsh/zshrc ~/.zshrc
-- cp zsh/yushaku.omp.json ~/.poshthemes/yushaku.omp.json
-- cp -R nvim ~/.config/
-
-## or more easier use command
-
-option: `zsh` | `tmux` | `theme` | `nvim` | `all`
+Option: `shell` | `tmux` | `theme` | `lazyvim` | `all`
 
 ```bash
  ./set.sh <option>
