@@ -8,7 +8,7 @@ k-namespace() {
 	kubectl config set-context --current --namespace="$1"
 }
 
-k-bash() {
+k-exec() {
 	kubectl exec -it "$1" -- sh -c "(bash || sh)"
 }
 

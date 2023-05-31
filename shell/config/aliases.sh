@@ -31,10 +31,15 @@ alias supdate="sudo apt update -y && sudo apt upgrade -y"
 
 ##>> npm && yarn -------------------
 alias n="npm"
+alias nrm="npm remove"
+alias na="npm install"
+alias nad="npm install -d"
+alias nb="npm build"
+
 alias y="yarn"
 alias yrm="yarn remove"
 alias ya="yarn add"
-alias yad="yarn add -D"
+alias yad="yarn add -d"
 alias yb="yarn build"
 
 ##>> pnpm start --------------------------
