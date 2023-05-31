@@ -8,14 +8,26 @@ return {
         find_command = { "rg", "--hidden" },
       },
       find_files = {
-        file_ignore_patterns = { "*.git/*" }, -- Exclude git directories
-        hidden = true, -- Include hidden files
-        search_dirs = { "/path/to/your/search/directory" }, -- Specify the directory to search in
         file_type = { "env" }, -- Specify the file type to search for
       },
     },
   },
   keys = {
+    { "<leader><space>", false },
+    { "<leader>sh", false },
+    { "<leader>sH", false },
+    { "<leader>sk", false },
+    { "<leader>st", false },
+    { "<leader>so", false },
+    { "<leader>sM", false },
+    { "<leader>sa", false },
+    { "<leader>ss", false },
+    { "<leader>sS", false },
+    { "<leader>sC", false },
+    { "<leader>fe", false },
+    { "<leader>fE", false },
+    { "<leader>ft", false },
+    { "<leader>fT", false },
     { "<C-p>", "<CMD>Telescope find_files<CR>", desc = "Find Files (root dir)" },
     { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
     { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },

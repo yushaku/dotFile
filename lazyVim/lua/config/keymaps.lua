@@ -119,15 +119,17 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 map("n", "<leader>uo", "<CMD>SymbolsOutline<CR>", { desc = "toggle outlne" })
 
--- delete existed keymap
-vim.keymap.del("n", "<leader><space>")
-vim.keymap.del("n", "<leader>sh")
-vim.keymap.del("n", "<leader>sH")
-vim.keymap.del("n", "<leader>sk")
-vim.keymap.del("n", "<leader>st")
-vim.keymap.del("n", "<leader>sa")
-vim.keymap.del("n", "<leader>sC")
-vim.keymap.del("n", "<leader>fe")
-vim.keymap.del("n", "<leader>fE")
-vim.keymap.del("n", "<leader>ft")
-vim.keymap.del("n", "<leader>fT")
+-- search and replace
+map(
+  "n",
+  "<leader>ss",
+  "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
+  { desc = "Search current word" }
+)
+map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word" })
+map(
+  "n",
+  "<leader>sf",
+  "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
+  { desc = "Search on current file" }
+)

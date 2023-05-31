@@ -1,7 +1,7 @@
 return {
   "phaazon/hop.nvim",
   enabled = true,
-  opts = { keys = "etovxqpdygfblzhckisuran" },
+  opts = { keys = "asdfghjklqwertyuiopzxcvbnm" },
   keys = {
     { "<leader>k", "<CMD>HopLineStartBC<CR>", desc = "jump line up" },
     { "<leader>j", "<CMD>HopLineStartAC<CR>", desc = "jump line down" },
