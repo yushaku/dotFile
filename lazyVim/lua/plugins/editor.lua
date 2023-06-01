@@ -1,6 +1,7 @@
 return {
-  { "simrat39/symbols-outline.nvim", enabled = true }, -- naviagter with nvim and tmux better
-  { "christoomey/vim-tmux-navigator", enabled = true },
+  { "chrisgrieser/nvim-spider", lazy = true, enabled = true }, -- better w, e and b motion
+  { "simrat39/symbols-outline.nvim", enabled = true }, -- outline of current file
+  { "christoomey/vim-tmux-navigator", enabled = true }, -- naviagter with nvim and tmux better
   { "echasnovski/mini.indentscope", enabled = true },
   {
     "uga-rosa/ccc.nvim",
@@ -10,12 +11,20 @@ return {
       { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
     },
   },
-
-  -- transparent background
-  {
+  { -- transparent background
     "xiyaowong/transparent.nvim",
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
+  },
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "sa", -- Add surrounding in Normal and Visual modes
+        delete = "sd", -- Delete surrounding
+        replace = "sc", -- Replace surrounding
+      },
+    },
   },
   {
     "folke/trouble.nvim",
@@ -29,7 +38,7 @@ return {
       { "<leader>xQ", false },
       { "<leader>xX", false },
       { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "List trouble in current file" },
-      { "<leader>xw", "<cmd>TroubleToggleworkspace_diagnostics<cr>", desc = "List trouble in workspace" },
+      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "List trouble in workspace" },
     },
   },
   {

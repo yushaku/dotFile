@@ -7,9 +7,6 @@ return {
       live_grep = {
         find_command = { "rg", "--hidden" },
       },
-      find_files = {
-        file_type = { "env" }, -- Specify the file type to search for
-      },
     },
   },
   keys = {
