@@ -39,7 +39,7 @@ return {
     "sindrets/diffview.nvim",
     keys = {
       { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "open git diff" },
-      { "<leader>gc", "<CMD>:DiffviewClose<CR>", desc = "close git diff" },
+      { "<leader>gq", "<CMD>:DiffviewClose<CR>", desc = "quit git diff" },
       { "<leader>ge", "<CMD>:DiffviewToggleFiles<CR>", desc = "open changed files" },
       { "<leader>gt", "<CMD>:DiffviewFileHistory<CR>", desc = "open git diff history" },
     },

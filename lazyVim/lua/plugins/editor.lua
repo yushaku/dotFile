@@ -1,5 +1,4 @@
 return {
-  { "chrisgrieser/nvim-spider", lazy = true, enabled = true }, -- better w, e and b motion
   { "christoomey/vim-tmux-navigator", enabled = true }, -- naviagter with nvim and tmux better
   { "echasnovski/mini.indentscope", enabled = true },
   {
