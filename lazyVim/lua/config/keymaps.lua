@@ -115,8 +115,6 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>uo", "<CMD>SymbolsOutline<CR>", { desc = "toggle outlne" })
-
 -- search and replace
 map(
   "n",

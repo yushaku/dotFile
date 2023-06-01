@@ -1,8 +1,14 @@
 return {
   { "chrisgrieser/nvim-spider", lazy = true, enabled = true }, -- better w, e and b motion
-  { "simrat39/symbols-outline.nvim", enabled = true }, -- outline of current file
   { "christoomey/vim-tmux-navigator", enabled = true }, -- naviagter with nvim and tmux better
   { "echasnovski/mini.indentscope", enabled = true },
+  {
+    "simrat39/symbols-outline.nvim",
+    enabled = true,
+    cmd = "SymbolsOutline",
+    opts = { position = "right" },
+    keys = { { "<leader>uo", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
+  },
   {
     "uga-rosa/ccc.nvim",
     enabled = true,
@@ -18,19 +24,11 @@ return {
   },
   {
     "echasnovski/mini.surround",
-    opts = {
-      mappings = {
-        add = "sa", -- Add surrounding in Normal and Visual modes
-        delete = "sd", -- Delete surrounding
-        replace = "sc", -- Replace surrounding
-      },
-    },
+    opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } },
   },
   {
     "folke/trouble.nvim",
-    opts = {
-      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
-    },
+    opts = { action_keys = { close = { "q", "<esc>" }, open_split = { "s" } } },
     keys = {
       { "<leader>xl", false },
       { "<leader>xL", false },

@@ -36,7 +36,7 @@ return {
     },
   },
   {
-    "indrets/diffview.nvim",
+    "sindrets/diffview.nvim",
     keys = {
       { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "open git diff" },
       { "<leader>gc", "<CMD>:DiffviewClose<CR>", desc = "close git diff" },
