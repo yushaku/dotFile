@@ -4,20 +4,15 @@ return {
   keys = {
     {
       "<leader>e",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
-      end,
-      desc = "Explorer NeoTree (root dir)",
+      "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
+      desc = "Explorer NeoTree",
     },
+    { "<C-b>", "<leader>e", desc = "Explorer NeoTree", remap = true },
     {
-      "<leader>E",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-      end,
-      desc = "Explorer NeoTree (cwd)",
+      "<C-g>",
+      "<CMD>Neotree source=git_status toggle=true reveal=true<CR>",
+      desc = "Explorer NeoTree ",
     },
-    { "<C-b>", "<leader>e", desc = "Explorer NeoTree (root dir)", remap = true },
-    { "<C-S-b>", "<leader>E", desc = "Explorer NeoTree (cwd)", remap = true },
   },
   opts = {
     close_if_last_window = true,
@@ -31,37 +26,39 @@ return {
           deleted = "✖",
           renamed = "",
           untracked = "+",
-          ignored = "",
+          igno = "",
           conflict = "",
         },
       },
     },
     filesystem = {
-      filtered_items = {
-        visible = false,
-        hide_dotfiles = false,
-        hide_gitignored = false,
-        hide_hidden = true,
-        -- hide_by_name = { ".git", "node_modules", ".docker", ".vscode" },
-        -- hide_by_pattern = { "*.meta", ".git", "node_modules" },
-        never_show = { "node_modules", ".next" },
-        always_show = { ".gitignored, .env, .env.example" },
-      },
       bind_to_cwd = false,
       follow_current_file = true,
-      git_status = {
-        window = {
-          position = "float",
-          mappings = {
-            ["gA"] = "git_add_all",
-            ["gu"] = "git_unstage_file",
-            ["ga"] = "git_add_file",
-            ["gr"] = "git_revert_file",
-            ["gc"] = "git_commit",
-            ["gp"] = "git_push",
-            ["gg"] = "git_commit_and_push",
-          },
+      filte_items = {
+        visible = false,
+        hide_dotfiles = false,
+        hide_gitigno = false,
+        hide_hidden = true,
+        hide_by_name = { ".git", "node_modules", ".docker", ".vscode" },
+        hide_by_pattern = { "*.meta", ".git", "node_modules" },
+        never_show = { "node_modules", ".next" },
+        always_show = { ".gitigno, .env, .env.example" },
+      },
+      window = {
+        mappings = {
+          ["l"] = "open_file_without_losing_forcus",
         },
+      },
+      commands = {
+        open_file_without_losing_forcus = function(state)
+          local node = state.tree:get_node()
+          if require("neo-tree.utils").is_expandable(node) then
+            state.commands["toggle_node"](state)
+          else
+            state.commands["open"](state)
+            vim.cmd("Neotree reveal")
+          end
+        end,
       },
     },
   },
