@@ -129,6 +129,3 @@ map(
   "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
   { desc = "Search on current file (spectre)" }
 )
-
--- window only
-map("v", "y", "<CMD>'<,'>:w !clip.exe<CR><CR>vv")
