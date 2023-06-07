@@ -5,9 +5,11 @@ return {
       { "windwp/nvim-ts-autotag" },
     },
     event = { "BufReadPre" },
+    commit = "6847ce4f8c93a0c8fd5a3d4df08975ab185187eb",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "bash",
+        "help",
         "html",
         "javascript",
         "json",

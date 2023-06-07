@@ -31,6 +31,7 @@ return {
     { "<leader>fE", false },
     { "<leader>ft", false },
     { "<leader>fT", false },
+    { "<leader>fn", false },
 
     -- create my own config
     { "<C-p>", "<CMD>Telescope find_files<CR>", desc = "Find Files (root dir)" },

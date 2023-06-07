@@ -8,7 +8,7 @@ return {
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
-  { "nvim-treesitter-textobjects", enabled = false },
+  { "nvim-treesitter-textobjects", enabled = true },
   { "persistence.nvim", enabled = false },
   { "b0o/schemastore.nvim", enabled = false },
 

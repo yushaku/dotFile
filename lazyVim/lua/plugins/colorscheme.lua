@@ -10,8 +10,15 @@ return {
         sidebars = "transparent",
         comments = { italic = true },
         keywords = { italic = true },
-        functions = { bold = true },
+        functions = { bold = true, italic = true },
       },
+      dim_inactive = false, -- dims inactive windows
+      lualine_bold = true,
+      on_highlights = function(hl, c)
+        hl.DiagnosticUnnecessary = {
+          fg = c.comment,
+        }
+      end,
     },
   },
 }

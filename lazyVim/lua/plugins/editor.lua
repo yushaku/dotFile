@@ -1,11 +1,26 @@
 return {
-  { "christoomey/vim-tmux-navigator", enabled = true }, -- naviagter with nvim and tmux better
+  { "christoomey/vim-tmux-navigator", enabled = true },
   { "echasnovski/mini.indentscope", enabled = true },
   {
     "simrat39/symbols-outline.nvim",
     enabled = true,
     cmd = "SymbolsOutline",
-    opts = { position = "right" },
+    opts = {
+      position = "right",
+      keymaps = {
+        close = { "<Esc>", "q" },
+        goto_location = "<Cr>",
+        focus_location = { "o", "f" },
+        toggle_preview = "K",
+        rename_symbol = "r",
+        code_actions = "a",
+        fold = "h",
+        unfold = "l",
+        fold_all = "H",
+        unfold_all = "L",
+        fold_reset = "R",
+      },
+    },
     keys = { { "<leader>uo", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
   },
   {
@@ -14,9 +29,10 @@ return {
     keys = {
       { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
       { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
+      { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
     },
   },
-  { -- transparent background
+  {
     "xiyaowong/transparent.nvim",
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
@@ -47,10 +63,10 @@ return {
       return {
         cursor = {
           enable = true,
-          timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+          timing = animate.gen_timing.linear({ duration = 200, unit = "total" }),
         },
         resize = { enable = false },
-        scroll = { enable = false },
+        scroll = { enable = true },
         open = { enable = false },
         close = { enable = false },
       }
