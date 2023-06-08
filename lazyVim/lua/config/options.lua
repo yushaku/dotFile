@@ -64,3 +64,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.diagnostic.disable(args.buf)
   end,
 })
+
+vim.g.clipboard = {
+  name = "WslClipboard",
+  copy = {
+    ["+"] = "clip.exe",
+    ["*"] = "clip.exe",
+  },
+  paste = {
+    ["+"] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))"]])',
+    ["*"] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))"]])',
+  },
+  cache_enabled = 0,
+}
