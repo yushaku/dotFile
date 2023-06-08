@@ -7,11 +7,16 @@ return {
       "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
       desc = "Explorer NeoTree",
     },
-    { "<C-b>", "<leader>e", desc = "Explorer NeoTree", remap = true },
+    {
+      "<C-b>",
+      "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
+      desc = "Explorer NeoTree",
+      remap = true,
+    },
     {
       "<C-g>",
       "<CMD>Neotree source=git_status toggle=true reveal=true<CR>",
-      desc = "Explorer NeoTree ",
+      desc = "Explorer changed files",
     },
   },
   opts = {

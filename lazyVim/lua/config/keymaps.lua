@@ -110,6 +110,14 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
 map("n", "<leader>_", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+map("n", "<leader>wh", "<C-w>t<C-w>H", { desc = "change split window from vertical to horizontal" })
+map("n", "<leader>wv", "<C-w>t<C-w>K", { desc = "change split window from horizontal to vertical " })
+
+-- navigate window pane
+map("n", "<M-1>", "1<C-w>w", { desc = "focus first pane" })
+map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
+map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
+map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })

@@ -65,16 +65,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
-  },
-  paste = {
-    ['+'] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"]])',
-    ['*'] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"]])',
-  },
-  cache_enabled = 0,
-}
-
+-- vim.g.clipboard = {
+--   name = 'WslClipboard',
+--   copy = {
+--     ['+'] = 'clip.exe',
+--     ['*'] = 'clip.exe',
+--   },
+--   paste = {
+--     ['+'] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"]])',
+--     ['*'] = 'os.execute([[powershell.exe -c "[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"]])',
+--   },
+--   cache_enabled = 0,
+-- }
+--

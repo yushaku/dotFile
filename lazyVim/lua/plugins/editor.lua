@@ -55,6 +55,18 @@ return {
     },
   },
   {
+    "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>b1", "<CMD>BufferLineGoToBuffer 1<CR>", desc = "go to first buffer" },
+      { "<leader>b2", "<CMD>BufferLineGoToBuffer 2<CR>", desc = "go to second buffer" },
+      { "<leader>b3", "<CMD>BufferLineGoToBuffer 3<CR>", desc = "go to second buffer" },
+      { "<leader>b4", "<CMD>BufferLineGoToBuffer 4<CR>", desc = "go to second buffer" },
+      { "<leader>bs", "<CMD>BufferLineSortByTabs<CR>", desc = "sort buffer by tabs" },
+      { "<leader>bl", "<CMD>BufferLineCloseRight<CR>", desc = "close all buffer to the right" },
+      { "<leader>bh", "<CMD>BufferLineCloseLeft<CR>", desc = "close all buffer to the left" },
+    },
+  },
+  {
     "echasnovski/mini.animate",
     enable = false,
     event = "VeryLazy",
