@@ -2,6 +2,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
+    enabled = false,
     -- stylua: ignore
     config = function ()
       vim.g.codeium_idle_delay = 75

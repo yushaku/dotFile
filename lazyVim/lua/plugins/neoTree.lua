@@ -8,6 +8,11 @@ return {
       desc = "Explorer NeoTree",
     },
     {
+      "<leader>ff",
+      "<CMD>Neotree source=filesystem toggle reveal=true focus float<CR>",
+      desc = "float Explorer files ",
+    },
+    {
       "<C-b>",
       "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
       desc = "Explorer NeoTree",

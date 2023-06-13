@@ -36,19 +36,25 @@ return {
       { "<leader>ft", false },
       { "<leader>fT", false },
       { "<leader>fn", false },
+      { "<leader>gc", false },
+      { "<leader>gs", false },
 
       -- create my own config
-      {
-        "<C-p>",
-        "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-        desc = "Find Files (root dir)",
-      },
+      { "<C-p>", "<CMD>Telescope find_files<CR>", desc = "Find Files (root dir)" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },
     },
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    pendencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    enabled = false,
+    keys = {
+      {
+        "<leader>ff",
+        "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+        desc = "Find Files (root dir)",
+      },
+    },
   },
 }
