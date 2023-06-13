@@ -28,7 +28,7 @@ return {
         symbols = {
           added = "✚",
           modified = "",
-          deleted = "✖",
+          deleted = "-",
           renamed = "",
           untracked = "+",
           igno = "",
@@ -44,7 +44,7 @@ return {
         hide_dotfiles = false,
         hide_gitigno = false,
         hide_hidden = true,
-        hide_by_name = { ".git", "node_modules", ".docker", ".vscode" },
+        hide_by_name = { ".git", "node_modules", ".docker", ".vscode", "dist" },
         hide_by_pattern = { "*.meta", ".git", "node_modules" },
         never_show = { "node_modules", ".next" },
         always_show = { ".gitigno, .env, .env.example" },
