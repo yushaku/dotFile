@@ -4,17 +4,17 @@ return {
   keys = {
     {
       "<leader>e",
-      "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
+      "<CMD>Neotree source=filesystem left toggle reveal<CR>",
       desc = "Explorer NeoTree",
     },
     {
       "<leader>ff",
-      "<CMD>Neotree source=filesystem toggle reveal=true focus float<CR>",
+      "<CMD>Neotree source=filesystem reveal float<CR>",
       desc = "float Explorer files ",
     },
     {
       "<C-b>",
-      "<CMD>Neotree source=filesystem toggle=true reveal=true<CR>",
+      "<CMD>Neotree source=filesystem left toggle=true reveal=true<CR>",
       desc = "Explorer NeoTree",
       remap = true,
     },

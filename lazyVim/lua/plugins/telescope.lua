@@ -35,6 +35,7 @@ return {
       { "<leader>fE", false },
       { "<leader>ft", false },
       { "<leader>fT", false },
+      { "<leader>ff", false },
       { "<leader>fn", false },
       { "<leader>gc", false },
       { "<leader>gs", false },

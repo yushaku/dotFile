@@ -1,6 +1,6 @@
 ##>> git shotcut -------------------------
 alias g="git"
-alias gl="lazygit"
+alias glz="lazygit"
 alias ga="git add"
 alias gaa="git add --all"
 
@@ -12,7 +12,20 @@ alias gpof='git push --set-upstream origin $(git_current_branch) -f'
 alias gcl='git clone --recurse-submodules'
 
 alias gcbb='git checkout -b'
-alias gcb="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --pointer='' | xargs git checkout"
+function gcb() {
+	if [[ -z "$1" ]]; then
+		git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --pointer='' | xargs git checkout
+	else
+		git checkout "$1"
+	fi
+}
+function gcbo() {
+	if [[ -z "$1" ]]; then
+		echo "please enter branch's name"
+	else
+		git branch --set-upstream-to=origin/"$1" "$1"
+	fi
+}
 
 alias grb='git rebase'
 alias grba='git rebase --abort'

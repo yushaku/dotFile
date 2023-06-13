@@ -43,7 +43,10 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = { action_keys = { close = { "q", "<esc>" }, open_split = { "s" } } },
+    opts = {
+      position = "right", -- position of the list can be: bottom, top, left, right
+      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
+    },
     keys = {
       { "<leader>xl", false },
       { "<leader>xL", false },
@@ -68,7 +71,7 @@ return {
   },
   {
     "echasnovski/mini.animate",
-    enable = false,
+    enable = true,
     event = "VeryLazy",
     opts = function()
       local animate = require("mini.animate")
