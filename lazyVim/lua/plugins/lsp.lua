@@ -105,6 +105,7 @@ return {
   },
   {
     "glepnir/lspsaga.nvim",
+    enabled = true,
     event = "LspAttach",
     config = function()
       require("lspsaga").setup({
