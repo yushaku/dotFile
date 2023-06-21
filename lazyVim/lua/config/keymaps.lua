@@ -18,8 +18,8 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "gj", "o<esc>", { desc = "add new blank line below" })
 map("n", "gk", "O<esc>", { desc = "add new blank line above" })
-map("n", "gh", "^", { desc = "go to begin of line" })
-map("n", "gl", "$", { desc = "go to end of line" })
+map({ "n", "v" }, "gh", "^", { desc = "go to begin of line" })
+map({ "n", "v" }, "gl", "$", { desc = "go to end of line" })
 
 -- Move to window using the <ctrl> hjkl keys
 map({ "n", "t", "i" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
@@ -71,7 +71,6 @@ map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
 map("t", "<esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
-map("i", "kj", "<esc>", { desc = "easy goto Normal mode" })
 
 map("n", "gw", "*N")
 map("x", "gw", "*N")
@@ -107,6 +106,7 @@ map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at b
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+map("n", "<leader>ws", ":wincmd =<CR>", { desc = "make all window have same width" })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
 map("n", "<leader>_", "<C-W>s", { desc = "Split window below" })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
