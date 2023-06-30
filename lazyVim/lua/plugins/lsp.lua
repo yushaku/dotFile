@@ -111,9 +111,18 @@ return {
       require("lspsaga").setup({
         outline = {
           win_position = "right",
+          auto_preview = false,
           keys = {
             expand_or_jump = "<CR>",
             quit = "q",
+          },
+        },
+        finder = {
+          keys = {
+            jump_to = "p",
+            expand_or_jump = "<CR>",
+            quit = { "q", "<ESC>" },
+            close_in_preview = "<ESC>",
           },
         },
       })
