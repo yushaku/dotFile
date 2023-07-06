@@ -1,38 +1,13 @@
 #!/bin/bash
 
-install_grep() {
-	if ! command -v rg &>/dev/null; then
-		sudo apt install ripgrep -y
-		echo "ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern:"
-	fi
-}
-
-install_tmux() {
-	if ! command -v tmux &>/dev/null; then
-		sudo apt install tmux -y
-		echo "Tmux is a terminal multiplexer an alternative to GNU Screen. You can start a Tmux session and then open multiple windows inside that session"
-	fi
-}
-
-install_exa() {
-	if ! command -v exa &>/dev/null; then
-		sudo apt install exa -y
-		echo "exa is a modern replacement for the venerable file-listing command-line program"
-	fi
-}
-
-install_batcat() {
-	if ! command -v batcat &>/dev/null; then
-		sudo apt install batcat -y
-		echo "supports syntax highlighting for a large number of programming and markup languages"
-	fi
-}
-
-install_fdfind() {
-	if ! command -v fdfind &>/dev/null; then
-		sudo apt install fd-find -y
-		echo "✅ fd is a program to find entries in your filesystem. installed fdfine"
-	fi
+install_tools() {
+	apps=("tmux" "exa" "bat", "fd-find", "ripgrep", "xclip")
+	for app in "${apps[@]}"; do
+		if ! command -v $app &>/dev/null; then
+			sudo apt install -y "$app"
+			echo "installed $app sucessfully"
+		fi
+	done
 }
 
 install_ohmypost() {
@@ -43,10 +18,65 @@ install_ohmypost() {
 	fi
 }
 
+install_js() {
+	apps=("npm" "node", "yarn" "pnpm")
+
+	for app in "${apps[@]}"; do
+		echo $app
+		if ! command -v $app &>/dev/null; then
+			if [ $app == "yarn" ]; then
+				npm install -g yarn
+			elif [ $app == "pnpm" ]; then
+				npm install -g pnpm
+			else
+				sudo apt install -y "$app"
+				echo "Installed $app successfully"
+			fi
+		fi
+	done
+}
+
+install_nvm() {
+	if ! command -v nvm &>/dev/null; then
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+		source ~/.nvm/nvm.sh
+		command -v nvm
+	fi
+
+}
+
+install_docker() {
+	if ! command -v docker &>/dev/null; then
+		sudo apt install -y docker docker-compose docker-doc docker-registry docker.io
+		# add user to docker group
+		sudo usermod -aG docker $USER
+		docker version
+	fi
+}
+
 install_fzf() {
 	if ! command -v fzf &>/dev/null; then
-		sudo apt install fzf -y
-		echo "✅ installed fzf"
+		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+		~/.fzf/install
+	fi
+}
+
+install_nvim() {
+	if ! command -v nvim &>/dev/null; then
+		curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+		chmod u+x nvim.appimage
+		./nvim.appimage
+
+		if [! $? -eq 0]; then
+			./nvim.appimage --appimage-extract
+			./squashfs-root/AppRun --version
+
+			# Optional: exposing nvim globally.
+			sudo mv squashfs-root /
+			sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+			nvim
+		fi
+
 	fi
 }
 
@@ -61,16 +91,23 @@ install_zsh() {
 	fi
 }
 
-echo "tools and plugin are installed 💠"
-
 if [[ $1 == "zsh" ]]; then
 	install_zsh
 	install_ohmypost
+
+	echo "zsh are installed 💠"
 elif [[ $1 == "tools" ]]; then
-	install_exa
-	install_tmux
-	install_batcat
-	install_fdfind
-	install_grep
+	install_tools
 	install_fzf
+	install_nvim
+
+	echo "tools and plugin are installed 💠"
+elif [[ $1 == "js" ]]; then
+	install_js
+	install_nvm
+
+	echo "coding env are installed 💠"
+elif [[ $1 == "docker" ]]; then
+	install_docker
+	echo "docker and docker compose are installed 💠"
 fi

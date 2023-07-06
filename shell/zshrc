@@ -28,7 +28,7 @@ fi
 
 #>> PLUGINS AND PLUGIN MANAGER ------------------------
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh" ||
-  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.sh)
+  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
 if [[ $(which plug) ]]; then
   plug "agkozak/zsh-z"

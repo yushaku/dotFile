@@ -74,8 +74,8 @@ return {
         "fixjson", -- A JSON file fixer/formatter for humans using JSON5.
         "json-lsp",
         "stylua", -- An opinionated Lua code formatter.
-        "lua-language-server",
         "eslint-lsp", -- Language Server Protocol implementation for ESLint
+        "lua-language-server",
         "docker-compose-language-service",
         "typescript-language-server",
         "tailwindcss-language-server",
