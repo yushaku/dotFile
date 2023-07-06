@@ -39,7 +39,7 @@ alias nb="npm build"
 alias y="yarn"
 alias yrm="yarn remove"
 alias ya="yarn add"
-alias yad="yarn add -d"
+alias yad="yarn add -D"
 alias yb="yarn build"
 
 ##>> pnpm start --------------------------

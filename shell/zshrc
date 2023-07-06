@@ -16,15 +16,15 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory 
 
-##>> USE CONFIGED NODE VERSION --------------------
-if [ -f .nvmrc ]; then
-  nvm use
-fi
-
 ##>> IMPORT MY OWN FILE CONFIGURATION ------------------
 for file in ~/.config/zsh/*.sh; do
   source "$file"
 done
+
+##>> USE CONFIGED NODE VERSION --------------------
+if [ -f .nvmrc ]; then
+  nvm use
+fi
 
 #>> PLUGINS AND PLUGIN MANAGER ------------------------
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh" ||

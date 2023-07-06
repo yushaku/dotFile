@@ -4,6 +4,8 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       table.insert(opts.sources, nls.builtins.formatting.prettierd)
+      table.insert(opts.sources, nls.builtins.code_actions.ts_node_action)
+      table.insert(opts.sources, nls.builtins.code_actions.gitsigns)
       table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
     end,
   },
@@ -100,6 +102,7 @@ return {
       keys[#keys + 1] = { "gd", false }
       keys[#keys + 1] = { "gr", false }
       keys[#keys + 1] = { "gy", false }
+      keys[#keys + 1] = { "<leader>ca", false }
       keys[#keys + 1] = { "<leader>cd", false }
     end,
   },
@@ -149,8 +152,6 @@ return {
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
       -- It also supports open/vsplit/etc operations, do refer to "definition_action_keys"
-      -- It also supports tagstack
-      -- Use <C-t> to jump back
       keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
 
       -- Go to type definition
