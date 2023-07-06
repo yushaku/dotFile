@@ -42,20 +42,18 @@ return {
     opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } },
   },
   {
-    "folke/trouble.nvim",
-    enable = false,
+    "folke/noice.nvim",
+    enabled = true,
     opts = {
-      position = "right", -- position of the list can be: bottom, top, left, right
-      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
-    },
-    keys = {
-      { "<leader>xl", false },
-      { "<leader>xL", false },
-      { "<leader>xq", false },
-      { "<leader>xQ", false },
-      { "<leader>xX", false },
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "List trouble in current file" },
-      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "List trouble in workspace" },
+      lsp = { progress = { enabled = false } },
+      messages = { enabled = false },
+      presets = {
+        bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = false, -- long messages will be sent to a split
+        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false, -- add a border to hover docs and signature help
+      },
     },
   },
   {
