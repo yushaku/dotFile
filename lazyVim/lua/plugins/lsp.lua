@@ -58,27 +58,39 @@ return {
             return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
           end, tw.default_config.filetypes)
         end,
+
+        -- solidity = function(_, opts)
+        --   opts.filetypes = { "solidity" }
+        --   opts.cmd = { "nomicfoundation-solidity-language-server", "--stdio" }
+        --   opts.single_file_support = true
+        -- end,
       },
     },
   },
-
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
-        "shfmt", -- A shell formatter (sh/bash/mksh).
-        "prettier",
-        "prettierd",
-        "fixjson", -- A JSON file fixer/formatter for humans using JSON5.
-        "json-lsp",
-        "stylua", -- An opinionated Lua code formatter.
+        -- formatter and linter
+        "shfmt",      -- A shell (sh/bash/mksh).
+        "stylua",     -- for lua
+        "prettierd",  --js
+        "fixjson",    -- A JSON file fixer/formatter for humans using JSON5.
         "eslint-lsp", -- Language Server Protocol implementation for ESLint
+
+        -- Language Server Protocol
+        "json-lsp",
         "lua-language-server",
         "docker-compose-language-service",
         "typescript-language-server",
         "tailwindcss-language-server",
+
+        -- blockchain and smart contracts
+        -- "nomicfoundation-solidity-language-server",
+        "solang",
+        "solhint",
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}

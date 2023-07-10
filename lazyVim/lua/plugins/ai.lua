@@ -4,7 +4,7 @@ return {
     event = "InsertEnter",
     enabled = false,
     -- stylua: ignore
-    config = function ()
+    config = function()
       vim.g.codeium_idle_delay = 75
       vim.g.codeium_disable_bindings = 1
       vim.keymap.set("i", "<A-CR>", function() return vim.fn["codeium#Accept"]() end, { expr = true })

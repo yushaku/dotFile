@@ -1,7 +1,7 @@
 return {
   -- pop up an block to display message
   { "rcarriga/nvim-notify", enabled = false },
-  { "SmiteshP/nvim-navic", enabled = false },
+  { "SmiteshP/nvim-navic",  enabled = false },
   {
     "folke/trouble.nvim",
     enabled = false,
@@ -15,17 +15,18 @@ return {
       { "<leader>xq", false },
       { "<leader>xQ", false },
       { "<leader>xX", false },
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "List trouble in current file" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "List trouble in current file" },
       { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "List trouble in workspace" },
     },
   },
   -- motion in vim
-  { "ggandor/flit.nvim", enabled = false },
-  { "ggandor/leap.nvim", enabled = false },
-  { "folke/neoconf.nvim", enabled = false },
+  { "ggandor/flit.nvim",           enabled = false },
+  { "ggandor/leap.nvim",           enabled = false },
+  { "folke/neoconf.nvim",          enabled = false },
   { "nvim-treesitter-textobjects", enabled = true },
-  { "persistence.nvim", enabled = false },
-  { "b0o/schemastore.nvim", enabled = false },
+  { "persistence.nvim",            enabled = false },
+  { "b0o/schemastore.nvim",        enabled = false },
+  { "tomlion/vim-solidity" },
 
   -- better focus remove all unused out of my side
   {

@@ -22,13 +22,13 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "cmp_tabnine" } }))
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-          -- they way you will only jump inside the snippet region
+            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+            -- they way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
@@ -49,4 +49,10 @@ return {
       })
     end,
   },
+  {
+    "tzachar/cmp-tabnine",
+    build = './install.sh',
+    dependencies = 'hrsh7th/nvim-cmp',
+  }
+
 }
