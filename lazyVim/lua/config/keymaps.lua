@@ -109,8 +109,8 @@ map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 map("n", "<leader>tk", function()
   Util.float_term(nil, { cwd = Util.get_root() })
 end, { desc = "Terminal (root dir)" })
-map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>a", { desc = "open terminal at right side" })
-map("n", "<leader>tj", "<cmd>split term://zsh<cr>a", { desc = "open terminal at bottom" })
+map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
+map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at bottom" })
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })

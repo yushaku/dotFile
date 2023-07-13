@@ -64,3 +64,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.diagnostic.disable(args.buf)
   end,
 })
+
+-- autocommands
+-- This function is taken from https://github.com/norcalli/nvim_utils
+local function nvim_create_augroups(definitions)
+  for group_name, definition in pairs(definitions) do
+    vim.cmd("augroup " .. group_name)
+    vim.cmd("autocmd!")
+    for _, def in ipairs(definition) do
+      local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+      vim.cmd(command)
+    end
+    vim.cmd("augroup END")
+  end
+end
+
+local autocmds = {
+  terminal_job = {
+    { "TermOpen", "*", [[tnoremap <buffer> <Esc> <c-\><c-n>]] },
+    { "TermOpen", "*", "startinsert" },
+    { "TermOpen", "*", "setlocal listchars= nonumber norelativenumber" },
+    { "TermOpen", "*", "setlocal cursorline" },
+  },
+}
+nvim_create_augroups(autocmds)
+-- autocommands END
