@@ -4,8 +4,8 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       table.insert(opts.sources, nls.builtins.formatting.prettierd)
-      table.insert(opts.sources, nls.builtins.code_actions.ts_node_action)
       table.insert(opts.sources, nls.builtins.code_actions.gitsigns)
+      -- table.insert(opts.sources, nls.builtins.code_actions.ts_node_action)
       -- table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
     end,
   },
@@ -58,12 +58,6 @@ return {
             return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
           end, tw.default_config.filetypes)
         end,
-
-        -- solidity = function(_, opts)
-        --   opts.filetypes = { "solidity" }
-        --   opts.cmd = { "nomicfoundation-solidity-language-server", "--stdio" }
-        --   opts.single_file_support = true
-        -- end,
       },
     },
   },
@@ -74,10 +68,10 @@ return {
     opts = {
       ensure_installed = {
         -- formatter and linter
-        "shfmt",      -- A shell (sh/bash/mksh).
-        "stylua",     -- for lua
-        "prettierd",  --js
-        "fixjson",    -- A JSON file fixer/formatter for humans using JSON5.
+        "shfmt", -- A shell (sh/bash/mksh).
+        "stylua", -- for lua
+        "prettierd", --js
+        "fixjson", -- A JSON file fixer/formatter for humans using JSON5.
         "eslint-lsp", -- Language Server Protocol implementation for ESLint
 
         -- Language Server Protocol
@@ -88,7 +82,7 @@ return {
         "tailwindcss-language-server",
 
         -- blockchain and smart contracts
-        -- "nomicfoundation-solidity-language-server",
+        "nomicfoundation-solidity-language-server",
         "solang",
         "solhint",
       },

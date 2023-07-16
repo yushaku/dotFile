@@ -30,10 +30,7 @@ return {
   },
   {
     "ckolkey/ts-node-action",
-    enable = true,
+    enable = false,
     dependencies = { "nvim-treesitter" },
-    keys = {
-      { "<leader>ct", "<CMD>:NodeAction<CR>", desc = "Trigger node action" },
-    },
   },
 }

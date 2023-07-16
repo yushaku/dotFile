@@ -136,16 +136,9 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- search and replace
-map(
-  "n",
-  "<leader>ss",
-  "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
-  { desc = "Search current word (spectre)" }
-)
+-- stylua: ignore
+map( "n", "<leader>ss", "<CMD> lua require('spectre').open_visual({select_word=true})<CR>", { desc = "Search current word" })
 map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word (spectre)" })
-map(
-  "n",
-  "<leader>sf",
-  "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-  { desc = "Search on current file (spectre)" }
-)
+map("v", "sf", "<esc><cmd>lua require('spectre').open_visual({select_word=true})<CR>", { desc = "Search current word" })
+-- stylua: ignore
+map( "n", "<leader>sf", "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>", { desc = "Search on current file" })

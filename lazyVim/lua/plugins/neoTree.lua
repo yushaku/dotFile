@@ -9,7 +9,7 @@ return {
     },
     {
       "<leader>ff",
-      "<CMD>Neotree source=filesystem reveal float<CR>",
+      "<CMD>Neotree source=filesystem reveal toggle float<CR>",
       desc = "float Explorer files ",
     },
     {
@@ -20,7 +20,12 @@ return {
     },
     {
       "<C-g>",
-      "<CMD>Neotree source=git_status toggle=true reveal=true<CR>",
+      "<CMD>Neotree source=git_status left toggle reveal<CR>",
+      desc = "Explorer changed files",
+    },
+    {
+      "<leader>fg",
+      "<CMD>Neotree source=git_status toggle float reveal<CR>",
       desc = "Explorer changed files",
     },
   },

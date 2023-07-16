@@ -37,10 +37,7 @@ return {
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
   },
-  {
-    "echasnovski/mini.surround",
-    opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } },
-  },
+  { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
   {
     "folke/noice.nvim",
     enabled = true,
@@ -87,5 +84,29 @@ return {
     config = function(_, opts)
       require("mini.animate").setup(opts)
     end,
+  },
+  {
+    "folke/zen-mode.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "toggle zen mode" } },
+    opts = {
+      window = {
+        options = {
+          signcolumn = "no",
+          number = true,
+          relativenumber = true,
+          cursorline = true,
+          cursorcolumn = false,
+          foldcolumn = "0",
+          list = false,
+        },
+      },
+      plugins = {
+        gitsigns = { enabled = false },
+        tmux = { enabled = true },
+        transparent = { enabled = true },
+      },
+    },
   },
 }
