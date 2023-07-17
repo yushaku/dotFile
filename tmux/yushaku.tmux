@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+# TokyoNight colors for Tmux
+
 set -g status "on"
 set -g status-bg "#24283B"
 set-option -g status-position bottom # top | bottom

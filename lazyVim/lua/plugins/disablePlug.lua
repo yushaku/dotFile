@@ -5,10 +5,7 @@ return {
   {
     "folke/trouble.nvim",
     enabled = false,
-    opts = {
-      position = "right", -- position of the list can be: bottom, top, left, right
-      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
-    },
+    opts = { action_keys = { close = { "q", "<esc>" }, open_split = { "s" } } },
   },
   { "ggandor/flit.nvim", enabled = false },
   { "ggandor/leap.nvim", enabled = false },

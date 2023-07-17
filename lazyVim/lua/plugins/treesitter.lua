@@ -20,6 +20,7 @@ return {
         "tsx",
         "typescript",
         "yaml",
+        "solidity",
       })
       return vim.tbl_deep_extend("force", opts, {
         autotag = {

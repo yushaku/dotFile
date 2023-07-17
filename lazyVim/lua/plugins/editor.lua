@@ -1,6 +1,27 @@
 return {
   { "christoomey/vim-tmux-navigator", enabled = true },
   { "echasnovski/mini.indentscope", enabled = true },
+  { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
+  {
+    "echasnovski/mini.animate",
+    event = "VeryLazy",
+    opts = function()
+      local animate = require("mini.animate")
+      return {
+        cursor = {
+          enable = true,
+          timing = animate.gen_timing.linear({ duration = 200, unit = "total" }),
+        },
+        scroll = { enable = true },
+        resize = { enable = false },
+        open = { enable = false },
+        close = { enable = false },
+      }
+    end,
+    config = function(_, opts)
+      require("mini.animate").setup(opts)
+    end,
+  },
   {
     "simrat39/symbols-outline.nvim",
     enabled = true,
@@ -37,7 +58,6 @@ return {
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
   },
-  { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
   {
     "folke/noice.nvim",
     enabled = true,
@@ -64,26 +84,6 @@ return {
       { "<leader>bl", "<CMD>BufferLineCloseRight<CR>", desc = "close all buffer to the right" },
       { "<leader>bh", "<CMD>BufferLineCloseLeft<CR>", desc = "close all buffer to the left" },
     },
-  },
-  {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = function()
-      local animate = require("mini.animate")
-      return {
-        cursor = {
-          enable = true,
-          timing = animate.gen_timing.linear({ duration = 200, unit = "total" }),
-        },
-        resize = { enable = false },
-        scroll = { enable = true },
-        open = { enable = false },
-        close = { enable = false },
-      }
-    end,
-    config = function(_, opts)
-      require("mini.animate").setup(opts)
-    end,
   },
   {
     "folke/zen-mode.nvim",

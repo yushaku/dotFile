@@ -11,8 +11,18 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- disable a keymap
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "gd", false }
+      keys[#keys + 1] = { "gr", false }
+      keys[#keys + 1] = { "gy", false }
+      keys[#keys + 1] = { "<leader>ca", false }
+      keys[#keys + 1] = { "<leader>cd", false }
+    end,
     opts = {
-      servers = { eslint = {} },
+      servers = { eslint = {}, solang = {} },
       setup = {
         eslint = function()
           require("lazyvim.util").on_attach(function(client)
@@ -60,57 +70,6 @@ return {
         end,
       },
     },
-  },
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    opts = {
-      ensure_installed = {
-        -- formatter and linter
-        "shfmt", -- A shell (sh/bash/mksh).
-        "stylua", -- for lua
-        "prettierd", --js
-        "fixjson", -- A JSON file fixer/formatter for humans using JSON5.
-        "eslint-lsp", -- Language Server Protocol implementation for ESLint
-
-        -- Language Server Protocol
-        "json-lsp",
-        "lua-language-server",
-        "docker-compose-language-service",
-        "typescript-language-server",
-        "tailwindcss-language-server",
-
-        -- blockchain and smart contracts
-        "nomicfoundation-solidity-language-server",
-        "solang",
-        "solhint",
-      },
-    },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require("mason-registry")
-      for _, tool in ipairs(opts.ensure_installed) do
-        local p = mr.get_package(tool)
-        if not p:is_installed() then
-          p:install()
-        end
-      end
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- disable a keymap
-      keys[#keys + 1] = { "K", false }
-      keys[#keys + 1] = { "gd", false }
-      keys[#keys + 1] = { "gr", false }
-      keys[#keys + 1] = { "gy", false }
-      keys[#keys + 1] = { "<leader>ca", false }
-      keys[#keys + 1] = { "<leader>cd", false }
-    end,
   },
   {
     "glepnir/lspsaga.nvim",
