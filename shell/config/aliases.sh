@@ -46,7 +46,6 @@ alias yb="yarn build"
 alias p="pnpm"
 alias pi="pnpm install"
 alias pa="pnpm add"
-alias paa="pnpm add --legacy-peer-deps"
 alias pad="pnpm add -D"
 alias prm="pnpm remove"
 alias pb="pnpm build"
@@ -58,11 +57,6 @@ export PATH="$PNPM_HOME:$PATH"
 alias wcc="warp-cli connect"
 alias wcd="warp-cli disconnect"
 alias wci="sudo systemctl start warp-svc.service"
-
-##>> Connect wifi  -------------------------
-
-##>> shot-cut create projects ----------------------
-alias next="yarn create next-app"
 
 ##>> docker && docker compose --------------------
 alias d="docker"

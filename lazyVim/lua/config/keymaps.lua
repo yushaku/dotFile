@@ -54,6 +54,14 @@ map("n", "i", function()
   end
 end, { expr = true })
 
+map("n", "a", function()
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "a"
+  end
+end, { expr = true })
+
 -- buffers
 if Util.has("bufferline.nvim") then
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
@@ -99,7 +107,7 @@ map("v", ">", ">gv")
 -- map({ "v", "n" }, "<C-d>", "}")
 
 -- new file
-map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
+-- map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
