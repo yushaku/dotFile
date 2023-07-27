@@ -112,7 +112,7 @@ return {
       -- If there is no definition, it will instead be hidden
       -- When you use an action in finder like "open vsplit",
       -- you can use <C-t> to jump back
-      keymap("n", "gf", "<Cmd>Lspsaga lsp_finder<CR>")
+      keymap("n", "gf", "<Cmd>Lspsaga finder<CR>")
 
       -- Peek type definition
       -- You can edit the file containing the type definition in the floating window
