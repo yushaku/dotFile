@@ -26,6 +26,7 @@ return {
     "simrat39/symbols-outline.nvim",
     enabled = true,
     cmd = "SymbolsOutline",
+    event = "VeryLazy",
     opts = {
       position = "right",
       keymaps = {
@@ -47,6 +48,7 @@ return {
   {
     "uga-rosa/ccc.nvim",
     enabled = true,
+    event = "VeryLazy",
     keys = {
       { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
       { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
@@ -55,6 +57,7 @@ return {
   },
   {
     "xiyaowong/transparent.nvim",
+    event = "VeryLazy",
     enabled = true,
     keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
   },

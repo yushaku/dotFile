@@ -6,9 +6,9 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = ">" },
-        topdelete = { text = ">" },
-        changedelete = { text = "▎" },
+        delete = { text = "_" },
+        topdelete = { text = "_" },
+        changedelete = { text = "~" },
         untracked = { text = "┆" },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
@@ -23,20 +23,24 @@ return {
       -- stylua: ignore start
       map("n", "]h", gs.next_hunk, "Next Hunk")
       map("n", "[h", gs.prev_hunk, "Prev Hunk")
+
+      map('n', '<leader>ghd', gs.toggle_deleted, "toggle deleted")
       map("n", "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Add Hunk to Stagging")
       map("n", "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Remove Hunk to Stagging")
-      map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
 
       map("n", "<leader>ga", gs.stage_buffer, "Add file to Stagging ")
-      map("n", "<leader>gr", gs.reset_buffer, "Remove file from Stagging")
+      map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
+      map("n", "<leader>gr", gs.reset_buffer, "Reset all changed in files")
 
-      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+      map("n", "<leader>gp", gs.preview_hunk, "Preview Hunk")
+      map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
+      map({'o', 'x'}, 'ih', '<CMD>Gitsigns select_hunk<CR>')
       end,
     },
   },
   {
     "sindrets/diffview.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "open git diff" },
       { "<leader>gq", "<CMD>:DiffviewClose<CR>", desc = "quit git diff" },

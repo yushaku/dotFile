@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "mfussenegger/nvim-dap",
   -- stylua: ignore
   keys = {
