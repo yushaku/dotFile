@@ -80,7 +80,7 @@ map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-map("n", "<C-a>", "gg<S-v>G", { desc = "select all current file" })
+map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
 
 -- go to normal mode
 map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
@@ -88,8 +88,7 @@ map("t", "<esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
 
-map("n", "gw", "*N")
-map("x", "gw", "*N")
+map({ "n", "x" }, "gw", "*N")
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -103,20 +102,14 @@ map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Save file" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- map({ "v", "n" }, "<C-u>", "{")
--- map({ "v", "n" }, "<C-d>", "}")
-
--- new file
--- map("n", "<leader>n", "<cmd>enew<cr>", { desc = "New File" })
+map("i", "<C-e>", "<C-x><C-e>")
+map("i", "<C-y>", "<C-x><C-y>")
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 
 -- floating terminal
-map("n", "<leader>tk", function()
-  Util.float_term(nil, { cwd = Util.get_root() })
-end, { desc = "Terminal (root dir)" })
 map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
 map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at bottom" })
 
@@ -135,18 +128,28 @@ map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
--- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
 -- search and replace
--- stylua: ignore
-map( "n", "<leader>ss", "<CMD> lua require('spectre').open_visual({select_word=true})<CR>", { desc = "Search current word" })
 map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word (spectre)" })
-map("v", "sf", "<esc><cmd>lua require('spectre').open_visual({select_word=true})<CR>", { desc = "Search current word" })
--- stylua: ignore
-map( "n", "<leader>sf", "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>", { desc = "Search on current file" })
+map(
+  "n",
+  "<leader>ss",
+  "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
+  { desc = "Search current word" }
+)
+map(
+  "n",
+  "<leader>sf",
+  "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
+  { desc = "Search on current file" }
+)
+
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+
+map("", "t", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, hint_offset = -1 })
+end, { remap = true })
+
+map("", "T", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, hint_offset = 1 })
+end, { remap = true })

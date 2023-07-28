@@ -21,6 +21,7 @@ return {
       keys[#keys + 1] = { "gd", false }
       keys[#keys + 1] = { "gr", false }
       keys[#keys + 1] = { "gy", false }
+      keys[#keys + 1] = { "gD", false }
       keys[#keys + 1] = { "[d", false }
       keys[#keys + 1] = { "]d", false }
       keys[#keys + 1] = { "[e", false }
