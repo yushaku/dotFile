@@ -12,18 +12,18 @@ return {
       "eslint-lsp", -- Language Server Protocol implementation for ESLint
 
       -- Language Server Protocol
-      "json-lsp",
+      -- "json-lsp",
       "lua-language-server",
       "docker-compose-language-service",
       "typescript-language-server",
       "tailwindcss-language-server",
-      "js-debug-adapter",
-      "chrome-debug-adapter",
+      -- "js-debug-adapter",
+      -- "chrome-debug-adapter",
 
       -- blockchain and smart contracts
-      "nomicfoundation-solidity-language-server",
-      "solang",
-      "solhint",
+      -- "nomicfoundation-solidity-language-server",
+      -- "solang",
+      -- "solhint",
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}

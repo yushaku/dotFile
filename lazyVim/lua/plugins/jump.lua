@@ -22,11 +22,27 @@ return {
       -- { "<leader><leader>W", "<CMD>:HopPatternAC<CR>", desc = "jump to pattern forward every where" },
       -- { "gb", "<CMD>:HopPatternBC<CR>", desc = "jump to pattern backword every where" },
       -- { "ge", "<CMD>:HopPatternAC<CR>", desc = "jump to pattern forward every where" },
-      { "f", "<CMD>:HopChar1AC<CR>", desc = "jump to char forward every where" },
-      { "F", "<CMD>:HopChar1BC<CR>", desc = "jump to char backword every where" },
-
       { "sf", "<CMD>:HopChar2<CR>", desc = "jump to 2 char every where" },
       { "ss", "<CMD>:HopWord<CR>", desc = "jump to word every where" },
+
+      { "f", "<CMD>:HopChar1AC<CR>", desc = "jump to char forward every where" },
+      { "F", "<CMD>:HopChar1BC<CR>", desc = "jump to char backword every where" },
+      {
+        "t",
+        function()
+          local directions = require("hop.hint").HintDirection
+          require("hop").hint_char1({ direction = directions.AFTER_CURSOR, hint_offset = -1 })
+        end,
+        mode = { "n", "v" },
+      },
+      {
+        "T",
+        function()
+          local directions = require("hop.hint").HintDirection
+          require("hop").hint_char1({ direction = directions.BEFORE_CURSOR, hint_offset = 1 })
+        end,
+        mode = { "n", "v" },
+      },
     },
   },
 }

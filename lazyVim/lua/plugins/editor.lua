@@ -8,18 +8,11 @@ return {
     opts = function()
       local animate = require("mini.animate")
       return {
-        cursor = {
-          enable = true,
-          timing = animate.gen_timing.linear({ duration = 200, unit = "total" }),
-        },
-        scroll = { enable = true },
+        cursor = { enable = true, timing = animate.gen_timing.linear({ duration = 200, unit = "total" }) },
         resize = { enable = false },
         open = { enable = false },
         close = { enable = false },
       }
-    end,
-    config = function(_, opts)
-      require("mini.animate").setup(opts)
     end,
   },
   {
@@ -27,6 +20,7 @@ return {
     enabled = true,
     cmd = "SymbolsOutline",
     event = "VeryLazy",
+    keys = { { "<leader>uo", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
       keymaps = {
@@ -43,7 +37,6 @@ return {
         fold_reset = "R",
       },
     },
-    keys = { { "<leader>uo", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
   },
   {
     "uga-rosa/ccc.nvim",
@@ -109,6 +102,28 @@ return {
         gitsigns = { enabled = false },
         tmux = { enabled = true },
         transparent = { enabled = true },
+      },
+    },
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    enabled = true,
+    event = "VeryLazy",
+    keys = {
+      {
+        "ss",
+        "<esc><cmd>lua require('spectre').open_visual()<CR>",
+        { desc = "Search current word (spectre)", mode = "v" },
+      },
+      {
+        "<leader>ss",
+        "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
+        { desc = "Search current word" },
+      },
+      {
+        "<leader>sf",
+        "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
+        { desc = "Search on current file" },
       },
     },
   },

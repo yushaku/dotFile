@@ -8,7 +8,7 @@ return {
         change = { text = "▎" },
         delete = { text = "_" },
         topdelete = { text = "_" },
-        changedelete = { text = "~" },
+        changedelete = { text = "||" },
         untracked = { text = "┆" },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
@@ -17,7 +17,7 @@ return {
         local gs = package.loaded.gitsigns
 
         local function map(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc, silent = true })
         end
 
       -- stylua: ignore start

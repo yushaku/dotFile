@@ -1,5 +1,3 @@
--- This file is automatically loaded by lazyvim.plugins.config
-
 local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
@@ -18,8 +16,8 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "gj", "o<esc>", { desc = "add new blank line below" })
 map("n", "gk", "O<esc>", { desc = "add new blank line above" })
-map({ "n", "v" }, "gh", "^", { desc = "go to begin of line" })
-map({ "n", "v" }, "gl", "$", { desc = "go to end of line" })
+map({ "n", "v", "t" }, "gh", "^", { desc = "go to begin of line" })
+map({ "n", "v", "t" }, "gl", "$", { desc = "go to end of line" })
 
 -- Move to window using the <ctrl> hjkl keys
 map({ "n", "t", "i" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
@@ -62,22 +60,6 @@ map("n", "a", function()
   end
 end, { expr = true })
 
--- buffers
-if Util.has("bufferline.nvim") then
-  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "<S-Left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-Right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-else
-  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-end
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
@@ -87,10 +69,11 @@ map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
 map("t", "<esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
-
-map({ "n", "x" }, "gw", "*N")
+map("i", "<C-e>", "<C-x><C-e>")
+map("i", "<C-y>", "<C-x><C-y>")
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map({ "n", "x" }, "gw", "*N")
 map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
@@ -102,12 +85,9 @@ map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Save file" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
-map("i", "<C-e>", "<C-x><C-e>")
-map("i", "<C-y>", "<C-x><C-y>")
-
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
+map({ "n", "x", "o", "t" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map({ "n", "x", "o", "t" }, "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 
 -- floating terminal
 map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
@@ -128,28 +108,4 @@ map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
--- search and replace
-map("v", "ss", "<esc><cmd>lua require('spectre').open_visual()<CR>", { desc = "Search current word (spectre)" })
-map(
-  "n",
-  "<leader>ss",
-  "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
-  { desc = "Search current word" }
-)
-map(
-  "n",
-  "<leader>sf",
-  "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-  { desc = "Search on current file" }
-)
-
-local hop = require("hop")
-local directions = require("hop.hint").HintDirection
-
-map("", "t", function()
-  hop.hint_char1({ direction = directions.AFTER_CURSOR, hint_offset = -1 })
-end, { remap = true })
-
-map("", "T", function()
-  hop.hint_char1({ direction = directions.BEFORE_CURSOR, hint_offset = 1 })
-end, { remap = true })
+vim.keymap.del("f1")
