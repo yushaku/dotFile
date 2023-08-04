@@ -52,7 +52,7 @@ return {
     "xiyaowong/transparent.nvim",
     event = "VeryLazy",
     enabled = true,
-    keys = { { "<leader>ut", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
+    keys = { { "<f1>", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
   },
   {
     "folke/noice.nvim",

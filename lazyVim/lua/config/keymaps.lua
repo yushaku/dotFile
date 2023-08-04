@@ -1,4 +1,5 @@
-local Util = require("lazyvim.util")
+-- This file is automatically loaded by lazyvim.plugins.config
+-- local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -108,4 +109,4 @@ map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
-vim.keymap.del("f1")
+-- map("n", "F1", false)
