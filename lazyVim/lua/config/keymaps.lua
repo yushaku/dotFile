@@ -17,8 +17,8 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "gj", "o<esc>", { desc = "add new blank line below" })
 map("n", "gk", "O<esc>", { desc = "add new blank line above" })
-map({ "n", "v", "t" }, "gh", "^", { desc = "go to begin of line" })
-map({ "n", "v", "t" }, "gl", "$", { desc = "go to end of line" })
+map({ "n", "v" }, "gh", "^", { desc = "go to begin of line" })
+map({ "n", "v" }, "gl", "$", { desc = "go to end of line" })
 
 -- Move to window using the <ctrl> hjkl keys
 map({ "n", "t", "i" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })

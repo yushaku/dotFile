@@ -39,7 +39,7 @@ return {
           added = "✚",
           modified = "",
           deleted = "-",
-          renamed = "",
+          renamed = "~",
           untracked = "+",
           igno = "",
           conflict = "",

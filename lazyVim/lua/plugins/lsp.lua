@@ -22,12 +22,6 @@ return {
       keys[#keys + 1] = { "gr", false }
       keys[#keys + 1] = { "gy", false }
       keys[#keys + 1] = { "gD", false }
-      keys[#keys + 1] = { "[d", false }
-      keys[#keys + 1] = { "]d", false }
-      keys[#keys + 1] = { "[e", false }
-      keys[#keys + 1] = { "]e", false }
-      keys[#keys + 1] = { "[w", false }
-      keys[#keys + 1] = { "]w", false }
       keys[#keys + 1] = { "<leader>cd", false }
       -- keys[#keys + 1] = { "<leader>ca", false }
     end,
@@ -93,6 +87,15 @@ return {
         finder = {
           keys = { toggle_or_open = { "<CR>", "o" }, quit = { "q", "<ESC>" } },
         },
+        lightbulb = {
+          enable = false,
+          icon = "",
+        },
+        code_action = {
+          icon = "",
+          enable = true,
+          command_enable = true,
+        },
       })
       local keymap = vim.keymap.set
       -- keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
@@ -107,24 +110,24 @@ return {
       -- keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
       -- keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 
-      keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-      keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-
-      keymap("n", "[e", function()
-        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-      end)
-
-      keymap("n", "]e", function()
-        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-      end)
-
-      keymap("n", "[w", function()
-        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
-      end)
-
-      keymap("n", "]w", function()
-        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
-      end)
+      -- keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+      -- keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+      --
+      -- keymap("n", "[e", function()
+      --   require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+      -- end)
+      --
+      -- keymap("n", "]e", function()
+      --   require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+      -- end)
+      --
+      -- keymap("n", "[w", function()
+      --   require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+      -- end)
+      --
+      -- keymap("n", "]w", function()
+      --   require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+      -- end)
 
       keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
       keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")

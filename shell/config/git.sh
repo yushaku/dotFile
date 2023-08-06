@@ -8,9 +8,9 @@ alias gao='git remote add origin'
 alias ga="git add"
 alias gaa="git add --all"
 
-alias gpp= "git push"
-alias gpf= "git push -u --force-with-lease"
-alias gpo= 'git push -u origin $(_git_current_branch)'
+alias gpp="git push"
+alias gpf="git push -u --force-with-lease"
+alias gpo='git push -u origin $(_git_current_branch)'
 alias gpof='git push -u origin --force-with-lease $(_git_current_branch)'
 
 alias gcbb='git checkout -b'
