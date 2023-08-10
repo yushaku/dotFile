@@ -20,7 +20,7 @@ return {
     enabled = true,
     cmd = "SymbolsOutline",
     event = "VeryLazy",
-    keys = { { "<leader>uo", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
+    keys = { { "<f3>", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
       keymaps = {

@@ -58,6 +58,12 @@ return {
                 "<cmd>TypescriptAddMissingImports<CR>",
                 { buffer = buffer, desc = "Add missing import" }
               )
+              vim.keymap.set(
+                { "n", "i" },
+                "<f2>",
+                "<cmd>TypescriptRenameFile<CR>",
+                { buffer = buffer, desc = "rename file" }
+              )
             end
           end)
           require("typescript").setup({ server = opts })
@@ -70,6 +76,15 @@ return {
           opts.filetypes = vim.tbl_filter(function(ft)
             return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
           end, tw.default_config.filetypes)
+        end,
+
+        solidity = function(_, opts)
+          require("lazyvim.util").on_attach(function(client)
+            if client.name == "solc" then
+              print(client)
+              client.util.root_pattern("hardhat.config.*", ".git")
+            end
+          end)
         end,
       },
     },
