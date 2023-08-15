@@ -58,12 +58,6 @@ return {
                 "<cmd>TypescriptAddMissingImports<CR>",
                 { buffer = buffer, desc = "Add missing import" }
               )
-              vim.keymap.set(
-                { "n", "i" },
-                "<f2>",
-                "<cmd>TypescriptRenameFile<CR>",
-                { buffer = buffer, desc = "rename file" }
-              )
             end
           end)
           require("typescript").setup({ server = opts })
@@ -76,15 +70,6 @@ return {
           opts.filetypes = vim.tbl_filter(function(ft)
             return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
           end, tw.default_config.filetypes)
-        end,
-
-        solidity = function(_, opts)
-          require("lazyvim.util").on_attach(function(client)
-            if client.name == "solc" then
-              print(client)
-              client.util.root_pattern("hardhat.config.*", ".git")
-            end
-          end)
         end,
       },
     },
@@ -99,18 +84,9 @@ return {
           auto_preview = false,
           keys = { toggle_or_jump = "h", quit = { "q", "<ESC>" }, jump = { "<CR>", "o" } },
         },
-        finder = {
-          keys = { toggle_or_open = { "<CR>", "o" }, quit = { "q", "<ESC>" } },
-        },
-        lightbulb = {
-          enable = false,
-          icon = "",
-        },
-        code_action = {
-          icon = "",
-          enable = true,
-          command_enable = true,
-        },
+        finder = { keys = { toggle_or_open = { "<CR>", "o" }, quit = { "q", "<ESC>" } } },
+        lightbulb = { enable = false, icon = "" },
+        code_action = { icon = "", enable = true, command_enable = true },
       })
       local keymap = vim.keymap.set
       -- keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")

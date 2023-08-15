@@ -20,8 +20,8 @@ return {
 
       -- blockchain and smart contracts
       -- "nomicfoundation-solidity-language-server",
-      -- "solang",
-      -- "solhint",
+      "solang",
+      "solhint",
     },
   },
 }

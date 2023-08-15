@@ -12,5 +12,4 @@ return {
   { "folke/neoconf.nvim", enabled = false },
   { "persistence.nvim", enabled = false },
   { "b0o/schemastore.nvim", enabled = false },
-  { "tomlion/vim-solidity", enabled = false },
 }
