@@ -23,7 +23,6 @@ return {
       keys[#keys + 1] = { "gy", false }
       keys[#keys + 1] = { "gD", false }
       keys[#keys + 1] = { "<leader>cd", false }
-      -- keys[#keys + 1] = { "<leader>ca", false }
     end,
     opts = {
       setup = {

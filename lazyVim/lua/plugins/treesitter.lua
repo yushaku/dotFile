@@ -29,9 +29,4 @@ return {
       })
     end,
   },
-  {
-    "ckolkey/ts-node-action",
-    enable = false,
-    dependencies = { "nvim-treesitter" },
-  },
 }

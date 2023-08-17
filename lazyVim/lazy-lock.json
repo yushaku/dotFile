@@ -7,10 +7,6 @@
     "branch": "master",
     "commit": "d33cf7de14eea209b8ed4a7edaed72f0b8cedb30"
   },
-  "SchemaStore.nvim": {
-    "branch": "main",
-    "commit": "a4798a9fb5fd3ac8e132065597b397cab347d3ca"
-  },
   "alpha-nvim": {
     "branch": "main",
     "commit": "b3eef69e95674905bf26c7740dd4bbb09b355494"

@@ -74,8 +74,8 @@ return {
     keys = {
       { "<leader>b1", "<CMD>BufferLineGoToBuffer 1<CR>", desc = "go to first buffer" },
       { "<leader>b2", "<CMD>BufferLineGoToBuffer 2<CR>", desc = "go to second buffer" },
-      { "<leader>b3", "<CMD>BufferLineGoToBuffer 3<CR>", desc = "go to second buffer" },
-      { "<leader>b4", "<CMD>BufferLineGoToBuffer 4<CR>", desc = "go to second buffer" },
+      { "<leader>b3", "<CMD>BufferLineGoToBuffer 3<CR>", desc = "go to third buffer" },
+      { "<leader>b4", "<CMD>BufferLineGoToBuffer 4<CR>", desc = "go to fourth buffer" },
       { "<leader>bs", "<CMD>BufferLineSortByTabs<CR>", desc = "sort buffer by tabs" },
       { "<leader>bl", "<CMD>BufferLineCloseRight<CR>", desc = "close all buffer to the right" },
       { "<leader>bh", "<CMD>BufferLineCloseLeft<CR>", desc = "close all buffer to the left" },
@@ -111,14 +111,14 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "ss",
+        "<leader>ss",
         "<esc><cmd>lua require('spectre').open_visual()<CR>",
-        { desc = "Search current word (spectre)", mode = "v" },
+        { desc = "Search current word (spectre)", mode = { "v" } },
       },
       {
         "<leader>ss",
         "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
-        { desc = "Search current word" },
+        { desc = "Search current word", mode = { "n" } },
       },
       {
         "<leader>sf",

@@ -30,17 +30,16 @@ return {
     },
   },
   opts = {
-    close_if_last_window = true,
     enable_git_status = true,
     enable_diagnostics = true,
     default_component_configs = {
       git_status = {
         symbols = {
-          added = "✚",
-          modified = "",
+          added = "+",
+          modified = "",
           deleted = "-",
           renamed = "~",
-          untracked = "+",
+          untracked = "?",
           igno = "",
           conflict = "",
         },

@@ -85,6 +85,7 @@ map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Save file" })
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+map("v", "p", '"_dP', { desc = "paste without yank line" })
 
 -- quit
 map({ "n", "x", "o", "t" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
@@ -108,5 +109,3 @@ map("n", "<M-1>", "1<C-w>w", { desc = "focus first pane" })
 map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
-
--- map("n", "F1", false)

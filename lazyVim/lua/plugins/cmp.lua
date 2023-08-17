@@ -3,9 +3,8 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-      "hrsh7th/cmp-emoji",
+      { "hrsh7th/cmp-emoji" },
     },
-    ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -51,8 +50,13 @@ return {
   },
   {
     "tzachar/cmp-tabnine",
-    build = './install.sh',
-    dependencies = 'hrsh7th/nvim-cmp',
-  }
-
+    build = "./install.sh",
+    dependencies = "hrsh7th/nvim-cmp",
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/lua/snippets" })
+    end,
+  },
 }
