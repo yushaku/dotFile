@@ -15,8 +15,8 @@ return {
       { "<leader>l", "<CMD>:HopWordCurrentLineAC<CR>", desc = "jump down in current line ", mode = { "n", "v" } },
       { "<leader>h", "<CMD>:HopWordCurrentLineBC<CR>", desc = "jump up in current line down", mode = { "n", "v" } },
 
-      { "<leader>B", "<CMD>:HopWordBC<CR>", desc = "jump backward every where" },
-      { "<leader>E", "<CMD>:HopWordAC<CR>", desc = "jump forward every where" },
+      { "gb", "<CMD>:HopWordBC<CR>", desc = "jump backward every where" },
+      { "ge", "<CMD>:HopWordAC<CR>", desc = "jump forward every where" },
 
       -- { "<leader><leader>w", "<CMD>:HopPatternBC<CR>", desc = "jump to pattern backword every where" },
       -- { "<leader><leader>W", "<CMD>:HopPatternAC<CR>", desc = "jump to pattern forward every where" },

@@ -1,7 +1,7 @@
 return {
   {
     "nvim-neotest/neotest",
-    enabled = true,
+    enabled = false,
     dependencies = { "haydenmeade/neotest-jest", "marilari88/neotest-vitest" },
     -- stylua: ignore
     keys = {
@@ -21,14 +21,38 @@ return {
         opts.adapters,
         require("neotest-jest")({
           jestCommand = "npm test --",
-          jestConfigFile = "jest.config.ts",
+          jestConfigFile = function()
+            local file = vim.fn.expand("%:p")
+            if string.find(file, "/apps/") then
+              return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts"
+            end
+            return vim.fn.getcwd() .. "/jest.config.ts"
+          end,
           env = { CI = true },
           cwd = function()
+            local file = vim.fn.expand("%:p")
+            if string.find(file, "/apps/") then
+              return string.match(file, "(.-/[^/]+/)src")
+            end
             return vim.fn.getcwd()
           end,
         })
       )
       table.insert(opts.adapters, require("neotest-vitest"))
     end,
+  },
+  {
+    "David-Kunz/jester",
+    enabled = false,
+    opts = {
+      dap = { console = "externalTerminal" },
+    },
+     -- stylua: ignore
+    keys = {
+      { "<leader>tt", function() require("jester").run_file() end, desc = "run test this file current file" },
+      { "<leader>tc", function() require("jester").run() end, desc = "run test current test under curror" },
+      { "<leader>td", function() require("jester").debug() end, desc = "run test current test under curror with debug" },
+      { "<leader>tf", function() require("jester").debug_file() end, desc = "run test this file curror with debug" },
+    },
   },
 }

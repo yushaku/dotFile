@@ -32,10 +32,11 @@ map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to 
 map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
 -- Resize window using <ctrl + shift> arrow keys
-map("n", "<C-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-M-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-M-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-M-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-M-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-M-left>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })

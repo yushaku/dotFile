@@ -119,7 +119,7 @@ return {
       --   require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
       -- end)
 
-      keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
+      -- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
       keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 
       keymap({ "n", "t" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")

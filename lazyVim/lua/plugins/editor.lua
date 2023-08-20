@@ -18,9 +18,8 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     enabled = true,
-    cmd = "SymbolsOutline",
     event = "VeryLazy",
-    keys = { { "<f3>", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
+    keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
       keymaps = {
