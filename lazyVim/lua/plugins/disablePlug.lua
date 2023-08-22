@@ -13,6 +13,12 @@ return {
   { "persistence.nvim", enabled = false },
   { "b0o/schemastore.nvim", enabled = false },
   { "goolord/alpha-nvim", enabled = false },
-  { "catppuccin/nvim", enabled = false },
+  { "catppuccin", enabled = false },
   { "dstein64/vim-startuptime", enabled = false },
+  {
+    "folke/flash.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    opts = { jump = { autojump = true }, label = { uppercase = false, reuse = "none" } },
+  },
 }

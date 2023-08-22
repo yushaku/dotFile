@@ -10,6 +10,7 @@ alias vi="nvim"
 alias cat="batcat"
 alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias fd="fdfind"
+alias zshconfig="nvim ~/.zshrc"
 alias ll="exa -lha --time-style=long-iso --icons --colour-scale --group-directories-first"
 function lk() {
 	exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
@@ -31,9 +32,14 @@ alias nad="npm install -d"
 alias nb="npm build"
 
 alias y="yarn"
+alias yd="yarn dev"
+alias yout="yarn outdated"
+alias yt="yarn test"
+alias ytc="yarn test --coverage"
 alias yrm="yarn remove"
 alias ya="yarn add"
 alias yad="yarn add -D"
+alias yap="yarn add --peer"
 alias yb="yarn build"
 
 ##>> pnpm start --------------------------

@@ -1,11 +1,5 @@
 return {
   {
-    "folke/flash.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    opts = { jump = { autojump = true }, label = { uppercase = false, reuse = "none" } },
-  },
-  {
     "phaazon/hop.nvim",
     enabled = true,
     opts = { keys = "asdfghjklqwertyuiopzxcvbnm" },

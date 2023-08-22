@@ -25,6 +25,11 @@ return {
       keys[#keys + 1] = { "<leader>cd", false }
     end,
     opts = {
+      servers = {
+        tailwindcss = {
+          filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" },
+        },
+      },
       setup = {
         eslint = function()
           require("lazyvim.util").on_attach(function(client)
