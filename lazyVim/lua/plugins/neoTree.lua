@@ -47,7 +47,6 @@ return {
     },
     filesystem = {
       bind_to_cwd = false,
-      follow_current_file = true,
       filte_items = {
         visible = false,
         hide_dotfiles = false,

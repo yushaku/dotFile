@@ -48,10 +48,10 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Disable line wrap
 opt.textwidth = 70
 
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+opt.foldcolumn = "1" -- '0' is not bad
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
+opt.foldenable = true
 
 if vim.fn.has("nvim-0.9.0") == 1 then
   opt.splitkeep = "screen"
