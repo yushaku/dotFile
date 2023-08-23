@@ -42,10 +42,11 @@ return {
     "sindrets/diffview.nvim",
     event = { "BufReadPre", "BufNewFile" },
     keys = {
-      { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "open git diff" },
-      { "<leader>gq", "<CMD>:DiffviewClose<CR>", desc = "quit git diff" },
+      { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "Open git diff" },
+      { "<leader>gq", "<CMD>:DiffviewClose<CR>", desc = "Quit git diff" },
       { "<leader>ge", "<CMD>:DiffviewToggleFiles<CR>", desc = "open changed files" },
-      { "<leader>gt", "<CMD>:DiffviewFileHistory<CR>", desc = "open git diff history" },
+      { "<leader>gt", "<CMD>:DiffviewFileHistory<CR>", desc = "Diff history on current branch" },
+      { "<leader>gf", "<CMD>:DiffviewFileHistory %<CR>", desc = "Diff current file" },
     },
   },
 }

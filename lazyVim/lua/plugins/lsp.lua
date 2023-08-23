@@ -18,7 +18,6 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- disable a keymap
       keys[#keys + 1] = { "K", false }
-      keys[#keys + 1] = { "gd", false }
       keys[#keys + 1] = { "gr", false }
       keys[#keys + 1] = { "gy", false }
       keys[#keys + 1] = { "gD", false }
@@ -95,7 +94,6 @@ return {
       })
       local keymap = vim.keymap.set
       keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
-      keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
       keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
       keymap("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
       keymap("n", "gf", "<Cmd>Lspsaga finder<CR>")
@@ -105,7 +103,19 @@ return {
       -- keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
       -- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
       keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-      keymap({ "n", "t" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
+      keymap({ "n", "t", "v" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
+    end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    enabled = false,
+    -- stylua: ignore
+    keys = {
+      { "i", "<c-;>", function() require("lsp_signature").toggle_float_win() end },
+    },
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
     end,
   },
 }

@@ -45,6 +45,8 @@ return {
             fallback()
           end
         end, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       })
     end,
   },
@@ -52,11 +54,5 @@ return {
     "tzachar/cmp-tabnine",
     build = "./install.sh",
     dependencies = "hrsh7th/nvim-cmp",
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    config = function()
-      require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/lua/snippets" })
-    end,
   },
 }
