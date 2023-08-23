@@ -23,6 +23,8 @@ LazyVim is a Neovim setup powered by 💤 lazy.nvim to make it easy to customize
 ![neovim](https://user-images.githubusercontent.com/292349/213447056-92290767-ea16-430c-8727-ce994c93e9cc.png)
 
 ### zsh configuration
+zsh powered by alot of cool plugin like fzf, fzf-tab, auto suggestion...
+![intro2](https://github.com/yushaku/dotFile/assets/72312124/310a876b-7500-4f86-af82-2d2a73b7b80f)
 
 ## make ubuntu like mac-os
 
