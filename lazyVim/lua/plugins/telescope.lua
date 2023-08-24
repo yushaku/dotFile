@@ -4,12 +4,13 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     opts = {
-      extension = {
-        file_browser = {
-          theme = "ivy",
-          auto_depth = true,
-          depth = 2,
-          hidden = { file_browser = true, folder_browser = false },
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-j>"] = "move_selection_next",
+            ["<C-k>"] = "move_selection_previous",
+            ["<esc>"] = "close",
+          },
         },
       },
     },

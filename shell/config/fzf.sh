@@ -6,6 +6,8 @@ export FZF_DEFAULT_OPTS=" --preview-window 'right:55%' \
   --bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
   --bind 'ctrl-u:preview-page-up' \
   --bind 'ctrl-d:preview-page-down' \
+  --bind 'ctrl-j:down' \
+  --bind 'ctrl-k:up' \
   --height 60%"
 
 export FZF_CTRL_T_OPTS=" --preview 'batcat --color=always --style=header,grid --line-range :300 {}'"

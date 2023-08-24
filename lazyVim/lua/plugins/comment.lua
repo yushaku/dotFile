@@ -1,5 +1,3 @@
-local spec_treesitter = require("mini.ai").gen_spec.treesitter
-
 return {
   { "mini.comment", enabled = false },
   {
@@ -34,14 +32,18 @@ return {
   },
   {
     "mini.ai",
-    opts = {
-      custom_textobjects = {
-        c = spec_treesitter({
-          a = "@comment.outer", -- select comment
-          i = "@comment.inner",
-        }),
-      },
-    },
+    opts = function()
+      local ai = require("mini.ai")
+      return {
+        --stylua: ignore
+        custom_textobjects = {
+          c = ai.gen_spec.treesitter( { a = { "@class.outer", "@comment.outer" }, i = { "@class.inner", "@comment.inner" } }, {}),
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("mini.ai").setup(opts)
+    end,
   },
   {
     "todo-comments.nvim",

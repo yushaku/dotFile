@@ -81,6 +81,11 @@ return {
     "glepnir/lspsaga.nvim",
     enabled = true,
     event = "LspAttach",
+    opts = {
+      ui = {
+        kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+      },
+    },
     config = function()
       require("lspsaga").setup({
         outline = {
@@ -104,18 +109,6 @@ return {
       -- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
       keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
       keymap({ "n", "t", "v" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
-    end,
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    -- stylua: ignore
-    keys = {
-      { "i", "<c-;>", function() require("lsp_signature").toggle_float_win() end },
-    },
-    config = function(_, opts)
-      require("lsp_signature").setup(opts)
     end,
   },
 }

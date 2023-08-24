@@ -6,9 +6,9 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "_" },
-        topdelete = { text = "_" },
-        changedelete = { text = "||" },
+        delete = { text = "-" },
+        topdelete = { text = "-" },
+        changedelete = { text = "▎" },
         untracked = { text = "┆" },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
