@@ -1,11 +1,23 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "Neotree",
+  event = "VeryLazy",
   keys = {
+    { "<leader>fe", false },
+    { "<leader>fE", false },
     {
       "<leader>e",
-      "<CMD>Neotree source=filesystem left toggle reveal<CR>",
-      desc = "Explorer NeoTree",
+      function()
+        require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
+      end,
+      desc = "Explorer NeoTree (root)",
+    },
+    {
+      "<leader>E",
+      function()
+        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+      end,
+      desc = "Explorer NeoTree (cwd)",
     },
     {
       "<leader>ff",
@@ -14,9 +26,8 @@ return {
     },
     {
       "<C-b>",
-      "<CMD>Neotree source=filesystem left toggle=true reveal=true<CR>",
+      "<CMD>Neotree source=filesystem left toggle reveal<CR>",
       desc = "Explorer NeoTree",
-      remap = true,
     },
     {
       "<C-g>",
@@ -60,6 +71,10 @@ return {
       window = {
         mappings = {
           ["l"] = "open_file_without_losing_forcus",
+        },
+        fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+          ["<C-j>"] = "move_cursor_down",
+          ["<C-k>"] = "move_cursor_up",
         },
       },
       commands = {

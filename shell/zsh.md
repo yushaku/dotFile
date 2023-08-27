@@ -65,3 +65,7 @@ Command `lazygit` to open its GUI
 - `Resolve Merge Conflicts`: R
 
 - `Open Git Status`: g
+
+## pandoc
+
+convert file: https://pandoc.org/demos.html
