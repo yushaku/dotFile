@@ -49,7 +49,14 @@ alias groh='git reset origin/$(_git_current_branch) --hard'
 alias grs="git reset"
 
 alias gst='git stash'
-alias gsta='git stash -u'
+function gsta() {
+	if [[ -z "$1" ]]; then
+		git stash -au
+	else
+		git stash -au --message "$1"
+	fi
+}
+alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstd="git stash drop"
 
