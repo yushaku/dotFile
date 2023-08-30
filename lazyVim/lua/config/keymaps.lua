@@ -110,3 +110,5 @@ map("n", "<M-1>", "1<C-w>w", { desc = "focus first pane" })
 map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
+
+vim.keymap.del("n", "<C-b>")

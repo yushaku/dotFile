@@ -72,7 +72,7 @@ return {
         mappings = {
           ["l"] = "open_file_without_losing_forcus",
         },
-        fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+        fuzzy_finder_mappings = {
           ["<C-j>"] = "move_cursor_down",
           ["<C-k>"] = "move_cursor_up",
         },

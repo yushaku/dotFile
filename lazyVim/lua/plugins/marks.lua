@@ -5,14 +5,21 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<leader>mm",
+        "M",
         function()
-          require("harpoon.mark").add_file()
+          local mark = require("harpoon.mark")
+          local i = mark.get_current_index()
+          mark.toggle_file(i)
         end,
-        desc = "mark current file",
+        desc = "toggle mark current file",
       },
       {
         "<leader>ml",
+        "<CMD>Telescope harpoon marks<CR>",
+        desc = "list marked files",
+      },
+      {
+        "<C-m>",
         "<CMD>Telescope harpoon marks<CR>",
         desc = "list marked files",
       },

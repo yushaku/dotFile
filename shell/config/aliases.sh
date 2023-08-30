@@ -119,3 +119,12 @@ function pick-aliases() {
 
 zle -N pick-aliases
 bindkey '^A' pick-aliases
+
+j() {
+	if [[ -z "$*" ]]; then
+		cd "$(z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
+	else
+		_last_z_args="$@"
+		z "$@"
+	fi
+}
