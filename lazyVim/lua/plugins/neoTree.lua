@@ -20,29 +20,30 @@ return {
       desc = "Explorer NeoTree (cwd)",
     },
     {
-      "<leader>ff",
-      "<CMD>Neotree source=filesystem reveal toggle float<CR>",
-      desc = "float Explorer files ",
-    },
-    {
-      "<C-b>",
-      "<CMD>Neotree source=filesystem left toggle reveal<CR>",
-      desc = "Explorer NeoTree",
-    },
-    {
-      "<C-g>",
-      "<CMD>Neotree source=git_status left toggle reveal<CR>",
+      "<leader>fg",
+      "<CMD>Neotree source=git_status toggle left reveal<CR>",
       desc = "Explorer changed files",
     },
     {
-      "<leader>fg",
-      "<CMD>Neotree source=git_status toggle float reveal<CR>",
+      "<C-M-f>",
+      "<CMD>Neotree source=filesystem float toggle reveal<CR>",
+      desc = "Explorer NeoTree",
+    },
+    {
+      "<C-M-b>",
+      "<CMD>Neotree source=buffers float toggle reveal<CR>",
+      desc = "Explorer NeoTree buffers",
+    },
+    {
+      "<C-M-g>",
+      "<CMD>Neotree source=git_status float toggle reveal<CR>",
       desc = "Explorer changed files",
     },
   },
   opts = {
     enable_git_status = true,
     enable_diagnostics = true,
+    tabs_max_width = 250,
     default_component_configs = {
       git_status = {
         symbols = {
@@ -71,6 +72,7 @@ return {
       window = {
         mappings = {
           ["l"] = "open_file_without_losing_forcus",
+          ["tab"] = { "next_source" },
         },
         fuzzy_finder_mappings = {
           ["<C-j>"] = "move_cursor_down",
