@@ -14,11 +14,6 @@ return {
         desc = "toggle mark current file",
       },
       {
-        "<leader>ml",
-        "<CMD>Telescope harpoon marks<CR>",
-        desc = "list marked files",
-      },
-      {
         "<C-m>",
         "<CMD>Telescope harpoon marks<CR>",
         desc = "list marked files",

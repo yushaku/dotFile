@@ -1,7 +1,7 @@
 return {
   {
     "nvim-neotest/neotest",
-    enabled = false,
+    enabled = true,
     dependencies = { "haydenmeade/neotest-jest", "marilari88/neotest-vitest" },
     -- stylua: ignore
     keys = {

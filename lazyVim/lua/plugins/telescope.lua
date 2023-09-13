@@ -5,6 +5,10 @@ return {
     version = false, -- telescope did only one release, so use HEAD for now
     opts = {
       defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
         mappings = {
           i = {
             ["<M-j>"] = "move_selection_next",
@@ -43,18 +47,6 @@ return {
       { "<C-p>", "<CMD>Telescope find_files<CR>", desc = "Find Files (root dir)" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },
-    },
-  },
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    pendencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    enabled = false,
-    keys = {
-      {
-        "<leader>ff",
-        "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-        desc = "Find Files (root dir)",
-      },
     },
   },
 }

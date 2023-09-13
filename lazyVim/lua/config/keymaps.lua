@@ -68,7 +68,7 @@ map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
 
 -- go to normal mode
 map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
-map("t", "<esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "kj", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "KJ", "<esc>", { desc = "easy goto Normal mode" })

@@ -25,6 +25,11 @@ return {
       desc = "Explorer changed files",
     },
     {
+      "<leader>ff",
+      "<CMD>Neotree source=filesystem toggle left reveal<CR>",
+      desc = "Explorer changed files",
+    },
+    {
       "<C-M-f>",
       "<CMD>Neotree source=filesystem float toggle reveal<CR>",
       desc = "Explorer NeoTree",
