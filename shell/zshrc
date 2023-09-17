@@ -8,6 +8,10 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
+# BUN completions
+export PATH="/home/$USER/.bun/bin:$PATH"
+[ -s "/home/yushaku/.bun/_bun" ] && source "/home/yushaku/.bun/_bun"
+
 DISTRO=$(lsb_release -si)
 if [[ "$DISTRO" == "Linuxmint" ]]; then
   autoload -Uz compinit && compinit

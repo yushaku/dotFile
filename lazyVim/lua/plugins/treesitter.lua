@@ -30,4 +30,23 @@ return {
       })
     end,
   },
+  {
+    "mini.ai",
+    opts = function()
+      local ai = require("mini.ai")
+      return {
+        custom_textobjects = {
+          c = ai.gen_spec.treesitter(
+            { a = { "@class.outer", "@comment.outer" }, i = { "@class.inner", "@comment.inner" } }, {}
+          ),
+          l = ai.gen_spec.treesitter(
+            { a = { "@loop.outer", "@conditional.outer" }, i = { "@loop.inner", "@conditional.inner" } }, {}
+          ),
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("mini.ai").setup(opts)
+    end,
+  },
 }

@@ -6,7 +6,7 @@ return {
     lazy = false,
     opts = {
       toggler = {
-        line = "gcc", -- linewise comment
+        line = "gcc",  -- linewise comment
         block = "gbc", -- blockwise comment
       },
       ---LHS of operator-pending mappings in NORMAL and VISUAL mode
@@ -17,7 +17,7 @@ return {
       extra = {
         above = "gcO", --Insert comment to the next line and enters INSERT mode
         below = "gco", -- Insert comment to the previous line and enters INSERT mode
-        eol = "gcA", -- Insert comment to the end of line and enters INSERT mode
+        eol = "gcA",   -- Insert comment to the end of line and enters INSERT mode
       },
       ---Enable keybindings
       ---NOTE: If given `false` then the plugin won't create any mappings
@@ -29,21 +29,6 @@ return {
       },
       pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
     },
-  },
-  {
-    "mini.ai",
-    opts = function()
-      local ai = require("mini.ai")
-      return {
-        --stylua: ignore
-        custom_textobjects = {
-          c = ai.gen_spec.treesitter( { a = { "@class.outer", "@comment.outer" }, i = { "@class.inner", "@comment.inner" } }, {}),
-        },
-      }
-    end,
-    config = function(_, opts)
-      require("mini.ai").setup(opts)
-    end,
   },
   {
     "todo-comments.nvim",
