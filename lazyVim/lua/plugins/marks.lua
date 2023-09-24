@@ -1,7 +1,7 @@
 return {
   {
     "ThePrimeagen/harpoon",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     keys = {
       {
