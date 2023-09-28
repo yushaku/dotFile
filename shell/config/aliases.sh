@@ -18,6 +18,7 @@ alias ss="source ~/.zshrc"
 
 ##>> apt manager --------------
 alias sid="sudo dpkg -i"
+alias srmd="sudo dpkg --remove"
 alias si="sudo apt install -y"
 alias srm="sudo apt remove -y"
 alias scl="sudo apt autoremove -y && sudo apt clean -y"
