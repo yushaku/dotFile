@@ -24,35 +24,6 @@ alias srm="sudo apt remove -y"
 alias scl="sudo apt autoremove -y && sudo apt clean -y"
 alias supdate="sudo apt update -y && sudo apt upgrade -y"
 
-##>> npm && yarn -------------------
-alias n="npm"
-alias nrm="npm remove"
-alias na="npm install"
-alias nad="npm install -d"
-alias nb="npm build"
-
-alias y="yarn"
-alias yd="yarn dev"
-alias yout="yarn outdated"
-alias yt="yarn test"
-alias ytc="yarn test --coverage"
-alias yrm="yarn remove"
-alias ya="yarn add"
-alias yad="yarn add -D"
-alias yap="yarn add --peer"
-alias yb="yarn build"
-
-##>> pnpm start --------------------------
-alias p="pnpm"
-alias pi="pnpm install"
-alias pa="pnpm add"
-alias pad="pnpm add -D"
-alias prm="pnpm remove"
-alias pb="pnpm build"
-
-export PNPM_HOME="/home/yushaku/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
 ##>> 1.1.1.1 cloudflare --------------------
 alias wcc="warp-cli connect"
 alias wcd="warp-cli disconnect"
@@ -129,3 +100,27 @@ j() {
 		z "$@"
 	fi
 }
+
+function _package_manager() {
+	if [[ -f bun.lockb ]]; then
+		command bun "$@"
+	elif [[ -f pnpm-lock.yaml ]]; then
+		command pnpm "$@"
+	elif [[ -f yarn.lock ]]; then
+		command yarn "$@"
+	elif [[ -f package-lock.json ]]; then
+		command npm "$@"
+	else
+		command pnpm "$@"
+	fi
+}
+
+alias p='_package_manager'
+alias pi='_package_manager install'
+alias pa='_package_manager add'
+alias pad='_package_manager add -D'
+alias prm='_package_manager remove'
+alias pb='_package_manager build'
+
+export PNPM_HOME="/home/yushaku/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"

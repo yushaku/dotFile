@@ -7,7 +7,7 @@ return {
       -- table.insert(opts.sources, nls.builtins.code_actions.ts_node_action)
       -- table.insert(opts.sources, nls.builtins.diagnostics.write_good)
       -- table.insert(opts.sources, nls.builtins.code_actions.cspell)
-      table.insert(opts.sources, nls.builtins.code_actions.eslint)
+      -- table.insert(opts.sources, nls.builtins.code_actions.eslint)
       -- table.insert(opts.sources, nls.builtins.code_actions.gitsigns)
       -- table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
     end,
