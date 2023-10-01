@@ -1,18 +1,5 @@
 return {
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.formatting.prettierd)
-      -- table.insert(opts.sources, nls.builtins.code_actions.ts_node_action)
-      -- table.insert(opts.sources, nls.builtins.diagnostics.write_good)
-      -- table.insert(opts.sources, nls.builtins.code_actions.cspell)
-      -- table.insert(opts.sources, nls.builtins.code_actions.eslint)
-      -- table.insert(opts.sources, nls.builtins.code_actions.gitsigns)
-      -- table.insert(opts.sources, require("typescript.extensions.null-ls.code-actions"))
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
@@ -28,43 +15,100 @@ return {
         tailwindcss = {
           filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" },
         },
+        eslint = {
+          settings = { workingDirectory = { mode = "auto" } },
+        },
+        tsserver = {
+          keys = {
+            {
+              "<leader>co",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+            {
+              "<leader>ci",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.addMissingImports.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Add missing import",
+            },
+            {
+              "<S-M-o>",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.removeUnused.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Add missing import",
+            },
+            {
+              "<leader>cu",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.fixAll.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "fixes a couple of specific issues",
+            },
+          },
+          settings = {
+            typescript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+            },
+            javascript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+            },
+            completions = { completeFunctionCalls = true },
+          },
+        },
       },
       setup = {
         eslint = function()
-          require("lazyvim.util").on_attach(function(client)
-            if client.name == "eslint" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "tsserver" then
-              client.server_capabilities.documentFormattingProvider = false
-            end
-          end)
-        end,
-
-        tsserver = function(_, opts)
-          require("lazyvim.util").on_attach(function(client, buffer)
-            if client.name == "tsserver" then
-              vim.keymap.set(
-                "n",
-                "<leader>co",
-                "<cmd>TypescriptOrganizeImports<CR>",
-                { buffer = buffer, desc = "Organize Imports" }
-              )
-              vim.keymap.set(
-                "n",
-                "<S-M-o>",
-                "<cmd>TypescriptRemoveUnused<CR>",
-                { buffer = buffer, desc = "Remove unused" }
-              )
-              vim.keymap.set(
-                "n",
-                "<S-M-i>",
-                "<cmd>TypescriptAddMissingImports<CR>",
-                { buffer = buffer, desc = "Add missing import" }
-              )
-            end
-          end)
-          require("typescript").setup({ server = opts })
-          return true
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            callback = function(event)
+              if not require("lazyvim.plugins.lsp.format").enabled() then
+                -- exit early if autoformat is not enabled
+                return
+              end
+              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = "eslint" })[1]
+              if client then
+                local diag = vim.diagnostic.get(event.buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+                if #diag > 0 then
+                  vim.cmd("EslintFixAll")
+                end
+              end
+            end,
+          })
         end,
 
         tailwindcss = function(_, opts)

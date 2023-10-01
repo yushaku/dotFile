@@ -49,11 +49,11 @@ return {
         which_key = true,
       },
       dim_inactive = {
-        enabled = true, -- dims the background color of inactive window
+        enabled = true,          -- dims the background color of inactive window
         shade = "dark",
-        percentage = 10, -- percentage of the shade to apply to the inactive window
+        percentage = 10,         -- percentage of the shade to apply to the inactive window
       },
-      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+      styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { "italic" }, -- Change the style of comments
         conditionals = { "italic" },
         functions = { "bold" },

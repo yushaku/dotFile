@@ -44,8 +44,8 @@ return {
           end,
         },
         "Trouble",
-        { ft = "qf", title = "QuickFix" },
-        { ft = "spectre_panel", size = { height = 0.4 } },
+        { ft = "qf",                title = "QuickFix" },
+        { ft = "spectre_panel",     size = { height = 0.4 } },
         { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
       },
       left = {

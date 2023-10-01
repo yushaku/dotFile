@@ -114,3 +114,7 @@ map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
 vim.keymap.del("n", "<C-b>")
+
+map("n", "<S-M-u>", "<cmd>TypescriptOrganizeImports<CR>", { desc = "Organize Imports" })
+map("n", "<S-M-o>", "<cmd>TypescriptRemoveUnused<CR>", { desc = "Remove unused" })
+map("n", "<S-M-i>", "<cmd>TypescriptAddMissingImports<CR>", { desc = "Add missing import" })
