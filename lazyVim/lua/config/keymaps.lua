@@ -37,6 +37,18 @@ map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to 
 map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
 map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
+local Util = require("lazyvim.util")
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root(), border = "rounded", size = { width = 0.7, height = 0.7 } })
+end
+local lazytermRoot = function()
+  Util.float_term(nil, { border = "rounded", size = { width = 0.7, height = 0.7 } })
+end
+map({ "n", "v" }, "<M-q>", lazyterm, { desc = "Terminal (child dir)" })
+map({ "n", "v" }, "<M-w>", lazytermRoot, { desc = "Terminal (root dir)" })
+map("t", "<M-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<M-w>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
 -- Resize window using <ctrl + shift> arrow keys
 map("n", "<C-M-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<C-M-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
@@ -117,7 +129,4 @@ map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
 vim.keymap.del("n", "<C-b>")
-
-map("n", "<S-M-u>", "<cmd>TypescriptOrganizeImports<CR>", { desc = "Organize Imports" })
-map("n", "<S-M-o>", "<cmd>TypescriptRemoveUnused<CR>", { desc = "Remove unused" })
-map("n", "<S-M-i>", "<cmd>TypescriptAddMissingImports<CR>", { desc = "Add missing import" })
+vim.keymap.del("n", "<c-_>")

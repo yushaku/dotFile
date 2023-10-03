@@ -142,17 +142,18 @@ return {
         code_action = { enable = true, command_enable = true },
       })
       local keymap = vim.keymap.set
+      keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
       keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
       keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
       keymap("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
       keymap("n", "gf", "<Cmd>Lspsaga finder<CR>")
-      keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>")
+      keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "show diagnostic in current line" })
+      keymap("n", "<leader>ut", "<cmd>Lspsaga winbar_toggle<CR>", { desc = "toggle winbar" })
 
       -- keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
       -- keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
       -- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
-      keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-      keymap({ "n", "t", "v" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
+      -- keymap({ "n", "t", "v" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
     end,
   },
 }
