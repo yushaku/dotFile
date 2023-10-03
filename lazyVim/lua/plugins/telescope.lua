@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -44,7 +46,8 @@ return {
       { "<leader>gs", false },
 
       -- create my own config
-      { "<C-p>", "<CMD>Telescope find_files<CR>", desc = "Find Files (root dir)" },
+      { "<C-p>", Util.telescope("files"), desc = "Find Files (child dir)" },
+      { "<C-S-p>", Util.telescope("files", { cwd = false }), desc = "Find Files (root dir)" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },
     },

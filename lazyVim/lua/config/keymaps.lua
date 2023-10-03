@@ -12,6 +12,12 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- n - normal mode
+-- o - select mode
+-- x - visual mode
+-- v - visual mode and select mode
+-- i - insert mode
+
 -- better up/down
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -36,7 +42,6 @@ map("n", "<C-M-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<C-M-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 map("n", "<C-M-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map("n", "<C-M-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-map("n", "<C-M-left>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -70,8 +75,6 @@ map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
 map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
-map("i", "kj", "<esc>", { desc = "easy goto Normal mode" })
-map("i", "KJ", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "<C-e>", "<C-x><C-e>")
 map("i", "<C-y>", "<C-x><C-y>")

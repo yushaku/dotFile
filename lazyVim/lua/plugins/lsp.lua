@@ -34,7 +34,7 @@ return {
               desc = "Organize Imports",
             },
             {
-              "<leader>ci",
+              "<S-M-i>",
               function()
                 vim.lsp.buf.code_action({
                   apply = true,

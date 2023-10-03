@@ -85,4 +85,18 @@ return {
       require("mini.ai").setup(opts)
     end,
   },
+  {
+    "Wansmer/treesj",
+    enabled = true,
+    keys = {
+      {
+        "<leader>m",
+        function()
+          require("treesj").toggle()
+        end,
+        desc = "Split if one-line and join if multiline",
+      },
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 }
