@@ -7,7 +7,7 @@ alias ...='cd ../..'
 alias e="exit"
 alias cl="clear"
 alias vi="nvim"
-alias cat="batcat"
+alias bat="batcat"
 alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias zshconfig="nvim ~/.zshrc"
 alias ll="exa -lha --time-style=long-iso --icons --colour-scale --group-directories-first"
@@ -60,6 +60,17 @@ function myip() {
 	echo "Your ip is:"
 	curl ipinfo.io/ip
 }
+
+function json-to-ts() {
+	local output="${2:-/tmp/output_quicktype.ts}"
+	local tmp="/tmp/short.ts"
+	quicktype --just-types --prefer-types --prefer-unions -o "$tmp" "$1"
+	cat "$tmp" >>"$output"
+	rm "$tmp"
+	batcat "$output"
+}
+
+alias jtt='json-to-ts'
 
 function port-kill() {
 	ports=$(sudo lsof -t -i:"$1")
