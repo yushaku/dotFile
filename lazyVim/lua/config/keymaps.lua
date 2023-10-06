@@ -130,3 +130,24 @@ map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
 vim.keymap.del("n", "<C-b>")
 vim.keymap.del("n", "<c-_>")
+
+function _G.toggle_mark(mark)
+  -- Get the current cursor position
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+  -- Get the position of the mark
+  local success, mark_pos = pcall(vim.api.nvim_buf_get_mark, 0, mark)
+
+  -- If the mark is at the current cursor position, delete it
+  if success and mark_pos[1] == cursor_pos[1] and mark_pos[2] == cursor_pos[2] then
+    -- Clear the mark
+    vim.cmd("delmarks " .. mark)
+  else
+    -- Else, set the mark at the current cursor position
+    vim.cmd("normal! m" .. mark)
+  end
+end
+
+-- Key mapping to toggle a mark
+map("n", "m", ':lua toggle_mark(vim.fn.input("Toggle Mark: "))<CR>', { noremap = true })
+map("n", "<C-m>", "<CMD>Telescope marks<CR>")

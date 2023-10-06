@@ -6,7 +6,7 @@ return {
     lazy = false,
     opts = {
       toggler = {
-        line = "gcc",  -- linewise comment
+        line = "gcc", -- linewise comment
         block = "gbc", -- blockwise comment
       },
       ---LHS of operator-pending mappings in NORMAL and VISUAL mode
@@ -17,7 +17,7 @@ return {
       extra = {
         above = "gcO", --Insert comment to the next line and enters INSERT mode
         below = "gco", -- Insert comment to the previous line and enters INSERT mode
-        eol = "gcA",   -- Insert comment to the end of line and enters INSERT mode
+        eol = "gcA", -- Insert comment to the end of line and enters INSERT mode
       },
       ---Enable keybindings
       ---NOTE: If given `false` then the plugin won't create any mappings
@@ -40,6 +40,7 @@ return {
           alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
         },
         TODO = { icon = " ", color = "info" },
+        MARK = { icon = "󰟙 ", color = "hint" },
         HACK = { icon = " ", color = "warning" },
         WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
         PERF = { icon = "󰅒 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
