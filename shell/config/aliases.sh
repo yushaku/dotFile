@@ -121,10 +121,14 @@ function _package_manager() {
 		command yarn "$@"
 	elif [[ -f package-lock.json ]]; then
 		command npm "$@"
+	elif [[ -f requirements.txt ]]; then
+		command pip "$@"
 	else
 		command pnpm "$@"
 	fi
 }
+
+alias py='python3'
 
 alias p='_package_manager'
 alias pi='_package_manager install'
