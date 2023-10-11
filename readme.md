@@ -64,3 +64,14 @@ Options for TypeScript
 --converters top-level|all-objects                          Which converters to generate (top-level by default)
 --raw-type json|any                                         Type of raw input (json by default)
 ```
+
+## commit with gpt
+
+- [opencommit](https://github.com/di-sukharev/opencommit#setup) use with [gitmoji](https://github.com/carloscuesta/gitmoji)
+
+```bash
+pnpm install -g gitmoji-cli opencommit
+```
+
+- oco config set OCO_OPENAI_API_KEY=<key>
+- oco config set OCO_EMOJI=true
