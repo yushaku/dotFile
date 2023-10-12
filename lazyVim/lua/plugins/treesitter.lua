@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      { "windwp/nvim-ts-autotag" },
       { "JoosepAlviste/nvim-ts-context-commentstring" },
     },
     event = { "BufReadPre" },

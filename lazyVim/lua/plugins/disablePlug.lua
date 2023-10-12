@@ -1,7 +1,6 @@
 return {
   -- pop up an block to display message
   { "rcarriga/nvim-notify", enabled = false },
-  { "SmiteshP/nvim-navic", enabled = false },
   {
     "folke/trouble.nvim",
     enabled = false,

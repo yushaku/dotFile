@@ -1,5 +1,5 @@
 -- This file is automatically loaded by lazyvim.plugins.config
--- local Util = require("lazyvim.util")
+local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -37,15 +37,13 @@ map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to 
 map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
 map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
-local Util = require("lazyvim.util")
-local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root(), border = "rounded", size = { width = 0.7, height = 0.7 } })
-end
-local lazytermRoot = function()
-  Util.float_term(nil, { border = "rounded", size = { width = 0.7, height = 0.7 } })
-end
-map({ "n", "v" }, "<M-q>", lazyterm, { desc = "Terminal (child dir)" })
-map({ "n", "v" }, "<M-w>", lazytermRoot, { desc = "Terminal (root dir)" })
+map({ "n", "v" }, "<M-q>", function()
+  Util.terminal(nil, { cwd = Util.root(), border = "rounded", size = { width = 0.7, height = 0.7 } })
+end, { desc = "Terminal (root dir)" })
+
+map({ "n", "v" }, "<M-w>", function()
+  Util.terminal(nil, { border = "rounded", size = { width = 0.7, height = 0.7 } })
+end, { desc = "Terminal (cwd)" })
 map("t", "<M-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<M-w>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 

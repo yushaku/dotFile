@@ -71,7 +71,34 @@ Options for TypeScript
 
 ```bash
 pnpm install -g gitmoji-cli opencommit
+oco config set OCO_EMOJI=true
+oco config set OCO_OPENAI_API_KEY=<key>
 ```
 
-- oco config set OCO_OPENAI_API_KEY=<key>
-- oco config set OCO_EMOJI=true
+## format json with jq
+
+```bash
+sudo install -y jq
+
+curl -X GET  http://localhost:3000/api/setup | jq                                                                                                          ─╯
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                Dload  Upload   Total   Spent    Left  Speed
+100   233    0   233    0     0    682      0 --:--:-- --:--:-- --:--:--   683
+{
+  "database": {
+    "name": "ai-assistant",
+    "dimension": 1536,
+    "metric": "cosine",
+    "pods": 1,
+    "replicas": 1,
+    "shards": 1,
+    "podType": "starter"
+  },
+  "status": {
+    "ready": true,
+    "state": "Ready",
+    "host": "ai-assistant-d6cf69f.svc.gcp-starter.pinecone.io",
+    "port": 433
+  }
+}
+```
