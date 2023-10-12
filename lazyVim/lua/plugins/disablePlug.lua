@@ -4,7 +4,7 @@ return {
   { "SmiteshP/nvim-navic", enabled = false },
   {
     "folke/trouble.nvim",
-    enabled = true,
+    enabled = false,
     opts = { action_keys = { close = { "q", "<esc>" }, open_split = { "s" } } },
   },
   { "ggandor/flit.nvim", enabled = false },

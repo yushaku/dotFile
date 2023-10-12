@@ -98,7 +98,7 @@ map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
-map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Save file" })
+map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Undo" })
 
 -- better indenting
 map("v", "<", "<gv")

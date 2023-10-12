@@ -37,25 +37,19 @@ return {
         "<leader>sd",
         function()
           flash.jump({
-            matcher = function(win)
-              ---@param diag Diagnostic
-              return vim.tbl_map(function(diag)
-                return {
-                  pos = { diag.lnum + 1, diag.col },
-                  end_pos = { diag.end_lnum + 1, diag.end_col - 1 },
-                }
-              end, vim.diagnostic.get(vim.api.nvim_win_get_buf(win)))
-            end,
-            action = function(match, state)
-              vim.api.nvim_win_call(match.win, function()
-                vim.api.nvim_win_set_cursor(match.win, match.pos)
-                vim.diagnostic.open_float()
-              end)
-              state:restore()
-            end,
+            pattern = ".",
+            search = {
+              mode = function(pattern)
+                if pattern:sub(1, 1) == "." then
+                  pattern = pattern:sub(2)
+                end
+                return ([[\<%s\w*\>]]):format(pattern), ([[\<%s]]):format(pattern)
+              end,
+            },
+            jump = { pos = "range" },
           })
         end,
-        desc = "flash continue last search",
+        desc = "flash select any word",
       },
     },
   },
