@@ -110,19 +110,25 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<leader>ss",
-        "<esc><cmd>lua require('spectre').open_visual()<CR>",
-        { desc = "Search current word (spectre)", mode = { "v" } },
+        "<leader>sr",
+        "<cmd>lua require('spectre').toggle()<CR>",
+        desc = "Spectre toggle",
       },
       {
         "<leader>ss",
-        "<CMD> lua require('spectre').open_visual({select_word=true})<CR>",
-        { desc = "Search current word", mode = { "n" } },
+        "<esc><cmd>lua require('spectre').open_visual()<CR>",
+        desc = "Spectre search selected word",
+        mode = { "v" },
+      },
+      {
+        "<leader>ss",
+        "<CMD>lua require('spectre').open_visual({select_word=true})<CR>",
+        desc = "Spectre search current word",
       },
       {
         "<leader>sf",
         "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-        { desc = "Search on current file" },
+        desc = "Spectre search on current file",
       },
     },
   },

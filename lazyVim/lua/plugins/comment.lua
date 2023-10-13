@@ -32,6 +32,10 @@ return {
   },
   {
     "todo-comments.nvim",
+    keys = {
+      { "<leader>sT", false },
+      { "<leader>st", false },
+    },
     opts = {
       keywords = {
         FIX = {

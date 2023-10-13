@@ -25,7 +25,62 @@ return {
   },
   {
     "tzachar/cmp-tabnine",
+    enabled = false,
     build = "./install.sh",
     dependencies = "hrsh7th/nvim-cmp",
+  },
+  {
+    "Exafunction/codeium.nvim",
+    enabled = false,
+    commit = "63835fcd9191b65b12d6ef3ba8ce286721a6e83e",
+    dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
+    config = function()
+      require("codeium").setup()
+    end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    keys = {
+      {
+        "<leader>aa",
+        "<CMD>ChatGPT<CR>",
+        desc = "ChatGPT asking",
+      },
+      {
+        "<leader>ac",
+        "<CMD>ChatGPTCompleteCode<CR>",
+        desc = "ChatGPT complete code",
+      },
+      {
+        "<leader>at",
+        "<CMD>ChatGPTRun add_tests<CR>",
+        desc = "ChatGPT add tests",
+      },
+      {
+        "<leader>af",
+        "<CMD>ChatGPTRun fix_bugs<CR>",
+        desc = "ChatGPT fix bugs",
+      },
+      {
+        "<leader>ao",
+        "<CMD>ChatGPTRun optimize_code<CR>",
+        desc = "ChatGPT optimize code",
+      },
+      {
+        "<leader>ae",
+        "<CMD>ChatGPTRun explain_code<CR>",
+        desc = "ChatGPT explain code",
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }

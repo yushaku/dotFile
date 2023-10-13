@@ -24,10 +24,9 @@ return {
       -- remove deault config of telescope
       { "<leader><space>", false },
       { "<leader>sh", false },
+      { '<leader>s"', false },
       { "<leader>sH", false },
       { "<leader>sk", false },
-      { "<leader>sT", false },
-      { "<leader>st", false },
       { "<leader>so", false },
       { "<leader>sM", false },
       { "<leader>sa", false },
