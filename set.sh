@@ -15,8 +15,9 @@ function copy_zsh() {
 function copy_theme() {
 	rm -rf ~/.poshthemes
 	mkdir ~/.poshthemes
-	cp -R ./shell/themes/takuya.omp.json ~/.poshthemes
-	cp -R ./shell/themes/yushaku.omp.json ~/.poshthemes
+	cp -R ./themes/takuya.omp.json ~/.poshthemes
+	cp -R ./themes/yushaku.omp.json ~/.poshthemes
+	cp -R ./themes/starship.toml ~/.config/starship.toml
 	echo "👉 copy theme done"
 }
 
@@ -43,14 +44,11 @@ elif [ "$1" == "theme" ]; then
 elif [ "$1" == "lazyVim" ]; then
 	copy_lazyvim
 
-elif
-	[ "$1" == "all" ]
-then
+elif [ "$1" == "all" ]; then
 	copy_zsh
 	copy_theme
 	copy_tmux
 	copy_lazyvim
-
 	echo "⭐ set all config to system successfully"
 
 else

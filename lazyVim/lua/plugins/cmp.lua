@@ -25,7 +25,7 @@ return {
   },
   {
     "tzachar/cmp-tabnine",
-    enabled = false,
+    enabled = true,
     build = "./install.sh",
     dependencies = "hrsh7th/nvim-cmp",
   },

@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "final_space": false,
   "osc99": true,
   "blocks": [
