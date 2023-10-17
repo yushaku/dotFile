@@ -1,7 +1,7 @@
 #! /bin/bash
 if [[ -z "$1" ]]; then
 	echo "please pick one of those option:"
-	echo "zsh | tmux | theme | lazyVim | all"
+	echo "zsh | tmux | themes | lazyVim | all"
 	exit 0
 fi
 
@@ -29,30 +29,33 @@ function copy_lazyvim() {
 
 function copy_tmux() {
 	cp -R ./tmux ~/.config/
-	echo "👉 copy file to .tmux.conf done"
+	echo "👉 copy file config tmux done"
 }
 
-if [ "$1" == "tmux" ]; then
-	copy_tmux
+for arg in "$@"; do
+	echo "Argument: $arg"
+	if [ "$arg" == "tmux" ]; then
+		copy_tmux
 
-elif [ "$1" == "shell" ]; then
-	copy_zsh
+	elif [ "$arg" == "shell" ]; then
+		copy_zsh
 
-elif [ "$1" == "theme" ]; then
-	copy_theme
+	elif [ "$arg" == "themes" ]; then
+		copy_theme
 
-elif [ "$1" == "lazyVim" ]; then
-	copy_lazyvim
+	elif [ "$arg" == "lazyVim" ]; then
+		copy_lazyvim
 
-elif [ "$1" == "all" ]; then
-	copy_zsh
-	copy_theme
-	copy_tmux
-	copy_lazyvim
-	echo "⭐ set all config to system successfully"
+	# elif [ "$arg" == "all" ]; then
+	# 	copy_zsh
+	# 	copy_theme
+	# 	copy_tmux
+	# 	copy_lazyvim
+	# 	echo "⭐ set all config to system successfully"
 
-else
-	echo "do not know that option"
-	echo "please pick one of those option:"
-	echo "zsh | tmux | theme | lazyVim | all"
-fi
+	else
+		echo "do not know that option"
+		echo "please pick one of those option:"
+		echo "zsh | tmux | themes | lazyVim | all"
+	fi
+done
