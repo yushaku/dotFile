@@ -1,4 +1,10 @@
 local flash = require("flash")
+local function format(opts)
+  return {
+    { opts.match.label1, "FlashLabel" },
+    { opts.match.label2, "FlashLabel" },
+  }
+end
 
 return {
   {
@@ -18,13 +24,94 @@ return {
     },
     keys = {
       {
-        "<leader>sw",
+        "<leader>l",
         function()
           flash.jump({
-            pattern = vim.fn.expand("<cword>"),
+            search = { mode = "search", forward = true, wrap = false },
+            label = { after = false, before = { 0, 0 }, uppercase = false, format = format },
+            pattern = [[\<]],
+            action = function(match, state)
+              state:hide()
+              flash.jump({
+                search = { max_length = 0 },
+                highlight = { matches = false },
+                label = { format = format },
+                matcher = function(win)
+                  -- limit matches to the current label
+                  return vim.tbl_filter(function(m)
+                    return m.label == match.label and m.win == win
+                  end, state.results)
+                end,
+                labeler = function(matches)
+                  for _, m in ipairs(matches) do
+                    m.label = m.label2 -- use the second label
+                  end
+                end,
+              })
+            end,
+            labeler = function(matches, state)
+              local labels = state:labels()
+              for m, match in ipairs(matches) do
+                match.label1 = labels[math.floor((m - 1) / #labels) + 1]
+                match.label2 = labels[(m - 1) % #labels + 1]
+                match.label = match.label1
+              end
+            end,
           })
         end,
-        desc = "flash with the word under cursor",
+        desc = "flash 2-char jump next",
+      },
+      {
+        "<leader>h",
+        function()
+          flash.jump({
+            search = { mode = "search", forward = false, wrap = false },
+            label = { after = false, before = { 0, 0 }, uppercase = false, format = format },
+            pattern = [[\<]],
+            action = function(match, state)
+              state:hide()
+              flash.jump({
+                search = { max_length = 0 },
+                highlight = { matches = false },
+                label = { format = format },
+                matcher = function(win)
+                  -- limit matches to the current label
+                  return vim.tbl_filter(function(m)
+                    return m.label == match.label and m.win == win
+                  end, state.results)
+                end,
+                labeler = function(matches)
+                  for _, m in ipairs(matches) do
+                    m.label = m.label2 -- use the second label
+                  end
+                end,
+              })
+            end,
+            labeler = function(matches, state)
+              local labels = state:labels()
+              for m, match in ipairs(matches) do
+                match.label1 = labels[math.floor((m - 1) / #labels) + 1]
+                match.label2 = labels[(m - 1) % #labels + 1]
+                match.label = match.label1
+              end
+            end,
+          })
+        end,
+        desc = "flash 2-char jump previous",
+      },
+      {
+        "<leader>j",
+        mode = { "n", "x", "o" },
+        function()
+          flash.jump({
+            search = { mode = "search", max_length = 0 },
+            highlight = {
+              label = { after = { 0, 0 } },
+              matches = false,
+            },
+            pattern = "^\\s*\\S\\?",
+          })
+        end,
       },
       {
         "<leader>sc",
@@ -33,25 +120,37 @@ return {
         end,
         desc = "flash continue last search",
       },
-      {
-        "<leader>sd",
-        function()
-          flash.jump({
-            pattern = ".",
-            search = {
-              mode = function(pattern)
-                if pattern:sub(1, 1) == "." then
-                  pattern = pattern:sub(2)
-                end
-                return ([[\<%s\w*\>]]):format(pattern), ([[\<%s]]):format(pattern)
+    },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    optional = true,
+    opts = function(_, opts)
+      local function flashNvim(prompt_bufnr)
+        require("flash").jump({
+          pattern = "^",
+          label = { after = { 0, 0 } },
+          search = {
+            mode = "search",
+            exclude = {
+              function(win)
+                return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
               end,
             },
-            jump = { pos = "range" },
-          })
-        end,
-        desc = "flash select any word",
-      },
-    },
+          },
+          action = function(match)
+            local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+            picker:set_selection(match.pos[1] - 1)
+          end,
+        })
+      end
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+        mappings = {
+          n = { s = flashNvim },
+          i = { ["<c-s>"] = flashNvim },
+        },
+      })
+    end,
   },
   {
     "phaazon/hop.nvim",
