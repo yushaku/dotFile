@@ -13,10 +13,8 @@ alias gpf="git push -u --force-with-lease"
 alias gpo='git push -u origin $(_git_current_branch)'
 alias gpof='git push -u origin --force-with-lease $(_git_current_branch)'
 
-alias gcbb='git checkout -b'
 alias gbd='git branch -D'
 alias gbdo='git push origin -d'
-
 function gcb() {
 	if [[ -z "$1" ]]; then
 		git branch --sort=-committerdate |
@@ -25,9 +23,15 @@ function gcb() {
 				--pointer='' |
 			xargs git checkout
 	else
-		git checkout "$1"
+		# Check if the branch exists
+		if git show-ref --verify --quiet refs/heads/"$1"; then
+			git checkout "$1"
+		else
+			git checkout -b "$1"
+		fi
 	fi
 }
+
 function gbo() {
 	if [[ -z "$1" ]]; then
 		echo "please enter branch's name"

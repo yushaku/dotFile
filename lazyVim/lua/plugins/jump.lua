@@ -27,7 +27,7 @@ return {
         "<leader>l",
         function()
           flash.jump({
-            search = { mode = "search", forward = true, wrap = false },
+            search = { mode = "search", forward = true, wrap = false, multi_window = false },
             label = { after = false, before = { 0, 0 }, uppercase = false, format = format },
             pattern = [[\<]],
             action = function(match, state)
@@ -65,7 +65,7 @@ return {
         "<leader>h",
         function()
           flash.jump({
-            search = { mode = "search", forward = false, wrap = false },
+            search = { mode = "search", forward = false, wrap = false, multi_window = false },
             label = { after = false, before = { 0, 0 }, uppercase = false, format = format },
             pattern = [[\<]],
             action = function(match, state)

@@ -11,7 +11,6 @@ $golang\
 $solidity\
 $php\
 [](fg:#212736 bg:#1d2230)\
-$time\
 $cmd_duration\
 [ ](fg:#1d2230)\
 \n[╰─](fg:#5382f0)$character
@@ -75,7 +74,7 @@ format = '[[ $time](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [cmd_duration]
 disabled = false
-min_time = 500
+min_time = 0
 style = "bg:#1d2230"
 format = '[[ $duration](fg:#a0a9cb bg:#1d2230)]($style)'
 
