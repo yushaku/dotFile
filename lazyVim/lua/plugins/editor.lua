@@ -38,15 +38,26 @@ return {
     },
   },
   {
-    "uga-rosa/ccc.nvim",
+    "NvChad/nvim-colorizer.lua",
     enabled = true,
     event = "VeryLazy",
     keys = {
-      { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
-      { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
-      { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
+      { "<leader>cc", "<CMD>ColorizerToggle<CR>", desc = "toggle preview color" },
+    },
+    opts = {
+      user_default_options = { tailwind = true },
     },
   },
+  -- {
+  --   "uga-rosa/ccc.nvim",
+  --   enabled = true,
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
+  --     { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
+  --     { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
+  --   },
+  -- },
   {
     "xiyaowong/transparent.nvim",
     event = "VeryLazy",
