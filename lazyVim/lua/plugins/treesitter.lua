@@ -98,4 +98,9 @@ return {
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "LazyFile",
+    enabled = true,
+  },
 }
