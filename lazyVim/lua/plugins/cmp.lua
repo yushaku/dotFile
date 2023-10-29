@@ -24,21 +24,6 @@ return {
     end,
   },
   {
-    "tzachar/cmp-tabnine",
-    enabled = true,
-    build = "./install.sh",
-    dependencies = "hrsh7th/nvim-cmp",
-  },
-  {
-    "Exafunction/codeium.nvim",
-    enabled = false,
-    commit = "63835fcd9191b65b12d6ef3ba8ce286721a6e83e",
-    dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
-    config = function()
-      require("codeium").setup()
-    end,
-  },
-  {
     "jackMort/ChatGPT.nvim",
     enabled = false,
     event = "VeryLazy",

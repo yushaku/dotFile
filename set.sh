@@ -1,7 +1,7 @@
 #! /bin/bash
 if [[ -z "$1" ]]; then
 	echo "please pick one of those option:"
-	echo "zsh | tmux | themes | lazyVim | all"
+	echo "shell | tmux | themes | lazyVim | all"
 	exit 0
 fi
 
@@ -13,10 +13,8 @@ function copy_zsh() {
 }
 
 function copy_theme() {
-	rm -rf ~/.poshthemes
-	mkdir ~/.poshthemes
-	cp -R ./themes/takuya.omp.json ~/.poshthemes
-	cp -R ./themes/yushaku.omp.json ~/.poshthemes
+	mkdir -p ~/.poshthemes
+	cp -R ./themes/* ~/.poshthemes
 	cp -R ./themes/starship.toml ~/.config/starship.toml
 	echo "👉 copy theme done"
 }
@@ -32,7 +30,21 @@ function copy_tmux() {
 	echo "👉 copy file config tmux done"
 }
 
+function isCopyAll() {
+	local arguments=$@
+	[[ "$arguments" =~ "all" ]]
+}
+
 for arg in "$@"; do
+	if isCopyAll "$@"; then
+		echo "⭐ set all config to system successfully"
+		copy_zsh
+		copy_theme
+		copy_tmux
+		copy_lazyvim
+		exit 1
+	fi
+
 	echo "Argument: $arg"
 	if [ "$arg" == "tmux" ]; then
 		copy_tmux
@@ -46,16 +58,9 @@ for arg in "$@"; do
 	elif [ "$arg" == "lazyVim" ]; then
 		copy_lazyvim
 
-	# elif [ "$arg" == "all" ]; then
-	# 	copy_zsh
-	# 	copy_theme
-	# 	copy_tmux
-	# 	copy_lazyvim
-	# 	echo "⭐ set all config to system successfully"
-
 	else
 		echo "do not know that option"
 		echo "please pick one of those option:"
-		echo "zsh | tmux | themes | lazyVim | all"
+		echo "shell | tmux | themes | lazyVim | all"
 	fi
 done

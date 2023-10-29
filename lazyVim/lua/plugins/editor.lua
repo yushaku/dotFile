@@ -98,6 +98,7 @@ return {
     keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "toggle zen mode" } },
     opts = {
       window = {
+        backdrop = 1,
         options = {
           signcolumn = "no",
           number = true,
@@ -109,6 +110,10 @@ return {
         },
       },
       plugins = {
+        options = {
+          enabled = true,
+          laststatus = 0, -- turn off the statusline in zen mode (on = 3)
+        },
         gitsigns = { enabled = false },
         tmux = { enabled = true },
         transparent = { enabled = true },
