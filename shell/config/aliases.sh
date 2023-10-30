@@ -10,6 +10,7 @@ alias vi="nvim"
 alias bat="batcat"
 alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias zshconfig="nvim ~/.zshrc"
+alias dnsconfig="nvim /etc/resolv.conf"
 alias ll="exa -lha --time-style=long-iso --icons --colour-scale --group-directories-first"
 function lk() {
 	exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"

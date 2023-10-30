@@ -48,7 +48,6 @@ return {
       }
       vim.list_extend(opts.ensure_installed, {
         "bash",
-        "help",
         "html",
         "javascript",
         "json",

@@ -95,14 +95,14 @@ return {
     "folke/zen-mode.nvim",
     enabled = true,
     event = "VeryLazy",
-    keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "toggle zen mode" } },
+    keys = { { "<leader>zz", "<CMD>ZenMode<CR>", desc = "Toggle zen mode" } },
     opts = {
       window = {
-        backdrop = 1,
+        width = 100,
         options = {
           signcolumn = "no",
           number = true,
-          relativenumber = true,
+          relativenumber = false,
           cursorline = true,
           cursorcolumn = false,
           foldcolumn = "0",
@@ -118,6 +118,23 @@ return {
         tmux = { enabled = true },
         transparent = { enabled = true },
       },
+    },
+  },
+  {
+    "folke/twilight.nvim",
+    enabled = true,
+    -- event = "VeryLazy",
+    keys = { { "<leader>zx", "<CMD>Twilight<CR>", desc = "Toggle twilight mode" } },
+    opts = {
+      context = 20,
+      dimming = {
+        alpha = 0.5, -- amount of dimming
+        color = { "Normal", "#ffffff" },
+        inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+      },
+      -- for treesitter, we we always try to expand to the top-most ancestor with these types
+      treesitter = true,
+      expand = { "function" },
     },
   },
   {
