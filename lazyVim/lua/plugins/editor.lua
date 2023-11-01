@@ -122,7 +122,7 @@ return {
   },
   {
     "folke/twilight.nvim",
-    enabled = true,
+    enabled = false,
     -- event = "VeryLazy",
     keys = { { "<leader>zx", "<CMD>Twilight<CR>", desc = "Toggle twilight mode" } },
     opts = {

@@ -16,7 +16,6 @@ return {
       label = {
         uppercase = false,
         reuse = "none",
-        rainbow = { enabled = false, shade = 5 },
       },
       modes = {
         char = { jump_labels = true },

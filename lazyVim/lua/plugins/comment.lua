@@ -1,5 +1,4 @@
 return {
-  { "mini.comment", enabled = false },
   {
     "numToStr/Comment.nvim",
     enabled = true,

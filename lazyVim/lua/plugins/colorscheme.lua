@@ -29,7 +29,6 @@ return {
   },
   {
     "catppuccin/nvim",
-    enabled = false,
     name = "frappe",
     priority = 1000,
     opts = {
