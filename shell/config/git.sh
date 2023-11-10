@@ -5,8 +5,34 @@ alias glz="lazygit"
 alias gcl='git clone --recurse-submodules'
 alias gao='git remote add origin'
 
-alias ga="git add"
 alias gaa="git add --all"
+function ga() {
+	local files=$(git diff --name-only)
+	local staged_files=$(git diff --name-only --cached)
+	local unstaged_files=$(comm -13 <(echo "$staged_files" | tr ' ' '\n' | sort) <(echo "$files" | tr ' ' '\n' | sort) | fzf --multi)
+
+	if [[ -n "$unstaged_files" ]]; then
+		git add $unstaged_files
+		echo "Add files $unstaged_files to staging."
+	fi
+}
+
+alias groh='git reset origin/$(_git_current_branch) --hard'
+# alias grs="git reset"
+function grs() {
+	local files=$(git diff --name-only --cached | fzf --multi)
+	if [[ -n "$files" ]]; then
+		git reset HEAD $files
+	fi
+}
+
+function grsf() {
+	local selected_files=$(git status --porcelain | fzf --multi | awk '{print $2}')
+
+	if [ -n "$selected_files" ]; then
+		echo "$selected_files" | xargs git checkout --
+	fi
+}
 
 alias gpp="git push"
 alias gpf="git push -u --force-with-lease"
@@ -49,9 +75,6 @@ alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 
-alias groh='git reset origin/$(_git_current_branch) --hard'
-alias grs="git reset"
-
 alias gst='git stash'
 function gsta() {
 	if [[ -z "$1" ]]; then
@@ -77,17 +100,6 @@ alias gmr="git merge"
 # Remove files from the working tree and from the index
 alias grm="git rm"
 alias grmc="git rm -r --cached"
-
-#>> git custome function ---------------
-function g-reset() {
-	selected_files=$(git status --porcelain |
-		fzf -m --preview-window 'down' --preview 'git diff --color=always $@ -- {-1}' |
-		awk '{print $2}')
-
-	if [ -n "$selected_files" ]; then
-		echo "$selected_files" | xargs git checkout --
-	fi
-}
 
 alias glga="git reflog --pretty=short | batcat"
 function glg() {

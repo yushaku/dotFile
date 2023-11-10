@@ -1,5 +1,10 @@
 # config of vimium extention
 
+## install
+
+- [chrome store](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
+- [github](https://github.com/philc/vimium)
+
 ## how to use
 
 Navigating the current page
