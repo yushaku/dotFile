@@ -46,9 +46,9 @@ return {
     },
   },
   opts = {
+    close_if_last_window = true,
     enable_git_status = true,
     enable_diagnostics = true,
-    tabs_max_width = 250,
     default_component_configs = {
       git_status = {
         symbols = {

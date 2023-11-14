@@ -119,6 +119,15 @@ return {
         end,
         desc = "flash continue last search",
       },
+      {
+        "<leader>sw",
+        function()
+          require("flash").jump({
+            pattern = vim.fn.expand("<cword>"),
+          })
+        end,
+        desc = "flash continue last search",
+      },
     },
   },
   {

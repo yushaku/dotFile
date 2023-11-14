@@ -4,6 +4,7 @@ return {
   { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
   {
     "echasnovski/mini.animate",
+    enabled = false,
     event = "VeryLazy",
     opts = function()
       local animate = require("mini.animate")
