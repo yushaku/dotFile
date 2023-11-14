@@ -22,6 +22,7 @@ return {
     keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
+      autofold_depth = 2,
       keymaps = {
         close = { "<Esc>", "q" },
         goto_location = "<Cr>",
@@ -38,26 +39,29 @@ return {
     },
   },
   {
-    "NvChad/nvim-colorizer.lua",
+    "echasnovski/mini.hipatterns",
     enabled = true,
-    event = "VeryLazy",
+    event = "LazyFile",
     keys = {
-      { "<leader>cc", "<CMD>ColorizerToggle<CR>", desc = "toggle preview color" },
-    },
-    opts = {
-      user_default_options = { tailwind = true },
+      {
+        "<leader>cc",
+        function()
+          require("mini.hipatterns").toggle()
+        end,
+        desc = "toggle display color preview css ",
+      },
     },
   },
-  -- {
-  --   "uga-rosa/ccc.nvim",
-  --   enabled = true,
-  --   event = "VeryLazy",
-  --   keys = {
-  --     { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
-  --     { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
-  --     { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
-  --   },
-  -- },
+  {
+    "uga-rosa/ccc.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    keys = {
+      -- { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
+      { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
+      { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
+    },
+  },
   {
     "xiyaowong/transparent.nvim",
     event = "VeryLazy",
@@ -95,14 +99,14 @@ return {
     "folke/zen-mode.nvim",
     enabled = true,
     event = "VeryLazy",
-    keys = { { "<leader>zz", "<CMD>ZenMode<CR>", desc = "Toggle zen mode" } },
+    keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "Toggle zen mode" } },
     opts = {
       window = {
-        width = 100,
+        width = 110,
         options = {
           signcolumn = "no",
           number = true,
-          relativenumber = false,
+          relativenumber = true,
           cursorline = true,
           cursorcolumn = false,
           foldcolumn = "0",
@@ -118,23 +122,6 @@ return {
         tmux = { enabled = true },
         transparent = { enabled = true },
       },
-    },
-  },
-  {
-    "folke/twilight.nvim",
-    enabled = false,
-    -- event = "VeryLazy",
-    keys = { { "<leader>zx", "<CMD>Twilight<CR>", desc = "Toggle twilight mode" } },
-    opts = {
-      context = 20,
-      dimming = {
-        alpha = 0.5, -- amount of dimming
-        color = { "Normal", "#ffffff" },
-        inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
-      },
-      -- for treesitter, we we always try to expand to the top-most ancestor with these types
-      treesitter = true,
-      expand = { "function" },
     },
   },
   {
