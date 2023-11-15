@@ -20,9 +20,13 @@ function ga() {
 alias groh='git reset origin/$(_git_current_branch) --hard'
 # alias grs="git reset"
 function grs() {
-	local files=$(git diff --name-only --cached | fzf --multi)
-	if [[ -n "$files" ]]; then
-		git reset HEAD $files
+	if [[ -z "$1" ]]; then
+		local files=$(git diff --name-only --cached | fzf --multi)
+		if [[ -n "$files" ]]; then
+			git reset HEAD $files
+		fi
+	else
+		git reset "$1"
 	fi
 }
 
