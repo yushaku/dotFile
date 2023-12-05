@@ -4,8 +4,7 @@ return {
   { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
   {
     "echasnovski/mini.animate",
-    enabled = false,
-    event = "VeryLazy",
+    enabled = true,
     opts = function()
       local animate = require("mini.animate")
       return {
@@ -73,7 +72,7 @@ return {
     "folke/noice.nvim",
     enabled = true,
     opts = {
-      lsp = { progress = { enabled = false } },
+      lsp = { progress = { enabled = true } },
       messages = { enabled = false },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
@@ -103,7 +102,7 @@ return {
     keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "Toggle zen mode" } },
     opts = {
       window = {
-        width = 110,
+        width = 120,
         options = {
           signcolumn = "no",
           number = true,
@@ -115,16 +114,34 @@ return {
         },
       },
       plugins = {
-        options = {
-          enabled = true,
-          laststatus = 0, -- turn off the statusline in zen mode (on = 3)
-        },
+        options = { enabled = true, laststatus = 0 }, -- turn off the statusline in zen mode (on = 3)
         gitsigns = { enabled = false },
+        bufferline = { enabled = false },
         tmux = { enabled = true },
         transparent = { enabled = true },
       },
     },
   },
+  -- {
+  --   "Pocco81/true-zen.nvim",
+  --   enabled = false,
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "<f2>", "<CMD>:TZAtaraxis<CR>", desc = "Toggle zen mode" },
+  --     { "<leader>um", "<CMD>:TZFocus<CR>", desc = "Forcus current window" },
+  --     { "<leader>uz", "'<,'>TZNarrow<CR>", desc = "Narrow current function", mode = { "v" } },
+  --   },
+  --   opts = {
+  --     integrations = {
+  --       tmux = true, -- hide tmux status bar in (minimalist, ataraxis)
+  --       twilight = false, -- enable twilight (ataraxis)
+  --       lualine = true, -- hide nvim-lualine (ataraxis)
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require("true-zen").setup(opts)
+  --   end,
+  -- },
   {
     "nvim-pack/nvim-spectre",
     enabled = true,

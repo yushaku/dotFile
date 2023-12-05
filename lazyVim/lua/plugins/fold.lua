@@ -29,7 +29,7 @@ end
 return {
   {
     "kevinhwang91/nvim-ufo",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
     --stylua: ignore
@@ -44,16 +44,6 @@ return {
       { "zR", function() require("ufo").openAllFolds() end,         desc = "Open All Folds", },
       { "zM", function() require("ufo").closeAllFolds() end,        desc = "Close All Folds", },
       { "zm", function() require("ufo").closeFoldsWith() end,       desc = "Close Folds With", },
-      {
-        "zp",
-        function()
-          local winid = require('ufo').peekFoldedLinesUnderCursor()
-          if not winid then
-            vim.lsp.buf.hover()
-          end
-        end,
-        desc = "Peek Fold",
-      },
     },
     opts = {
       fold_virt_text_handler = handler,

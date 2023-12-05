@@ -45,13 +45,14 @@ return {
       { "<leader>ft", false },
       { "<leader>fT", false },
       { "<leader>ff", false },
+      { "<leader>fb", false },
       { "<leader>fn", false },
       { "<leader>gc", false },
       { "<leader>gs", false },
 
       -- create my own config
-      { "<C-p>", Util.telescope("files"), desc = "Find Files (child dir)" },
       { "<C-S-p>", "<CMD>Telescope fd<cr>", desc = "Find Files (root dir)" },
+      { "<C-p>", Util.telescope("files"), desc = "Find Files (child dir)" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "Open marks" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },

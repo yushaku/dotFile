@@ -5,6 +5,7 @@ return {
   keys = {
     { "<leader>fe", false },
     { "<leader>fE", false },
+    { "<C-b>", "<CMD>Neotree toggle<CR>", desc = "Toggle NeoTree" },
     {
       "<leader>e",
       function()
@@ -28,6 +29,11 @@ return {
       "<leader>ff",
       "<CMD>Neotree source=filesystem toggle left reveal<CR>",
       desc = "Explorer changed files",
+    },
+    {
+      "<leader>fb",
+      "<CMD>Neotree source=buffers toggle left reveal<CR>",
+      desc = "Explorer NeoTree buffers",
     },
     {
       "<C-M-f>",

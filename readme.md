@@ -80,7 +80,7 @@ oco config set OCO_OPENAI_API_KEY=<key>
 ```bash
 sudo install -y jq
 
-curl -X GET  http://localhost:3000/api/setup | jq                                                                                                          ─╯
+curl -X GET  http://localhost:3000/api/setup | jq
 % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                 Dload  Upload   Total   Spent    Left  Speed
 100   233    0   233    0     0    682      0 --:--:-- --:--:-- --:--:--   683

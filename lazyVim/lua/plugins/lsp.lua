@@ -57,7 +57,7 @@ return {
                   },
                 })
               end,
-              desc = "Add missing import",
+              desc = "Remove unused imports",
             },
             {
               "<leader>cu",
