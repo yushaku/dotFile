@@ -13,7 +13,7 @@ return {
     "folke/trouble.nvim",
     enabled = true,
     opts = {
-      position = "bottom",
+      position = "right",
       action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
     },
     keys = {

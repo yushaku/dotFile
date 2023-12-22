@@ -4,7 +4,7 @@ return {
   { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
   {
     "echasnovski/mini.animate",
-    enabled = true,
+    enabled = false,
     opts = function()
       local animate = require("mini.animate")
       return {
@@ -48,7 +48,7 @@ return {
         function()
           require("mini.hipatterns").toggle()
         end,
-        desc = "toggle display color preview css ",
+        desc = "Toggle display color preview css ",
       },
     },
   },
