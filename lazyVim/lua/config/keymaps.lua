@@ -149,3 +149,7 @@ end
 -- Key mapping to toggle a mark
 map("n", "m", ':lua toggle_mark(vim.fn.input("Toggle Mark: "))<CR>', { noremap = true })
 map("n", "M", "<CMD>Telescope marks<CR>")
+
+map("n", "<leader>cc", function()
+  require("mini.hipatterns").toggle()
+end, { desc = "Toggle display color preview" })

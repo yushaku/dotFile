@@ -12,12 +12,8 @@ return {
     end,
     opts = {
       servers = {
-        tailwindcss = {
-          filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" },
-        },
-        eslint = {
-          settings = { workingDirectory = { mode = "auto" } },
-        },
+        tailwindcss = { filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" } },
+        eslint = { settings = { workingDirectory = { mode = "auto" } } },
         tsserver = {
           keys = {
             {

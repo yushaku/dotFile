@@ -38,30 +38,30 @@ return {
       },
     },
   },
-  {
-    "echasnovski/mini.hipatterns",
-    enabled = true,
-    event = "LazyFile",
-    keys = {
-      {
-        "<leader>cc",
-        function()
-          require("mini.hipatterns").toggle()
-        end,
-        desc = "Toggle display color preview css ",
-      },
-    },
-  },
-  {
-    "uga-rosa/ccc.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    keys = {
-      -- { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
-      { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
-      { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
-    },
-  },
+  -- {
+  --   "echasnovski/mini.hipatterns",
+  --   enabled = true,
+  --   event = "LazyFile",
+  --   keys = {
+  --     {
+  --       "<leader>cc",
+  --       function()
+  --         require("mini.hipatterns").toggle()
+  --       end,
+  --       desc = "Toggle display color preview css ",
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "uga-rosa/ccc.nvim",
+  --   enabled = false,
+  --   event = "VeryLazy",
+  --   keys = {
+  --     -- { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
+  --     { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
+  --     { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
+  --   },
+  -- },
   {
     "xiyaowong/transparent.nvim",
     event = "VeryLazy",
@@ -167,6 +167,51 @@ return {
         "<leader>sf",
         "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
         desc = "Spectre search on current file",
+      },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    enabled = true,
+    opts = {
+      position = "right",
+      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
+    },
+    keys = {
+      {
+        "<leader>xx",
+        function()
+          require("trouble").toggle()
+        end,
+        desc = "Trouble toggle",
+      },
+      {
+        "<leader>xw",
+        function()
+          require("trouble").toggle("workspace_diagnostics")
+        end,
+        desc = "Trouble workspace diagnostics",
+      },
+      {
+        "<leader>xd",
+        function()
+          require("trouble").toggle("document_diagnostics")
+        end,
+        desc = "Trouble document diagnostics",
+      },
+      {
+        "<leader>xq",
+        function()
+          require("trouble").toggle("quickfix")
+        end,
+        desc = "Trouble toggle quickfix",
+      },
+      {
+        "<leader>xl",
+        function()
+          require("trouble").toggle("loclist")
+        end,
+        desc = "Trouble toggle loclist",
       },
     },
   },
