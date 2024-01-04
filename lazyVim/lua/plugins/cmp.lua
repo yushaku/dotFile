@@ -23,49 +23,4 @@ return {
       })
     end,
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    keys = {
-      {
-        "<leader>aa",
-        "<CMD>ChatGPT<CR>",
-        desc = "ChatGPT asking",
-      },
-      {
-        "<leader>ac",
-        "<CMD>ChatGPTCompleteCode<CR>",
-        desc = "ChatGPT complete code",
-      },
-      {
-        "<leader>at",
-        "<CMD>ChatGPTRun add_tests<CR>",
-        desc = "ChatGPT add tests",
-      },
-      {
-        "<leader>af",
-        "<CMD>ChatGPTRun fix_bugs<CR>",
-        desc = "ChatGPT fix bugs",
-      },
-      {
-        "<leader>ao",
-        "<CMD>ChatGPTRun optimize_code<CR>",
-        desc = "ChatGPT optimize code",
-      },
-      {
-        "<leader>ae",
-        "<CMD>ChatGPTRun explain_code<CR>",
-        desc = "ChatGPT explain code",
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
 }

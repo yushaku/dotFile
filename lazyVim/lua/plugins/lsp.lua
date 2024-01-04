@@ -109,6 +109,11 @@ return {
         finder = { keys = { toggle_or_open = { "<CR>", "o" }, quit = { "q", "<ESC>" } } },
         lightbulb = { enable = false, icon = "" },
         code_action = { enable = true, command_enable = true },
+        Callhierarchy = {
+          enable = true,
+          command_enable = true,
+          keys = { toggle_or_open = { "<CR>", "o" }, quit = { "q", "<ESC>" } },
+        },
       })
       local keymap = vim.keymap.set
       keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
@@ -118,6 +123,9 @@ return {
       keymap("n", "gf", "<Cmd>Lspsaga finder<CR>")
       keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "show diagnostic in current line" })
       keymap("n", "<leader>ut", "<cmd>Lspsaga winbar_toggle<CR>", { desc = "toggle winbar" })
+
+      keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { desc = "Outgoing calls this function" })
+      keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { desc = "Incoming calls this function" })
 
       -- keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
       -- keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
