@@ -1,7 +1,7 @@
 local flash = require("flash")
 local function format(opts)
   return {
-    { opts.match.label1, "FlashLabel" },
+    { opts.match.label1, "FlashCurrent" },
     { opts.match.label2, "FlashLabel" },
   }
 end
@@ -12,14 +12,9 @@ return {
     enabled = true,
     event = "VeryLazy",
     opts = {
-      jump = { autojump = true },
-      label = {
-        uppercase = false,
-        reuse = "none",
-      },
-      modes = {
-        char = { jump_labels = true },
-      },
+      jump = { autojump = false },
+      label = { uppercase = false, reuse = "none" },
+      modes = { char = { jump_labels = true } },
     },
     keys = {
       {
@@ -111,6 +106,7 @@ return {
             pattern = "^\\s*\\S\\?",
           })
         end,
+        desc = "flash jump lines",
       },
       {
         "<leader>sc",

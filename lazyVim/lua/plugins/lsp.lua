@@ -127,8 +127,6 @@ return {
       keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { desc = "Outgoing calls this function" })
       keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { desc = "Incoming calls this function" })
 
-      -- keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-      -- keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
       -- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
       -- keymap({ "n", "t", "v" }, "<A-q>", "<cmd>Lspsaga term_toggle<CR>")
     end,

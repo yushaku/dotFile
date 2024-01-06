@@ -153,3 +153,8 @@ map("n", "M", "<CMD>Telescope marks<CR>")
 map("n", "<leader>cc", function()
   require("mini.hipatterns").toggle()
 end, { desc = "Toggle display color preview" })
+
+-- vim way: ; goes to the direction you were moving.
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)

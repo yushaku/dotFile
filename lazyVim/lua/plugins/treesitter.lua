@@ -1,19 +1,22 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
-    },
+    dependencies = { { "JoosepAlviste/nvim-ts-context-commentstring" } },
     event = { "BufReadPre" },
-    commit = "6847ce4f8c93a0c8fd5a3d4df08975ab185187eb",
+    commit = "5032f99",
     opts = function(_, opts)
       opts.textobjects = {
         select = {
           enable = true,
           lookahead = true,
           keymaps = {
-            ["il"] = "@loop.inner",
-            ["al"] = "@loop.outer",
+            ["il"] = { query = "@loop.inner", desc = "Select inner loop" },
+            ["al"] = { query = "@loop.outer", desc = "Select outer loop" },
+
+            ["a="] = { query = "@assignment.outer", desc = "Select outer assignment" },
+            ["i="] = { query = "@assignment.inner", desc = "Select inner assignment" },
+            ["l="] = { query = "@assignment.lhs", desc = "Select left handside assignment" },
+            ["r="] = { query = "@assignment.rhs", desc = "Select right handside assignment" },
           },
         },
         move = {
@@ -39,27 +42,15 @@ return {
         swap = {
           enable = true,
           swap_next = {
-            ["]a"] = "@parameter.inner",
+            ["<leader>na"] = { query = "@parameter.inner", desc = "Swap parameter to next" },
+            ["<leader>nf"] = { query = "@function.outer", desc = "Swap function to next" },
           },
           swap_previous = {
-            ["[a"] = "@parameter.inner",
+            ["<leader>pa"] = { query = "@parameter.inner", desc = "Swap parameter to previous" },
+            ["<leader>pf"] = { query = "@function.outer", desc = "Swap function to previous" },
           },
         },
       }
-      vim.list_extend(opts.ensure_installed, {
-        "bash",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "regex",
-        "tsx",
-        "typescript",
-        "yaml",
-        "solidity",
-      })
       return vim.tbl_deep_extend("force", opts, {
         autotag = { enable = true },
       })

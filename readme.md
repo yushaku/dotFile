@@ -1,12 +1,33 @@
-# configuration my work flow
+# yushaku's dotfiles
 
-## auto download open source tools and code environment nodejs
+## Contents
+
+- Neovim config
+- tmux config
+- git config
+- zsh config
+
+## [Neovim setup](https://github.com/craftzdog/dotfiles-public/blob/master/README.md#neovim-setup)
+
+### [Requirements](https://github.com/craftzdog/dotfiles-public/blob/master/README.md#requirements)
+
+- Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
+- Git >= **2.19.0**
+- [LazyVim](https://www.lazyvim.org/)
+- a [Nerd Font](https://www.nerdfonts.com/) **_(optional)_**
+- [lazygit](https://github.com/jesseduffield/lazygit) **_(optional)_**
+- for [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) **_(optional)_**
+  - **live grep**: [ripgrep](https://github.com/BurntSushi/ripgrep)
+  - **find files**: [fd](https://github.com/sharkdp/fd)
+- [Catppuccin](https://github.com/catppuccin/nvim)
+
+## download open-source tools
 
 ```bash
-bash prepare.hs zsh
-bash prepare.hs tools
-bash prepare.hs js
-bash prepare.hs docker
+bash prepare.sh zsh
+bash prepare.sh tools
+bash prepare.sh js
+bash prepare.sh docker
 ```
 
 ## copy file configuration
@@ -85,20 +106,10 @@ curl -X GET  http://localhost:3000/api/setup | jq
                                 Dload  Upload   Total   Spent    Left  Speed
 100   233    0   233    0     0    682      0 --:--:-- --:--:-- --:--:--   683
 {
-  "database": {
-    "name": "ai-assistant",
-    "dimension": 1536,
-    "metric": "cosine",
-    "pods": 1,
-    "replicas": 1,
-    "shards": 1,
-    "podType": "starter"
+  "user": {
+    "name": "yushaku",
+    "position": "full-stack developer",
+    "skill": ['use HTML hack Nasa'],
   },
-  "status": {
-    "ready": true,
-    "state": "Ready",
-    "host": "ai-assistant-d6cf69f.svc.gcp-starter.pinecone.io",
-    "port": 433
-  }
 }
 ```

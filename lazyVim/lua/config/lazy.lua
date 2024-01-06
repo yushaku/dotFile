@@ -26,12 +26,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.coding.codeium" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+    { import = "lazyvim.plugins.extras.dap.core" },
 
     -- { import = "lazyvim.plugins.extras.lang.python" },
-    -- { import = "lazyvim.plugins.extras.coding.tabnine" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- { import = "lazyvim.plugins.extras.test.core" },
-    -- { import = "lazyvim.plugins.extras.dap.core" },
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
 
     -- import/override with your plugins
