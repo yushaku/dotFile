@@ -137,7 +137,7 @@ function _G.toggle_mark(mark)
   local success, mark_pos = pcall(vim.api.nvim_buf_get_mark, 0, mark)
 
   -- If the mark is at the current cursor position, delete it
-  if success and mark_pos[1] == cursor_pos[1] and mark_pos[2] == cursor_pos[2] then
+  if success and mark_pos[1] == cursor_pos[1] then
     -- Clear the mark
     vim.cmd("delmarks " .. mark)
   else
@@ -150,11 +150,7 @@ end
 map("n", "m", ':lua toggle_mark(vim.fn.input("Toggle Mark: "))<CR>', { noremap = true })
 map("n", "M", "<CMD>Telescope marks<CR>")
 
-map("n", "<leader>cc", function()
-  require("mini.hipatterns").toggle()
-end, { desc = "Toggle display color preview" })
-
 -- vim way: ; goes to the direction you were moving.
-local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+-- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)

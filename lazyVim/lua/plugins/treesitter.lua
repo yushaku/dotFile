@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { { "JoosepAlviste/nvim-ts-context-commentstring" } },
     event = { "BufReadPre" },
-    commit = "5032f99",
+    commit = "0d14299",
     opts = function(_, opts)
       opts.textobjects = {
         select = {

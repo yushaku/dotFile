@@ -5,6 +5,11 @@ export LANG=en_US.UTF-8
 export PATH="/home/$USER/.bun/bin:$PATH"
 [ -s "/home/yushaku/.bun/_bun" ] && source "/home/yushaku/.bun/_bun"
 
+export GOPATH=$HOME/go                                                # golang
+export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
+
+export PATH=$PATH:$SOL_PATH:$GOPATH/bin
+
 DISTRO=$(lsb_release -si)
 if [[ "$DISTRO" == "Linuxmint" ]]; then
   autoload -Uz compinit && compinit
@@ -38,7 +43,6 @@ fi
 
 if [[ $(which plug) ]]; then
   plug "agkozak/zsh-z"
-  # plug "romkatv/powerlevel10k"
   plug "hlissner/zsh-autopair"
   plug "grigorii-zander/zsh-npm-scripts-autocomplete"
   plug "zdharma-continuum/fast-syntax-highlighting"

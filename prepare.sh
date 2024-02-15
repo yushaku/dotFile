@@ -10,11 +10,10 @@ install_tools() {
 	done
 }
 
-install_ohmypost() {
-	if ! command -v oh-my-posh &>/dev/null; then
-		sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-		sudo chmod +x /usr/local/bin/oh-my-posh
-		echo "✅ installed oh-my-posh. theme for your terminal"
+install_theme() {
+	if ! command -v starship &>/dev/null; then
+		curl -sS https://starship.rs/install.sh | sh
+		echo "✅ installed starship. theme for your terminal"
 	fi
 }
 
@@ -93,20 +92,20 @@ install_zsh() {
 
 if [[ $1 == "zsh" ]]; then
 	install_zsh
-	install_ohmypost
-
+	install_theme
 	echo "zsh are installed 💠"
+
 elif [[ $1 == "tools" ]]; then
 	install_tools
 	install_fzf
 	install_nvim
-
 	echo "tools and plugin are installed 💠"
+
 elif [[ $1 == "js" ]]; then
 	install_js
 	install_nvm
-
 	echo "coding env are installed 💠"
+
 elif [[ $1 == "docker" ]]; then
 	install_docker
 	echo "docker and docker compose are installed 💠"

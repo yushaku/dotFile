@@ -25,7 +25,6 @@ function ide() {
 		tmux split-window -h -p 30
 	fi
 	tmux select-pane -t 1
-	nvim .
 }
 
 alias tls="tmux ls"
