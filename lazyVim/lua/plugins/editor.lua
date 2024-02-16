@@ -158,34 +158,6 @@ return {
   --   end,
   -- },
   {
-    "nvim-pack/nvim-spectre",
-    enabled = true,
-    event = "VeryLazy",
-    keys = {
-      {
-        "<leader>sr",
-        "<cmd>lua require('spectre').toggle()<CR>",
-        desc = "Spectre toggle",
-      },
-      {
-        "<leader>ss",
-        "<esc><cmd>lua require('spectre').open_visual()<CR>",
-        desc = "Spectre search selected word",
-        mode = { "v" },
-      },
-      {
-        "<leader>ss",
-        "<CMD>lua require('spectre').open_visual({select_word=true})<CR>",
-        desc = "Spectre search current word",
-      },
-      {
-        "<leader>sf",
-        "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-        desc = "Spectre search on current file",
-      },
-    },
-  },
-  {
     "folke/trouble.nvim",
     enabled = true,
     opts = {

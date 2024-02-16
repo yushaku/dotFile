@@ -1,4 +1,5 @@
 local Util = require("lazyvim.util")
+require("telescope").load_extension("noice")
 
 return {
   {

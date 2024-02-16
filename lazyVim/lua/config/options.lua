@@ -26,14 +26,18 @@ opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = false -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
-opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess:append({ W = true, I = true, c = true })
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
+
+-- Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
+opt.breakindent = true
 opt.smartindent = true -- Insert indents automatically
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent
+
 opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
