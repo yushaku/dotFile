@@ -128,6 +128,7 @@ map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
 vim.keymap.del("n", "<C-b>")
 vim.keymap.del("n", "<c-_>")
+vim.keymap.del("n", "<leader>gg")
 
 function _G.toggle_mark(mark)
   -- Get the current cursor position

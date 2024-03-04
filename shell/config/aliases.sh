@@ -141,3 +141,38 @@ alias pb='_package_manager build'
 
 export PNPM_HOME="/home/yushaku/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+# PICK EMOJIS WHEN CREATE COMMIT MESSAGE
+
+# feat     – a new feature is introduced with the changes
+# fix      – a bug fix has occurred
+# chore    – changes that do not relate to a fix or feature and don't modify src or test files (for example updating dependencies)
+# refactor – refactored code that neither fixes a bug nor adds a feature
+# docs     – updates to documentation such as a the README or other markdown files
+# style    – changes that do not affect the meaning of the code, likely related to code formatting such as white-space, missing semi-colons, and so on.
+# test     – including new or correcting previous tests
+# perf     – performance improvements
+# ci       – continuous integration related
+# build    – changes that affect the build system or external dependencies
+# revert   – reverts a previous commit
+
+EMOJIS=(chore=🔧 bug=🐛 feat=✨ style=💅)
+
+function pick-emoji() {
+	local selected
+	selected=$(printf "%s\n" "${EMOJIS[@]}" |
+		awk -F "=" '{print $1 "=" $2}' |
+		fzf --height=40% --prompt="Emojis> " |
+		cut -d "=" -f 1)
+
+	if [[ -n "$selected" ]]; then
+		for emoji in "${EMOJIS[@]}"; do
+			if [[ "$emoji" == "$selected="* ]]; then
+				BUFFER="${emoji#*=}"
+			fi
+		done
+	fi
+}
+
+zle -N pick-emoji
+bindkey '^E' pick-emoji

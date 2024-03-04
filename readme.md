@@ -113,3 +113,20 @@ curl -X GET  http://localhost:3000/api/setup | jq
   },
 }
 ```
+
+## configuration file to use specific github account
+
+```bash
+nvim ~/.ssh/config
+
+# add ssh config
+Host yushaku
+  HostName github.com
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa
+
+
+# usage that configuration
+git clone yushaku:yushaku/dotfiles
+```

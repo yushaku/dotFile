@@ -29,7 +29,7 @@ end
 return {
   {
     "kevinhwang91/nvim-ufo",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" },
     --stylua: ignore

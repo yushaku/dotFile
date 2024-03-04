@@ -37,6 +37,7 @@ return {
       { "<leader>sc", false },
       { "<leader>sR", false },
       { "<leader>sd", false },
+      { "<leader>fg", false },
       { "<leader>sD", false },
       { "<leader>sg", false },
       { "<leader>sW", false },
