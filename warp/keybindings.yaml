@@ -1,0 +1,13 @@
+---
+"workspace:show_settings_keyboard_shortcuts_page": ctrl-shift-S
+"terminal:find": ctrl-f
+"pane_group:toggle_maximize_pane": ctrl-alt-z
+"pane_group:add_right": "ctrl-\\"
+"pane_group:add_down": ctrl--
+"terminal:paste": ctrl-v
+"terminal:copy": ctrl-c
+"editor:find": ctrl-f
+"workspace:activate_first_tab": alt-1
+"workspace:activate_second_tab": alt-2
+"workspace:activate_third_tab": alt-3
+"workspace:activate_fourth_tab": alt-4

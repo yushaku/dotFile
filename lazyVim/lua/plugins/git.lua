@@ -25,8 +25,8 @@ return {
       map("n", "[h", gs.prev_hunk, "Prev Hunk")
 
       map('n', '<leader>ghd', gs.toggle_deleted, "toggle deleted")
-      map("n", "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Add Hunk to Stagging")
-      map("n", "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Remove Hunk to Stagging")
+      map("n", "<leader>gha", ":Gitsigns stage_hunk<CR>", "Add Hunk to Stagging")
+      map("n", "<leader>ghu", ":Gitsigns reset_hunk<CR>", "Remove Hunk to Stagging")
 
       map("n", "<leader>ga", gs.stage_buffer, "Add file to Stagging ")
       map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")

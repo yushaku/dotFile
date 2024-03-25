@@ -156,23 +156,23 @@ export PATH="$PNPM_HOME:$PATH"
 # build    – changes that affect the build system or external dependencies
 # revert   – reverts a previous commit
 
-EMOJIS=(chore=🔧 bug=🐛 feat=✨ style=💅)
-
-function pick-emoji() {
-	local selected
-	selected=$(printf "%s\n" "${EMOJIS[@]}" |
-		awk -F "=" '{print $1 "=" $2}' |
-		fzf --height=40% --prompt="Emojis> " |
-		cut -d "=" -f 1)
-
-	if [[ -n "$selected" ]]; then
-		for emoji in "${EMOJIS[@]}"; do
-			if [[ "$emoji" == "$selected="* ]]; then
-				BUFFER="${emoji#*=}"
-			fi
-		done
-	fi
-}
-
-zle -N pick-emoji
-bindkey '^E' pick-emoji
+# EMOJIS=(chore=🔧 bug=🐛 feat=✨ style=💅)
+#
+# function pick-emoji() {
+# 	local selected
+# 	selected=$(printf "%s\n" "${EMOJIS[@]}" |
+# 		awk -F "=" '{print $1 "=" $2}' |
+# 		fzf --height=40% --prompt="Emojis> " |
+# 		cut -d "=" -f 1)
+#
+# 	if [[ -n "$selected" ]]; then
+# 		for emoji in "${EMOJIS[@]}"; do
+# 			if [[ "$emoji" == "$selected="* ]]; then
+# 				BUFFER="${emoji#*=}"
+# 			fi
+# 		done
+# 	fi
+# }
+#
+# zle -N pick-emoji
+# bindkey '^E' pick-emoji

@@ -130,3 +130,11 @@ Host yushaku
 # usage that configuration
 git clone yushaku:yushaku/dotfiles
 ```
+
+## Terminal + AI
+
+[warp terminal](https://docs.warp.dev/getting-started/readme)
+
+```bash
+sudo install -y warp-terminal
+```
