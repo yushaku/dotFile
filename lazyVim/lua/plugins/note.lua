@@ -1,7 +1,7 @@
 return {
   {
     "epwalsh/obsidian.nvim",
-    lazy = true,
+    enabled = false,
     event = {
       "BufReadPre " .. vim.fn.expand("~") .. "/workspaces/note/**/**.md",
       "BufReadPre " .. vim.fn.expand("~") .. "/note/**/**.md",
@@ -36,6 +36,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    enabled = false,
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function()

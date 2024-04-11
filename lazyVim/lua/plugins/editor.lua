@@ -18,7 +18,6 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     enabled = true,
-    event = "VeryLazy",
     keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
@@ -79,7 +78,6 @@ return {
   -- },
   {
     "xiyaowong/transparent.nvim",
-    event = "VeryLazy",
     enabled = true,
     keys = { { "<f1>", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
   },
@@ -113,7 +111,6 @@ return {
   {
     "folke/zen-mode.nvim",
     enabled = true,
-    event = "VeryLazy",
     keys = { { "<leader>z", "<CMD>ZenMode<CR>", desc = "Toggle zen mode" } },
     opts = {
       window = {

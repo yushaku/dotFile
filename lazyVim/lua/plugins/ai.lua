@@ -1,8 +1,7 @@
 return {
   {
     "Bryley/neoai.nvim",
-    enabled = true,
-    event = "VeryLazy",
+    enabled = false,
     keys = {
       { "<leader>as", desc = "summarize text" },
       { "<leader>ag", desc = "generate git message" },
