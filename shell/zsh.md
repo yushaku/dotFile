@@ -27,44 +27,18 @@
   fzf --preview='batcat --color="always" --style="numbers" {}' --bind shift-up:preview-up,shift-down:preview-down
   ```
 
-## use lazygit
+#### fzf + git
 
-Command `lazygit` to open its GUI
-
-- `Stage Files`: s or S
-
-  - Use s to stage selected files or hunks.
-  - Use S to stage all files.
-
-- `UnStage Files`: u or U
-
-  - Use u to unstage selected files or hunks.
-  - Use U to unstage all files.
-
-- `Commit Changes`: c
-
-  - Use c to open the commit message editor.
-  - Enter your commit message and save to commit the changes.
-
-- `Amend Last Commit`: a
-
-- `Push Commits`: **p**
-
-- `Pull Changes`: **P**
-
-- `Switch Branch`: b
-
-- `Create Branch`: B
-
-- `Merge Branch`: m
-
-- `Rebase Branch`: r
-
-- `View Diffs`: d
-
-- `Resolve Merge Conflicts`: R
-
-- `Open Git Status`: g
+_*List of bindings*_
+`CTRL-G CTRL-F` for Files
+`CTRL-G CTRL-B` for Branches
+`CTRL-G CTRL-T` for Tags
+`CTRL-G CTRL-R` for Remotes
+`CTRL-G CTRL-H` for commit Hashes
+`CTRL-G CTRL-S` for Stashes
+`CTRL-G CTRL-L` for reflogs
+`CTRL-G CTRL-W` for Worktrees
+`CTRL-G CTRL-E` for Each ref (git for-each-ref)
 
 ## pandoc
 
