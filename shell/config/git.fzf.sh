@@ -147,7 +147,7 @@ _fzf_git_branches() {
     --border-label '🌲 Branches' \
     --header-lines 2 \
     --tiebreak begin \
-    --preview-window down,border-top,40% \
+    --preview-window right,border-top,40% \
     --color hl:underline,hl+:underline \
     --no-hscroll \
     --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
