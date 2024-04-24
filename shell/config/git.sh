@@ -1,22 +1,42 @@
 ##>> git shotcut -------------------------
 alias g="git"
-alias glz="lazygit"
-
 alias gcl='git clone --recurse-submodules'
-alias gao='git remote add origin'
 
+##>> ------------------ ADD -------------------------
+alias gss="git status"
 alias gaa="git add --all"
 function ga() {
-	local files=$(git diff --name-only)
-	local staged_files=$(git diff --name-only --cached)
-	local unstaged_files=$(comm -13 <(echo "$staged_files" | tr ' ' '\n' | sort) <(echo "$files" | tr ' ' '\n' | sort) | fzf --multi)
+	local files=($(git diff --name-only))
+	local staged_files=($(git diff --name-only --cached))
 
-	if [[ -n "$unstaged_files" ]]; then
-		git add $unstaged_files
-		echo "Add files $unstaged_files to staging."
+	local unstaged_files=($(comm -13 <(printf '%s\n' "${staged_files[@]}" | sort) <(printf '%s\n' "${files[@]}" | sort) | _fzf_git --multi --header '📡 Pick files to add to staging'))
+
+	if [[ ${#unstaged_files[@]} -gt 0 ]]; then
+		git add "${unstaged_files[@]}"
+		echo "Added ${unstaged_files[*]} to staging."
+	fi
+}
+alias gcmm="gitmoji -c"
+function gcm() {
+	if [[ -z "$1" ]]; then
+		git commit --amend --no-edit
+	else
+		git commit -m "$1"
 	fi
 }
 
+function ggp() {
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+		git push origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(_git_current_branch)"
+		git push origin "${b:=$1}"
+	fi
+}
+
+##>> ------------------ RESET -------------------------
+
+alias grmc="git rm -r --cached" # Remove files from the working tree and from the index
 alias groh='git reset origin/$(_git_current_branch) --hard'
 function grs() {
 	if [[ -z "$1" ]]; then
@@ -29,7 +49,7 @@ function grs() {
 function grsf() {
 	local selected_files=$(
 		git status --porcelain |
-			_fzf_git_fzf --multi --header '📡 Reset files' |
+			_fzf_git --multi --header '📡 Reset files' |
 			awk '{print $2}'
 	)
 
@@ -39,10 +59,14 @@ function grsf() {
 	fi
 }
 
+##>> ------------------ PUSH -------------------------
+
 alias gpp="git push"
 alias gpf="git push -u --force-with-lease"
 alias gpo='git push -u origin $(_git_current_branch)'
 alias gpof='git push -u origin --force-with-lease $(_git_current_branch)'
+
+##>> ------------------ BRANCH -------------------------
 
 alias gbd='git branch -D'
 alias gbdo='git push origin -d'
@@ -67,16 +91,21 @@ function gbo() {
 	fi
 }
 
+##>> ------------------ REBASE -------------------------
+
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbs='git rebase --skip'
 
+##>> ------------------ CHERRY-PICK -------------------------
+
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 
-alias gst='git stash'
+##>> ------------------ STASH -------------------------
+
 function gsta() {
 	if [[ -z "$1" ]]; then
 		git stash -au
@@ -84,12 +113,20 @@ function gsta() {
 		git stash -au --message "$1"
 	fi
 }
-alias gstl='git stash list'
-alias gstp='git stash pop'
-alias gstd="git stash drop"
+alias gst='git stash'
+alias gstl='_fzf_git_stashes'
+function gstp() {
+	_fzf_git_stashes | xargs git stash pop
+}
+function gstd() {
+	_fzf_git_stashes | xargs git stash drop
+}
 
-alias gss="git status"
+# https://itnext.io/multitask-like-a-pro-with-the-wip-commit-2f4d40ca0192
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message "🗂 --wip-- [skip ci]"'
+alias grmw='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
 
+##>> ------------------ FETCH -------------------------
 alias gpull="git pull -a"
 alias gpur="git pull --rebase -v"
 
@@ -98,48 +135,17 @@ alias gfa="git fetch --all"
 
 alias gmr="git merge"
 
-# Remove files from the working tree and from the index
-alias grm="git rm"
-alias grmc="git rm -r --cached"
-
+##>> ------------------ LOG -------------------------
 alias glga="git reflog --pretty=short | batcat"
+
 function glg() {
 	git log --graph --oneline --decorate --all -n "${1:-10}"
 }
 
+##>> ----------------------------------------------------------<<##
+##>> ------------------ PRIVATE FUNCTION ----------------------<<##
+
 function _git_current_branch() {
 	currentBranch=$(git rev-parse --abbrev-ref HEAD)
 	echo "$currentBranch"
-}
-
-function ggp() {
-	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-		git push origin "${*}"
-	else
-		[[ "$#" == 0 ]] && local b="$(_git_current_branch)"
-		git push origin "${b:=$1}"
-	fi
-}
-
-function gcm() {
-	if [[ -z "$1" ]]; then
-		git commit --amend --no-edit
-	else
-		git commit -m "$1"
-	fi
-}
-
-# https://itnext.io/multitask-like-a-pro-with-the-wip-commit-2f4d40ca0192
-
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message "🗂 --wip-- [skip ci]"'
-alias grmw='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
-
-# Similar to `gunwip` but recursive "Unwips" all recent `--wip--` commits not just the last one
-function grmwa() {
-	local _commit=$(git log --grep='--wip--' --invert-grep --max-count=1 --format=format:%H)
-
-	# Check if a commit without "--wip--" was found and it's not the same as HEAD
-	if [[ "$_commit" != "$(git rev-parse HEAD)" ]]; then
-		git reset $_commit || return 1
-	fi
 }

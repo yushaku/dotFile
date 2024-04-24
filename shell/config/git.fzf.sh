@@ -92,7 +92,7 @@ if [[ $- =~ i ]]; then
 # -----------------------------------------------------------------------------
 
 # Redefine this function to change the options
-_fzf_git_fzf() {
+_fzf_git() {
   fzf-tmux -p80%,60% -- \
     --layout=reverse --multi --height=50% --min-height=20 --border \
     --border-label-pos=2 \
@@ -130,7 +130,7 @@ _fzf_git_files() {
 
   (git -c color.status=always status --short --no-branch
    git ls-files "$root" | grep -vxFf <(git status -s | grep '^[^?]' | cut -c4-; echo :) | sed 's/^/   /') |
-  _fzf_git_fzf -m --ansi --nth 2..,.. \
+  _fzf_git -m --ansi --nth 2..,.. \
     --border-label '📁 Files' \
     --header $'CTRL-O (open in browser) ╱ ALT-E (open in editor)\n\n' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git file {-1}" \
@@ -143,7 +143,7 @@ _fzf_git_files() {
 _fzf_git_branches() {
   _fzf_git_check || return
   bash "$__fzf_git" branches |
-  _fzf_git_fzf --ansi \
+  _fzf_git --ansi \
     --border-label '🌲 Branches' \
     --header-lines 2 \
     --tiebreak begin \
@@ -160,7 +160,7 @@ _fzf_git_branches() {
 _fzf_git_tags() {
   _fzf_git_check || return
   git tag --sort -version:refname |
-  _fzf_git_fzf --preview-window right,70% \
+  _fzf_git --preview-window right,70% \
     --border-label '📛 Tags' \
     --header $'CTRL-O (open in browser)\n\n' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git tag {}" \
@@ -170,7 +170,7 @@ _fzf_git_tags() {
 _fzf_git_hashes() {
   _fzf_git_check || return
   bash "$__fzf_git" hashes |
-  _fzf_git_fzf --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
+  _fzf_git --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
     --border-label '🍡 Hashes' \
     --header-lines 3 \
     --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
@@ -184,7 +184,7 @@ _fzf_git_hashes() {
 _fzf_git_remotes() {
   _fzf_git_check || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
-  _fzf_git_fzf --tac \
+  _fzf_git --tac \
     --border-label '📡 Remotes' \
     --header $'CTRL-O (open in browser)\n\n' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git remote {1}" \
@@ -195,7 +195,7 @@ _fzf_git_remotes() {
 
 _fzf_git_stashes() {
   _fzf_git_check || return
-  git stash list | _fzf_git_fzf \
+  git stash list | _fzf_git \
     --border-label '🥡 Stashes' \
     --header $'CTRL-X (drop stash)\n\n' \
     --bind 'ctrl-x:reload(git stash drop -q {1}; git stash list)' \
@@ -205,7 +205,7 @@ _fzf_git_stashes() {
 
 _fzf_git_lreflogs() {
   _fzf_git_check || return
-  git reflog --color=always --format="%C(blue)%gD %C(yellow)%h%C(auto)%d %gs" | _fzf_git_fzf --ansi \
+  git reflog --color=always --format="%C(blue)%gD %C(yellow)%h%C(auto)%d %gs" | _fzf_git --ansi \
     --border-label '📒 Reflogs' \
     --preview 'git show --color=always {1}' "$@" |
   awk '{print $1}'
@@ -213,7 +213,7 @@ _fzf_git_lreflogs() {
 
 _fzf_git_each_ref() {
   _fzf_git_check || return
-  bash "$__fzf_git" refs | _fzf_git_fzf --ansi \
+  bash "$__fzf_git" refs | _fzf_git --ansi \
     --nth 2,2.. \
     --tiebreak begin \
     --border-label '☘️  Each ref' \
@@ -231,7 +231,7 @@ _fzf_git_each_ref() {
 
 _fzf_git_worktrees() {
   _fzf_git_check || return
-  git worktree list | _fzf_git_fzf \
+  git worktree list | _fzf_git \
     --border-label '🌴 Worktrees' \
     --header $'CTRL-X (remove worktree)\n\n' \
     --bind 'ctrl-x:reload(git worktree remove {1} > /dev/null; git worktree list)' \

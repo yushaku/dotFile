@@ -86,14 +86,12 @@ Options for TypeScript
 --raw-type json|any                                         Type of raw input (json by default)
 ```
 
-## commit with gpt
+## git commit like pro
 
-- [opencommit](https://github.com/di-sukharev/opencommit#setup) use with [gitmoji](https://github.com/carloscuesta/gitmoji)
+- use with [gitmoji](https://github.com/carloscuesta/gitmoji)
 
 ```bash
-pnpm install -g gitmoji-cli opencommit
-oco config set OCO_EMOJI=true
-oco config set OCO_OPENAI_API_KEY=<key>
+pnpm install -g gitmoji-cli
 ```
 
 ## format json with jq
@@ -137,17 +135,4 @@ git clone yushaku:yushaku/dotfiles
 
 ```bash
 sudo install -y warp-terminal
-```
-
-## [write git commit like pro](https://www.conventionalcommits.org/en/v1.0.0/)
-
-- [git-cz](https://github.com/streamich/git-cz)
-- [gitmoji](https://github.com/carloscuesta/gitmoji-cli)
-
-```sh
-pnpm install -g gitmoji-cli
-
-## or
-
-pnpm install -g git-cz
 ```

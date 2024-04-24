@@ -2,6 +2,7 @@ return {
   { "christoomey/vim-tmux-navigator", enabled = true },
   { "echasnovski/mini.indentscope", enabled = true },
   { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
+  { "mg979/vim-visual-multi", enabled = true },
   {
     "echasnovski/mini.animate",
     enabled = false,
