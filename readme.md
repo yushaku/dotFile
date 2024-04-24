@@ -138,3 +138,16 @@ git clone yushaku:yushaku/dotfiles
 ```bash
 sudo install -y warp-terminal
 ```
+
+## [write git commit like pro](https://www.conventionalcommits.org/en/v1.0.0/)
+
+- [git-cz](https://github.com/streamich/git-cz)
+- [gitmoji](https://github.com/carloscuesta/gitmoji-cli)
+
+```sh
+pnpm install -g gitmoji-cli
+
+## or
+
+pnpm install -g git-cz
+```

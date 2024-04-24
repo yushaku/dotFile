@@ -18,23 +18,24 @@ function ga() {
 }
 
 alias groh='git reset origin/$(_git_current_branch) --hard'
-# alias grs="git reset"
 function grs() {
 	if [[ -z "$1" ]]; then
-		local files=$(git diff --name-only --cached | fzf --multi)
-		if [[ -n "$files" ]]; then
-			git reset HEAD $files
-		fi
+		_fzf_git_hashes | xargs git reset
 	else
 		git reset "$1"
 	fi
 }
 
 function grsf() {
-	local selected_files=$(git status --porcelain | fzf --multi | awk '{print $2}')
+	local selected_files=$(
+		git status --porcelain |
+			_fzf_git_fzf --multi --header '📡 Reset files' |
+			awk '{print $2}'
+	)
 
 	if [ -n "$selected_files" ]; then
 		echo "$selected_files" | xargs git checkout --
+		echo "restore files: $selected_files"
 	fi
 }
 
@@ -47,11 +48,7 @@ alias gbd='git branch -D'
 alias gbdo='git push origin -d'
 function gcb() {
 	if [[ -z "$1" ]]; then
-		git branch --sort=-committerdate |
-			fzf --header 'Checkout Recent Branch' \
-				--preview 'git diff --color=always {1}' \
-				--pointer='' |
-			xargs git checkout
+		_fzf_git_branches | xargs git checkout
 	else
 		# Check if the branch exists
 		if git show-ref --verify --quiet refs/heads/"$1"; then
