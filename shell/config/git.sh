@@ -68,18 +68,24 @@ alias gpof='git push -u origin --force-with-lease $(_git_current_branch)'
 
 ##>> ------------------ BRANCH -------------------------
 
-alias gbd='git branch -D'
-alias gbdo='git push origin -d'
+alias grmb='git branch -D'
+alias grmbo='git push origin -d'
 function gcb() {
+	local branch
 	if [[ -z "$1" ]]; then
-		_fzf_git_branches | xargs git checkout
+		branch=$(_fzf_git_branches)
 	else
-		# Check if the branch exists
-		if git show-ref --verify --quiet refs/heads/"$1"; then
-			git checkout "$1"
-		else
-			git checkout -b "$1"
-		fi
+		branch="$1"
+	fi
+
+	if [[ $branch =~ ^origin/ ]]; then
+		local local_branch=${branch#origin/}
+		git checkout -t "$branch" || git checkout -b "$local_branch"
+	else
+		git checkout -q -- "$branch" || {
+			git checkout -q -b "$branch" &&
+				git pull --set-upstream origin "$branch"
+		}
 	fi
 }
 
@@ -139,7 +145,11 @@ alias gmr="git merge"
 alias glga="git reflog --pretty=short | batcat"
 
 function glg() {
-	git log --graph --oneline --decorate --all -n "${1:-10}"
+	git log --graph --oneline --exclude=refs/stash --decorate --exclude=refs/stash --all -n "${1:-10}"
+}
+
+function glgc() {
+	git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph -n "${1:-10}" --color=always "$@"
 }
 
 ##>> ----------------------------------------------------------<<##
