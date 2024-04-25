@@ -5,7 +5,7 @@ alias gcl='git clone --recurse-submodules'
 ##>> ------------------ ADD -------------------------
 alias gss="git status"
 alias gaa="git add --all"
-function ga() {
+ga() {
 	local files=($(git diff --name-only))
 	local staged_files=($(git diff --name-only --cached))
 
@@ -17,7 +17,7 @@ function ga() {
 	fi
 }
 alias gcmm="gitmoji -c"
-function gcm() {
+gcm() {
 	if [[ -z "$1" ]]; then
 		git commit --amend --no-edit
 	else
@@ -25,7 +25,7 @@ function gcm() {
 	fi
 }
 
-function ggp() {
+ggp() {
 	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
 		git push origin "${*}"
 	else
@@ -38,7 +38,7 @@ function ggp() {
 
 alias grmc="git rm -r --cached" # Remove files from the working tree and from the index
 alias groh='git reset origin/$(_git_current_branch) --hard'
-function grs() {
+grs() {
 	if [[ -z "$1" ]]; then
 		_fzf_git_hashes | xargs git reset
 	else
@@ -46,7 +46,7 @@ function grs() {
 	fi
 }
 
-function grsf() {
+grsf() {
 	local selected_files=$(
 		git status --porcelain |
 			_fzf_git --multi --header '📡 Reset files' |
@@ -70,7 +70,7 @@ alias gpof='git push -u origin --force-with-lease $(_git_current_branch)'
 
 alias grmb='git branch -D'
 alias grmbo='git push origin -d'
-function gcb() {
+gcb() {
 	local branch
 	if [[ -z "$1" ]]; then
 		branch=$(_fzf_git_branches)
@@ -89,7 +89,7 @@ function gcb() {
 	fi
 }
 
-function gbo() {
+gbo() {
 	if [[ -z "$1" ]]; then
 		echo "please enter branch's name"
 	else
@@ -112,7 +112,7 @@ alias gcpc='git cherry-pick --continue'
 
 ##>> ------------------ STASH -------------------------
 
-function gsta() {
+gsta() {
 	if [[ -z "$1" ]]; then
 		git stash -au
 	else
@@ -121,10 +121,10 @@ function gsta() {
 }
 alias gst='git stash'
 alias gstl='_fzf_git_stashes'
-function gstp() {
+gstp() {
 	_fzf_git_stashes | xargs git stash pop
 }
-function gstd() {
+gstd() {
 	_fzf_git_stashes | xargs git stash drop
 }
 
@@ -144,11 +144,11 @@ alias gmr="git merge"
 ##>> ------------------ LOG -------------------------
 alias glga="git reflog --pretty=short | batcat"
 
-function glg() {
+glg() {
 	git log --graph --oneline --exclude=refs/stash --decorate --exclude=refs/stash --all -n "${1:-10}"
 }
 
-function glgc() {
+glc() {
 	git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph -n "${1:-10}" --color=always "$@"
 }
 
@@ -158,4 +158,174 @@ function glgc() {
 function _git_current_branch() {
 	currentBranch=$(git rev-parse --abbrev-ref HEAD)
 	echo "$currentBranch"
+}
+
+# Redefine this function to change the options
+function _fzf_git_check() {
+  git rev-parse HEAD > /dev/null 2>&1 && return
+  [[ -n $TMUX ]] && tmux display-message "Not in a git repository"
+  return 1
+}
+
+function _fzf_git() {
+  fzf-tmux -p80%,60% -- \
+    --layout=reverse --multi --height=50% --min-height=20 --border \
+    --border-label-pos=2 \
+    --color='header:italic:underline,label:blue' \
+    --preview-window='right,50%,border-left' \
+    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' "$@"
+}
+
+__fzf_git=${BASH_SOURCE[0]:-${(%):-%x}}
+__fzf_git=$(readlink -f "$__fzf_git" 2> /dev/null || /usr/bin/ruby --disable-gems -e 'puts File.expand_path(ARGV.first)' "$__fzf_git" 2> /dev/null)
+
+if [[ -z $_fzf_git_cat ]]; then
+  export _fzf_git_cat="cat"
+  _fzf_git_bat_options="--style='${BAT_STYLE:-full}' --color=always --pager=never"
+  if command -v batcat > /dev/null; then
+    _fzf_git_cat="batcat $_fzf_git_bat_options"
+  elif command -v bat > /dev/null; then
+    _fzf_git_cat="bat $_fzf_git_bat_options"
+  fi
+fi
+
+function _fzf_git_files() {
+  _fzf_git_check || return
+  local root query
+  root=$(git rev-parse --show-toplevel)
+  [[ $root != "$PWD" ]] && query='!../ '
+
+  (git -c color.status=always status --short --no-branch
+   git ls-files "$root" | grep -vxFf <(git status -s | grep '^[^?]' | cut -c4-; echo :) | sed 's/^/   /') |
+  _fzf_git -m --ansi --nth 2..,.. \
+    --border-label '📁 Files' \
+    --header $'CTRL-O (open in browser) ╱ ALT-E (open in editor)\n\n' \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git file {-1}" \
+    --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
+    --query "$query" \
+    --preview "git diff --no-ext-diff --color=always -- {-1} | sed 1,4d; $_fzf_git_cat {-1}" "$@" |
+  cut -c4- | sed 's/.* -> //'
+}
+
+function _fzf_git_branches() {
+  _fzf_git_check || return
+  bash "$__fzf_git" branches |
+  _fzf_git --ansi \
+    --border-label '🌲 Branches' \
+    --header-lines 2 \
+    --tiebreak begin \
+    --preview-window right,border-top,40% \
+    --color hl:underline,hl+:underline \
+    --no-hscroll \
+    --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git branch {}" \
+    --bind "alt-a:change-border-label(🌳 All branches)+reload:bash \"$__fzf_git\" all-branches" \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) --' "$@" |
+  sed 's/^..//' | cut -d' ' -f1
+}
+
+function _fzf_git_tags() {
+  _fzf_git_check || return
+  git tag --sort -version:refname |
+  _fzf_git --preview-window right,70% \
+    --border-label '📛 Tags' \
+    --header $'CTRL-O (open in browser)\n\n' \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git tag {}" \
+    --preview 'git show --color=always {}' "$@"
+}
+
+function _fzf_git_hashes() {
+  _fzf_git_check || return
+  bash "$__fzf_git" hashes |
+  _fzf_git --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
+    --border-label '🍡 Hashes' \
+    --header-lines 3 \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
+    --bind 'ctrl-d:execute:grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git diff > /dev/tty' \
+    --bind "alt-a:change-border-label(🍇 All hashes)+reload:bash \"$__fzf_git\" all-hashes" \
+    --color hl:underline,hl+:underline \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git show --color=always' "$@" |
+  awk 'match($0, /[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]*/) { print substr($0, RSTART, RLENGTH) }'
+}
+
+function _fzf_git_remotes() {
+  _fzf_git_check || return
+  git remote -v | awk '{print $1 "\t" $2}' | uniq |
+  _fzf_git --tac \
+    --border-label '📡 Remotes' \
+    --header $'CTRL-O (open in browser)\n\n' \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git remote {1}" \
+    --preview-window right,70% \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" {1}/"$(git rev-parse --abbrev-ref HEAD)" --' "$@" |
+  cut -d$'\t' -f1
+}
+
+function _fzf_git_stashes() {
+  _fzf_git_check || return
+  git stash list | _fzf_git \
+    --border-label '🥡 Stashes' \
+    --header $'CTRL-X (drop stash)\n\n' \
+    --bind 'ctrl-x:reload(git stash drop -q {1}; git stash list)' \
+    -d: --preview 'git show --color=always {1}' "$@" |
+  cut -d: -f1
+}
+
+function _fzf_git_lreflogs() {
+  _fzf_git_check || return
+  git reflog --color=always --format="%C(blue)%gD %C(yellow)%h%C(auto)%d %gs" | _fzf_git --ansi \
+    --border-label '📒 Reflogs' \
+    --preview 'git show --color=always {1}' "$@" |
+  awk '{print $1}'
+}
+
+function _fzf_git_each_ref() {
+  _fzf_git_check || return
+  bash "$__fzf_git" refs | _fzf_git --ansi \
+    --nth 2,2.. \
+    --tiebreak begin \
+    --border-label '☘️  Each ref' \
+    --header-lines 2 \
+    --preview-window down,border-top,40% \
+    --color hl:underline,hl+:underline \
+    --no-hscroll \
+    --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
+    --bind "ctrl-o:execute-silent:bash $__fzf_git {1} {2}" \
+    --bind "alt-e:execute:${EDITOR:-vim} <(git show {2}) > /dev/tty" \
+    --bind "alt-a:change-border-label(🍀 Every ref)+reload:bash \"$__fzf_git\" all-refs" \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" {2} --' "$@" |
+  awk '{print $2}'
+}
+
+function _fzf_git_worktrees() {
+  _fzf_git_check || return
+  git worktree list | _fzf_git \
+    --border-label '🌴 Worktrees' \
+    --header $'CTRL-X (remove worktree)\n\n' \
+    --bind 'ctrl-x:reload(git worktree remove {1} > /dev/null; git worktree list)' \
+    --preview '
+      git -c color.status=always -C {1} status --short --branch
+      echo
+      git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" {2} --
+    ' "$@" |
+  awk '{print $1}'
+}
+
+function branches() {
+  git branch -a "$@" \
+    --sort=-HEAD \
+    --color=always \
+    --sort=-committerdate \
+    --format=$'%(HEAD) %(color:yellow)%(refname:short) %(color:green)(%(committerdate:relative))\t%(color:blue)%(subject)%(color:reset)'  |
+  column -ts$'\t'
+}
+
+function  refs() {
+  git for-each-ref --sort=-creatordate --sort=-HEAD --color=always --format=$'%(refname) %(color:green)(%(creatordate:relative))\t%(color:blue)%(subject)%(color:reset)' |
+    eval "$1" |
+    sed 's#^refs/remotes/#\x1b[95mremote-branch\t\x1b[33m#; s#^refs/heads/#\x1b[92mbranch\t\x1b[33m#; s#^refs/tags/#\x1b[96mtag\t\x1b[33m#; s#refs/stash#\x1b[91mstash\t\x1b[33mrefs/stash#' |
+    column -ts$'\t'
+}
+
+function hashes() {
+  git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always "$@"
 }
