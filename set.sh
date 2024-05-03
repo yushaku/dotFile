@@ -36,6 +36,16 @@ function copy_warp() {
 	echo "👉 copy file config warp done"
 }
 
+function copy_warp_theme() {
+	WARP_THEMES_DIR="$HOME/.local/share/warp-terminal/themes"
+	mkdir -p "$WARP_THEMES_DIR"
+	curl --output-dir "$WARP_THEMES_DIR" -LO https://raw.githubusercontent.com/catppuccin/warp/main/dist/catppuccin_latte.yml
+	curl --output-dir "$WARP_THEMES_DIR" -LO https://raw.githubusercontent.com/catppuccin/warp/main/dist/catppuccin_frappe.yml
+	curl --output-dir "$WARP_THEMES_DIR" -LO https://raw.githubusercontent.com/catppuccin/warp/main/dist/catppuccin_macchiato.yml
+	curl --output-dir "$WARP_THEMES_DIR" -LO https://raw.githubusercontent.com/catppuccin/warp/main/dist/catppuccin_mocha.yml
+	echo "👉 copy themes warp done"
+}
+
 function isCopyAll() {
 	local arguments=$@
 	[[ "$arguments" =~ "all" ]]
@@ -67,6 +77,9 @@ for arg in "$@"; do
 
 	elif [ "$arg" == "warp" ]; then
 		copy_warp
+
+	elif [ "$arg" == "warp_theme" ]; then
+		copy_warp_theme
 
 	else
 		echo "do not know that option"

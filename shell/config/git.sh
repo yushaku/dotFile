@@ -78,14 +78,17 @@ gcb() {
 		branch="$1"
 	fi
 
+  if [[ $branch = '' ]]; then
+ 		return;
+  fi
+
 	if [[ $branch =~ ^origin/ ]]; then
 		local local_branch=${branch#origin/}
-		git checkout -t "$branch" || git checkout -b "$local_branch"
+		git checkout --track "$branch" || git checkout -b "$local_branch"
 	else
-		git checkout -q -- "$branch" || {
-			git checkout -q -b "$branch" &&
-				git pull --set-upstream origin "$branch"
-		}
+		git checkout --quiet "$branch" || {
+      git checkout --quiet -b "$branch" && git pull --quiet --set-upstream origin "$branch" 
+    }
 	fi
 }
 
@@ -122,10 +125,20 @@ gsta() {
 alias gst='git stash'
 alias gstl='_fzf_git_stashes'
 gstp() {
-	_fzf_git_stashes | xargs git stash pop
+  tag=$(_fzf_git_stashes)
+  if [[ $tag = '' ]]; then
+    return
+  fi
+
+	git stash pop $tag
 }
 gstd() {
-	_fzf_git_stashes | xargs git stash drop
+  tag=$(_fzf_git_stashes)
+  if [[ $tag = '' ]]; then
+    return
+  fi
+
+	git stash drop $tag
 }
 
 # https://itnext.io/multitask-like-a-pro-with-the-wip-commit-2f4d40ca0192
@@ -148,7 +161,7 @@ glg() {
 	git log --graph --oneline --exclude=refs/stash --decorate --exclude=refs/stash --all -n "${1:-10}"
 }
 
-glc() {
+gll() {
 	git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph -n "${1:-10}" --color=always "$@"
 }
 
@@ -209,8 +222,7 @@ function _fzf_git_files() {
 
 function _fzf_git_branches() {
   _fzf_git_check || return
-  bash "$__fzf_git" branches |
-  _fzf_git --ansi \
+  bash "$__fzf_git" branches | _fzf_git --ansi \
     --border-label '🌲 Branches' \
     --header-lines 2 \
     --tiebreak begin \
@@ -236,8 +248,7 @@ function _fzf_git_tags() {
 
 function _fzf_git_hashes() {
   _fzf_git_check || return
-  bash "$__fzf_git" hashes |
-  _fzf_git --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
+  hashes | _fzf_git --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
     --border-label '🍡 Hashes' \
     --header-lines 3 \
     --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
@@ -280,7 +291,7 @@ function _fzf_git_lreflogs() {
 
 function _fzf_git_each_ref() {
   _fzf_git_check || return
-  bash "$__fzf_git" refs | _fzf_git --ansi \
+  refs | _fzf_git --ansi \
     --nth 2,2.. \
     --tiebreak begin \
     --border-label '☘️  Each ref' \
@@ -311,7 +322,7 @@ function _fzf_git_worktrees() {
 }
 
 function branches() {
-  git branch -a "$@" \
+  git branch "$@" \
     --sort=-HEAD \
     --color=always \
     --sort=-committerdate \
@@ -329,3 +340,85 @@ function  refs() {
 function hashes() {
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always "$@"
 }
+
+if [[ $# -eq 1 ]]; then
+  case "$1" in
+    branches)
+      echo $'CTRL-O (open in browser) ╱ ALT-A (show all branches)\n'
+      branches
+      ;;
+
+    all-branches)
+      echo $'CTRL-O (open in browser)\n'
+      branches -a
+      ;;
+
+    hashes)
+      echo $'CTRL-O (open in browser) ╱ CTRL-D (diff)\nCTRL-S (toggle sort) ╱ ALT-A (show all hashes)\n'
+      hashes
+      ;;
+
+    all-hashes)
+      echo $'CTRL-O (open in browser) ╱ CTRL-D (diff)\nCTRL-S (toggle sort)\n'
+      hashes --all
+      ;;
+
+    refs)
+      echo $'CTRL-O (open in browser) ╱ ALT-E (examine in editor) ╱ ALT-A (show all refs)\n'
+      refs 'grep -v ^refs/remotes'
+      ;;
+
+    all-refs)
+      echo $'CTRL-O (open in browser) ╱ ALT-E (examine in editor)\n'
+      refs 'cat'
+      ;;
+
+    nobeep) ;;
+    *) exit 1 ;;
+  esac
+elif [[ $# -gt 1 ]]; then
+  set -e
+
+  branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+  if [[ $branch = HEAD ]]; then
+    branch=$(git describe --exact-match --tags 2> /dev/null || git rev-parse --short HEAD)
+  fi
+
+  # Only supports GitHub for now
+  case "$1" in
+    commit)
+      hash=$(grep -o "[a-f0-9]\{7,\}" <<< "$2")
+      path=/commit/$hash
+      ;;
+    branch|remote-branch)
+      branch=$(sed 's/^[* ]*//' <<< "$2" | cut -d' ' -f1)
+      remote=$(git config branch."${branch}".remote || echo 'origin')
+      branch=${branch#$remote/}
+      path=/tree/$branch
+      ;;
+    remote)
+      remote=$2
+      path=/tree/$branch
+      ;;
+    file) path=/blob/$branch/$(git rev-parse --show-prefix)$2 ;;
+    tag)  path=/releases/tag/$2 ;;
+    *)    exit 1 ;;
+  esac
+
+  remote=${remote:-$(git config branch."${branch}".remote || echo 'origin')}
+  remote_url=$(git remote get-url "$remote" 2> /dev/null || echo "$remote")
+
+  if [[ $remote_url =~ ^git@ ]]; then
+    url=${remote_url%.git}
+    url=${url#git@}
+    url=https://${url/://}
+  elif [[ $remote_url =~ ^http ]]; then
+    url=${remote_url%.git}
+  fi
+
+  case "$(uname -s)" in
+    Darwin) open "$url$path"     ;;
+    *)      xdg-open "$url$path" ;;
+  esac
+  exit 0
+fi
