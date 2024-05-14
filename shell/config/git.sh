@@ -86,8 +86,8 @@ gcb() {
 		local local_branch=${branch#origin/}
 		git checkout --track "$branch" || git checkout -b "$local_branch"
 	else
-		git checkout --quiet "$branch" || {
-      git checkout --quiet -b "$branch" && git pull --quiet --set-upstream origin "$branch" 
+		git checkout --quiet "$branch" || { 
+      git checkout --quiet -b "$branch" 
     }
 	fi
 }
@@ -167,6 +167,7 @@ gll() {
 
 ##>> ----------------------------------------------------------<<##
 ##>> ------------------ PRIVATE FUNCTION ----------------------<<##
+# inherit from https://github.com/junegunn/fzf-git.sh
 
 function _git_current_branch() {
 	currentBranch=$(git rev-parse --abbrev-ref HEAD)
@@ -181,8 +182,7 @@ function _fzf_git_check() {
 }
 
 function _fzf_git() {
-  fzf-tmux -p80%,60% -- \
-    --layout=reverse --multi --height=50% --min-height=20 --border \
+  fzf --layout=reverse --multi --height=50% --min-height=20 --border \
     --border-label-pos=2 \
     --color='header:italic:underline,label:blue' \
     --preview-window='right,50%,border-left' \

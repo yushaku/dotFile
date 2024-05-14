@@ -27,19 +27,6 @@
   fzf --preview='batcat --color="always" --style="numbers" {}' --bind shift-up:preview-up,shift-down:preview-down
   ```
 
-#### fzf + git
-
-_*List of bindings*_
-`CTRL-G CTRL-F` for Files
-`CTRL-G CTRL-B` for Branches
-`CTRL-G CTRL-T` for Tags
-`CTRL-G CTRL-R` for Remotes
-`CTRL-G CTRL-H` for commit Hashes
-`CTRL-G CTRL-S` for Stashes
-`CTRL-G CTRL-L` for reflogs
-`CTRL-G CTRL-W` for Worktrees
-`CTRL-G CTRL-E` for Each ref (git for-each-ref)
-
 ## pandoc
 
 convert file: https://pandoc.org/demos.html

@@ -12,7 +12,7 @@ alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=a
 alias zshconfig="nvim ~/.zshrc"
 alias viconfig="nvim ~/.config/nvim/lua/config/lazy.lua"
 alias dnsconfig="nvim /etc/resolv.conf"
-alias ll="exa -lha --time-style=long-iso --icons --colour-scale --group-directories-first"
+alias ll="exa -lha --time-style=long-iso --icons --no-time --no-user --colour-scale --group-directories-first"
 function lk() {
 	exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
 }
@@ -111,14 +111,10 @@ function _package_manager() {
 		command yarn "$@"
 	elif [[ -f package-lock.json ]]; then
 		command npm "$@"
-	elif [[ -f requirements.txt ]]; then
-		command pip "$@"
 	else
 		command pnpm "$@"
 	fi
 }
-
-alias py='python3'
 
 alias p='_package_manager'
 alias pi='_package_manager install'
