@@ -54,7 +54,7 @@ return {
 
       -- create my own config
       { "<C-S-p>", "<CMD>Telescope fd<cr>", desc = "Find Files (root dir)" },
-      { "<C-p>", Util.telescope("files"), desc = "Find Files (child dir)" },
+      { "<C-p>", Util.pick("files"), desc = "Find Files (child dir)" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "Open marks" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },

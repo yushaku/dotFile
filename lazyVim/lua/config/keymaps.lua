@@ -110,6 +110,8 @@ map({ "n", "x", "o", "t" }, "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Qui
 -- floating terminal
 map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
 map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at bottom" })
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })

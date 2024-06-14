@@ -18,7 +18,7 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    enabled = true,
+    enabled = false,
     keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
@@ -161,6 +161,32 @@ return {
     opts = {
       position = "right",
       action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
+      modes = {
+        keys = {
+          l = "fold_open",
+          h = "fold_close",
+        },
+        symbols = {
+          desc = "document symbols",
+          mode = "lsp_document_symbols",
+          focus = true,
+          win = { position = "right" },
+          filter = {
+            -- remove Package since luals uses it for control flow structures
+            ["not"] = { ft = "lua", kind = "Package" },
+            any = {
+              ft = { "help", "markdown" },
+              kind = {
+                "Class",
+                "Constructor",
+                "Field",
+                "Function",
+                "Method",
+              },
+            },
+          },
+        },
+      },
     },
     keys = {
       {
