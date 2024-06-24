@@ -1,24 +1,28 @@
 return {
   { "christoomey/vim-tmux-navigator", enabled = true },
-  { "echasnovski/mini.indentscope", enabled = true },
-  { "echasnovski/mini.surround", opts = { mappings = { add = "sa", delete = "sd", replace = "sc" } } },
-  { "mg979/vim-visual-multi", enabled = true },
   {
-    "echasnovski/mini.animate",
-    enabled = false,
-    opts = function()
-      local animate = require("mini.animate")
-      return {
-        cursor = { enable = true, timing = animate.gen_timing.linear({ duration = 50, unit = "total" }) },
-        resize = { enable = false },
-        open = { enable = false },
-        close = { enable = false },
-      }
-    end,
+    "lukas-reineke/indent-blankline.nvim",
+    event = "LazyFile",
+    opts = { scope = { enabled = true } },
   },
   {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "as",
+        delete = "ds",
+        replace = "cs",
+        find = "",
+        find_left = "",
+        highlight = "",
+        update_n_lines = "",
+      },
+    },
+  },
+  { "mg979/vim-visual-multi", enabled = true },
+  {
     "simrat39/symbols-outline.nvim",
-    enabled = false,
+    enabled = true,
     keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
@@ -67,16 +71,6 @@ return {
       },
     },
   },
-  -- {
-  --   "uga-rosa/ccc.nvim",
-  --   enabled = false,
-  --   event = "VeryLazy",
-  --   keys = {
-  --     -- { "<leader>cc", "<CMD>CccHighlighterToggle<CR>", desc = "toggle display color preview css" },
-  --     { "<leader>cp", "<CMD>CccPick<CR>", desc = "color picker css" },
-  --     { "<leader>cC", "<CMD>CccConvert<CR>", desc = "convert to other color's type" },
-  --   },
-  -- },
   {
     "xiyaowong/transparent.nvim",
     enabled = true,
@@ -93,7 +87,7 @@ return {
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
   },
@@ -132,97 +126,6 @@ return {
         bufferline = { enabled = false },
         tmux = { enabled = true },
         transparent = { enabled = true },
-      },
-    },
-  },
-  -- {
-  --   "Pocco81/true-zen.nvim",
-  --   enabled = false,
-  --   event = "VeryLazy",
-  --   keys = {
-  --     { "<f2>", "<CMD>:TZAtaraxis<CR>", desc = "Toggle zen mode" },
-  --     { "<leader>um", "<CMD>:TZFocus<CR>", desc = "Forcus current window" },
-  --     { "<leader>uz", "'<,'>TZNarrow<CR>", desc = "Narrow current function", mode = { "v" } },
-  --   },
-  --   opts = {
-  --     integrations = {
-  --       tmux = true, -- hide tmux status bar in (minimalist, ataraxis)
-  --       twilight = false, -- enable twilight (ataraxis)
-  --       lualine = true, -- hide nvim-lualine (ataraxis)
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     require("true-zen").setup(opts)
-  --   end,
-  -- },
-  {
-    "folke/trouble.nvim",
-    enabled = true,
-    opts = {
-      position = "right",
-      action_keys = { close = { "q", "<esc>" }, open_split = { "s" } },
-      modes = {
-        keys = {
-          l = "fold_open",
-          h = "fold_close",
-        },
-        symbols = {
-          desc = "document symbols",
-          mode = "lsp_document_symbols",
-          focus = true,
-          win = { position = "right" },
-          filter = {
-            -- remove Package since luals uses it for control flow structures
-            ["not"] = { ft = "lua", kind = "Package" },
-            any = {
-              ft = { "help", "markdown" },
-              kind = {
-                "Class",
-                "Constructor",
-                "Field",
-                "Function",
-                "Method",
-              },
-            },
-          },
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>xx",
-        function()
-          require("trouble").toggle()
-        end,
-        desc = "Trouble toggle",
-      },
-      {
-        "<leader>xw",
-        function()
-          require("trouble").toggle("workspace_diagnostics")
-        end,
-        desc = "Trouble workspace diagnostics",
-      },
-      {
-        "<leader>xd",
-        function()
-          require("trouble").toggle("document_diagnostics")
-        end,
-        desc = "Trouble document diagnostics",
-      },
-      {
-        "<leader>xq",
-        function()
-          require("trouble").toggle("quickfix")
-        end,
-        desc = "Trouble toggle quickfix",
-      },
-      {
-        "<leader>xl",
-        function()
-          require("trouble").toggle("loclist")
-        end,
-        desc = "Trouble toggle loclist",
       },
     },
   },

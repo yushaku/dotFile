@@ -47,7 +47,7 @@ return {
       keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
       keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
       keymap("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
-      keymap("n", "gr", "<Cmd>Lspsaga finder<CR>")
+      keymap("n", "ga", "<Cmd>Lspsaga finder<CR>")
       keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "show diagnostic in current line" })
       keymap("n", "<leader>ut", "<cmd>Lspsaga winbar_toggle<CR>", { desc = "toggle winbar" })
 

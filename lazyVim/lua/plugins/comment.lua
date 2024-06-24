@@ -1,34 +1,4 @@
 return {
-  -- {
-  --   "numToStr/Comment.nvim",
-  --   enabled = false,
-  --   lazy = false,
-  --   opts = {
-  --     toggler = {
-  --       line = "gcc", -- linewise comment
-  --       block = "gbc", -- blockwise comment
-  --     },
-  --     ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-  --     opleader = {
-  --       line = "gc",
-  --       block = "gb",
-  --     },
-  --     extra = {
-  --       above = "gcO", --Insert comment to the next line and enters INSERT mode
-  --       below = "gco", -- Insert comment to the previous line and enters INSERT mode
-  --       eol = "gcA", -- Insert comment to the end of line and enters INSERT mode
-  --     },
-  --     ---Enable keybindings
-  --     ---NOTE: If given `false` then the plugin won't create any mappings
-  --     mappings = {
-  --       ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-  --       basic = true,
-  --       ---Extra mapping; `gco`, `gcO`, `gcA`
-  --       extra = true,
-  --     },
-  --     pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-  --   },
-  -- },
   {
     "todo-comments.nvim",
     keys = {

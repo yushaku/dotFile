@@ -21,21 +21,6 @@ return {
         ["<M-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<M-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       })
-
-      local autocomplete_group = vim.api.nvim_create_augroup("vimrc_autocompletion", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "sql", "mysql", "plsql" },
-        callback = function()
-          cmp.setup.buffer({
-            sources = {
-              { name = "vim-dadbod-completion" },
-              { name = "buffer" },
-              { name = "luasnip" },
-            },
-          })
-        end,
-        group = autocomplete_group,
-      })
     end,
   },
 }
