@@ -13,7 +13,6 @@ return {
       -- "json-lsp",
       -- "lua-language-server",
       "docker-compose-language-service",
-      "typescript-language-server",
       "tailwindcss-language-server",
       -- "js-debug-adapter",
       -- "chrome-debug-adapter",

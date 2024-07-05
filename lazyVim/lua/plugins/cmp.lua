@@ -3,8 +3,8 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-      { "hrsh7th/cmp-emoji" },
-      { "hrsh7th/cmp-cmdline" },
+      -- { "hrsh7th/cmp-emoji" },
+      -- { "hrsh7th/cmp-cmdline" },
     },
     opts = function(_, opts)
       local format_kinds = opts.formatting.format
