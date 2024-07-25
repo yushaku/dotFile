@@ -104,8 +104,8 @@ map("v", ">", ">gv")
 map("v", "p", '"_dP', { desc = "paste without yank line" })
 
 -- quit
-map({ "n", "x", "o", "t" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-map({ "n", "x", "o", "t" }, "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
+map({ "n" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map({ "n" }, "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
 
 -- floating terminal
 map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
