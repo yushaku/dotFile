@@ -3,7 +3,6 @@ return {
   cmd = "Neotree",
   event = "VeryLazy",
   keys = {
-    { "<leader>fe", false },
     { "<leader>fE", false },
     {
       "<leader>e",
@@ -19,21 +18,11 @@ return {
       end,
       desc = "Explorer NeoTree (cwd)",
     },
-    -- {
-    --   "<leader>fg",
-    --   "<CMD>Neotree source=git_status toggle left reveal<CR>",
-    --   desc = "Explorer changed files",
-    -- },
-    -- {
-    --   "<leader>ff",
-    --   "<CMD>Neotree source=filesystem toggle left reveal<CR>",
-    --   desc = "Explorer changed files",
-    -- },
-    -- {
-    --   "<leader>fb",
-    --   "<CMD>Neotree source=buffers toggle left reveal<CR>",
-    --   desc = "Explorer NeoTree buffers",
-    -- },
+    {
+      "<leader>fe",
+      "<CMD>Neotree source=filesystem toggle left reveal<CR>",
+      desc = "Explorer changed files",
+    },
     {
       "<C-M-f>",
       "<CMD>Neotree source=filesystem float toggle reveal<CR>",
@@ -69,15 +58,15 @@ return {
     },
     filesystem = {
       bind_to_cwd = false,
-      filte_items = {
+      filtered_items = {
         visible = false,
-        hide_dotfiles = false,
-        hide_gitigno = false,
-        hide_hidden = true,
+        hide_dotfiles = true,
+        hide_gitigno = true,
+        hide_hidden = false,
         hide_by_name = { ".git", "node_modules", ".docker", ".vscode", "dist" },
         hide_by_pattern = { "*.meta", ".git", "node_modules" },
         never_show = { "node_modules", ".next" },
-        always_show = { ".gitignore, .env, .env.example" },
+        always_show = { ".gitignore", ".env", ".env.example" },
       },
       window = {
         mappings = {
