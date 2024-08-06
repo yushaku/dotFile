@@ -1,7 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { { "JoosepAlviste/nvim-ts-context-commentstring" } },
     event = { "BufReadPre" },
     commit = "0d14299",
     opts = function(_, opts)
@@ -87,10 +86,5 @@ return {
       },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    event = "LazyFile",
-    enabled = true,
   },
 }

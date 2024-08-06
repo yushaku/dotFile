@@ -1,4 +1,3 @@
-local Util = require("lazyvim.util")
 require("telescope").load_extension("noice")
 
 return {
@@ -44,7 +43,6 @@ return {
       { "<leader>sw", false },
       { "<leader>sm", false },
       { "<leader>sG", false },
-      { "<leader>ft", false },
       { "<leader>fT", false },
       { "<leader>ff", false },
       { "<leader>fb", false },
@@ -53,8 +51,8 @@ return {
       { "<leader>gs", false },
 
       -- create my own config
-      { "<C-S-p>", "<CMD>Telescope fd<cr>", desc = "Find Files (root dir)" },
-      { "<C-p>", Util.pick("files"), desc = "Find Files (child dir)" },
+      { "<C-p>", LazyVim.pick("files"), desc = "Find files in child project" },
+      { "<C-A-P>", LazyVim.pick("files", { root = false }), desc = "Find files in parent project" },
       { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
       { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "Open marks" },
       { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },

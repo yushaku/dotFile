@@ -1,4 +1,5 @@
 return {
+  { "mini.comment", enabled = false },
   {
     "todo-comments.nvim",
     keys = {

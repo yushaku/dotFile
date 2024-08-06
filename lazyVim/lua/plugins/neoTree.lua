@@ -65,7 +65,6 @@ return {
         hide_hidden = false,
         hide_by_name = { ".git", "node_modules", ".docker", ".vscode", "dist" },
         hide_by_pattern = { "*.meta", ".git", "node_modules" },
-        never_show = { "node_modules", ".next" },
         always_show = { ".gitignore", ".env", ".env.example" },
       },
       window = {

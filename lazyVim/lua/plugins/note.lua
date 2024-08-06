@@ -1,7 +1,7 @@
 return {
   {
     "epwalsh/obsidian.nvim",
-    enabled = false,
+    enabled = true,
     event = {
       "BufReadPre " .. vim.fn.expand("~") .. "/workspaces/note/**/**.md",
       "BufReadPre " .. vim.fn.expand("~") .. "/note/**/**.md",
