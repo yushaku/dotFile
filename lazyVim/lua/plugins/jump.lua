@@ -53,7 +53,7 @@ return {
             end,
           })
         end,
-        desc = "flash 2-char jump next",
+        desc = "[Flash] 2-char jump next",
       },
       {
         "<leader>h",
@@ -91,7 +91,7 @@ return {
             end,
           })
         end,
-        desc = "flash 2-char jump previous",
+        desc = "[Flash] 2-char jump previous",
       },
       {
         "<leader>j",
@@ -106,14 +106,14 @@ return {
             pattern = "^\\s*\\S\\?",
           })
         end,
-        desc = "flash jump lines",
+        desc = "[Flash] jump lines",
       },
       {
         "<leader>sc",
         function()
           flash.jump({ continue = true })
         end,
-        desc = "flash continue last search",
+        desc = "[Flash] continue last search",
       },
       {
         "<leader>sw",
@@ -122,7 +122,7 @@ return {
             pattern = vim.fn.expand("<cword>"),
           })
         end,
-        desc = "flash continue last search",
+        desc = "[Flash] search current word",
       },
     },
   },

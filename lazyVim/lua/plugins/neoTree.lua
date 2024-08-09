@@ -9,19 +9,19 @@ return {
       function()
         require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
       end,
-      desc = "Explorer NeoTree (root)",
+      desc = "[NeoTree] Files Explorer (root)",
     },
     {
       "<leader>E",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
       end,
-      desc = "Explorer NeoTree (cwd)",
+      desc = "[NeoTree] Files Explorer (cwd)",
     },
     {
       "<leader>fe",
       "<CMD>Neotree source=filesystem toggle left reveal<CR>",
-      desc = "Explorer changed files",
+      desc = "[NeoTree] Explorer changed files",
     },
     {
       "<C-M-f>",

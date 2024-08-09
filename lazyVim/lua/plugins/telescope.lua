@@ -44,6 +44,7 @@ return {
       { "<leader>sm", false },
       { "<leader>sG", false },
       { "<leader>fT", false },
+      { "<leader>ft", false },
       { "<leader>ff", false },
       { "<leader>fb", false },
       { "<leader>fn", false },
@@ -53,9 +54,9 @@ return {
       -- create my own config
       { "<C-p>", LazyVim.pick("files"), desc = "Find files in child project" },
       { "<C-A-P>", LazyVim.pick("files", { root = false }), desc = "Find files in parent project" },
-      { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
-      { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "Open marks" },
-      { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "resume privious search result" },
+      -- { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
+      { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "[Telescope] Open marks" },
+      { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "[Telescope] resume privious search result" },
     },
   },
 }

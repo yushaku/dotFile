@@ -24,7 +24,7 @@ return {
           })
         end,
         mode = { "n", "v" },
-        desc = "Search and Replace",
+        desc = "[GrugFar] Search and Replace",
       },
       {
         "<leader>sf",
@@ -34,7 +34,7 @@ return {
           })
         end,
         mode = { "n", "v" },
-        desc = "Search and Replace on this file",
+        desc = "[GrugFar] Search and Replace on this file",
       },
       {
         "<leader>ss",
@@ -48,7 +48,7 @@ return {
           })
         end,
         mode = { "n", "v" },
-        desc = "Search and Replace this word",
+        desc = "[GrugFar] Search and Replace this word",
       },
     },
   },

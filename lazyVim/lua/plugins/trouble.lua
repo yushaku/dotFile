@@ -4,12 +4,12 @@ return {
   "folke/trouble.nvim",
   enabled = true,
   opts = {
-    win = {
-      width = 0.3,
-      position = "right",
-    },
+    -- win = {
+    -- width = 0.3,
+    -- position = "right",
+    -- },
     focus = true,
-    pinned = false,
+    pinned = true,
     action_keys = {
       close = { "q", "<esc>" },
       open_split = { "s" },
@@ -20,7 +20,7 @@ return {
         h = "fold_close",
       },
       symbols = {
-        desc = "document symbols",
+        desc = "document Outline",
         mode = "lsp_document_symbols",
         focus = true,
         format = "{kind_icon} {symbol.name}",
@@ -43,14 +43,25 @@ return {
       desc = "[Trouble] Show All Diagnostics",
     },
     {
+      "<leader>xX",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      desc = "[Trouble] Diagnostics on current Buffer",
+    },
+    {
       "<leader>xb",
       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       desc = "[Trouble] Diagnostics of current Buffer",
     },
+    { "<leader>xt", "<cmd>Trouble todo toggle<cr>", desc = "[Trouble] Toggle comment tags " },
+    {
+      "<leader>xT",
+      "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>",
+      desc = "[Trouble] comment Todo/Fix/Fixme",
+    },
     {
       "<leader>cs",
       "<cmd>Trouble symbols toggle focus=false<cr>",
-      desc = "[Trouble] Symbols Outline",
+      desc = "[Trouble] Outline",
     },
     {
       "<leader>xl",

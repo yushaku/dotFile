@@ -22,7 +22,7 @@ return {
   { "mg979/vim-visual-multi", enabled = true },
   {
     "simrat39/symbols-outline.nvim",
-    enabled = true,
+    enabled = false,
     keys = { { "<leader>o", "<CMD>:SymbolsOutline<CR>", { desc = "toggle outlne" } } },
     opts = {
       position = "right",
