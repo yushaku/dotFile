@@ -27,7 +27,21 @@ return {
         filter = {
           any = {
             ft = { "help", "markdown" },
-            kind = { "Class", "Constructor", "Field", "Function", "Method" },
+            kind = {
+              "Class",
+              "Constructor",
+              "Enum",
+              "Field",
+              "Interface",
+              "Function",
+              "Method",
+              -- "Module",
+              -- "Namespace",
+              -- "Package",
+              -- "Property",
+              "Struct",
+              "Trait",
+            },
           },
         },
       },
