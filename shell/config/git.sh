@@ -46,6 +46,20 @@ grs() {
 	fi
 }
 
+grsh(){
+    local reset_mode="--hard"  # Default reset mode
+    if [[ "$1" == "--hard" || "$1" == "--soft" ]]; then
+        reset_mode="$1"
+        shift  # Shift the arguments to the left so that $2 becomes $1
+    fi
+
+    if [[ -n "$1" && "$1" =~ ^[0-9]+$ ]]; then
+        git reset "$reset_mode" HEAD~"$1"
+    else
+        git reset "$reset_mode" HEAD
+    fi
+}
+
 grsf() {
 	local selected_files=$(
 		git status --porcelain |
@@ -224,7 +238,6 @@ function _fzf_git_branches() {
   _fzf_git_check || return
   bash "$__fzf_git" branches | _fzf_git --ansi \
     --border-label '🌲 Branches' \
-    --header-lines 2 \
     --tiebreak begin \
     --preview-window right,border-top,40% \
     --color hl:underline,hl+:underline \
@@ -250,7 +263,6 @@ function _fzf_git_hashes() {
   _fzf_git_check || return
   hashes | _fzf_git --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
     --border-label '🍡 Hashes' \
-    --header-lines 3 \
     --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
     --bind 'ctrl-d:execute:grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git diff > /dev/tty' \
     --bind "alt-a:change-border-label(🍇 All hashes)+reload:bash \"$__fzf_git\" all-hashes" \
@@ -295,7 +307,6 @@ function _fzf_git_each_ref() {
     --nth 2,2.. \
     --tiebreak begin \
     --border-label '☘️  Each ref' \
-    --header-lines 2 \
     --preview-window down,border-top,40% \
     --color hl:underline,hl+:underline \
     --no-hscroll \

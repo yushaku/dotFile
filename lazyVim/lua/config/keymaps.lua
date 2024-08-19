@@ -83,7 +83,6 @@ map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
 
 -- go to normal mode
 map("t", "jk", "<C-\\><C-n>", { desc = "easy goto Normal mode in terminal" })
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("i", "jk", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "JK", "<esc>", { desc = "easy goto Normal mode" })
 map("i", "<C-e>", "<C-x><C-e>")
@@ -131,6 +130,7 @@ map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 vim.keymap.del("n", "<C-b>")
 vim.keymap.del("n", "<c-_>")
 vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("t", "<ESC><ESC>")
 
 function _G.toggle_mark(mark)
   -- Get the current cursor position

@@ -44,9 +44,41 @@ return {
     keys = {
       { "<leader>gd", "<CMD>:DiffviewOpen<CR>", desc = "[DiffView] Open git diff" },
       { "<leader>gq", "<CMD>:DiffviewClose<CR>", desc = "[DiffView] Quit git diff" },
-      { "<leader>ge", "<CMD>:DiffviewToggleFiles<CR>", desc = "[DiffView] open changed files" },
+      { "<leader>gb", "<CMD>:DiffviewToggleFiles<CR>", desc = "[DiffView] open changed files" },
       { "<leader>gt", "<CMD>:DiffviewFileHistory<CR>", desc = "[DiffView] Diff history on current branch" },
       { "<leader>gf", "<CMD>:DiffviewFileHistory %<CR>", desc = "[DiffView] Diff current file" },
+      { "<leader>gs", "<CMD>:DiffviewFileHistory -g --range=stash<CR>", desc = "[DiffView] List all stashes history" },
+    },
+    opts = {
+      view = {
+        merge_tool = { layout = "diff3_mixed" },
+      },
+      keymaps = {
+        file_panel = {
+          {
+            "n",
+            "cc",
+            function()
+              vim.ui.input({ prompt = "Commit message: " }, function(msg)
+                if not msg then
+                  return
+                end
+                local results = vim.system({ "git", "commit", "-m", msg }, { text = true }):wait()
+
+                if results.code ~= 0 then
+                  vim.notify(
+                    "Commit failed with the message: \n" .. vim.trim(results.stdout .. "\n" .. results.stderr),
+                    vim.log.levels.ERROR,
+                    { title = "Commit" }
+                  )
+                else
+                  vim.notify(results.stdout, vim.log.levels.INFO, { title = "Commit" })
+                end
+              end)
+            end,
+          },
+        },
+      },
     },
   },
 }
