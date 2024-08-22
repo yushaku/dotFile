@@ -14,6 +14,7 @@ return {
       inlay_hints = { enabled = false },
       servers = {
         tailwindcss = { filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" } },
+        ts_ls = { enabled = false },
       },
     },
   },

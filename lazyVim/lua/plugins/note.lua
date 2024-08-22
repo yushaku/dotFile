@@ -43,4 +43,22 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    opts = {
+      code = {
+        sign = true,
+        width = "block",
+        position = "right",
+        right_pad = 2,
+        language_pad = 2,
+        min_width = 100,
+      },
+      heading = {
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        width = "block",
+        min_width = 100,
+      },
+    },
+  },
 }
