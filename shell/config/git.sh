@@ -46,15 +46,16 @@ grs() {
 	fi
 }
 
-grsh(){
-    local reset_mode="--hard"  # Default reset mode
+#  git undo commit
+guc(){
+    local reset_mode="--soft"  # Default reset mode
     if [[ "$1" == "--hard" || "$1" == "--soft" ]]; then
         reset_mode="$1"
         shift  # Shift the arguments to the left so that $2 becomes $1
     fi
 
     if [[ -n "$1" && "$1" =~ ^[0-9]+$ ]]; then
-        git reset "$reset_mode" HEAD~"$1"
+        git reset "$reset_mode" HEAD~"${1:-1}"
     else
         git reset "$reset_mode" HEAD
     fi

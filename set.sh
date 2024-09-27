@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# Define the available options
-OPTIONS=("shell" "tmux" "themes" "lazyVim" "warp" "warp_theme" "all")
+if [[ -z "$1" ]]; then
+  # Define the available options
+  OPTIONS=("shell" "tmux" "themes" "vim" "warp" "warp_theme" "all")
 
-# Use fzf to select options, allowing for multiple selections
-SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --multi --prompt="Select options: ")
+  # Use fzf to select options, allowing for multiple selections
+  SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --multi --prompt="Select options: ")
+else
+  SELECTION=$1
+fi
 
 if [[ -z "$SELECTION" ]]; then
   echo "No option selected. Please pick one of the following:"
@@ -77,7 +81,7 @@ for option in $SELECTION; do
   "themes")
     copy_theme
     ;;
-  "lazyVim")
+  "vim")
     copy_lazyvim
     ;;
   "warp")
