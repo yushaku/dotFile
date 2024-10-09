@@ -7,7 +7,6 @@ alias ...='cd ../..'
 alias e="exit"
 alias cl="clear"
 alias vi="nvim"
-alias bat="batcat"
 alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias zshconfig="nvim ~/.zshrc"
 alias viconfig="nvim ~/.config/nvim/lua/config/lazy.lua"

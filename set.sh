@@ -2,7 +2,7 @@
 
 if [[ -z "$1" ]]; then
   # Define the available options
-  OPTIONS=("shell" "tmux" "themes" "vim" "warp" "warp_theme" "all")
+  OPTIONS=("shell" "tmux" "themes" "vim" "warp" "warp_theme" "tiling" "all")
 
   # Use fzf to select options, allowing for multiple selections
   SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --multi --prompt="Select options: ")
@@ -24,15 +24,31 @@ function copy_zsh() {
 }
 
 function copy_theme() {
-  mkdir -p ~/.poshthemes
-  cp -R ./themes/* ~/.poshthemes
+  # mkdir -p ~/.poshthemes
+  # cp -R ./themes/* ~/.poshthemes
   cp -R ./themes/starship.toml ~/.config/starship.toml
   echo "👉 copy theme done"
 }
 
+function copy_yabai() {
+  # mkdir -p ~/.config/yabai
+  # mkdir -p ~/.config/skhd
+  #
+  # cp -R ./tiling/skhdrc ~/.config/skhd/
+  # cp -R ./tiling/yabairc ~/.config/yabai/
+  #
+  # skhd --restart-service
+  # yabai --restart-service
+  mkdir -p ~/.config/aerospace
+  cp ./tiling/aerospace.toml ~/.config/aerospace/aerospace.toml
+  # aerospace enable on
+  aerospace reload-config
+  echo "👉 copy tiling manager workspace done"
+}
+
 function copy_lazyvim() {
   rm -rf ~/.config/nvim
-  cp -rR ./lazyVim ~/.config/nvim
+  cp -r ./lazyVim ~/.config/nvim
   echo "👉 copy lazyVim done"
 }
 
@@ -83,6 +99,9 @@ for option in $SELECTION; do
     ;;
   "vim")
     copy_lazyvim
+    ;;
+  "tiling")
+    copy_yabai
     ;;
   "warp")
     copy_warp

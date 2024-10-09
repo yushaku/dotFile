@@ -10,10 +10,30 @@ export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
 
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
 
-DISTRO=$(lsb_release -si)
-if [[ "$DISTRO" == "Linuxmint" ]]; then
+
+setup_completion() {
   autoload -Uz compinit && compinit
   zstyle ':completion:*' use-cache on
+}
+
+# Detect OS type
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS setup
+  alias fd="fd"
+  alias exa="eza"
+  alias batcat="bat"
+  setup_completion
+else
+  DISTRO=$(lsb_release -si 2>/dev/null)
+
+  # Linux (Ubuntu, Linux Mint) setup
+  alias fd="fdfind"
+  alias exa="exa"
+
+  # Check if it's Linux Mint and apply additional configuration
+  if [[ "$DISTRO" == "Linuxmint" ]]; then
+    setup_completion
+  fi
 fi
 
 ##>> CONFIG ZSH BASIC -----------------------------
