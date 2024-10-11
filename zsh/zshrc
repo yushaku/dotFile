@@ -7,7 +7,6 @@ export PATH="/home/$USER/.bun/bin:$PATH"
 
 export GOPATH=$HOME/go                                                # golang
 export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
-
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
 
 
@@ -67,7 +66,12 @@ if [[ $(which plug) ]]; then
   plug "hlissner/zsh-autopair"
   plug "zsh-users/zsh-autosuggestions"
   plug "zdharma-continuum/fast-syntax-highlighting"
+  plug "jeffreytse/zsh-vi-mode"
 fi
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+bindkey '^R' fzf-history-widget
+export FUNCNEST=100
 
 #>> THEME   ---------------------------------------------------------------
 # eval "$(oh-my-posh init zsh)"

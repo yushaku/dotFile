@@ -2,7 +2,7 @@
 
 if [[ -z "$1" ]]; then
   # Define the available options
-  OPTIONS=("shell" "tmux" "themes" "vim" "warp" "warp_theme" "tiling" "all")
+  OPTIONS=("zsh" "tmux" "themes" "vim" "warp" "warp_theme" "tiling" "kitty" "all")
 
   # Use fzf to select options, allowing for multiple selections
   SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --multi --prompt="Select options: ")
@@ -18,9 +18,15 @@ fi
 
 function copy_zsh() {
   rm -rf ~/.config/zsh
-  cp -R ./shell/config ~/.config/zsh
-  cp ./shell/zshrc ~/.zshrc
+  cp -R ./zsh/config ~/.config/zsh
+  cp ./zsh/zshrc ~/.zshrc
   echo "👉 copy zsh done"
+}
+
+function copy_kitty() {
+  rm -rf ~/.config/kitty
+  cp -R ./kitty/ ~/.config/kitty/
+  echo "👉 copy kitty done"
 }
 
 function copy_theme() {
@@ -91,8 +97,11 @@ for option in $SELECTION; do
   "tmux")
     copy_tmux
     ;;
-  "shell")
+  "zsh")
     copy_zsh
+    ;;
+  "kitty")
+    copy_kitty
     ;;
   "themes")
     copy_theme

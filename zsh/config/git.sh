@@ -46,8 +46,7 @@ grs() {
 	fi
 }
 
-#  git undo commit
-guc(){
+gudc(){
     local reset_mode="--soft"  # Default reset mode
     if [[ "$1" == "--hard" || "$1" == "--soft" ]]; then
         reset_mode="$1"

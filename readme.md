@@ -7,9 +7,9 @@
 - git config
 - zsh config
 
-## [Neovim setup](https://github.com/craftzdog/dotfiles-public/blob/master/README.md#neovim-setup)
+## Neovim setup
 
-### [Requirements](https://github.com/craftzdog/dotfiles-public/blob/master/README.md#requirements)
+### Requirements
 
 - Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
 - Git >= **2.19.0**
@@ -69,6 +69,22 @@ pnpm install -g quicktype
 quicktype --just-types --prefer-types --prefer-unions \
 -o /tmp/output_quicktype.ts \
 data.json
+```
+
+Options for TypeScript
+
+```bash
+--[no-]just-types                                  Interfaces only (off by default)
+--[no-]nice-property-names                         ransform property names to be JavaScripty (off by default)
+--[no-]explicit-unions                             Explicitly name unions (off by default)
+--[no-]runtime-typecheck                           Verify JSON.parse results at runtime (on by default)
+--[no-]runtime-typecheck-ignore-unknown-properties Ignore unknown properties when verifying at runtime (off by default)
+--[no-]prefer-unions                               Use union type instead of enum (off by default)
+--[no-]prefer-types                                Use types instead of interfaces (off by default)
+
+--acronym-style original|pascal|camel|lowerCase    Acronym naming style
+--converters top-level|all-objects                 Which converters to generate (top-level by default)
+--raw-type json|any                                Type of raw input (json by default)
 ```
 
 ## git commit like pro
