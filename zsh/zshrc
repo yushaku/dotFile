@@ -8,7 +8,7 @@ export PATH="/home/$USER/.bun/bin:$PATH"
 export GOPATH=$HOME/go                                                # golang
 export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
-
+export FUNCNEST=100
 
 setup_completion() {
   autoload -Uz compinit && compinit
@@ -71,18 +71,7 @@ fi
 
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 bindkey '^R' fzf-history-widget
-export FUNCNEST=100
 
 #>> THEME   ---------------------------------------------------------------
-# eval "$(oh-my-posh init zsh)"
-# eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/takuya.omp.json)"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 eval "$(starship init zsh)"
 

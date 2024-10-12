@@ -15,10 +15,11 @@ install_grep() {
 }
 
 install_tools() {
-  apps=("tmux" "eza" "bat" "fd")
+  apps=("tmux" "eza" "bat" "fd" "kitty")
+
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
-      brew install "$app"
+      brew install --cask "$app"
       echo "✅ Installed $app successfully"
     fi
   done

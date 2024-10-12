@@ -17,7 +17,7 @@ return {
         function()
           local grug = require("grug-far")
           local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-          grug.grug_far({
+          grug.open({
             prefills = {
               filesFilter = ext and ext ~= "" and "*." .. ext or nil,
             },
@@ -29,7 +29,7 @@ return {
       {
         "<leader>sf",
         function()
-          require("grug-far").grug_far({
+          require("grug-far").open({
             prefills = { flags = vim.fn.expand("%") },
           })
         end,
@@ -40,7 +40,7 @@ return {
         "<leader>ss",
         function()
           local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-          require("grug-far").grug_far({
+          require("grug-far").open({
             prefills = {
               search = vim.fn.expand("<cword>"),
               filesFilter = ext and ext ~= "" and "*." .. ext or nil,

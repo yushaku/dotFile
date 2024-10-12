@@ -1,6 +1,40 @@
 return {
   { "christoomey/vim-tmux-navigator", enabled = true },
   {
+    "MunsMan/kitty-navigator.nvim",
+    enabled = false,
+    keys = {
+      {
+        "<C-h>",
+        function()
+          require("kitty-navigator").navigateLeft()
+        end,
+        mode = { "n" },
+      },
+      {
+        "<C-j>",
+        function()
+          require("kitty-navigator").navigateDown()
+        end,
+        mode = { "n" },
+      },
+      {
+        "<C-k>",
+        function()
+          require("kitty-navigator").navigateUp()
+        end,
+        mode = { "n" },
+      },
+      {
+        "<C-l>",
+        function()
+          require("kitty-navigator").navigateRight()
+        end,
+        mode = { "n" },
+      },
+    },
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
     opts = { scope = { enabled = true } },
