@@ -37,18 +37,18 @@ function copy_theme() {
 }
 
 function copy_yabai() {
-  # mkdir -p ~/.config/yabai
-  # mkdir -p ~/.config/skhd
-  #
-  # cp -R ./tiling/skhdrc ~/.config/skhd/
-  # cp -R ./tiling/yabairc ~/.config/yabai/
-  #
-  # skhd --restart-service
-  # yabai --restart-service
-  mkdir -p ~/.config/aerospace
-  cp ./tiling/aerospace.toml ~/.config/aerospace/aerospace.toml
+  mkdir -p ~/.config/yabai
+  mkdir -p ~/.config/skhd
+
+  cp -R ./tiling/skhdrc ~/.config/skhd/
+  cp -R ./tiling/yabairc ~/.config/yabai/
+
+  skhd --restart-service
+  yabai --restart-service
+  # mkdir -p ~/.config/aerospace
+  # cp ./tiling/aerospace.toml ~/.config/aerospace/aerospace.toml
   # aerospace enable on
-  aerospace reload-config
+  # aerospace reload-config
   echo "👉 copy tiling manager workspace done"
 }
 

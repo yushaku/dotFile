@@ -8,6 +8,10 @@ export PATH="/home/$USER/.bun/bin:$PATH"
 export GOPATH=$HOME/go                                                # golang
 export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
+
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME/bin:$PATH"
+
 export FUNCNEST=100
 
 setup_completion() {
@@ -74,4 +78,3 @@ bindkey '^R' fzf-history-widget
 
 #>> THEME   ---------------------------------------------------------------
 eval "$(starship init zsh)"
-
