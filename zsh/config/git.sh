@@ -96,15 +96,18 @@ gcb() {
  		return;
   fi
 
-	if [[ $branch =~ ^origin/ ]]; then
+	# Check if the branch exists remotely or locally
+	if git rev-parse --verify --quiet "$branch" >/dev/null; then
+		# If branch exists, check it out
+		git checkout --quiet "$branch"
+	elif [[ $branch =~ ^origin/ ]]; then
+		# If it's a remote branch, check out and track
 		local local_branch=${branch#origin/}
 		git checkout --track "$branch" || git checkout -b "$local_branch"
 	else
-		git checkout --quiet "$branch" || { 
-      git checkout --quiet -b "$branch" 
-    }
-	fi
-}
+		# If the branch doesn't exist, create it
+		git checkout --quiet -b "$branch"
+	fi}
 
 gbo() {
 	if [[ -z "$1" ]]; then
