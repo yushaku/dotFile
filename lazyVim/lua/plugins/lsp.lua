@@ -44,7 +44,7 @@ return {
         },
       })
       local keymap = vim.keymap.set
-      keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+      -- keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
       keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
       keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
       keymap("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")

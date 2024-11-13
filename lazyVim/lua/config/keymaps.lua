@@ -19,8 +19,6 @@ end
 -- i - insert mode
 
 -- better up/down
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "gj", "o<esc>", { desc = "add new blank line below" })
 map("n", "gk", "O<esc>", { desc = "add new blank line above" })
 map({ "n", "v" }, "gh", "^", { desc = "go to begin of line" })
@@ -37,29 +35,15 @@ map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to 
 map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
 map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
-map({ "n", "v" }, "<M-q>", function()
-  Util.terminal(nil, { cwd = Util.root(), border = "rounded", size = { width = 0.7, height = 0.7 } })
-end, { desc = "Terminal (root dir)" })
-
-map({ "n", "v" }, "<M-w>", function()
-  Util.terminal(nil, { border = "rounded", size = { width = 0.7, height = 0.7 } })
-end, { desc = "Terminal (cwd)" })
+map("t", "<M-->", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<M-=>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<M-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("t", "<M-w>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- Resize window using <ctrl + shift> arrow keys
 map("n", "<C-M-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<C-M-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 map("n", "<C-M-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map("n", "<C-M-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
--- Move Lines
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 map("n", "i", function()
   if #vim.fn.getline(".") == 0 then
@@ -78,7 +62,6 @@ map("n", "a", function()
 end, { expr = true })
 
 -- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 map("n", "<C-a>", "<esc>gg<S-v>G", { desc = "select all current file" })
 
 -- go to normal mode
@@ -97,18 +80,9 @@ map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Undo" })
 
--- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
 map("v", "p", '"_dP', { desc = "paste without yank line" })
 
--- quit
-map({ "n" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-map({ "n" }, "<leader>qw", "<cmd>wqa<cr>", { desc = "Save and Quit all" })
-
 -- floating terminal
-map("n", "<leader>tl", "<cmd>vsplit term://zsh<cr>", { desc = "open terminal at right side" })
-map("n", "<leader>tj", "<cmd>split term://zsh<cr>", { desc = "open terminal at bottom" })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
@@ -127,10 +101,10 @@ map("n", "<M-2>", "2<C-w>w", { desc = "focus second pane" })
 map("n", "<M-3>", "3<C-w>w", { desc = "focus third pane" })
 map("n", "<M-4>", "4<C-w>w", { desc = "focus fourth pane" })
 
-vim.keymap.del("n", "<C-b>")
-vim.keymap.del("n", "<c-_>")
-vim.keymap.del("n", "<leader>gg")
-vim.keymap.del("t", "<ESC><ESC>")
+-- vim.keymap.del("n", "<C-b>")
+-- vim.keymap.del("n", "<c-_>")
+-- vim.keymap.del("n", "<leader>gg")
+-- vim.keymap.del("t", "<ESC><ESC>")
 
 function _G.toggle_mark(mark)
   -- Get the current cursor position

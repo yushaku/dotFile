@@ -5,8 +5,8 @@ export FZF_DEFAULT_OPTS=" --preview-window 'right:55%' \
   --bind 'ctrl-/:change-preview-window(down|right|hidden|)' \
   --bind 'ctrl-u:preview-page-up' \
   --bind 'ctrl-d:preview-page-down' \
-  --bind 'ctrl-j:down' \
-  --bind 'ctrl-k:up' \
+  --bind 'alt-j:down' \
+  --bind 'alt-k:up' \
   --height 60%"
 
 export FZF_CTRL_R_OPTS="

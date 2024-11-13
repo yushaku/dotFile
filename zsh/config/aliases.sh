@@ -122,5 +122,16 @@ alias pad='_package_manager add -D'
 alias prm='_package_manager remove'
 alias pb='_package_manager build'
 
-export PNPM_HOME="/home/yushaku/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+vo() {
+  if openvpn3 session-stats --config unich-sonlv &>/dev/null; then
+    echo "VPN is running."
+  else
+    echo "Starting VPN ... "
+    openvpn3 session-start -c unich-sonlv
+  fi
+}
+
+vc() {
+  echo "Stopping VPN ... "
+  openvpn3 session-manage -c unich-sonlv --disconnect
+}
