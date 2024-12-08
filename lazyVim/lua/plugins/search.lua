@@ -2,15 +2,35 @@ return {
   {
     "MagicDuck/grug-far.nvim",
     enabled = true,
+    cmd = "GrugFar",
     opts = {
       headerMaxWidth = 120,
       disableBufferLineNumbers = true,
+      resultLocation = {
+        -- (for instance `3<enter>` would goto the third result's location)
+        showNumberLabel = true,
+        numberLabelPosition = "right_align",
+        numberLabelFormat = " [%d]",
+      },
       transient = true,
       keymaps = {
         close = { n = "q" },
+        refresh = { n = "r" }, -- refresh search result
+        syncLocations = { n = "s" }, --replace all
+        -- replace = { n = "r" }, -- replace all
+        syncLine = { n = "l" }, -- replace line
+        openLocation = { n = "h" }, -- view localtion not jump
+        gotoLocation = { n = "<enter>" }, -- jump to location
+        historyOpen = { n = "t" }, -- open search history
+        applyNext = { n = "<leader>j" },
+        applyPrev = { n = "<leader>k" },
+
+        openNextLocation = { n = "<down>" },
+        openPrevLocation = { n = "<up>" },
+        historyAdd = { n = "<localleader>a" },
+        swapEngine = { n = "<localleader>e" },
       },
     },
-    cmd = "GrugFar",
     keys = {
       {
         "<leader>sr",
@@ -30,7 +50,10 @@ return {
         "<leader>sf",
         function()
           require("grug-far").open({
-            prefills = { flags = vim.fn.expand("%") },
+            prefills = {
+              paths = vim.fn.expand("%"),
+              search = vim.fn.expand("<cword>"),
+            },
           })
         end,
         mode = { "n", "v" },
@@ -48,35 +71,18 @@ return {
           })
         end,
         mode = { "n", "v" },
-        desc = "[GrugFar] Search and Replace this word",
+        desc = "[GrugFar] Search this word with same file type",
+      },
+      {
+        "<leader>sa",
+        function()
+          require("grug-far").open({
+            prefills = { search = vim.fn.expand("<cword>") },
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "[GrugFar] Search this word globally",
       },
     },
   },
-  -- {
-  --   "nvim-pack/nvim-spectre",
-  --   enabled = false,
-  --   keys = {
-  --     {
-  --       "<leader>sr",
-  --       "<cmd>lua require('spectre').toggle()<CR>",
-  --       desc = "Spectre toggle",
-  --     },
-  --     {
-  --       "<leader>ss",
-  --       "<esc><cmd>lua require('spectre').open_visual()<CR>",
-  --       desc = "Spectre search selected word",
-  --       mode = { "v" },
-  --     },
-  --     {
-  --       "<leader>ss",
-  --       "<CMD>lua require('spectre').open_visual({select_word=true})<CR>",
-  --       desc = "Spectre search current word",
-  --     },
-  --     {
-  --       "<leader>sf",
-  --       "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",
-  --       desc = "Spectre search on current file",
-  --     },
-  --   },
-  -- },
 }
