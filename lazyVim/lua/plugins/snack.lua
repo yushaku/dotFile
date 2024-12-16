@@ -45,7 +45,7 @@ return {
     {
       "<M-=>",
       function()
-        Snacks.terminal.toggle("bash", {
+        Snacks.terminal.toggle("zsh", {
           win = {
             width = 0.3,
             position = "right",

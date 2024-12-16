@@ -27,7 +27,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.markdown" },
 
     { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.ai.codeium" },
+    -- { import = "lazyvim.plugins.extras.ai.codeium" },
+    { import = "lazyvim.plugins.extras.ai.supermaven" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     -- { import = "lazyvim.plugins.extras.dap.core" },
 
