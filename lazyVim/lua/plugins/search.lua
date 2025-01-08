@@ -18,8 +18,8 @@ return {
         refresh = { n = "r" }, -- refresh search result
         syncLocations = { n = "s" }, --replace all
         -- replace = { n = "r" }, -- replace all
-        syncLine = { n = "l" }, -- replace line
-        openLocation = { n = "h" }, -- view localtion not jump
+        syncLine = { n = "<leader>l" }, -- replace line
+        openLocation = { n = "<leader>h" }, -- view localtion not jump
         gotoLocation = { n = "<enter>" }, -- jump to location
         historyOpen = { n = "t" }, -- open search history
         applyNext = { n = "<leader>j" },

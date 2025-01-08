@@ -83,8 +83,8 @@ map({ "i", "v", "n", "s" }, "<C-z>", "<esc>u", { desc = "Undo" })
 map("v", "p", '"_dP', { desc = "paste without yank line" })
 
 -- floating terminal
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+-- map("n", "<C-d>", "<C-d>zz")
+-- map("n", "<C-u>", "<C-u>zz")
 
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })

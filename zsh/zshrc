@@ -10,7 +10,7 @@ export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME/bin:$PATH"
+export PATH="$PNPM_HOME:$PATH"
 
 export FUNCNEST=100
 

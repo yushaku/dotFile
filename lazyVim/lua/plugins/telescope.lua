@@ -2,24 +2,8 @@ require("telescope").load_extension("noice")
 
 return {
   {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-        mappings = {
-          i = {
-            ["<M-j>"] = "move_selection_next",
-            ["<M-k>"] = "move_selection_previous",
-            ["<esc>"] = "close",
-          },
-        },
-      },
-    },
+    "ibhagwan/fzf-lua",
+    cmd = "FzfLua",
     keys = {
       -- remove deault config of telescope
       { "<leader><space>", false },
@@ -31,6 +15,10 @@ return {
       { "<leader>sM", false },
       { "<leader>sa", false },
       { "<leader>ss", false },
+      { "<leader>sb", false },
+      { "<leader>sl", false },
+      { "<leader>sq", false },
+      { "<leader>sj", false },
       { "<leader>sS", false },
       { "<leader>sC", false },
       { "<leader>sc", false },
@@ -54,9 +42,6 @@ return {
       -- create my own config
       { "<C-p>", LazyVim.pick("files"), desc = "Find files in child project" },
       { "<C-A-P>", LazyVim.pick("files", { root = false }), desc = "Find files in parent project" },
-      -- { "<leader>ft", "<CMD>TodoTelescope<cr>", desc = "Open todo list by telescope" },
-      { "<leader>fm", "<CMD>Telescope marks<cr>", desc = "[Telescope] Open marks" },
-      { "<leader>fr", "<CMD>Telescope resume<cr>", desc = "[Telescope] resume privious search result" },
     },
   },
 }
