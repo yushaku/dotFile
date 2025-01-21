@@ -25,11 +25,6 @@ alias srm="sudo apt remove -y"
 alias scl="sudo apt autoremove -y && sudo apt clean -y"
 alias supdate="sudo apt update -y && sudo apt upgrade -y"
 
-##>> 1.1.1.1 cloudflare --------------------
-alias wcc="warp-cli connect"
-alias wcd="warp-cli disconnect"
-alias wci="sudo systemctl start warp-svc.service"
-
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
@@ -42,24 +37,6 @@ alias drmia="docker image prune -a"
 alias drmi="docker image prune"
 function d-exec() {
   docker exec -it "$1" bash
-}
-
-##>> system shotcut turn off
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
-
-##>> convert video to mp4
-video2mp4() {
-  ffmpeg -y -i "${1}" -vf "fps=${2:-12},pad=ceil(iw/2)*2:ceil(ih/2)*2" "${1}.mp4"
-}
-alias jpg='jpegoptim --strip-all'
-alias png='optipng'
-
-function myip() {
-  echo "Your ip is:"
-  curl ipinfo.io/ip
 }
 
 function json-to-ts() {
@@ -92,15 +69,6 @@ function ip-addr() {
   ip addr | grep noprefixroute | grep -v inet6
 }
 
-function j() {
-  if [[ -z "$*" ]]; then
-    cd "$(z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
-  else
-    _last_z_args="$@"
-    z "$@"
-  fi
-}
-
 function _package_manager() {
   if [[ -f bun.lockb ]]; then
     command bun "$@"
@@ -121,17 +89,3 @@ alias pa='_package_manager add'
 alias pad='_package_manager add -D'
 alias prm='_package_manager remove'
 alias pb='_package_manager build'
-
-vo() {
-  if openvpn3 session-stats --config unich-sonlv &>/dev/null; then
-    echo "VPN is running."
-  else
-    echo "Starting VPN ... "
-    openvpn3 session-start -c unich-sonlv
-  fi
-}
-
-vc() {
-  echo "Stopping VPN ... "
-  openvpn3 session-manage -c unich-sonlv --disconnect
-}

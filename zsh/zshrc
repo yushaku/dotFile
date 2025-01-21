@@ -3,11 +3,16 @@ export LANG=en_US.UTF-8
 
 # BUN completions
 export PATH="/home/$USER/.bun/bin:$PATH"
-[ -s "/home/yushaku/.bun/_bun" ] && source "/home/yushaku/.bun/_bun"
+[ -s "/home/$USER/.bun/_bun" ] && source "/home/$USER/.bun/_bun"
 
 export GOPATH=$HOME/go                                                # golang
 export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
+
+# fnm
+if command -v fnm > /dev/null 2>&1; then
+  eval "$(fnm env)"
+fi
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
@@ -55,11 +60,6 @@ for file in ~/.config/zsh/*.sh; do
   source "$file"
 done
 
-##>> USE CONFIGED NODE VERSION --------------------
-if [ -f .nvmrc ]; then
-  nvm use
-fi
-
 #>> PLUGINS AND PLUGIN MANAGER ------------------------
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh" ||
   zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
@@ -72,9 +72,6 @@ if [[ $(which plug) ]]; then
   plug "zdharma-continuum/fast-syntax-highlighting"
   # plug "jeffreytse/zsh-vi-mode"
 fi
-
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-bindkey '^R' fzf-history-widget
 
 #>> THEME   ---------------------------------------------------------------
 eval "$(starship init zsh)"
