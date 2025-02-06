@@ -15,7 +15,7 @@ install_grep() {
 }
 
 install_tools() {
-  apps=("tmux" "eza" "bat" "fd" "kitty")
+  apps=("tmux" "eza" "bat" "fd" "kitty" "nvim")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then

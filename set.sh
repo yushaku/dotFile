@@ -29,6 +29,12 @@ function copy_kitty() {
   echo "👉 copy kitty done"
 }
 
+function copy_ghostty() {
+  rm -rf ~/.config/ghostty/
+  cp -R ./ghostty/ ~/.config/ghostty/
+  echo "👉 copy ghostty done"
+}
+
 function copy_theme() {
   # mkdir -p ~/.poshthemes
   # cp -R ./themes/* ~/.poshthemes
@@ -99,6 +105,9 @@ for option in $SELECTION; do
     ;;
   "zsh")
     copy_zsh
+    ;;
+  "ghostty")
+    copy_ghostty
     ;;
   "kitty")
     copy_kitty
