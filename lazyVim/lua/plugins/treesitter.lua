@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre" },
-    commit = "0d14299",
     opts = function(_, opts)
       opts.textobjects = {
         select = {
@@ -85,6 +84,12 @@ return {
         desc = "Split if one-line and join if multiline",
       },
     },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    enabled = true,
+    keys = { { "<leader>z", "<CMD>TSContextToggle<CR>", desc = "Toggle TS-Context" } },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }

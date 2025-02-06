@@ -2,8 +2,8 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "Neotree",
   event = "VeryLazy",
+  enabled = true,
   keys = {
-    { "<leader>fE", false },
     {
       "<leader>e",
       function()
@@ -12,31 +12,9 @@ return {
       desc = "[NeoTree] Files Explorer (root)",
     },
     {
-      "<leader>E",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-      end,
-      desc = "[NeoTree] Files Explorer (cwd)",
-    },
-    {
-      "<leader>fe",
-      "<CMD>Neotree source=filesystem toggle left reveal<CR>",
+      "<leader>ge",
+      "<CMD>Neotree git_status toggle left reveal<CR>",
       desc = "[NeoTree] Explorer changed files",
-    },
-    {
-      "<C-M-f>",
-      "<CMD>Neotree source=filesystem float toggle reveal<CR>",
-      desc = "Explorer NeoTree",
-    },
-    {
-      "<C-M-b>",
-      "<CMD>Neotree source=buffers float toggle reveal<CR>",
-      desc = "Explorer NeoTree buffers",
-    },
-    {
-      "<C-M-g>",
-      "<CMD>Neotree source=git_status float toggle reveal<CR>",
-      desc = "Explorer changed files",
     },
   },
   opts = {
@@ -57,7 +35,11 @@ return {
       },
     },
     filesystem = {
-      bind_to_cwd = false,
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = false,
+      },
+      bind_to_cwd = true,
       filtered_items = {
         visible = false,
         hide_dotfiles = true,

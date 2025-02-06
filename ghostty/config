@@ -27,6 +27,8 @@ auto-update-channel = stable
 shell-integration-features = no-cursor 
 copy-on-select = clipboard
 
+keybind = super+q=ignore
+
 # Custom Keybinds & Config (super represents cmd key on mac)
 # For Simple Keybinds
 # keybind = super+i=inspector:toggle
