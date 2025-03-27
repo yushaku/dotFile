@@ -17,15 +17,16 @@ return {
       end,
     },
     {
-      "<M-->",
-      function()
-        Snacks.terminal.toggle({ "zsh" }, { win = { width = 0.3, position = "bottom", count = 2 } })
-      end,
-    },
-    {
       "<M-=>",
       function()
-        Snacks.terminal.toggle("zsh", { win = { width = 0.3, position = "right", count = 3 } })
+        Snacks.terminal.toggle("zsh", {
+          win = {
+            width = 0.3,
+            count = 3,
+            position = "right",
+            border = "rounded",
+          },
+        })
       end,
     },
   },

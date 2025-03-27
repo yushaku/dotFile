@@ -7,7 +7,11 @@ return {
     {
       "<leader>e",
       function()
-        require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
+        require("neo-tree.command").execute({
+          toggle = true,
+          position = "left",
+          dir = require("lazyvim.util").root.get(),
+        })
       end,
       desc = "[NeoTree] Files Explorer (root)",
     },
@@ -15,6 +19,11 @@ return {
       "<leader>ge",
       "<CMD>Neotree git_status toggle left reveal<CR>",
       desc = "[NeoTree] Explorer changed files",
+    },
+    {
+      "<M-f>",
+      "<CMD>Neotree source=filesystem float toggle reveal<CR>",
+      desc = "[NeoTree] Explorer NeoTree",
     },
   },
   opts = {

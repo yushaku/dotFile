@@ -54,7 +54,7 @@ return {
     { "<leader>xS", false },
     {
       "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
+      "<cmd>Trouble diagnostics toggle win.type=split win.position=right<cr>",
       desc = "[Trouble] Show All Diagnostics",
     },
     {

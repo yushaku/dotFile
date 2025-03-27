@@ -1,5 +1,5 @@
 return {
-  { "mg979/vim-visual-multi", enabled = true },
+  { "mg979/vim-visual-multi", enabled = false },
   { "christoomey/vim-tmux-navigator", enabled = true },
   {
     "brenoprata10/nvim-highlight-colors",
@@ -7,7 +7,7 @@ return {
     opts = {
       ---Render style
       ---@usage 'background'|'foreground'|'virtual'
-      render = "background",
+      render = "virtual",
 
       ---Set virtual symbol (requires render to be set to 'virtual')
       virtual_symbol = "■",
@@ -44,7 +44,7 @@ return {
       enable_named_colors = true,
 
       ---Highlight tailwind colors, e.g. 'bg-blue-500'
-      enable_tailwind = false,
+      enable_tailwind = true,
 
       ---Set custom colors
       ---Label must be properly escaped with '%' to adhere to `string.gmatch`
