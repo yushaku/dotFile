@@ -36,7 +36,7 @@ return {
   -- },
   {
     "iamcco/markdown-preview.nvim",
-    enabled = true,
+    enabled = false,
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function()
@@ -45,6 +45,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
     opts = {
       file_types = { "markdown", "norg", "rmd", "org" },
       code = {

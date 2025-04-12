@@ -126,24 +126,3 @@ end
 -- Key mapping to toggle a mark
 map("n", "m", ':lua toggle_mark(vim.fn.input("Toggle Mark: "))<CR>', { noremap = true })
 map("n", "M", "<CMD>Telescope marks<CR>")
-
--- vim way: ; goes to the direction you were moving.
--- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
--- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
--- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
-
-vim.keymap.set("n", "gf", function()
-  local filename = vim.fn.expand("<cfile>")
-  local path, line, col = filename:match("(.+):(%d+):(%d+)")
-
-  if path and line then
-    vim.cmd("edit " .. path)
-    vim.cmd(":" .. line)
-
-    if col then
-      vim.cmd("normal! " .. col .. "|")
-    end
-  else
-    vim.cmd("edit " .. filename)
-  end
-end, { noremap = true, silent = true })

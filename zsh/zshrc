@@ -5,17 +5,18 @@ export LANG=en_US.UTF-8
 export PATH="/home/$USER/.bun/bin:$PATH"
 [ -s "/home/$USER/.bun/_bun" ] && source "/home/$USER/.bun/_bun"
 
-export GOPATH=$HOME/go                                                # golang
-export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin  # solana
+export GOPATH=$HOME/go                                               # golang
+export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
-
-# fnm
-if command -v fnm > /dev/null 2>&1; then
-  eval "$(fnm env)"
-fi
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+# fnm
+export PATH="$HOME/.local/share/fnm:$PATH"
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env)"
+fi
 
 export FUNCNEST=100
 
@@ -53,7 +54,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory 
+setopt appendhistory
 
 ##>> IMPORT MY OWN FILE CONFIGURATION ------------------
 for file in ~/.config/zsh/*.sh; do
