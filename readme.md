@@ -137,3 +137,20 @@ git clone yushaku:yushaku/dotfiles
 ```bash
 sudo install -y warp-terminal
 ```
+
+## pnpm ubuntu
+
+```js
+export PNPM_HOME="/home/yushaku/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+```
+
+pnpm mac-os
+
+```sh
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+```

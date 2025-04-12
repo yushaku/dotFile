@@ -1,7 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    enabled = false,
+    enabled = true,
   -- stylua: ignore
     keys = {
       { "<f5>", function() require("dap").step_over() end, desc = "Step Over" },

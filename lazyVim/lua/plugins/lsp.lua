@@ -3,48 +3,24 @@ return {
     "neovim/nvim-lspconfig",
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = {
-        "<leader>ss",
-        function()
-          Snacks.picker.lsp_symbols({
-            finder = "lsp_symbols",
-            format = "lsp_symbol",
-            tree = true,
-            filter = {
-              default = {
-                "Class",
-                "Constructor",
-                -- "Enum",
-                -- "Field",
-                "Function",
-                "Interface",
-                "Method",
-                -- "Module",
-                -- "Namespace",
-                -- "Package",
-                -- "Property",
-                -- "Struct",
-                -- "Trait",
-              },
-              -- set to `true` to include all symbols
-              markdown = true,
-              help = true,
-            },
-          })
-        end,
-      }
+      keys[#keys + 1] = { "<leader>ss", false }
+      keys[#keys + 1] = { "<leader>sS", false }
     end,
-    -- opts = {
-    --   inlay_hints = { enabled = false },
-    --   servers = {
-    --     tailwindcss = { filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" } },
-    --     ts_ls = { enabled = false },
-    --   },
-    -- },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+      servers = {
+        tailwindcss = {
+          filetypes_exclude = { "markdown", "javascript", "typescript", "solidity" },
+        },
+      },
+    },
   },
   {
     "typed-rocks/ts-worksheet-neovim",
-    enabled = true,
+    enabled = false,
     opts = {
       severity = vim.diagnostic.severity.WARN,
     },

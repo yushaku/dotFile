@@ -60,7 +60,7 @@ return {
         desc = "[GrugFar] Search and Replace on this file",
       },
       {
-        "<leader>sw",
+        "<leader>ss",
         function()
           local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
           require("grug-far").open({
