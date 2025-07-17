@@ -12,38 +12,15 @@ export PATH=$PATH:$SOL_PATH:$GOPATH/bin
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
-# fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
+export PATH="$HOME/.local/share/fnm:$PATH"                           # fnm - node package manager
 if command -v fnm >/dev/null 2>&1; then
   eval "$(fnm env)"
 fi
 
 export FUNCNEST=100
 
-setup_completion() {
-  autoload -Uz compinit && compinit
-  zstyle ':completion:*' use-cache on
-}
-
-# Detect OS type
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # macOS setup
-  alias fd="fd"
-  alias exa="eza"
-  alias batcat="bat"
-  setup_completion
-else
-  DISTRO=$(lsb_release -si 2>/dev/null)
-
-  # Linux (Ubuntu, Linux Mint) setup
-  alias fd="fdfind"
-  alias exa="exa"
-
-  # Check if it's Linux Mint and apply additional configuration
-  if [[ "$DISTRO" == "Linuxmint" ]]; then
-    setup_completion
-  fi
-fi
+autoload -Uz compinit && compinit
+zstyle ':completion:*' use-cache on
 
 ##>> CONFIG ZSH BASIC -----------------------------
 HIST_STAMPS="YYYY/MM/DD"
@@ -52,7 +29,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ##>> HISTORY CONFIG -----------------------------
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
+HISTSIZE=1000
 SAVEHIST=10000
 setopt appendhistory
 

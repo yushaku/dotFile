@@ -7,13 +7,12 @@ alias ...='cd ../..'
 alias e="exit"
 alias cl="clear"
 alias vi="nvim"
-alias b-theme="batcat --list-themes | fzf --preview='batcat --theme={} --color=always ~/.zshrc'"
 alias zshconfig="nvim ~/.zshrc"
 alias viconfig="nvim ~/.config/nvim/lua/config/lazy.lua"
 alias dnsconfig="nvim /etc/resolv.conf"
-alias ll="exa -lha --time-style=long-iso --icons --no-time --no-user --colour-scale --group-directories-first"
+alias ll="eza -lha --time-style=long-iso --icons --no-time --no-user --colour-scale --group-directories-first"
 function lk() {
-  exa --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
+  eza --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
 }
 alias ss="source ~/.zshrc"
 
@@ -71,6 +70,8 @@ function ip-addr() {
 
 function _package_manager() {
   if [[ -f bun.lockb ]]; then
+    command bun "$@"
+  elif [[ -f bun.lock ]]; then
     command bun "$@"
   elif [[ -f pnpm-lock.yaml ]]; then
     command pnpm "$@"

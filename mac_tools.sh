@@ -1,12 +1,3 @@
-install_tiling() {
-  if ! command -v yabai &>/dev/null; then
-    brew install koekeishiya/formulae/yabai
-    brew install koekeishiya/formulae/skhd
-    # brew install --cask nikitabobko/tap/aerospace
-    echo "✅ installed window tiling manager"
-  fi
-}
-
 install_grep() {
   if ! command -v grep &>/dev/null; then
     brew install ripgrep
@@ -25,5 +16,5 @@ install_tools() {
   done
 }
 
-install_tiling
+install_grep
 install_tools

@@ -170,7 +170,7 @@ alias gfa="git fetch --all"
 alias gmr="git merge"
 
 ##>> ------------------ LOG -------------------------
-alias glga="git reflog --pretty=short | batcat"
+alias glga="git reflog --pretty=short | bat"
 
 glg() {
 	git log --graph --oneline --exclude=refs/stash --decorate --exclude=refs/stash --all -n "${1:-10}"
@@ -210,9 +210,8 @@ __fzf_git=$(readlink -f "$__fzf_git" 2> /dev/null || /usr/bin/ruby --disable-gem
 if [[ -z $_fzf_git_cat ]]; then
   export _fzf_git_cat="cat"
   _fzf_git_bat_options="--style='${BAT_STYLE:-full}' --color=always --pager=never"
-  if command -v batcat > /dev/null; then
-    _fzf_git_cat="batcat $_fzf_git_bat_options"
-  elif command -v bat > /dev/null; then
+
+  if command -v bat > /dev/null; then
     _fzf_git_cat="bat $_fzf_git_bat_options"
   fi
 fi
