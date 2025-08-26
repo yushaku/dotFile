@@ -59,23 +59,23 @@ return {
       exclude_buftypes = {},
     },
   },
-  {
-    "eero-lehtinen/oklch-color-picker.nvim",
-    event = "VeryLazy",
-    version = "*",
-    keys = {
-      -- One handed keymap recommended, you will be using the mouse
-      {
-        "<leader>v",
-        function()
-          require("oklch-color-picker").pick_under_cursor()
-        end,
-        desc = "Color pick under cursor",
-      },
-    },
-    ---@type oklch.Opts
-    opts = {},
-  },
+  -- {
+  --   "eero-lehtinen/oklch-color-picker.nvim",
+  --   event = "VeryLazy",
+  --   version = "*",
+  --   keys = {
+  --     -- One handed keymap recommended, you will be using the mouse
+  --     {
+  --       "<leader>v",
+  --       function()
+  --         require("oklch-color-picker").pick_under_cursor()
+  --       end,
+  --       desc = "Color pick under cursor",
+  --     },
+  --   },
+  --   ---@type oklch.Opts
+  --   opts = {},
+  -- },
   {
     "echasnovski/mini.surround",
     opts = {
@@ -90,11 +90,11 @@ return {
       },
     },
   },
-  {
-    "xiyaowong/transparent.nvim",
-    enabled = false,
-    keys = { { "<f1>", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
-  },
+  -- {
+  --   "xiyaowong/transparent.nvim",
+  --   enabled = false,
+  --   keys = { { "<f1>", "<CMD>TransparentToggle<CR>", desc = "toggle Transparent bg" } },
+  -- },
   {
     "akinsho/bufferline.nvim",
     keys = {

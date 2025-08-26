@@ -18,8 +18,8 @@ return {
       -- "chrome-debug-adapter",
 
       -- blockchain and smart contracts
-      "nomicfoundation-solidity-language-server",
-      "solhint",
+      -- "nomicfoundation-solidity-language-server",
+      -- "solhint",
     },
   },
 }

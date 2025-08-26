@@ -39,7 +39,7 @@ return {
 
       -- create my own config
       { "<C-p>", LazyVim.pick("files"), desc = "Find files in child project" },
-      { "<C-A-P>", LazyVim.pick("files", { root = false }), desc = "Find files in parent project" },
+      { "<C-A-p>", LazyVim.pick("files", { root = false }), desc = "Find files in parent project" },
     },
   },
 }

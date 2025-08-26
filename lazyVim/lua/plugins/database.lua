@@ -1,5 +1,6 @@
 return {
   "kristijanhusak/vim-dadbod-ui",
+  enabled = false,
   cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
   dependencies = "vim-dadbod",
   keys = {

@@ -4,6 +4,8 @@ return {
   ---@type snacks.Config
   opts = {
     terminal = {
+      auto_insert = false,
+      auto_close = true,
       win = {
         border = "rounded",
       },
@@ -13,19 +15,8 @@ return {
     {
       "<M-q>",
       function()
-        Snacks.terminal.toggle("zsh", { win = { width = 0.7, height = 0.7 } })
-      end,
-    },
-    {
-      "<M-=>",
-      function()
         Snacks.terminal.toggle("zsh", {
-          win = {
-            width = 0.3,
-            count = 3,
-            position = "right",
-            border = "rounded",
-          },
+          win = { width = 0.7, height = 0.7 },
         })
       end,
     },
