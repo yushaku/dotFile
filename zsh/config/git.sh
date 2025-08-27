@@ -21,7 +21,7 @@ gcm() {
 	if [[ -z "$1" ]]; then
 		git commit --amend --no-edit
 	else
-		git commit $@
+		git commit -m $1
 	fi
 }
 
