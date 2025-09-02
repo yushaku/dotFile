@@ -154,3 +154,9 @@ pnpm mac-os
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 ```
+
+## security package manager
+
+npq allows you to audit npm packages before you install them
+
+[npq](https://github.com/lirantal/npq?ref=dailydev)

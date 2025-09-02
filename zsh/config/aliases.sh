@@ -74,13 +74,13 @@ function _package_manager() {
   elif [[ -f bun.lock ]]; then
     command bun "$@"
   elif [[ -f pnpm-lock.yaml ]]; then
-    command pnpm "$@"
+    command pnpm npq-hero "$@"
   elif [[ -f yarn.lock ]]; then
-    command yarn "$@"
+    command yarn npq-hero "$@"
   elif [[ -f package-lock.json ]]; then
-    command npm "$@"
+    command npq-hero "$@"
   else
-    command pnpm "$@"
+    command pnpm npq-hero "$@"
   fi
 }
 
