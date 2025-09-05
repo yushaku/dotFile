@@ -53,3 +53,7 @@ fi
 
 #>> THEME   ---------------------------------------------------------------
 eval "$(starship init zsh)"
+
+#>> IMPORT AUTO COMPLETIONS -----------------------------------------------
+source <(forge completions zsh)
+source <(cast completions zsh)

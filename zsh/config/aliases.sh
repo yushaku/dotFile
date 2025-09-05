@@ -8,7 +8,7 @@ alias e="exit"
 alias cl="clear"
 alias vi="nvim"
 alias zshconfig="nvim ~/.zshrc"
-alias viconfig="nvim ~/.config/nvim/lua/config/lazy.lua"
+alias vimconfig="nvim ~/.config/nvim/lua/config/lazy.lua"
 alias dnsconfig="nvim /etc/resolv.conf"
 alias ll="eza -lha --time-style=long-iso --icons --no-time --no-user --colour-scale --group-directories-first"
 function lk() {
@@ -16,24 +16,9 @@ function lk() {
 }
 alias ss="source ~/.zshrc"
 
-##>> apt manager --------------
-alias sid="sudo dpkg -i"
-alias srmd="sudo dpkg --remove"
-alias si="sudo apt install -y"
-alias srm="sudo apt remove -y"
-alias scl="sudo apt autoremove -y && sudo apt clean -y"
-alias supdate="sudo apt update -y && sudo apt upgrade -y"
-
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
-alias dcou="docker-compose up"
-alias dcod="docker-compose down"
-alias dps="docker ps"
-alias dim="docker images"
-alias dcn="docker container ls"
-alias drmia="docker image prune -a"
-alias drmi="docker image prune"
 function d-exec() {
   docker exec -it "$1" bash
 }
@@ -64,10 +49,6 @@ function port-list() {
   sudo netstat -tulpn | grep LISTEN "$@"
 }
 
-function ip-addr() {
-  ip addr | grep noprefixroute | grep -v inet6
-}
-
 function _package_manager() {
   if [[ -f bun.lockb ]]; then
     command bun "$@"
@@ -90,17 +71,3 @@ alias pa='_package_manager add'
 alias pad='_package_manager add -D'
 alias prm='_package_manager remove'
 alias pb='_package_manager build'
-
-vo() {
-  if openvpn3 session-stats --config unich-sonlv &>/dev/null; then
-    echo "VPN is running."
-  else
-    echo "Starting VPN ... "
-    openvpn3 session-start -c unich-sonlv
-  fi
-}
-
-vc() {
-  echo "Stopping VPN ... "
-  openvpn3 session-manage -c unich-sonlv --disconnect
-}
