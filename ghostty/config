@@ -1,6 +1,7 @@
 # By default Reload config with shft + cmd + ,
 
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
+
 background-opacity = 0.95
 background-blur-radius = 20
 

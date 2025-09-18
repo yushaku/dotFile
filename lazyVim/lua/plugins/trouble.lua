@@ -67,7 +67,11 @@ return {
       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       desc = "[Trouble] Diagnostics of current Buffer",
     },
-    { "<leader>xt", "<cmd>Trouble todo toggle<cr>", desc = "[Trouble] Toggle comment tags " },
+    {
+      "<leader>xt",
+      "<cmd>Trouble todo toggle<cr>",
+      desc = "[Trouble] Toggle comment tags ",
+    },
     {
       "<leader>xT",
       "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>",
