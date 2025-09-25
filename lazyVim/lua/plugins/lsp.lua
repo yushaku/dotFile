@@ -1,5 +1,24 @@
 return {
   {
+    "mason-org/mason.nvim",
+    opts = {
+      ensure_installed = {
+        -- formatter and linter
+        "shfmt", -- A shell (sh/bash/mksh).
+        "prettierd", -- prettier server formatter
+        "fixjson", -- A JSON file fixer/formatter for humans using JSON5.
+        "eslint-lsp", -- Language Server Protocol implementation for ESLint
+
+        -- Language Server Protocol
+        "docker-compose-language-service",
+        "tailwindcss-language-server",
+
+        -- blockchain and smart contracts
+        -- "nomicfoundation-solidity-language-server",
+      },
+    },
+  },
+  {
     "saghen/blink.cmp",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config

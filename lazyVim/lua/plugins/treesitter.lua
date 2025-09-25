@@ -89,7 +89,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     enabled = true,
-    keys = { { "<leader>z", "<CMD>TSContextToggle<CR>", desc = "Toggle TS-Context" } },
+    keys = { { "<leader>cz", "<CMD>TSContextToggle<CR>", desc = "Toggle TS-Context" } },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }
