@@ -16,6 +16,10 @@ function lk() {
 }
 alias ss="source ~/.zshrc"
 
+# # Fix Alt+Left/Right arrow keys for word navigation
+bindkey "^[[1;3D" backward-word # Alt+Left
+bindkey "^[[1;3C" forward-word  # Alt+Right
+
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
@@ -55,13 +59,15 @@ function _package_manager() {
   elif [[ -f bun.lock ]]; then
     command bun "$@"
   elif [[ -f pnpm-lock.yaml ]]; then
-    command pnpm npq-hero "$@"
+    command pnpm "$@"
   elif [[ -f yarn.lock ]]; then
-    command yarn npq-hero "$@"
+    command yarn "$@"
   elif [[ -f package-lock.json ]]; then
     command npq-hero "$@"
+  elif [[ -f Cargo.toml ]]; then
+    command cargo "$@"
   else
-    command pnpm npq-hero "$@"
+    command pnpm "$@"
   fi
 }
 
