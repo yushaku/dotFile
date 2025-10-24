@@ -35,7 +35,7 @@ return {
               "Interface",
               "Function",
               "Method",
-              -- "Variable",
+              "Variable",
               -- "Module",
               -- "Namespace",
               -- "Package",
