@@ -6,3 +6,5 @@ local opt = vim.opt
 
 opt.relativenumber = false -- Relative line numbers
 vim.g.snacks_animate = false
+
+vim.g.ai_cmp = true
