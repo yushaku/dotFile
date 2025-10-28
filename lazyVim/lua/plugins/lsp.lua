@@ -31,11 +31,16 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "<leader>ss", false }
-      keys[#keys + 1] = { "<leader>sS", false }
-    end,
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            { "<leader>ss", false, desc = "remove find lsp symbol" },
+            { "<leader>sS", false, desc = "remove find workspace symbol" },
+          },
+        },
+      },
+    },
   },
   {
     "neovim/nvim-lspconfig",
