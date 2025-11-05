@@ -6,11 +6,11 @@ install_grep() {
 }
 
 install_tools() {
-  apps=("tmux" "eza" "bat" "fd" "nvim" "ghostty")
+  apps=("tmux" "eza" "bat" "fd" "nvim")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
-      brew install --cask "$app"
+      brew install "$app"
       echo "✅ Installed $app successfully"
     fi
   done
