@@ -39,6 +39,7 @@ function copy_theme() {
   # mkdir -p ~/.poshthemes
   # cp -R ./themes/* ~/.poshthemes
   cp -R ./themes/starship.toml ~/.config/starship.toml
+  cp -R ./themes/warp.yml ~/.warp/themes/catppuccin_frappe.yml
   echo "👉 copy theme done"
 }
 
