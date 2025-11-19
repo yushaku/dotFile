@@ -10,9 +10,7 @@ export GOPATH=$HOME/go                                               # golang
 export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin # solana
 export PATH=$PATH:$SOL_PATH:$GOPATH/bin
 
-export PATH="/Users/nami/.codeium/windsurf/bin:$PATH" # Windsurf code editor
-alias code=surf
-
+export PATH="$HOME/.local/bin:$PATH"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 

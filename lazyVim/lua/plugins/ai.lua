@@ -2,6 +2,9 @@ return {
   {
     "yetone/avante.nvim",
     opts = {
+      selection = {
+        hint_display = "true",
+      },
       provider = "gemini-cli", -- use Gemini CLI as default
       acp_providers = {
         ["gemini-cli"] = {
@@ -17,3 +20,4 @@ return {
     },
   },
 }
+
