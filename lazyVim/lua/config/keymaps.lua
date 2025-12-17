@@ -25,15 +25,15 @@ map({ "n", "v" }, "gh", "^", { desc = "go to begin of line" })
 map({ "n", "v" }, "gl", "$", { desc = "go to end of line" })
 
 -- Move to window using the <ctrl> hjkl keys
-map({ "n", "t", "i" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Go to left window" })
-map({ "n", "t", "i" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Go to lower window" })
-map({ "n", "t", "i" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Go to upper window" })
-map({ "n", "t", "i" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" })
+map({ "n", "t", "i" }, "<C-h>", "<C-w>h", { desc = "Go to left window" })
+map({ "n", "t", "i" }, "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+map({ "n", "t", "i" }, "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+map({ "n", "t", "i" }, "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
-map({ "n", "t", "i" }, "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
-map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
-map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
-map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
+-- map({ "n", "t", "i" }, "<C-Up>", "<cmd>TmuxNavigateUp<cr>", { desc = "go to upper window" })
+-- map({ "n", "t", "i" }, "<C-Down>", "<cmd>TmuxNavigateDown<cr>", { desc = "go to down window" })
+-- map({ "n", "t", "i" }, "<C-Left>", "<cmd>TmuxNavigateLeft<cr>", { desc = "go to left window" })
+-- map({ "n", "t", "i" }, "<C-Right>", "<cmd>TmuxNavigateRight<cr>", { desc = "go to right window" })
 
 map("t", "<M-->", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<M-=>", "<cmd>close<cr>", { desc = "Hide Terminal" })

@@ -1,4 +1,4 @@
-# search engine
+# search engine for CLI
 install_grep() {
   if ! command -v grep &>/dev/null; then
     brew install ripgrep
@@ -6,10 +6,19 @@ install_grep() {
   fi
 }
 
-# warp -  AI terminal
-# cursor - AI code editer
+# All-in-one toolkit equal to CleanMyMac + AppCleaner + DaisyDisk + Sensei + iStat in one trusted binary
+install_mole() {
+  if ! command -v mo &>/dev/null; then
+    brew install tw93/tap/mole
+    echo "✅ installed brew"
+  fi
+}
+
+# warp    - AI terminal
+# cursor  - AI code editer
+# raycast - Spotlight for mac but better
 install_cask_tools() {
-  apps=("warp" "cursor")
+  apps=("warp" "cursor" "raycast")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
@@ -41,3 +50,4 @@ install_tools() {
 install_grep
 install_tools
 install_cask_tools
+install_mole

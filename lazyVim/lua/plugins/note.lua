@@ -38,10 +38,13 @@ return {
       code = {
         sign = true,
         width = "block",
-        position = "right",
-        right_pad = 2,
-        language_pad = 2,
+        position = "left",
+        right_pad = 0,
+        language_pad = 0,
         min_width = 100,
+        language_border = " ",
+        language_left = "",
+        language_right = "",
       },
       heading = {
         sign = true,
