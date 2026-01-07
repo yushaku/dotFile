@@ -6,11 +6,19 @@ install_grep() {
   fi
 }
 
+#Bun is an all-in-one toolkit for developing modern JavaScript/TypeScript applications.
+install_bun() {
+  if ! command -v bun &>/dev/null; then
+    brew install oven-sh/bun/bun
+    echo "✅ installed bun"
+  fi
+}
+
 # All-in-one toolkit equal to CleanMyMac + AppCleaner + DaisyDisk + Sensei + iStat in one trusted binary
 install_mole() {
   if ! command -v mo &>/dev/null; then
     brew install tw93/tap/mole
-    echo "✅ installed brew"
+    echo "✅ installed mole"
   fi
 }
 
@@ -34,8 +42,6 @@ install_cask_tools() {
 # orbstack - docker desktop but better
 # fnm      - node version manager
 # pnpm     - node package manager
-# bun      - brew install oven-sh/bun/bun
-
 install_tools() {
   apps=("eza" "bat" "fd" "nvim" "orbstack" "git" "fnm" "pnpm")
 
@@ -48,6 +54,7 @@ install_tools() {
 }
 
 install_grep
-install_tools
+install_bun
 install_cask_tools
 install_mole
+install_tools

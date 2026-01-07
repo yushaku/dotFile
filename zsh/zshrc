@@ -1,24 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
-
-# BUN completions
-export PATH="/home/$USER/.bun/bin:$PATH"
-[ -s "/home/$USER/.bun/_bun" ] && source "/home/$USER/.bun/_bun"
-
-export GOPATH=$HOME/go                                               # golang
-export SOL_PATH=$HOME/.local/share/solana/install/active_release/bin # solana
-export PATH=$PATH:$SOL_PATH:$GOPATH/bin
-
-export PATH="$HOME/.local/bin:$PATH"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-export PATH="$HOME/.local/share/fnm:$PATH"                           # fnm - node package manager
-if command -v fnm >/dev/null 2>&1; then
-  eval "$(fnm env)"
-fi
-
 export FUNCNEST=100
 
 autoload -Uz compinit && compinit
@@ -59,3 +41,6 @@ eval "$(starship init zsh)"
 #>> IMPORT AUTO COMPLETIONS -----------------------------------------------
 source <(forge completions zsh)
 source <(cast completions zsh)
+
+# asdf multi-runtime version manager
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
