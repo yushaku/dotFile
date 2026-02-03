@@ -42,5 +42,17 @@ eval "$(starship init zsh)"
 source <(forge completions zsh)
 source <(cast completions zsh)
 
-# asdf multi-runtime version manager
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Added by Antigravity
+export PATH="/Users/admin/.antigravity/antigravity/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# fnm
+eval "$(fnm env --use-on-cd)"
+
+# pnpm
+export PNPM_HOME="/Users/admin/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
