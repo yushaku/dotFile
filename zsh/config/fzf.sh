@@ -1,4 +1,3 @@
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_COMPLETION_TRIGGER='-'
 
 export FZF_DEFAULT_OPTS=" --preview-window 'right:55%' \
@@ -35,6 +34,8 @@ else
   zstyle ':fzf-tab:complete:cp:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath'
 fi
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh

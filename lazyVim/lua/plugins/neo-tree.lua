@@ -2,6 +2,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "Neotree",
   event = "VeryLazy",
+  enabled = true,
   keys = {
     {
       "<leader>e",

@@ -1,23 +1,48 @@
+local agent_cmd = vim.fn.exepath("agent")
+if agent_cmd == "" then
+  agent_cmd = os.getenv("HOME") .. "/.local/bin/agent"
+end
+
 return {
   {
     "yetone/avante.nvim",
     opts = {
+      provider = "cursor",
+      mode = "agentic",
       selection = {
-        hint_display = "true",
+        hint_display = "none",
       },
-      provider = "gemini-cli", -- use Gemini CLI as default
+      behaviour = {
+        auto_set_keymaps = false,
+      },
       acp_providers = {
-        ["gemini-cli"] = {
-          command = "gemini",
-          args = { "--experimental-acp" },
+        cursor = {
+          command = agent_cmd,
+          args = { "acp" },
+          auth_method = "cursor_login",
           env = {
-            NODE_NO_WARNINGS = "1",
-            -- at .zshrc export GEMINI_API_KEY="???"
-            -- GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+            HOME = os.getenv("HOME"),
+            PATH = os.getenv("PATH"),
           },
         },
       },
     },
+    keys = {
+      { "<leader>aa", "<cmd>AvanteAsk<CR>", desc = "Ask AI agent" },
+      { "<leader>ac", "<cmd>AvanteChat<CR>", desc = "Chat with AI agent" },
+      { "<leader>ae", "<cmd>AvanteEdit<CR>", desc = "Edit with AI agent" },
+      { "<leader>af", "<cmd>AvanteFocus<CR>", desc = "Focus AI agent" },
+      { "<leader>ah", "<cmd>AvanteHistory<CR>", desc = "Chat History" },
+      { "<leader>am", "<cmd>AvanteModels<CR>", desc = "Select AI Model" },
+      { "<leader>an", "<cmd>AvanteChatNew<CR>", desc = "New  Chat" },
+      { "<leader>ap", "<cmd>AvanteSwitchProvider<CR>", desc = "Switch AI Provider" },
+      { "<leader>ar", "<cmd>AvanteRefresh<CR>", desc = "Refresh AI agent" },
+      { "<leader>as", "<cmd>AvanteStop<CR>", desc = "Stop AI agent" },
+      { "<leader>at", "<cmd>AvanteToggle<CR>", desc = "Toggle AI agent" },
+    },
+  },
+  {
+    "coder/claudecode.nvim",
+    enabled = false,
   },
 }
-

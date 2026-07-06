@@ -1,7 +1,7 @@
 return {
   { "mini.comment", enabled = false },
   { "mg979/vim-visual-multi", enabled = false },
-  { "christoomey/vim-tmux-navigator", enabled = false },
+  { "christoomey/vim-tmux-navigator", enabled = true },
   -- {
   --   "brenoprata10/nvim-highlight-colors",
   --   enabled = true,

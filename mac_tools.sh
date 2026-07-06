@@ -25,8 +25,9 @@ install_mole() {
 # warp    - AI terminal
 # cursor  - AI code editer
 # raycast - Spotlight for mac but better
+# ghostty - Normal terminal
 install_cask_tools() {
-  apps=("warp" "cursor" "raycast")
+  apps=("cursor" "ghostty")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
@@ -43,7 +44,7 @@ install_cask_tools() {
 # fnm      - node version manager
 # pnpm     - node package manager
 install_tools() {
-  apps=("eza" "bat" "fd" "nvim" "orbstack" "git" "fnm" "pnpm")
+  apps=("eza" "bat" "fd" "nvim" "orbstack" "git" "fnm" "pnpm" "gonhanh" "mac-mouse-fix")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
