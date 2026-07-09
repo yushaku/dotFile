@@ -10,6 +10,19 @@ return {
         border = "rounded",
       },
     },
+    bigfile = { enabled = false },
+    explorer = { enabled = true },
+    picker = { enabled = true },
+    dashboard = { enabled = true },
+    indent = { enabled = true },
+    input = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    image = { enabled = true },
   },
   keys = {
     {
@@ -20,5 +33,9 @@ return {
         })
       end,
     },
+    { "<leader>sl", false },
+    { "<leader>si", false },
+    { "<leader>sb", false },
+    { "<leader>sh", false },
   },
 }

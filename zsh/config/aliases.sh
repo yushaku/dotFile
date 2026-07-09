@@ -22,23 +22,33 @@ alias ss="source ~/.zshrc"
 bindkey "^[[1;3D" backward-word # Alt+Left
 bindkey "^[[1;3C" forward-word  # Alt+Right
 
+
+##>> homebrew --------------------
+function btree() {
+  command -v brew &>/dev/null || { echo "brew not found" >&2; return 1 }
+
+  echo "📦 formulae"
+  if [[ "$1" == "--all" ]]; then
+    HOMEBREW_NO_ENV_HINTS=1 brew deps --tree --installed
+  else
+    HOMEBREW_NO_ENV_HINTS=1 brew deps --tree $1
+  fi
+
+  local casks=$(brew list --cask 2>/dev/null)
+  if [[ -n "$casks" ]]; then
+    echo ""
+    echo "📱 casks"
+    echo "$casks" | sort
+  fi
+}
+alias bls="btree"
+
 ##>> docker && docker compose --------------------
 alias d="docker"
 alias dco="docker-compose"
 function d-exec() {
   docker exec -it "$1" bash
 }
-
-function json-to-ts() {
-  local output="${2:-/tmp/output_quicktype.ts}"
-  local tmp="/tmp/short.ts"
-  quicktype --just-types --prefer-types --prefer-unions -o "$tmp" "$1"
-  cat "$tmp" >>"$output"
-  rm "$tmp"
-  batcat "$output"
-}
-
-alias jtt='json-to-ts'
 
 function port-kill() {
   ports=$(sudo lsof -t -i:"$1")

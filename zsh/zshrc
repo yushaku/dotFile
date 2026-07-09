@@ -38,21 +38,13 @@ fi
 #>> THEME   ---------------------------------------------------------------
 eval "$(starship init zsh)"
 
-#>> IMPORT AUTO COMPLETIONS -----------------------------------------------
-# source <(forge completions zsh)
-# source <(cast completions zsh)
-
-# Added by Antigravity
-# export PATH="/Users/admin/.antigravity/antigravity/bin:$PATH"
-# export PATH=$PATH:$(go env GOPATH)/bin
-
 # fnm
 eval "$(fnm env --use-on-cd)"
 
 # pnpm
-export PNPM_HOME="$USER/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end

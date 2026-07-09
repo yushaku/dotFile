@@ -1,1 +1,3 @@
-zsh/config/export.sh
+zsh/config/secret.sh
+zsh/config/paths.sh
+tmux/plugins/*

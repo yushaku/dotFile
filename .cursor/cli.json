@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(git)",
+      "Shell(rtk)",
+      "Shell(nvim)",
+      "Shell(agent)",
+      "Read(**)",
+      "Write(**)"
+    ],
+    "deny": [
+      "Shell(rm -rf)",
+      "Read(.env*)"
+    ]
+  }
+}
