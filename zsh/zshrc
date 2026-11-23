@@ -3,9 +3,9 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export FUNCNEST=100
 
-# Homebrew before macOS system binaries (/etc/paths puts /usr/bin first); ~/.local/bin stays on top
+# Homebrew first: ahead of ~/.local/bin, /usr/local/bin and macOS /usr/bin (/etc/paths puts system dirs first)
 typeset -U path
-path=("$HOME/.local/bin" /opt/homebrew/bin /opt/homebrew/sbin $path)
+path=(/opt/homebrew/bin /opt/homebrew/sbin "$HOME/.local/bin" $path)
 
 autoload -Uz compinit && compinit
 zstyle ':completion:*' use-cache on
