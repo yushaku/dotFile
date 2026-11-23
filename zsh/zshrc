@@ -52,8 +52,5 @@ esac
 # TinyTeX (LaTeX for ai-job-search CV/cover-letter compiles)
 export PATH="$HOME/Library/TinyTeX/bin/universal-darwin:$PATH"
 
-# Added by cua-driver-rs installer — see https://github.com/trycua/cua
-export PATH="/Users/sonlv/.local/bin:$PATH"
-
 # Hermes Orchestrator session with only the tools it uses (~17K fixed tokens instead of ~24K)
 alias orch='hermes --tui -t terminal,file,skills,clarify,delegation,vision,todo'

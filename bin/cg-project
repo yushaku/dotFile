@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# cg-project <dir>...: enable codegraph MCP for one project/worktree (Claude, jcode, Codex).
+# cg-project <dir>...: enable codegraph MCP for one project/worktree (Claude, Codex).
 # Idempotent: init index if missing, merge MCP entries, hide files from git.
 set -euo pipefail
 for dir in "$@"; do
@@ -9,7 +9,7 @@ for dir in "$@"; do
 import json, os, re, sys
 d = sys.argv[1]
 entry = {"command": "codegraph", "args": ["serve", "--mcp"]}
-# Claude Code + jcode: project .mcp.json
+# Claude Code: project .mcp.json
 p = os.path.join(d, ".mcp.json")
 cfg = json.load(open(p)) if os.path.exists(p) else {}
 cfg.setdefault("mcpServers", {})["codegraph"] = entry
