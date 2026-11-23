@@ -12,7 +12,7 @@ export VISUAL="${VISUAL:-nvim}"
 alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/lua/config/lazy.lua"
 alias dnsconfig="nvim /etc/resolv.conf"
-alias ll="eza -lha --time-style=long-iso --icons --no-time --no-user --colour-scale --group-directories-first"
+alias ll="eza -lha --time-style=long-iso --icons --no-time --no-user --color-scale --group-directories-first"
 function lk() {
   eza --tree --long --header -n --no-time --no-user --no-filesize --icons -s="name" -I='node_modules|dist|deploy' -L "${1:-2}"
 }
@@ -31,7 +31,7 @@ function btree() {
   if [[ "$1" == "--all" ]]; then
     HOMEBREW_NO_ENV_HINTS=1 brew deps --tree --installed
   else
-    HOMEBREW_NO_ENV_HINTS=1 brew deps --tree $1
+    HOMEBREW_NO_ENV_HINTS=1 brew deps --tree $(brew list --formula --installed-on-request)
   fi
 
   local casks=$(brew list --cask 2>/dev/null)
@@ -41,7 +41,6 @@ function btree() {
     echo "$casks" | sort
   fi
 }
-alias bls="btree"
 
 ##>> docker && docker compose --------------------
 alias d="docker"
@@ -75,7 +74,7 @@ function _package_manager() {
   elif [[ -f yarn.lock ]]; then
     command yarn "$@"
   elif [[ -f package-lock.json ]]; then
-    command npq-hero "$@"
+    command npm "$@"
   elif [[ -f Cargo.toml ]]; then
     command cargo "$@"
   else

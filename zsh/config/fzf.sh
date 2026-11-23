@@ -24,7 +24,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export FZF_ALT_C_OPTS="--preview 'eza --tree -L 2 --icons {}'"
 
   zstyle ':fzf-tab:complete:cp:*' fzf-preview 'bat --color=always --italic-text=always $realpath'
-  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1a --colour-scale --icons --group-directories-first --color=always $realpath'
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1a --color-scale --icons --group-directories-first --color=always $realpath'
 else
   # LINUX SETUP
   export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
@@ -32,7 +32,7 @@ else
   export FZF_ALT_C_OPTS="--preview 'exa --tree -L 2 --icons {}'"
 
   zstyle ':fzf-tab:complete:cp:*' fzf-preview 'batcat --color=always --italic-text=always $realpath'
-  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --colour-scale --icons --group-directories-first --color=always $realpath'
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1a --color-scale --icons --group-directories-first --color=always $realpath'
 fi
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
