@@ -66,12 +66,13 @@ install_cask_tools() {
 # bat      - like cat but better
 # fd       - A simple, fast and user-friendly alternative to find.
 # orbstack - docker desktop but better
+# starship - shell prompt
 # fnm      - node version manager
 # pnpm     - node package manager
 # mac-mouse-fix - fix mouse acceleration
 # gonhanh - vietnamese keyboard supporter
 install_tools() {
-  apps=("eza" "bat" "fd" "nvim" "orbstack" "git" "fnm" "pnpm")
+  apps=("eza" "bat" "fd" "nvim" "orbstack" "git" "starship" "fnm" "pnpm")
 
   for app in "${apps[@]}"; do
     if ! command -v "$app" &>/dev/null; then
