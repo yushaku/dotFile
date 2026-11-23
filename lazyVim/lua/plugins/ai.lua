@@ -5,7 +5,31 @@ end
 
 return {
   {
+    "coder/claudecode.nvim",
+    enabled = true,
+    opts = {},
+    keys = {
+      { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil" },
+      },
+      -- Diff management
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+    },
+  },
+  {
     "yetone/avante.nvim",
+    enabled = false,
     opts = {
       provider = "cursor",
       mode = "agentic",
@@ -40,9 +64,5 @@ return {
       { "<leader>as", "<cmd>AvanteStop<CR>", desc = "Stop AI agent" },
       { "<leader>at", "<cmd>AvanteToggle<CR>", desc = "Toggle AI agent" },
     },
-  },
-  {
-    "coder/claudecode.nvim",
-    enabled = false,
   },
 }

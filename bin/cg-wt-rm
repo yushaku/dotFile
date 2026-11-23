@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# cg-wt-rm <worktree>...: stop codegraph processes of a worktree, then `git worktree remove` it.
+# Removes .codegraph/, .mcp.json, .codex/, .claude/settings.local.json together with the worktree.
+set -euo pipefail
+force=""; remove=1
+[ "${1:-}" = "--stop-only" ] && { remove=0; shift; }
+[ "${1:-}" = "--force" ] && { force="--force"; shift; }
+[ $# -eq 0 ] && set -- "${ORCA_WORKTREE_PATH:-$PWD}"
+for wt in "$@"; do
+  wt=$(cd "$wt" && pwd -P)
+  # codegraph daemon registered for this root
+  for f in ~/.codegraph/daemons/*.json; do
+    [ -f "$f" ] || continue
+    pid=$(python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(d['pid'] if d.get('root','').rstrip('/')==sys.argv[2] else '')" "$f" "$wt")
+    [ -n "$pid" ] && kill "$pid" 2>/dev/null && rm -f "$f" && echo "stopped daemon $pid"
+  done
+  # codegraph processes (serve --mcp) running inside the worktree
+  for pid in $(pgrep -f 'codegraph.js' || true); do
+    cwd=$(lsof -a -p "$pid" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p')
+    case "$cwd" in "$wt"|"$wt"/*) kill "$pid" 2>/dev/null && echo "stopped $pid ($cwd)";; esac
+  done
+  [ $remove = 1 ] || continue
+  main=$(git -C "$wt" worktree list --porcelain | sed -n '1s/^worktree //p')
+  git -C "$main" worktree remove $force "$wt"
+  echo "removed $wt"
+done

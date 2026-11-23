@@ -30,6 +30,12 @@ shell-integration-features = no-cursor
 copy-on-select = clipboard
 
 keybind = super+q=ignore
+keybind = super+a=ignore
+
+# ctrl+backspace giống cmd+backspace (xoá cả dòng trước cursor)
+keybind = ctrl+backspace=text:\x15
+# option+backspace xoá 1 từ
+keybind = alt+backspace=text:\x1b\x7f
 
 # Custom Keybinds & Config (super represents cmd key on mac)
 # For Simple Keybinds

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# cg-project <dir>...: enable codegraph MCP for one project/worktree (Claude, jcode, Codex).
+# Idempotent: init index if missing, merge MCP entries, hide files from git.
+set -euo pipefail
+for dir in "$@"; do
+  dir=$(cd "$dir" && pwd)
+  [ -d "$dir/.codegraph" ] || (cd "$dir" && codegraph init . >/dev/null)
+  python3 - "$dir" <<'PY'
+import json, os, re, sys
+d = sys.argv[1]
+entry = {"command": "codegraph", "args": ["serve", "--mcp"]}
+# Claude Code + jcode: project .mcp.json
+p = os.path.join(d, ".mcp.json")
+cfg = json.load(open(p)) if os.path.exists(p) else {}
+cfg.setdefault("mcpServers", {})["codegraph"] = entry
+json.dump(cfg, open(p, "w"), indent=2); open(p, "a").write("\n")
+# Claude: pre-approve the project server (else "Pending approval")
+p = os.path.join(d, ".claude", "settings.local.json")
+os.makedirs(os.path.dirname(p), exist_ok=True)
+s = json.load(open(p)) if os.path.exists(p) else {}
+ok = s.setdefault("enabledMcpjsonServers", [])
+if "codegraph" not in ok:
+    ok.append("codegraph")
+json.dump(s, open(p, "w"), indent=2); open(p, "a").write("\n")
+# Codex: project .codex/config.toml (loaded only when project is trusted)
+p = os.path.join(d, ".codex", "config.toml")
+os.makedirs(os.path.dirname(p), exist_ok=True)
+t = open(p).read() if os.path.exists(p) else ""
+if "[mcp_servers.codegraph]" not in t:
+    t += ("\n" if t and not t.endswith("\n") else "") + '[mcp_servers.codegraph]\ncommand = "codegraph"\nargs = ["serve", "--mcp"]\n'
+    open(p, "w").write(t)
+# keep local files out of git
+g = os.popen(f"git -C '{d}' rev-parse --git-path info/exclude 2>/dev/null").read().strip()
+if g:
+    g = g if os.path.isabs(g) else os.path.join(d, g)
+    os.makedirs(os.path.dirname(g), exist_ok=True)
+    ex = open(g).read() if os.path.exists(g) else ""
+    add = [x for x in (".codegraph/", ".mcp.json", ".codex/", ".claude/settings.local.json") if x not in ex.split("\n")]
+    if add:
+        open(g, "a").write(("\n" if ex and not ex.endswith("\n") else "") + "\n".join(add) + "\n")
+print("codegraph MCP enabled:", d)
+PY
+done
