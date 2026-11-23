@@ -3,6 +3,10 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export FUNCNEST=100
 
+# Homebrew before macOS system binaries (/etc/paths puts /usr/bin first); ~/.local/bin stays on top
+typeset -U path
+path=("$HOME/.local/bin" /opt/homebrew/bin /opt/homebrew/sbin $path)
+
 autoload -Uz compinit && compinit
 zstyle ':completion:*' use-cache on
 
