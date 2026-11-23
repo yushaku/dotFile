@@ -49,8 +49,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# TinyTeX (LaTeX for ai-job-search CV/cover-letter compiles)
-export PATH="$HOME/Library/TinyTeX/bin/universal-darwin:$PATH"
-
 # Hermes Orchestrator session with only the tools it uses (~17K fixed tokens instead of ~24K)
 alias orch='hermes --tui -t terminal,file,skills,clarify,delegation,vision,todo'
