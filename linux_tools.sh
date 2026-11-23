@@ -18,14 +18,12 @@ install_theme() {
 }
 
 install_js() {
-	apps=("npm" "node", "yarn" "pnpm")
+	apps=("npm" "node" "pnpm")
 
 	for app in "${apps[@]}"; do
 		echo $app
 		if ! command -v $app &>/dev/null; then
-			if [ $app == "yarn" ]; then
-				npm install -g yarn
-			elif [ $app == "pnpm" ]; then
+			if [ $app == "pnpm" ]; then
 				npm install -g pnpm
 			else
 				sudo apt install -y "$app"

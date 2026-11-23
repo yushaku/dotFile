@@ -71,8 +71,6 @@ function _package_manager() {
     command bun "$@"
   elif [[ -f pnpm-lock.yaml ]]; then
     command pnpm "$@"
-  elif [[ -f yarn.lock ]]; then
-    command yarn "$@"
   elif [[ -f package-lock.json ]]; then
     command npm "$@"
   elif [[ -f Cargo.toml ]]; then
